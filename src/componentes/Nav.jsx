@@ -1,45 +1,33 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import React from "react";
+import { Navbar, Nav, Container } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function ColorSchemesExample() {
+function NavBar() {
   return (
-    <>
-      <Navbar bg="dark" data-bs-theme="dark">
-        <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
-      <br />
-      <Navbar bg="primary" data-bs-theme="dark">
-        <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
+    <Navbar bg="dark" variant="dark" expand="lg" className="px-3">
+      <Container fluid>
+        {/* Logo */}
+        <Navbar.Brand href="#home" className="d-flex align-items-center">
+          <span style={{ color: "red", fontWeight: "bold", marginRight: "8px" }}>
+            🎬
+          </span>
+          <span style={{ color: "white", fontWeight: "bold" }}>PlayMovie</span>
+        </Navbar.Brand>
 
-      <br />
-      <Navbar bg="light" data-bs-theme="light">
-        <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+        {/* Toggle para pantallas chicas */}
+        <Navbar.Toggle aria-controls="navbar-nav" />
+
+        <Navbar.Collapse id="navbar-nav">
+          {/* Links principales alineados a la derecha */}
+          <Nav className="ms-auto">
+            <Nav.Link href="#inicio">Inicio</Nav.Link>
+            <Nav.Link href="#peliculas">Películas</Nav.Link>
+            <Nav.Link href="#series">Series</Nav.Link>
           </Nav>
-        </Container>
-      </Navbar>
-    </>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
 
-export default ColorSchemesExample;
+export default NavBar;
