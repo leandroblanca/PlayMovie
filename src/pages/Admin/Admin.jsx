@@ -4,6 +4,7 @@ import { faFilm, faUsers, faDollarSign, faUserPlus } from "@fortawesome/free-sol
 import { useEffect, useState } from "react";
 import { BsEye, BsPencil, BsTrash } from "react-icons/bs";
 import "./Admin.css";
+import Sidebar from "../../componentes/Sidebar";
 
 
 const dashboardStats = [
@@ -242,15 +243,25 @@ const registrarUsuario = (nombre) => {
 
   return (
     <>
-           <div className=" p-3 rounded">
-        <Form onSubmit={buscarPeliculaApi} className="d-flex gap-2">
+    <Container className="vh-100">
+      <Row className="col-12">
+        <Col className="col-2">
+           <Sidebar/>
+          <Button variant="danger rounded-5 fw-bold" onClick={handleShow} className="shadow">
+            + Añadir Nueva Pelicula
+          </Button>
+        </Col>
+        <Col className="col-10">
+        
+           <div className=" p-3">
+        <Form onSubmit={buscarPeliculaApi} className="d-flex gap-2 w-50">
           <Form.Control
             type="text"
             placeholder="Ej: Batman, Avatar..."
             value={busquedaApi}
             onChange={(e) => setBusquedaApi(e.target.value)}
           />
-          <Button variant="primary" type="submit">Buscar</Button>
+          <Button variant="danger" className="rounded-5" type="submit">Buscar</Button>
         </Form>
         
         <div className="d-flex gap-3 mt-3 overflow-auto">
@@ -310,12 +321,7 @@ const registrarUsuario = (nombre) => {
 </Container>
 
       <Container className="mt-4">
-        <div className="d-flex justify-content-end mb-3">
-          <Button variant="danger" onClick={handleShow}>
-            Agregar pelicula
-          </Button>
-        </div>
-
+       
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{editarId ? "Editar Película" : "Agregar Película"}</Modal.Title>
@@ -443,7 +449,7 @@ const registrarUsuario = (nombre) => {
 </Table>
 </Container>
 <Container>
-  <Row className="col-12 justify-content-end"> 
+  <Row className="col-12 justify-content-end my-5"> 
     <Col className="col-6">
     <Card className="usuarios-card">
 
@@ -548,6 +554,10 @@ className="registro-item d-flex justify-content-start align-items-start flex-col
     </Col>
   </Row>
 </Container>
+
+</Col>
+      </Row>
+    </Container>
 
 
     </>
