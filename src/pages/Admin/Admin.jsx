@@ -1,6 +1,9 @@
-import { Button, Modal, Table, Form } from "react-bootstrap";
+import { Button, Modal, Table, Form, Container, Row, Card, Col } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilm, faUsers, faDollarSign, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import "./Admin.css";
+import { BsEye, BsPencil, BsTrash } from "react-icons/bs";
 
 
 function Admin() {
@@ -20,9 +23,43 @@ function Admin() {
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
   
+
+    const dashboardStats = [
+  {
+    id: 1,
+    icon: faFilm,
+    tendencia: "up",
+    porcentaje: "+12%",
+    titulo: "Total de Películas",
+    valor: 1240
+  },
+  {
+    id: 2,
+    icon: faUsers,
+    tendencia: "up",
+    porcentaje: "+5%",
+    titulo: "Usuarios Activos",
+    valor: 85241
+  },
+  {
+    id: 3,
+    icon: faDollarSign,
+    tendencia: "down",
+    porcentaje: "-2%",
+    titulo: "Ingresos Totales",
+    valor: 12450
+  },
+  {
+    id: 4,
+    icon: faUserPlus,
+    tendencia: "up",
+    porcentaje: "+18%",
+    titulo: "Nuevos Registros",
+    valor: 124
+  }
+];
   useEffect(() => {
-    // Si no hay películas en el estado (que ya se cargó desde localStorage),
-    // entonces consultamos la API para mostrar las populares.
+   
     if (peliculas.length === 0) {
       const consultarAPI = async () => {
         try {
@@ -43,7 +80,7 @@ function Admin() {
       };
       consultarAPI();
     }
-  }, []); // El array vacío asegura que esto solo se ejecute una vez al montar.
+  }, []); 
 
 
    useEffect(() => {
@@ -127,8 +164,31 @@ function Admin() {
   };
 
   const handleShow = () => setShow(true);
+
+
   return (
     <>
+    <Container>
+      <Row md={4}>
+        {dashboardStats.map(stat => (
+           <Col key={stat.id}>
+        <Card style={{ width: '18rem' }}>
+      <Card.Body>
+        <FontAwesomeIcon icon={stat.icon} />
+        <span>{stat.tendencia} {stat.porcentaje}</span>
+        <Card.Title>{stat.titulo}</Card.Title>
+        <Card.Text>
+          {stat.valor}
+        </Card.Text>
+        
+      </Card.Body>
+    </Card>
+       </Col>
+        ))}
+      
+      </Row>
+    </Container>
+
       <Button variant="danger" onClick={handleShow}>
         Agregar pelicula
       </Button>
@@ -173,7 +233,7 @@ function Admin() {
      
       </Modal>
 
-      {/* Sección para buscar en la API y agregar */}
+     
       <div className="my-4 p-3 border rounded bg-light">
         <h5>Buscar película en API (TMDB)</h5>
         <Form onSubmit={buscarPeliculaApi} className="d-flex gap-2">
@@ -211,34 +271,91 @@ function Admin() {
         onChange={(e) => setBusqueda(e.target.value)}
       />
 
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Título</th>
-            <th>Año</th>
-            <th>Poster</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-   
-         {peliculasFiltradas.map(pelicula => (
-            <tr key={pelicula.id}>
-              <td>{pelicula.id ? pelicula.id.slice(0, 8) : ''}</td>
-              <td>{pelicula.titulo}</td>
-              <td>{pelicula.año}</td>
-              <td><img src={pelicula.poster} alt={pelicula.titulo} style={{width: '50px'}} /></td>
-              <td>
-                <Button variant="warning" size="sm" className="me-2" onClick={() => editarPelicula(pelicula.id)}>Editar</Button>
-                <Button variant="danger" size="sm" onClick={() => eliminarPelicula(pelicula.id)}>Eliminar</Button>
-              </td>
-           </tr>
-          )
-          )}
+    <Table hover responsive className="align-middle tabla-peliculas">
+  <thead>
+    <tr>
+      <th>Película</th>
+      <th>Fecha de estreno</th>
+      <th>Estado</th>
+      <th>Calificación</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
 
-        </tbody>
-      </Table>
+  <tbody>
+
+    {peliculasFiltradas.map((pelicula) => (
+      <tr key={pelicula.id}>
+
+        <td>
+          <div className="d-flex align-items-center gap-3">
+
+            <img
+              src={pelicula.poster}
+              alt={pelicula.titulo}
+              className="poster-mini"
+            />
+
+            <div>
+              <div className="fw-bold">{pelicula.titulo}</div>
+              <div className="text-muted small">
+                {pelicula.genero || "Ciencia ficción"}
+              </div>
+            </div>
+
+          </div>
+        </td>
+
+        <td>
+          {pelicula.fecha || pelicula.año}
+        </td>
+
+        <td>
+          <span
+            className={`badge ${
+              pelicula.estado === "Publicado"
+                ? "bg-success"
+                : "bg-warning text-dark"
+            }`}
+          >
+            {pelicula.estado || "Publicado"}
+          </span>
+        </td>
+
+        <td>
+          ⭐ {pelicula.rating || "N/A"}
+        </td>
+
+         <td className="d-flex gap-2">
+
+          <Button
+            variant="link"
+            onClick={() => editarPelicula(pelicula.id)}
+          >
+            <BsPencil size={18}/>
+          </Button>
+
+          <Button
+            variant="link"
+          >
+            <BsEye size={18}/>
+          </Button>
+
+          <Button
+            variant="link"
+            onClick={() => eliminarPelicula(pelicula.id)}
+          >
+            <BsTrash size={18}/>
+          </Button>
+
+        </td>
+
+
+      </tr>
+    ))}
+
+  </tbody>
+</Table>
     </>
   );
 }
