@@ -1,40 +1,107 @@
-.tabla-peliculas{
- 
-  color:white;
-  border-radius:8px;
-  overflow:hidden;
+.dashboard-card {
+  background: #1f1f1f;
+  color: white;
+  border: none;
+  padding: 10px;
+  transition: 0.2s;
 }
 
-
-
-.tabla-peliculas tbody tr:hover{
-  background-color:#2a2a2a;
+.dashboard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-
-
-.poster-mini{
-  width:45px;
-  height:60px;
-  object-fit:cover;
-  border-radius:6px;
+.dashboard-icon {
+  font-size: 24px;
+  color: #ff4d4d;
 }
 
+.dashboard-title {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-bottom: 4px;
+}
 
+.dashboard-value {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
 
-.tabla-peliculas button{
-  border:none;
-  background:none;
-  padding:4px;
+.dashboard-trend {
+  font-size: 13px;
+  color: #22c55e;
+}
+
+.tabla-peliculas {
+  color: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+tr, td {
+    border: none;
+}
+.poster-mini {
+  width: 45px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.tabla-peliculas button {
+  border: 0;
+  background: none;
+  padding: 4px;
   text-decoration: none;
-  color: #212529; 
+  color: white;
+  
 }
 
-.tabla-peliculas svg{
-  cursor:pointer;
-  transition:0.2s;
+.tabla-peliculas svg {
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-.tabla-peliculas svg:hover{
-  transform:scale(1.15);
+.tabla-peliculas svg:hover {
+  transform: scale(1.15);
+}
+.usuarios-card {
+  background: #1f1f1f;
+  color: white;
+  border-radius: 12px;
+}
+
+.usuario-item {
+  background: transparent;
+  border: none;
+
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #d9e8ee;
+}
+
+.registro-card {
+  background: #1f1f1f;
+  color: white;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.registro-item {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.registro-item:last-child {
+  border-bottom: none;
+}
+
+.registro-icon {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
 }

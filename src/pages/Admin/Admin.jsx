@@ -1,30 +1,12 @@
-import { Button, Modal, Table, Form, Container, Row, Card, Col } from "react-bootstrap";
+import { Button, Modal, Table, Form, Container, Row, Card, Col, ListGroup, Badge } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilm, faUsers, faDollarSign, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
-import "./Admin.css";
 import { BsEye, BsPencil, BsTrash } from "react-icons/bs";
+import "./Admin.css";
 
 
-function Admin() {
-   const [show, setShow] = useState(false);
-   const [peliculas, setPeliculas] = useState(() => {
-     const guardadas = localStorage.getItem("peliculas");
-     return guardadas ? JSON.parse(guardadas) : [];
-   });
-   const [titulo, setTitulo] = useState("");
-   const [año, setAño] = useState("");
-   const [poster, setPoster] = useState("");
-   const [editarId, setEditarId] = useState(null);
-   const [busqueda, setBusqueda] = useState("");
-   const [busquedaApi, setBusquedaApi] = useState("");
-   const [resultadosApi, setResultadosApi] = useState([]);
-   const API_URL = "https://api.themoviedb.org/3/movie/popular?api_key=9678a642782cbed22b8137edf52e9d91&language=es-ES&page=1";
-  const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
-
-  
-
-    const dashboardStats = [
+const dashboardStats = [
   {
     id: 1,
     icon: faFilm,
@@ -58,6 +40,98 @@ function Admin() {
     valor: 124
   }
 ];
+
+const usuariosIniciales = [
+  {
+    id: 1,
+    nombre: "Alex Johnson",
+    estado: "ACTIVO",
+    ultimoAcceso: "hace 2h"
+  },
+  {
+    id: 2,
+    nombre: "Sarah Miller",
+    estado: "ACTIVO",
+    ultimoAcceso: "hace 5h"
+  },
+  {
+    id: 3,
+    nombre: "Michael Brown",
+    estado: "INACTIVO",
+    ultimoAcceso: "hace 1 día"
+  }
+];
+const registroSistema = [
+  {
+    id: 1,
+    titulo: "Copia de Seguridad Completada",
+    categoria: "Usuarios Activos",
+    hora: "10:45 AM",
+    color: "#198754"
+  },
+  {
+    id: 2,
+    titulo: "Alerta de Seguridad",
+    categoria: "Usuarios Activos",
+    hora: "08:22 AM",
+   color: "#dc3545"
+
+  },
+  {
+    id: 3,
+    titulo: "Película Publicada",
+    categoria: "Usuarios Activos",
+    hora: "Ayer",
+    color: "#0d6efd"
+  }
+];
+
+function Admin() {
+  const [usuarios, setUsuarios] = useState(usuariosIniciales);
+   const [show, setShow] = useState(false);
+   const [peliculas, setPeliculas] = useState(() => {
+     const guardadas = localStorage.getItem("peliculas");
+     return guardadas ? JSON.parse(guardadas) : [];
+   });
+   const [titulo, setTitulo] = useState("");
+   const [año, setAño] = useState("");
+   const [poster, setPoster] = useState("");
+   const [editarId, setEditarId] = useState(null);
+   const [busqueda, setBusqueda] = useState("");
+   const [busquedaApi, setBusquedaApi] = useState("");
+   const [resultadosApi, setResultadosApi] = useState([]);
+   const API_URL = "https://api.themoviedb.org/3/movie/popular?api_key=9678a642782cbed22b8137edf52e9d91&language=es-ES&page=1";
+  const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
+
+  
+
+useEffect(() => {
+
+  const data = localStorage.getItem("usuarios");
+
+  if(data){
+    setUsuarios(JSON.parse(data));
+  } else {
+    setUsuarios(usuariosIniciales);
+  }
+
+}, []);
+useEffect(()=>{
+  localStorage.setItem("usuarios", JSON.stringify(usuarios));
+},[usuarios])
+
+const registrarUsuario = (nombre) => {
+
+  const nuevoUsuario = {
+    id: Date.now(),
+    nombre,
+    estado: "ACTIVO",
+    ultimoAcceso: "ahora"
+  };
+
+  setUsuarios(prev => [nuevoUsuario, ...prev]);
+
+};
   useEffect(() => {
    
     if (peliculas.length === 0) {
@@ -168,30 +242,79 @@ function Admin() {
 
   return (
     <>
-    <Container>
-      <Row md={4}>
-        {dashboardStats.map(stat => (
-           <Col key={stat.id}>
-        <Card style={{ width: '18rem' }}>
-      <Card.Body>
-        <FontAwesomeIcon icon={stat.icon} />
-        <span>{stat.tendencia} {stat.porcentaje}</span>
-        <Card.Title>{stat.titulo}</Card.Title>
-        <Card.Text>
-          {stat.valor}
-        </Card.Text>
+           <div className=" p-3 rounded">
+        <Form onSubmit={buscarPeliculaApi} className="d-flex gap-2">
+          <Form.Control
+            type="text"
+            placeholder="Ej: Batman, Avatar..."
+            value={busquedaApi}
+            onChange={(e) => setBusquedaApi(e.target.value)}
+          />
+          <Button variant="primary" type="submit">Buscar</Button>
+        </Form>
         
-      </Card.Body>
-    </Card>
-       </Col>
-        ))}
-      
-      </Row>
-    </Container>
+        <div className="d-flex gap-3 mt-3 overflow-auto">
+          {resultadosApi.map((p) => (
+            <div key={p.id} style={{ minWidth: "120px", textAlign: "center" }}>
+              <img
+                src={p.poster_path ? `${IMAGE_BASE_URL}${p.poster_path}` : "https://via.placeholder.com/150"}
+                alt={p.title}
+                style={{ width: "100%", borderRadius: "5px" }}
+              />
+              <h6 style={{ fontSize: "12px", marginTop: "5px" }}>{p.title}</h6>
+              <Button size="sm" variant="success" onClick={() => agregarDesdeApi(p)}>
+                Agregar
+              </Button>
+            </div>
+          ))}
+        </div>
+      </div>
 
-      <Button variant="danger" onClick={handleShow}>
-        Agregar pelicula
-      </Button>
+   <Container>
+  <Row className="g-4">
+    {dashboardStats.map(stat => (
+      <Col md={3} key={stat.id}>
+
+        <Card className="dashboard-card mt-5 rounded-5">
+
+          <Card.Body>
+
+            <div className="d-flex justify-content-between align-items-center mb-2">
+
+              <FontAwesomeIcon
+                icon={stat.icon}
+                className="dashboard-icon"
+              />
+
+              <span className="dashboard-trend">
+                {stat.tendencia} {stat.porcentaje}
+              </span>
+
+            </div>
+
+            <Card.Title className="dashboard-title">
+              {stat.titulo}
+            </Card.Title>
+
+            <Card.Text className="dashboard-value">
+              {stat.valor}
+            </Card.Text>
+
+          </Card.Body>
+
+        </Card>
+
+      </Col>
+    ))}
+  </Row>
+</Container>
+
+      <Container className="mt-4">
+        <div className="d-flex justify-content-end mb-3">
+          <Button variant="danger" onClick={handleShow}>
+            Agregar pelicula
+          </Button>
+        </div>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -233,45 +356,7 @@ function Admin() {
      
       </Modal>
 
-     
-      <div className="my-4 p-3 border rounded bg-light">
-        <h5>Buscar película en API (TMDB)</h5>
-        <Form onSubmit={buscarPeliculaApi} className="d-flex gap-2">
-          <Form.Control
-            type="text"
-            placeholder="Ej: Batman, Avatar..."
-            value={busquedaApi}
-            onChange={(e) => setBusquedaApi(e.target.value)}
-          />
-          <Button variant="primary" type="submit">Buscar API</Button>
-        </Form>
-        
-        <div className="d-flex gap-3 mt-3 overflow-auto">
-          {resultadosApi.map((p) => (
-            <div key={p.id} style={{ minWidth: "120px", textAlign: "center" }}>
-              <img
-                src={p.poster_path ? `${IMAGE_BASE_URL}${p.poster_path}` : "https://via.placeholder.com/150"}
-                alt={p.title}
-                style={{ width: "100%", borderRadius: "5px" }}
-              />
-              <h6 style={{ fontSize: "12px", marginTop: "5px" }}>{p.title}</h6>
-              <Button size="sm" variant="success" onClick={() => agregarDesdeApi(p)}>
-                Agregar
-              </Button>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <Form.Control
-        type="text"
-        placeholder="Buscar película por título..."
-        className="my-3"
-        value={busqueda}
-        onChange={(e) => setBusqueda(e.target.value)}
-      />
-
-    <Table hover responsive className="align-middle tabla-peliculas">
+      <Table hover responsive className="align-middle tabla-peliculas">
   <thead>
     <tr>
       <th>Película</th>
@@ -329,20 +414,20 @@ function Admin() {
          <td className="d-flex gap-2">
 
           <Button
-            variant="link"
+           
             onClick={() => editarPelicula(pelicula.id)}
           >
             <BsPencil size={18}/>
           </Button>
 
           <Button
-            variant="link"
+            
           >
             <BsEye size={18}/>
           </Button>
 
           <Button
-            variant="link"
+           
             onClick={() => eliminarPelicula(pelicula.id)}
           >
             <BsTrash size={18}/>
@@ -356,6 +441,115 @@ function Admin() {
 
   </tbody>
 </Table>
+</Container>
+<Container>
+  <Row className="col-12 justify-content-end"> 
+    <Col className="col-6">
+    <Card className="usuarios-card">
+
+<Card.Body>
+
+<div className="d-flex justify-content-between align-items-center mb-3">
+<h5 className="fw-bold">Gestión de Usuarios</h5>
+<span className="text-danger">Ver Todos los Usuarios</span>
+</div>
+
+<ListGroup variant="flush">
+
+{usuarios.map((usuario) => (
+
+<ListGroup.Item
+key={usuario.id}
+className="d-flex justify-content-between align-items-center usuario-item"
+>
+
+<div className="d-flex align-items-center gap-3">
+
+<div className="avatar"></div>
+
+<div>
+<div className="fw-bold">{usuario.nombre}</div>
+<div className="text-muted small">Usuarios Activos</div>
+</div>
+
+</div>
+
+<div className="text-end">
+
+<div className="text-muted small">
+Último acceso: {usuario.ultimoAcceso}
+</div>
+
+<Badge bg={usuario.estado === "ACTIVO" ? "danger" : "secondary"}>
+{usuario.estado}
+</Badge>
+
+</div>
+
+</ListGroup.Item>
+
+))}
+
+</ListGroup>
+
+</Card.Body>
+
+</Card>
+    </Col>
+    <Col className="col-4 d-flex ">
+   <Card className="registro-card ms-auto">
+
+<Card.Body>
+
+<h5 className="fw-bold mb-4">Registro del Sistema</h5>
+
+{registroSistema.map((registro)=> (
+
+<div
+key={registro.id}
+className="registro-item d-flex justify-content-start align-items-start flex-column"
+>
+
+<div className="d-flex align-items-center gap-2">
+  
+
+  <div
+  className="registro-icon"
+  style={{ background: registro.color }}
+></div>
+
+
+<div>
+
+<div className="fw-bold">
+{registro.titulo}
+</div>
+
+<div className="text-muted small">
+{registro.categoria}
+</div>
+
+</div>
+
+</div>
+
+<div className="text-muted small ms-3">
+{registro.hora}
+</div>
+
+
+</div>
+
+))}
+
+</Card.Body>
+
+</Card> 
+    </Col>
+  </Row>
+</Container>
+
+
     </>
   );
 }
