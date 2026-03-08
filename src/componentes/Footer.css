@@ -1,6 +1,6 @@
 .footer-netflix {
-    background-color: #141414
-  /* background-color: #211111 !important; */
+  background-color: #211111 !important;
+  border-top: #411315 1px solid;
 }
 
 .footer-netflix a:hover svg {
