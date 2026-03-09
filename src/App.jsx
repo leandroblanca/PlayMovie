@@ -1,7 +1,6 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from "react-router-dom-dom";
 import './App.css'
 import "./index.css";
-import { Router } from 'react-router'
 import Nav from "./componentes/Nav";
 import Footer from "./componentes/Footer";
 import AdminProtegida from './pages/Admin/Admin';
@@ -12,6 +11,7 @@ import Login from './pages/Login/Login.jsx';
 
 
 
+import AboutUs from "./pages/AboutUs"
 
 function App() {
   
@@ -27,6 +27,8 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/registro" element={<Registro/>} />
         
+        <Route path="/aboutus" element={<AboutUs />} />
+
     </Routes>
     <Footer />
     </BrowserRouter>
