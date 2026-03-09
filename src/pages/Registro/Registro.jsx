@@ -3,6 +3,8 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./Registro.css";
 import logo from "../../assets/logo.png";
+import { FcGoogle } from "react-icons/fc";
+import { FaFacebookF, FaSpotify } from "react-icons/fa";
 
 
 const Registro = () => {
@@ -77,7 +79,7 @@ const Registro = () => {
             <Form onSubmit={handleSubmit} className="bg-dark">
                 <div xs={12} className="d-flex flex-column justify-content-center align-items-center mb-5 text-light">
             <h2 className="fw-bold">Crear Cuenta</h2>
-            <h6 className="fw-light">Join PlayMovie to start streaming your favorite content</h6>
+            <h6 className="fw-light registro-subtitulo">Join PlayMovie to start streaming your favorite content</h6>
             </div> 
 
               <Form.Group className="mb-4">
@@ -135,21 +137,30 @@ const Registro = () => {
                   Crear Cuenta
                 </Button>
               </div>
+              <div className="d-flex justify-content-center mb-4">
+                 <span>O CONTINUAR CON</span>
+              </div>
+             
 
-               <Row>
-                     <Col md={6}>
-                            <Button size="sm" variant="dark" className="rounded-5 ms-4">
-  <FcGoogle style={{ marginRight: "8px" }} /> Google
-</Button>
-
-<Button size="sm" variant="dark" className="rounded-5 ms-4">
-  <FaFacebookF style={{ marginRight: "8px" }} /> Facebook
-</Button>
-
-<Button size="sm" variant="dark" className="rounded-5 ms-4">
-  <FaSpotify style={{ marginRight: "8px" }} /> Spotify
-</Button>
+               <Row className="d-flex flex-column align-items-center    ">
+                     <Col className="d-flex justify-content-center align-items-center " md={6}>
+                            <Button size="sm" variant="dark" className="rounded-5 ">
+                             <FcGoogle style={{ marginRight: "8px" }} /> 
+                           </Button>
+                           
+                           <Button size="sm" variant="dark" className="rounded-5 ms-4">
+                             <FaFacebookF style={{ marginRight: "8px" }} /> 
+                           </Button>
+                           
+                           <Button size="sm" variant="dark" className="rounded-5 ms-4">
+                             <FaSpotify style={{ marginRight: "8px" }} /> 
+                           </Button>
+                          
                     </Col>
+                    <Col className="d-flex justify-content-center align-items-center ">
+                    <h6 className="registroText">¿Ya tienes una cuenta? <a className="iniciar-sesion-registro" href="/login">Inicia sesión aquí</a></h6>
+                    </Col>
+                          
                </Row>
             
               
