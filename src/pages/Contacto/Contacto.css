@@ -1,0 +1,12 @@
+.follow-us{
+    background-color:#6c757d;
+    transition:0.3s;
+}
+
+.follow-us:hover{
+    background-color:red;
+}
+.form-contacto {
+    background-color: rgb(5, 5, 54);
+    
+}
