@@ -68,20 +68,16 @@ const Registro = () => {
   };
 
   return (
-    <>
       <div className="registro-wrapper">
         <Container>
           <Row className="justify-content-center">
-            <Col xs={12} md={8} lg={5}>
-              <Form
-                onSubmit={handleSubmit}
-                className="bg-dark text-light p-4 p-sm-5 rounded-3 shadow-lg"
-              >
-                <div className="text-center mb-5">
-                  <h2 className="fw-bold">Crear Cuenta</h2>
-                  <h6 className="fw-light text-muted">
-                    Únete para empezar a ver tu contenido favorito
-                  </h6>
+          
+         <Col xs={12} md={6} lg={4}>
+           
+            <Form onSubmit={handleSubmit} className="bg-dark">
+                <div xs={12} className="d-flex flex-column justify-content-center align-items-center mb-5 text-light">
+            <h2 className="fw-bold">Crear Cuenta</h2>
+            <h6 className="fw-light">Join PlayMovie to start streaming your favorite content</h6>
                 </div>
 
                 <Form.Group className="mb-4">
