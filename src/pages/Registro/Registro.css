@@ -1,0 +1,93 @@
+.registro-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  
+}
+
+.registro-wrapper .row {
+  width: 100%;
+  justify-content: center;
+}
+
+.registro-wrapper .col {
+  max-width: 400px;
+  width: 100%;
+}
+
+.registro-wrapper form {
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  
+}
+
+.registro-wrapper .form-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.registro-wrapper .form-control {
+  border: 1px solid #444; 
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  color: white; 
+}
+
+.registro-wrapper .form-control:focus {
+  outline: none;
+  background-color: #333; 
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+}
+
+.registro-wrapper .btn-danger {
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.registro-wrapper .btn-danger:hover {
+  transform: translateY(-2px);
+}
+
+.registro-wrapper .btn-danger:active {
+  transform: translateY(0);
+}
+
+.registro-wrapper .text-danger {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  background: #fee;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border-left: 4px solid #dc3545;
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 576px) {
+  .registro-wrapper form {
+    padding: 1.5rem;
+  }
+}
+
+.registroText{
+    font-size: 12px;
+}
+.iniciar-sesion-registro {
+    color: red;
+}
+.registro-subtitulo {
+    font-size: small;
+    text-align: center;
+}
