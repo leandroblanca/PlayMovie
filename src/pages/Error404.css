@@ -1,6 +1,9 @@
-/* Error404.css */
 .error-container {
   text-align: center;
+   background: 
+    radial-gradient(circle at top left, rgba(120,20,20,0.5), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(120,20,20,0.5), transparent 40%),
+    #0b0202;
   background-color: #121212;
   color: white;
   padding: 40px 20px;
@@ -14,7 +17,7 @@
 .error-image {
   max-width: 500px;
   width: 100%;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 80px rgba(120,20,20,0.5);
   margin-bottom: 30px;
 }
 
@@ -43,9 +46,9 @@
   font-size: 1rem;
   font-weight: bold;
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(120,20,20,0.5);
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
@@ -70,4 +73,15 @@
 .btn.black:hover {
   background-color: #333;
   transform: scale(1.05);
+}
+
+.btn-custom {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espacio entre ícono y texto */
+  font-weight: bold;
+  padding: 12px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
