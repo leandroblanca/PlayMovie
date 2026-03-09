@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import "./index.css";
-import Contacto from './pages/Contacto/Contacto';
+import AdminProtegida from "./pages/Admin/AdminProtegida";
+import Sidebar from './componentes/Sidebar';
 
 function App() {
   
@@ -10,7 +11,8 @@ function App() {
     <>
     <BrowserRouter>
     <Routes>
-      <Route path='/' element={<Contacto />} />
+       <Route path="/admin" element={<AdminProtegida />} />
+       <Route path="/admin" element={<Sidebar />} />
     </Routes>
     </BrowserRouter>
     </>
