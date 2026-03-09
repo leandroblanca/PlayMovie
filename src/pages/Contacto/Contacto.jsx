@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Col, Container, Form, Row, Button, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCamera, faEnvelope, faHeadset, faShareNodes, faVideo, faMedal} from "@fortawesome/free-solid-svg-icons";
@@ -24,7 +24,46 @@ const Contacto = () => {
     },
   },
 ];
+    const [nombre, setNombre] = useState("");
+    const [email, setEmail] = useState("");
+    const [consulta, setConsulta] = useState("");
+    const [mensaje, setMensaje] = useState("");
+    const [error, setError] = useState("");
+    
+    const handleSubmit = (e) => {
+  e.preventDefault();
 
+  const nombreRegex = /^[A-Za-z\s]{3,}$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  let errorMsg = "";
+
+  if (!nombre || !email || !consulta || !mensaje) {
+    errorMsg = "Todos los campos son obligatorios";
+  } 
+  else if (!nombreRegex.test(nombre)) {
+    errorMsg = "El nombre solo puede tener letras";
+  } 
+  else if (!emailRegex.test(email)) {
+    errorMsg = "Email inválido";
+  } 
+  else if (mensaje.length < 10) {
+    errorMsg = "El mensaje debe tener al menos 10 caracteres";
+  }
+
+  if (errorMsg) {
+    setError(errorMsg);
+    return;
+  }
+
+  setError("");
+  alert("Mensaje enviado correctamente");
+
+  setConsulta("");
+  setMensaje("");
+  setNombre("");
+  setEmail("");
+};
 
   return (
     <Container className="my-5" data-bs-theme="dark">
@@ -37,25 +76,28 @@ const Contacto = () => {
         <Row className='mt-5 h-100'>
              <Col md={6} className='mt-5 h-100'>
              <div className='form-contacto p-5 rounded-5'>
-           <Form className='vh-100 d-flex justify-content-center mt-0 flex-column'>
+           <Form onSubmit={handleSubmit} className='vh-100 d-flex justify-content-center mt-0 flex-column'>
             <Row>
               <Col>
                <Form.Group className="mb-5 w-100" controlId="formFullName">
                 <Form.Label>Nombre Completo</Form.Label>
-                <Form.Control type="text" placeholder="Ingresa tu nombre completo" />
+                <Form.Control type="text" placeholder="Ingresa tu nombre completo" required minLength={8} maxLength={250} value={nombre}
+  onChange={(e) => setNombre(e.target.value)} />
               </Form.Group>
               </Col>
               <Col>
                <Form.Group className="mb-5 w-100" controlId="formEmail">
                 <Form.Label>Correo Electrónico</Form.Label>
-                <Form.Control type="email" placeholder="nombre@ejemplo.com" />
+                <Form.Control type="email" placeholder="nombre@ejemplo.com" minLength={8} maxLength={250} required value={email}
+  onChange={(e) => setEmail(e.target.value)}/>
               </Form.Group>
               </Col>
             </Row>         
             
               <Form.Group className="mb-5" controlId="formQueryType">
                 <Form.Label>Tipo de Consulta</Form.Label>
-                <Form.Select defaultValue="Selecciona una opción">
+                <Form.Select required minLength={8} maxLength={250} value={consulta}
+  onChange={(e) => setConsulta(e.target.value)} defaultValue="Selecciona una opción">
                   <option disabled>Selecciona una opción</option>
                   <option>Soporte técnico</option>
                   <option>Facturación</option>
@@ -65,11 +107,13 @@ const Contacto = () => {
                 </Form.Select>
               </Form.Group>
             
-              <Form.Group className="mb-5" controlId="formMessage">
+              <Form.Group  className="mb-5" controlId="formMessage">
                 <Form.Label>Mensaje</Form.Label>
-                <Form.Control as="textarea" rows={5} placeholder="Escribe tu mensaje aquí..." />
+                <Form.Control as="textarea" rows={5} placeholder="Escribe tu mensaje aquí..." required minLength={8} maxLength={250} value={mensaje}
+  onChange={(e) => setMensaje(e.target.value)}/>
               </Form.Group>
             <div className='d-flex justify-content-center align-items-center'>
+              {error && <p className="text-danger">{error}</p>}
                   <Button size="lg" variant="danger" type="submit">
                 Enviar Mensaje
               </Button>
@@ -78,7 +122,7 @@ const Contacto = () => {
             </Form>
             </div>
              </Col>
-             <Col md={6} className='mt-5 d-flex flex-column align-items-start mx-auto h-100 w-50'>
+             <Col md={6} className='mt-5 d-flex flex-column align-items-start mx-auto h-100'>
              <div>
              {soporteData.map(soporte => (
                  <Card key={soporte.id} className="mb-3 border-0" style={{ maxWidth: '24rem' }}>
@@ -144,6 +188,6 @@ const Contacto = () => {
         </Row>
     </Container>
   )
-}
+};
 
 export default Contacto;
