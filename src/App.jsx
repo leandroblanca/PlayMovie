@@ -6,8 +6,7 @@ import NavBar from "./componentes/Nav";
 import Footer from "./componentes/Footer";
 import AdminProtegida from './pages/Admin/AdminProtegida';
 import Contacto from './pages/Contacto/Contacto';
-import Home from './pages/Home/home';
-
+import Home from './pages/Home/Home.jsx';
 
 
 function App() {  
