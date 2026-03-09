@@ -11,3 +11,12 @@
 .footer-netflix ul li {
   margin: 4px 0;
 }
+
+.container {
+  margin-left: 15px;
+  
+  }
+
+li, p {
+  font-size: small;
+}
