@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import "./Registro.css";
+import logo from "../../assets/logo.png";
+
 
 const Registro = () => {
 
