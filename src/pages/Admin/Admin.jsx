@@ -243,18 +243,20 @@ const registrarUsuario = (nombre) => {
 
   return (
     <>
-    <Container className="vh-100">
-      <Row className="col-12">
-        <Col className="col-2">
+    <Container fluid className="min-vh-100">
+      <Row>
+        <Col xs={12} md={3} lg={2} className="p-0 bg-dark">
            <Sidebar/>
-          <Button variant="danger rounded-5 fw-bold" onClick={handleShow} className="shadow">
-            + Añadir Nueva Pelicula
-          </Button>
+          <div className="p-3">
+            <Button variant="danger rounded-5 fw-bold" onClick={handleShow} className="shadow w-100">
+              + Añadir Pelicula
+            </Button>
+          </div>
         </Col>
-        <Col className="col-10">
+        <Col xs={12} md={9} lg={10} className="p-4">
         
-           <div className=" p-3">
-        <Form onSubmit={buscarPeliculaApi} className="d-flex gap-2 w-50">
+           <div className="mb-4">
+        <Form onSubmit={buscarPeliculaApi} className="d-flex gap-2 col-12 col-md-6">
           <Form.Control
             type="text"
             placeholder="Ej: Batman, Avatar..."
@@ -281,12 +283,11 @@ const registrarUsuario = (nombre) => {
         </div>
       </div>
 
-   <Container>
   <Row className="g-4">
     {dashboardStats.map(stat => (
-      <Col md={3} key={stat.id}>
+      <Col xs={12} sm={6} xl={3} key={stat.id}>
 
-        <Card className="dashboard-card mt-5 rounded-5">
+        <Card className="dashboard-card mb-3 rounded-5 h-100 border-0 shadow-sm">
 
           <Card.Body>
 
@@ -318,9 +319,8 @@ const registrarUsuario = (nombre) => {
       </Col>
     ))}
   </Row>
-</Container>
 
-      <Container className="mt-4">
+      <div className="mt-4">
        
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -362,6 +362,8 @@ const registrarUsuario = (nombre) => {
      
       </Modal>
 
+      <Card className="border-0 shadow-sm rounded-4 overflow-hidden">
+        <Card.Body className="p-0">
       <Table hover responsive className="align-middle tabla-peliculas">
   <thead>
     <tr>
@@ -447,11 +449,13 @@ const registrarUsuario = (nombre) => {
 
   </tbody>
 </Table>
-</Container>
-<Container>
-  <Row className="col-12 justify-content-end my-5"> 
-    <Col className="col-6">
-    <Card className="usuarios-card">
+        </Card.Body>
+      </Card>
+      </div>
+
+  <Row className="my-5 g-4"> 
+    <Col xs={12} lg={8}>
+    <Card className="usuarios-card h-100 border-0 shadow-sm rounded-4">
 
 <Card.Body>
 
@@ -502,8 +506,8 @@ className="d-flex justify-content-between align-items-center usuario-item"
 
 </Card>
     </Col>
-    <Col className="col-4 d-flex ">
-   <Card className="registro-card ms-auto">
+    <Col xs={12} lg={4}>
+   <Card className="registro-card h-100 border-0 shadow-sm rounded-4">
 
 <Card.Body>
 
@@ -553,7 +557,6 @@ className="registro-item d-flex justify-content-start align-items-start flex-col
 </Card> 
     </Col>
   </Row>
-</Container>
 
 </Col>
       </Row>
