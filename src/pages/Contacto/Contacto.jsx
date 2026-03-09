@@ -174,7 +174,7 @@ const Contacto = () => {
             {soporteData.map((soporte) => (
               <Card
                 key={soporte.id}
-                className="mb-3 border-0"
+                className="mb-3 border-0 bg-transparent"
                 style={{ maxWidth: "24rem" }}
               >
                 <Card.Body>

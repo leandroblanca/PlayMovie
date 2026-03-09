@@ -26,7 +26,7 @@
     transform:scale(1.05);
 }
 .card{
-    background-color:#111138;
+  
     transition:all 0.3s ease;
 }
 .card:hover{

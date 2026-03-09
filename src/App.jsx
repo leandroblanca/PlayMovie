@@ -4,6 +4,10 @@ import "./index.css";
 import { Router } from 'react-router'
 import Nav from "./componentes/Nav";
 import Footer from "./componentes/Footer";
+import AdminProtegida from './pages/Admin/Admin';
+import Contacto from './pages/Contacto/Contacto';
+
+
 
 function App() {
   
@@ -13,9 +17,9 @@ function App() {
     <BrowserRouter>
     <Nav/>
       <Routes>
-        <Route path="/inicio" element={<h1>Inicio</h1>} />
-        <Route path="/peliculas" element={<h1>Películas</h1>} />
-        <Route path="/series" element={<h1>Series</h1>} />
+        <Route path="/admin" element={<AdminProtegida/>} />
+        <Route path="/contacto" element={<Contacto/>} />
+        
     </Routes>
     <Footer />
     </BrowserRouter>
