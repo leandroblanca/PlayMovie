@@ -3,6 +3,7 @@ import './App.css'
 import "./index.css";
 import { Router } from 'react-router'
 import Nav from "./componentes/Nav";
+import Footer from "./componentes/Footer";
 
 function App() {
   
@@ -16,6 +17,7 @@ function App() {
         <Route path="/peliculas" element={<h1>Películas</h1>} />
         <Route path="/series" element={<h1>Series</h1>} />
     </Routes>
+    <Footer />
     </BrowserRouter>
     
     </>
