@@ -27,6 +27,29 @@ function Home({ peliculas }) {
           </Carousel.Item>
         </Carousel>
       </section>
+          <Container className="mt-5 ">
+           <h5>Explorar Categoria</h5>
+                    <div className="col-3">
+                     {(buttonCategoria.map((categoria) => (
+                     <button
+                     key={categoria.id}
+                     className=""
+                     onClick={() => (`Filtrar por: ${buttonCategoria.nombre}`)}>
+                     {buttonCategoria}
+                     </button> 
+                     )))}
+                    </div>
+                    <Row>
+                        {peliculas.length > 0 ? (
+                            peliculas.map((peliculas) => (
+                            p
+                            )) 
+                        ) : (
+                        <p className="text-center"> No hay peliculas disponibles. </p>
+
+                        )}
+                    </Row>
+      </Container>
     </>
   );
 }
