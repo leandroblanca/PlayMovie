@@ -1,7 +1,7 @@
-import { BrowserRouter, Route, Routes } from 'react-router'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import "./index.css";
-import { Router } from 'react-router'
+import Contacto from './pages/Contacto/Contacto';
 
 function App() {
   
@@ -10,9 +10,7 @@ function App() {
     <>
     <BrowserRouter>
     <Routes>
-      <Route>
-        
-      </Route>
+      <Route path='/' element={<Contacto />} />
     </Routes>
     </BrowserRouter>
     </>
