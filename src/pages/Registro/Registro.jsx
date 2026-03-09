@@ -132,20 +132,23 @@ const Registro = () => {
 
               <div className="d-grid mb-5">
                 <Button size="lg" variant="danger" type="submit">
-                  Iniciar Sesión
+                  Crear Cuenta
                 </Button>
               </div>
 
                <Row>
                      <Col md={6}>
-                              <Button size="sm" variant="dark" className="rounded-5 ms-4" type="submit">
-                                 Google
-                               </Button>
-                             </Col >
-                              <Col md={6}>
-                              <Button size="sm" variant="dark" className="rounded-5 ms-4" type="submit">
-                                Facebook
-                               </Button>
+                            <Button size="sm" variant="dark" className="rounded-5 ms-4">
+  <FcGoogle style={{ marginRight: "8px" }} /> Google
+</Button>
+
+<Button size="sm" variant="dark" className="rounded-5 ms-4">
+  <FaFacebookF style={{ marginRight: "8px" }} /> Facebook
+</Button>
+
+<Button size="sm" variant="dark" className="rounded-5 ms-4">
+  <FaSpotify style={{ marginRight: "8px" }} /> Spotify
+</Button>
                     </Col>
                </Row>
             
