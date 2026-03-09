@@ -59,6 +59,7 @@ function App() {
         <Route path="/admin" element={<AdminProtegida peliculas={peliculas} setPeliculas={setPeliculas} />} />
         <Route path="/contacto" element={<Contacto/>} />
         <Route path="/home" element={<Home peliculas={peliculas} />}/>
+        <Route path="/categorias/:gender" element={}/>
     </Routes>
     <Footer />
     </BrowserRouter>
