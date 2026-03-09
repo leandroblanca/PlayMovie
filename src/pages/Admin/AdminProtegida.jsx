@@ -4,10 +4,10 @@ import Admin from "./Admin";
 
 const isAdmin = true;
 
-const AdminProtegida = () => {
+const AdminProtegida = ({ peliculas, setPeliculas }) => {
   if (!isAdmin) {
     return <Navigate to="/login" />;
   }
-  return <Admin />;
+  return <Admin peliculas={peliculas} setPeliculas={setPeliculas} />;
 };
 export default AdminProtegida;

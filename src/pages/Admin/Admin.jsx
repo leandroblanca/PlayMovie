@@ -87,13 +87,9 @@ const registroSistema = [
   }
 ];
 
-function Admin() {
+function Admin({ peliculas, setPeliculas }) {
   const [usuarios, setUsuarios] = useState(usuariosIniciales);
    const [show, setShow] = useState(false);
-   const [peliculas, setPeliculas] = useState(() => {
-     const guardadas = localStorage.getItem("peliculas");
-     return guardadas ? JSON.parse(guardadas) : [];
-   });
    const [titulo, setTitulo] = useState("");
    const [año, setAño] = useState("");
    const [poster, setPoster] = useState("");
@@ -101,8 +97,7 @@ function Admin() {
    const [busqueda, setBusqueda] = useState("");
    const [busquedaApi, setBusquedaApi] = useState("");
    const [resultadosApi, setResultadosApi] = useState([]);
-   const API_URL = "https://api.themoviedb.org/3/movie/popular?api_key=9678a642782cbed22b8137edf52e9d91&language=es-ES&page=1";
-  const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
+   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
   
 
@@ -132,35 +127,7 @@ const registrarUsuario = (nombre) => {
 
   setUsuarios(prev => [nuevoUsuario, ...prev]);
 
-};
-  useEffect(() => {
-   
-    if (peliculas.length === 0) {
-      const consultarAPI = async () => {
-        try {
-          const respuesta = await fetch(API_URL);
-          const { results } = await respuesta.json();
-          
-          const peliculasPopulares = results.map(pelicula => ({
-            id: crypto.randomUUID(),
-            titulo: pelicula.title,
-            año: pelicula.release_date ? pelicula.release_date.split("-")[0] : "2024",
-            poster: `${IMAGE_BASE_URL}${pelicula.poster_path}`
-          }));
-          
-          setPeliculas(peliculasPopulares);
-        } catch (error) {
-          console.error("Error en la API", error);
-        }
-      };
-      consultarAPI();
-    }
-  }, []); 
-
-
-   useEffect(() => {
-    localStorage.setItem("peliculas", JSON.stringify(peliculas));
-  }, [peliculas]);
+}; 
   
   const peliculasFiltradas = peliculas.filter((pelicula) =>
     (pelicula.titulo || "").toLowerCase().includes(busqueda.toLowerCase())

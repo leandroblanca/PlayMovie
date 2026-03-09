@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Footer.css";
-import logo from "../../src/assets/logo.png"; // tu logo
+import logo from "../assets/logo.png"; // tu logo
 
 function Footer() {
   return (
@@ -28,30 +28,30 @@ function Footer() {
         {/* Columnas de navegación */}
         <Row className="mb-4 text-center">
           <Col md={4}>
-            <h6 className="fw-bold">Explorar</h6>
+            <h6 className="fw-bold">General</h6>
             <ul className="list-unstyled text-secondary">
-              <li>Nuevos Lanzamientos</li>
-              <li>Popular</li>
-              <li>Mejor Valoradas</li>
-              <li>Próximamente</li>
+              <li>Inicio</li>
+              <li>Contacto</li>
+              <li>Administración</li>
+              <li>Mi Cuenta</li>
             </ul>
           </Col>
           <Col md={4}>
-            <h6 className="fw-bold">Explorar</h6>
+            <h6 className="fw-bold">Legal</h6>
             <ul className="list-unstyled text-secondary">
-              <li>Nuevos Lanzamientos</li>
-              <li>Popular</li>
-              <li>Mejor Valoradas</li>
-              <li>Próximamente</li>
+              <li>Términos de Servicio</li>
+              <li>Política de Privacidad</li>
+              <li>Información Corporativa</li>
+              <li>Avisos Legales</li>
             </ul>
           </Col>
           <Col md={4}>
-            <h6 className="fw-bold">Explorar</h6>
+            <h6 className="fw-bold">Ayuda</h6>
             <ul className="list-unstyled text-secondary">
-              <li>Nuevos Lanzamientos</li>
-              <li>Popular</li>
-              <li>Mejor Valoradas</li>
-              <li>Próximamente</li>
+              <li>Centro de Ayuda</li>
+              <li>Preguntas Frecuentes</li>
+              <li>Formas de ver</li>
+              <li>Preferencias de Cookies</li>
             </ul>
           </Col>
         </Row>
