@@ -68,9 +68,9 @@ const Registro = () => {
   };
 
   return (
-      <div className="registro-wrapper">
-        <Container>
-          <Row className="justify-content-center">
+    <div className="registro-wrapper">
+      <Container>
+        <Row className="justify-content-center">
           
          <Col xs={12} md={6} lg={4}>
            
@@ -78,78 +78,83 @@ const Registro = () => {
                 <div xs={12} className="d-flex flex-column justify-content-center align-items-center mb-5 text-light">
             <h2 className="fw-bold">Crear Cuenta</h2>
             <h6 className="fw-light">Join PlayMovie to start streaming your favorite content</h6>
-                </div>
+            </div> 
 
-                <Form.Group className="mb-4">
-                  <Form.Label>Nombre Completo</Form.Label>
-                  <Form.Control
+              <Form.Group className="mb-4">
+                <Form.Label>Nombre Completo</Form.Label>
+                <Form.Control
                     className="bg-dark text-white"
-                    type="text"
-                    placeholder="Tu nombre"
-                    value={nombre}
-                    onChange={(e) => setNombre(e.target.value)}
+                  type="text"
+                  placeholder="Tu nombre"
+                  value={nombre}
+                  onChange={(e) => setNombre(e.target.value)}
                     required
-                  />
-                </Form.Group>
+                />
+              </Form.Group>
 
-                <Form.Group className="mb-4">
-                  <Form.Label>Correo Electrónico</Form.Label>
-                  <Form.Control
+              <Form.Group className="mb-4">
+                <Form.Label>Correo Electrónico</Form.Label>
+                <Form.Control
                     className="bg-dark text-white"
-                    type="email"
-                    placeholder="nombre@ejemplo.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                  type="email"
+                  placeholder="nombre@ejemplo.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                     required
-                  />
-                </Form.Group>
+                />
+              </Form.Group>
 
-                <Form.Group className="mb-4">
-                  <Form.Label>Contraseña</Form.Label>
-                  <Form.Control
+              <Form.Group className="mb-4">
+                <Form.Label>Contraseña</Form.Label>
+                <Form.Control
                     className="bg-dark text-white"
-                    type="password"
+                  type="password"
                     placeholder="Crea una contraseña"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                     required
-                  />
-                </Form.Group>
+                />
+              </Form.Group>
 
                 <Form.Group className="mb-4">
-                  <Form.Label>Confirmar Contraseña</Form.Label>
-                  <Form.Control
+                <Form.Label>Confirmar Contraseña</Form.Label>
+                <Form.Control
                     className="bg-dark text-white"
-                    type="password"
+                  type="password"
                     placeholder="Confirma tu contraseña"
-                    value={confirmPassword}
+                  value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     required
-                  />
-                </Form.Group>
+                />
+              </Form.Group>
 
                 {error && <p className="text-danger text-center">{error}</p>}
 
-                <div className="d-grid mb-4">
-                  <Button size="lg" variant="danger" type="submit">
-                    Crear Cuenta
-                  </Button>
-                </div>
+              <div className="d-grid mb-5">
+                <Button size="lg" variant="danger" type="submit">
+                  Iniciar Sesión
+                </Button>
+              </div>
 
-                <div className="text-center">
-                  <p className="text-muted small">
-                    ¿Ya tienes una cuenta?{" "}
-                    <Link to="/login" className="text-danger fw-bold">
-                      Inicia sesión aquí
-                    </Link>
-                  </p>
-                </div>
-              </Form>
-            </Col>
-          </Row>
-        </Container>
+               <Row>
+                     <Col md={6}>
+                              <Button size="sm" variant="dark" className="rounded-5 ms-4" type="submit">
+                                 Google
+                               </Button>
+                             </Col >
+                              <Col md={6}>
+                              <Button size="sm" variant="dark" className="rounded-5 ms-4" type="submit">
+                                Facebook
+                               </Button>
+                    </Col>
+               </Row>
+            
+              
+            </Form>
+          </Col>
+        </Row>
+      </Container>
     </div>
-    </>
   );
 };
 
