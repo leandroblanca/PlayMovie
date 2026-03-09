@@ -1,12 +1,68 @@
-.follow-us{
-    background-color:#6c757d;
-    transition:0.3s;
-}
-
-.follow-us:hover{
-    background-color:red;
-}
-.form-contacto {
+.form-contacto{
     background-color: rgb(5, 5, 54);
-    
+    border-radius: 2rem;
+    padding: 2rem;
+}
+.form-control,
+.form-select{
+    background-color:#1b1b3f;
+    border:1px solid #2c2c6c;
+    color:white;
+}
+.form-control::placeholder{
+    color:#b0b0b0;
+}
+.form-control:focus,
+.form-select:focus{
+    background-color:#1b1b3f;
+    border-color:#dc3545;
+    box-shadow:none;
+    color:white;
+}
+.btn-danger{
+    transition:all 0.3s ease;
+}
+.btn-danger:hover{
+    transform:scale(1.05);
+}
+.card{
+    background-color:#111138;
+    transition:all 0.3s ease;
+}
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+.follow-us{
+    width:45px;
+    height:45px;
+    background-color:#6c757d;
+    transition:all 0.3s ease;
+    cursor:pointer;
+}
+.follow-us:hover{
+    background-color:#dc3545;
+    transform:translateY(-4px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.4);
+}
+.mapa iframe{
+    width:100%;
+    height:250px;
+    border-radius:20px;
+}
+@media (max-width:768px){
+
+    .form-contacto{
+        padding:1.5rem;
+    }
+
+    .follow-us{
+        width:40px;
+        height:40px;
+    }
+
+    .mapa iframe{
+        height:220px;
+    }
+
 }
