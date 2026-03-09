@@ -6,6 +6,66 @@ import logo from "../../assets/logo.png";
 
 
 const Registro = () => {
+  const [nombre, setNombre] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let errorMsg = "";
+
+ 
+    if (!nombre || !email || !password || !confirmPassword) {
+      errorMsg = "Todos los campos son obligatorios";
+    } else if (password.length < 6) {
+      errorMsg = "La contraseña debe tener al menos 6 caracteres";
+    } else if (password !== confirmPassword) {
+      errorMsg = "Las contraseñas no coinciden";
+    } else if (!emailRegex.test(email)) {
+      errorMsg = "Email inválido";
+    }
+
+    if (errorMsg) {
+      setError(errorMsg);
+      return;
+    }
+
+ 
+    const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
+    const usuarioExistente = usuariosGuardados.find(
+      (usuario) => usuario.email === email
+    );
+
+    if (usuarioExistente) {
+      setError("El correo electrónico ya está registrado");
+      return;
+    }
+
+    
+    const nuevoUsuario = {
+      id: Date.now(),
+      nombre,
+      email,
+      password, 
+    };
+
+    const usuariosActualizados = [...usuariosGuardados, nuevoUsuario];
+    localStorage.setItem("usuarios", JSON.stringify(usuariosActualizados));
+
+    setError("");
+    alert("¡Registro exitoso! Ahora serás redirigido para iniciar sesión.");
+
+    setNombre("");
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
+    navigate("/login");
+  };
 
   return (
     <>
