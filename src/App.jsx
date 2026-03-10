@@ -4,7 +4,7 @@ import "./index.css";
 import { Router } from 'react-router'
 import Nav from "./componentes/Nav";
 import Footer from "./componentes/Footer";
-import AdminProtegida from './pages/Admin/Admin';
+import AdminProtegida from './pages/Admin/AdminProtegida.jsx';
 import Contacto from './pages/Contacto/Contacto.jsx';
 import Registro from './pages/Registro/Registro.jsx';
 import Home from './pages/Home.jsx';

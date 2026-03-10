@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { BsEye, BsPencil, BsTrash } from "react-icons/bs";
 import "./Admin.css";
 import Sidebar from "../../componentes/Sidebar";
+import { useNavigate } from "react-router";
 
 
 const dashboardStats = [
@@ -240,9 +241,18 @@ const registrarUsuario = (nombre) => {
 
   const handleShow = () => setShow(true);
 
+  const navigate = useNavigate();
+
+  const cerrarSesion = () => {
+    sessionStorage.removeItem("usuarioLogueado");
+    navigate("/login");
+  };
 
   return (
     <>
+     <Button variant="danger" onClick={cerrarSesion}>
+        Cerrar sesión
+      </Button>
     <Container fluid className="min-vh-100">
       <Row>
         <Col xs={12} md={3} lg={2} className="p-0 bg-dark">
