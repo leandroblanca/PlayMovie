@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Container, Spinner, Toast } from "react-bootstrap"
 import { useNavigate } from "react-router"
 
 function  CategoriaPage() {
@@ -33,7 +34,7 @@ function  CategoriaPage() {
    setError(null)
    const API_KEY = '9678a642782cbed22b8137edf52e9d91';
    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${idGenero}&language=es-ES`
-     
+    
    fetch (url)
    .then(response => {
     if (!response) {
@@ -57,10 +58,21 @@ function  CategoriaPage() {
         setLoading(false)
     })
     .catch(error => {
-        Toast
-    }
-
-    )
+        Toast.error('Error:', error)
+        setError(error.mensaje)
+        setLoading(false)
+    })
    }, [gender])
-
+   
+   function handleVolver (){
+    navigate('/')
+   }
+};
+if (loading) {
+  return (
+   <Container className="text-center my-5 py-5">
+    <Spinner animation="border" variant="light"/>
+    <p className="text-white mt-3">Cargando peliculaa...</p>
+   </Container>
+)   
 }
