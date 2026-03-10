@@ -77,11 +77,29 @@ if (loading) {
 );
 }
 if (error) {
+    return (
     <Container className="text-center my-4 py-5">
         <p className="text-danger"> Error: {error} </p>
         <Button variant="secondary" onClick={handleVolver}>
             Volver al inicio
         </Button>
     </Container>
+    )
 }
+const generoDecodificado = decodeURIComponent(gender)
+
+return(
+    <Container className="my-4">
+        <div className="mb-4">
+            <Button variant="outline-secondary" onClick={handleVolver}>
+                Volvel al inicio
+            </Button>
+        </div>
+        <div>
+            
+        </div>
+    
+
+    </Container>
+)
 }
