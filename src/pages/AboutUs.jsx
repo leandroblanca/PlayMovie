@@ -4,6 +4,7 @@ import team1 from "../assets/team1.jpg";
 import team2 from "../assets/team2.jpg";
 import team3 from "../assets/team3.jpg";
 import team4 from "../assets/team4.jpg";
+import workspace from "../assets/workspace.jpg";
 
 const AboutUs = () => {
   return (
@@ -26,14 +27,15 @@ const AboutUs = () => {
         <div className="col-md-6 mission-text">
           <h2>NUESTRA MISIÓN</h2>
           <p>
-            Dando Vida a las Historias, Dondequiera que Vayas. Fundada en 2024,
+            Dando vida a las historias, dondequiera que vayas. Fundada en 2024,
             PlayMovie nació de una pasión compartida por el poder transformador
             de la narración de historias...
           </p>
         </div>
         <div className="col-md-6 mission-img">
-          <img src="workspace.jpg" alt="workspace" />
-          <span className="badge bg-danger">15M+ ESPECTADORES ACTIVOS</span>
+          <img src={workspace} alt="workspace" />
+          <span className="badge bg-danger">15M+ <span className="badge1 bg-danger">ESPECTADORES ACTIVOS</span> </span>
+          
         </div>
       </section>
 
@@ -41,26 +43,39 @@ const AboutUs = () => {
       <section className="team">
         <h2>Conoce al Equipo</h2>
         <div className="row">
-          <div className="col-md-3">
-            <img src={team1} alt="Alex Rivers" />
-            <h5>Alex Rivers</h5>
-            <p>CEO y Fundador</p>
-          </div>
-          <div className="col-md-3">
-            <img src={team2} alt="Sarah Chen" />
-            <h5>Sarah Chen</h5>
-            <p>Directora de Tecnología</p>
-          </div>
-          <div className="col-md-3">
-            <img src={team3} alt="Marcus Thorne" />
-            <h5>Marcus Thorne</h5>
-            <p>Líder de Diseño</p>
-          </div>
-          <div className="col-md-3">
-            <img src={team4} alt="Elena Vance" />
-            <h5>Elena Vance</h5>
-            <p>Directora de Contenido</p>
-          </div>
+            <div className="col-md-3">
+                <div className="card">  
+                    <img src={team1} alt="Leandro Blanca" />
+                    <h5>Leandro Blanca</h5>
+                    <p>Rolling Develloper</p>
+                    <h6>Lider visionario con 15 años de producción Cinematográfica e innovación en medios digitales.</h6>
+                </div>
+          
+            </div>
+            <div className="col-md-3">
+                <div className="card">
+                    <img src={team2} alt="Marisol Lamas" />
+                    <h5>Marisol Lamas</h5>
+                    <p>Rolling Develloper</p>
+                    <h6>Arquitecta de infraestructura que lideró operaciones de escalado para plataformas globales.</h6>
+                </div>
+            </div>
+            <div className="col-md-3">
+                <div className="card">
+                    <img className="SV" src={team3} alt="Sebastián Varela" />
+                    <h5>Sebastián Varela</h5>
+                    <p>Rolling Develloper</p>
+                    <h6>Diseñador galardonado centrado en la creación de interfaces de usuarios</h6>
+                </div>
+            </div>
+            <div className="col-md-3">
+                <div className="card">
+                <img src={team4} alt="Abel Ruiz" />
+                <h5>Abel Ruiz</h5>
+                <p>Rolling Develloper</p>
+                <h6>Critico de cine y curador dedicado a descubrir voces independientes.</h6>
+                </div>
+            </div>
         </div>
       </section>
 
