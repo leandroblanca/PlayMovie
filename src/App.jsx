@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Router } from "react-router-dom-dom";
+import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
 import './App.css'
 import "./index.css";
 import NavBar from "./componentes/NavBar";
@@ -6,13 +6,43 @@ import Footer from "./componentes/Footer";
 import AdminProtegida from './pages/Admin/Admin';
 import Contacto from './pages/Contacto/Contacto.jsx';
 import Registro from './pages/Registro/Registro.jsx';
-import Home from './pages/Home.jsx';
+// import Home from './pages/Home.jsx';
 import Login from './pages/Login/Login.jsx';
 
 
 
-import AboutUs from "./pages/AboutUs"
-import Home from "./pages/Home";
+// import AboutUs from "./pages/AboutUs"
+
+// Importar todas las páginas (debes crearlas)
+import Home from "./pages/Home.jsx";
+// import HomeDesktop from "./pages/HomeDesktop";
+import Peliculas from "./pages/Peliculas";
+import PeliculaDetalle from "./pages/PeliculaDetalle";
+import PeliculaDetalleDesktop from "./pages/PeliculaDetalleDesktop";
+// import Series from "./pages/Series";
+// import Contacto from "./pages/Contacto";
+// import ContactoDesktop from "./pages/ContactoDesktop";
+// import Nosotros from "./pages/Nosotros";
+// import NosotrosDesktop from "./pages/NosotrosDesktop";
+// import Perfil from "./pages/Perfil";
+// import PerfilDesktop from "./pages/PerfilDesktop";
+// import Login from "./pages/Login/Login";
+// import LoginDesktop from "./pages/LoginDesktop";
+// import Registro from "./pages/Registro/Registro";
+// import RegistroDesktop from "./pages/RegistroDesktop";
+// import Error404 from "./pages/Error404";
+// import Error404Desktop from "./pages/Error404Desktop";
+// import Explorar from "./pages/Explorar";
+// import MiLista from "./pages/MiLista";
+// import Descargas from "./pages/Descargas";
+
+// Importar páginas de admin
+// import AdminPanel from "./pages/Admin/AdminPanel";
+// import AdminPeliculas from "./pages/Admin/AdminPeliculas";
+// import AdminUsuarios from "./pages/Admin/AdminUsuarios";
+// import AdminAnalisis from "./pages/Admin/AdminAnalisis";
+// import AdminIngresos from "./pages/Admin/AdminIngresos";
+// import AdminAjustes from "./pages/Admin/AdminAjustes";
 
 // Hook personalizado para detectar dispositivo
 const useMobileDetect = () => {
