@@ -5,6 +5,7 @@ import team2 from "../assets/team2.jpg";
 import team3 from "../assets/team3.jpg";
 import team4 from "../assets/team4.jpg";
 import workspace from "../assets/workspace.jpg";
+import cinema from "../assets/cinema.jpg";
 
 const AboutUs = () => {
   return (
@@ -12,7 +13,9 @@ const AboutUs = () => {
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-text">
-          <h1>Redefiniendo Experiencias Cinematográficas</h1>
+          <h2>Redefiniendo</h2>
+          <h2>Experiencias</h2>
+          <h1>Cinematográficas</h1>
           <p>
             PlayMovie es el destino definitivo para los amantes del cine,
             llevando la magia de la gran pantalla a tus dedos a través de
