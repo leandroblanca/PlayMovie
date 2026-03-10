@@ -138,15 +138,7 @@ const registrarUsuario = (nombre) => {
     if (peliculas.length === 0) {
       const consultarAPI = async () => {
         try {
-          const respuesta = await fetch(API_URL);
-          const { results } = await respuesta.json();
-          
-          const peliculasPopulares = results.map(pelicula => ({
-            id: crypto.randomUUID(),
-            titulo: pelicula.title,
-            año: pelicula.release_date ? pelicula.release_date.split("-")[0] : "2024",
-            poster: `${IMAGE_BASE_URL}${pelicula.poster_path}`
-          }));
+
           
           setPeliculas(peliculasPopulares);
         } catch (error) {
