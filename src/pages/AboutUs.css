@@ -53,17 +53,27 @@
 }
 
 .mission-img img {
-  max-width: 100%;
+  max-width: 80%;
   border-radius: 10px;
 }
 
 .mission-img .badge {
   position: absolute;
-  bottom: 15px;
-  right: 15px;
-  font-size: 1rem;
+  bottom: -15px;
+  right: 60px;
+  width: 170px;
+  height: 80px;
+  font-size: 40px;
+  font-weight: bold;
   padding: 10px 15px;
-  border-radius: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+}
+.badge1 {
+    font-size: 10px;
+    font-weight: bolder;
 }
 
 /* Team Section */
@@ -78,20 +88,48 @@
 }
 
 .team img {
-  width: 100%;
-  border-radius: 50%;
+  width: 50%;
+  border-radius: 10%;
   margin-bottom: 15px;
-  border: 3px solid #e50914;
 }
 
 .team h5 {
+  color: white;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
 .team p {
   font-size: 0.95rem;
-  color: #ccc;
+  color: brown;
+  font-weight: bold;
+}
+
+.team h6 {
+    padding: 0 15px 0 15px;
+    color: rgba(128, 128, 128, 0.568);
+}
+
+.card {
+    width: 60%;
+    align-items: center;
+    background-color: black;
+    border-radius: 15px;
+}
+.card > img {
+    width: 80%;
+    padding: 20px 5px 5px 5px;
+    }
+
+.team .row .col-md-3 {
+    padding: 0px;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.row .col-md-3 .card .SV {
+    width: 83%;
 }
 
 /* Call to Action */
