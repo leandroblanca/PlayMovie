@@ -4,88 +4,7 @@ import { faFilm, faUsers, faDollarSign, faUserPlus } from "@fortawesome/free-sol
 import { useEffect, useState } from "react";
 import { BsEye, BsPencil, BsTrash } from "react-icons/bs";
 import "./Admin.css";
-import Sidebar from "../../componentes/Sidebar";
-
-
-const dashboardStats = [
-  {
-    id: 1,
-    icon: faFilm,
-    tendencia: "up",
-    porcentaje: "+12%",
-    titulo: "Total de Películas",
-    valor: 1240
-  },
-  {
-    id: 2,
-    icon: faUsers,
-    tendencia: "up",
-    porcentaje: "+5%",
-    titulo: "Usuarios Activos",
-    valor: 85241
-  },
-  {
-    id: 3,
-    icon: faDollarSign,
-    tendencia: "down",
-    porcentaje: "-2%",
-    titulo: "Ingresos Totales",
-    valor: 12450
-  },
-  {
-    id: 4,
-    icon: faUserPlus,
-    tendencia: "up",
-    porcentaje: "+18%",
-    titulo: "Nuevos Registros",
-    valor: 124
-  }
-];
-
-const usuariosIniciales = [
-  {
-    id: 1,
-    nombre: "Alex Johnson",
-    estado: "ACTIVO",
-    ultimoAcceso: "hace 2h"
-  },
-  {
-    id: 2,
-    nombre: "Sarah Miller",
-    estado: "ACTIVO",
-    ultimoAcceso: "hace 5h"
-  },
-  {
-    id: 3,
-    nombre: "Michael Brown",
-    estado: "INACTIVO",
-    ultimoAcceso: "hace 1 día"
-  }
-];
-const registroSistema = [
-  {
-    id: 1,
-    titulo: "Copia de Seguridad Completada",
-    categoria: "Usuarios Activos",
-    hora: "10:45 AM",
-    color: "#198754"
-  },
-  {
-    id: 2,
-    titulo: "Alerta de Seguridad",
-    categoria: "Usuarios Activos",
-    hora: "08:22 AM",
-   color: "#dc3545"
-
-  },
-  {
-    id: 3,
-    titulo: "Película Publicada",
-    categoria: "Usuarios Activos",
-    hora: "Ayer",
-    color: "#0d6efd"
-  }
-];
+import Sidebar from "./Sidebar";
 
 function Admin() {
   const [usuarios, setUsuarios] = useState(usuariosIniciales);
@@ -138,7 +57,16 @@ const registrarUsuario = (nombre) => {
     if (peliculas.length === 0) {
       const consultarAPI = async () => {
         try {
-
+          const respuesta = await fetch(API_URL);
+          const { results } = await respuesta.json();
+          
+          const peliculasPopulares = results.map(pelicula => ({
+            id: crypto.randomUUID(),
+            titulo: pelicula.title,
+            año: pelicula.release_date ? pelicula.release_date.split("-")[0] : "2024",
+            poster: `${IMAGE_BASE_URL}${pelicula.poster_path}`,
+            categorias: ["accion", "Ciencia ficcion", "Thriller"]
+          }));
           
           setPeliculas(peliculasPopulares);
         } catch (error) {
@@ -275,42 +203,6 @@ const registrarUsuario = (nombre) => {
         </div>
       </div>
 
-  <Row className="g-4">
-    {dashboardStats.map(stat => (
-      <Col xs={12} sm={6} xl={3} key={stat.id}>
-
-        <Card className="dashboard-card mb-3 rounded-5 h-100 border-0 shadow-sm">
-
-          <Card.Body>
-
-            <div className="d-flex justify-content-between align-items-center mb-2">
-
-              <FontAwesomeIcon
-                icon={stat.icon}
-                className="dashboard-icon"
-              />
-
-              <span className="dashboard-trend">
-                {stat.tendencia} {stat.porcentaje}
-              </span>
-
-            </div>
-
-            <Card.Title className="dashboard-title">
-              {stat.titulo}
-            </Card.Title>
-
-            <Card.Text className="dashboard-value">
-              {stat.valor}
-            </Card.Text>
-
-          </Card.Body>
-
-        </Card>
-
-      </Col>
-    ))}
-  </Row>
 
       <div className="mt-4">
        
