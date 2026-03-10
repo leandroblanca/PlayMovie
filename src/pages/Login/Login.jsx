@@ -1,97 +1,100 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import "./Login.css";
+import { useNavigate, Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import "./Login.css";
 
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    let errorMsg = "";
-
     if (!email || !password) {
-      errorMsg = "Todos los campos son obligatorios";
-    } else if (!emailRegex.test(email)) {
-      errorMsg = "Email inválido";
-    }
-
-    if (errorMsg) {
-      setError(errorMsg);
+      setError("Todos los campos son obligatorios");
       return;
     }
-
+    const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
+    const usuarioEncontrado = usuariosGuardados.find(
+      (usuario) => usuario.email === email
+    );
+    if (!usuarioEncontrado || usuarioEncontrado.password !== password) {
+      setError("Correo electrónico o contraseña incorrectos");
+      return;
+    }
     setError("");
-    alert("Inicio de sesión exitoso");
-
+    alert(`¡Bienvenido, ${usuarioEncontrado.nombre}!`);
+    sessionStorage.setItem("usuarioLogueado", JSON.stringify(usuarioEncontrado));
     setEmail("");
     setPassword("");
+    navigate("/"); 
   };
 
   return (
     <div className="login-wrapper">
       <Container>
         <Row className="justify-content-center">
-          
-         <Col xs={12} md={6} lg={4}>
-           
-            <Form onSubmit={handleSubmit} className="bg-dark">
-                <div xs={12} className="d-flex flex-column justify-content-center align-items-center mb-5 text-light">
-            <img src={logo} alt="logo" className="logo-login mb-3" style={{ width: "80px" }} />
-            <h2 className="fw-bold">PlayMovie</h2>
-            <h6 className="fw-light">Cine ilimitado en tu bolsillo</h6>
-            </div> 
+          <Col xs={12} md={8} lg={5}>
+            <Form
+              onSubmit={handleSubmit}
+              className="bg-dark text-light p-4 p-sm-5 rounded-3 shadow-lg"
+            >
+              <div className="text-center mb-5">
+                <img
+                  src={logo}
+                  alt="logo"
+                  className="logo-login mb-3"
+                  style={{ width: "80px" }}
+                />
+                <h2 className="fw-bold">PlayMovie</h2>
+                <h6 className="fw-light text-muted">
+                  Cine ilimitado en tu bolsillo
+                </h6>
+              </div>
 
               <Form.Group className="mb-4">
                 <Form.Label>Correo Electrónico</Form.Label>
                 <Form.Control
-                className="bg-dark"
+                  className="bg-dark text-white"
                   type="email"
                   placeholder="nombre@ejemplo.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </Form.Group>
 
               <Form.Group className="mb-4">
                 <Form.Label>Contraseña</Form.Label>
                 <Form.Control
-                 className="bg-dark"
+                  className="bg-dark text-white"
                   type="password"
                   placeholder="Contraseña"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </Form.Group>
 
-              {error && <p className="text-danger">{error}</p>}
+              {error && <p className="text-danger text-center">{error}</p>}
 
-              <div className="d-grid mb-5">
+              <div className="d-grid mb-4">
                 <Button size="lg" variant="danger" type="submit">
                   Iniciar Sesión
                 </Button>
               </div>
 
-               <Row>
-                     <Col md={6}>
-                              <Button size="sm" variant="dark" className="rounded-5 ms-4" type="submit">
-                                 Google
-                               </Button>
-                             </Col >
-                              <Col md={6}>
-                              <Button size="sm" variant="dark" className="rounded-5 ms-4" type="submit">
-                                Facebook
-                               </Button>
-                    </Col>
-               </Row>
-            
-              
+              <div className="text-center">
+                <p className="text-muted small">
+                  ¿No tienes una cuenta?{" "}
+                  <Link to="/registro" className="text-danger fw-bold">
+                    Regístrate aquí
+                  </Link>
+                </p>
+              </div>
             </Form>
           </Col>
         </Row>
