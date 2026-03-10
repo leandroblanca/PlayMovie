@@ -5,6 +5,13 @@ const users = [
     email: "admin@gmail.com",
     password: "1234",
     rol: "admin"
+  },
+  {
+    id: 1,
+    nombre: "User",
+    email: "user@gmail.com",
+    password: "1234",
+    rol: "user"
   }
 ];
 
