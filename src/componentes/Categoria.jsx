@@ -34,6 +34,33 @@ function  CategoriaPage() {
    const API_KEY = '9678a642782cbed22b8137edf52e9d91';
    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${idGenero}&language=es-ES`
      
-   }, [])
+   fetch (url)
+   .then(response => {
+    if (!response) {
+        throw new Error('Error al cargar las peliculas')
+    }
+    return response.json()
+    })
+    .then(data => {
+        ('Pelicula no encantrada', data)
+        const piliculaEncontrada = data.results.map(peli => ({
+            id: peli.id,
+            titulo: peli.titulo,
+            anio: peli.release_date ? peli_relaese_date.substring(0, 4) : 'Desconocido',
+            poster: peli.poster_path
+            ? `https://image.tmdb.org/t/p/w500${peli.poster_path}` 
+            : 'https://via.placeholder.com/500x750?text=Sin+Imagen',
+            genero: generoDecodificado
+        }));
+    
+        setPelicula(piliculaEncontrada)
+        setLoading(false)
+    })
+    .catch(error => {
+        Toast
+    }
+
+    )
+   }, [gender])
 
 }
