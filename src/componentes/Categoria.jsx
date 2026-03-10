@@ -95,11 +95,20 @@ return(
                 Volvel al inicio
             </Button>
         </div>
-        <div>
-            
+        <div className="d-flex justify-content-center-between aling-items-center mb-4">
+            <h2 className="text-whitw">
+                Peliculas de {generoDecodificado}
+            </h2>
+            <span className="text-muted">
+                {pelicula.length} {pelicula.length === 1 ? 'Pelicula encontrada' : 'Pelicula encontradas'}
+            </span>
         </div>
+        
     
 
     </Container>
 )
 }
+
+
+export default CategoriaPage;

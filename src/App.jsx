@@ -7,6 +7,7 @@ import Footer from "./componentes/Footer";
 import AdminProtegida from './pages/Admin/AdminProtegida';
 import Contacto from './pages/Contacto/Contacto';
 import Home from './pages/Home/Home.jsx';
+import CategoriaPage from './componentes/Categoria.jsx';
 
 
 function App() {  
@@ -59,7 +60,7 @@ function App() {
         <Route path="/admin" element={<AdminProtegida peliculas={peliculas} setPeliculas={setPeliculas} />} />
         <Route path="/contacto" element={<Contacto/>} />
         <Route path="/home" element={<Home peliculas={peliculas} />}/>
-        <Route path="/categorias/:gender" element={}/>
+        <Route path="/categorias/:gender" element={<CategoriaPage/>}/>
     </Routes>
     <Footer />
     </BrowserRouter>
