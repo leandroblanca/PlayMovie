@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import users from "../../helpers/users";
 import "./Login.css";
+
 
 
 const Login = () => {
@@ -12,26 +14,42 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!email || !password) {
-      setError("Todos los campos son obligatorios");
-      return;
-    }
-    const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
-    const usuarioEncontrado = usuariosGuardados.find(
-      (usuario) => usuario.email === email
-    );
-    if (!usuarioEncontrado || usuarioEncontrado.password !== password) {
-      setError("Correo electrónico o contraseña incorrectos");
-      return;
-    }
-    setError("");
-    alert(`¡Bienvenido, ${usuarioEncontrado.nombre}!`);
-    sessionStorage.setItem("usuarioLogueado", JSON.stringify(usuarioEncontrado));
-    setEmail("");
-    setPassword("");
-    navigate("/"); 
-  };
+  e.preventDefault();
+
+  if (!email || !password) {
+    setError("Todos los campos son obligatorios");
+    return;
+  }
+
+  const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+  const todosLosUsuarios = [...users, ...usuariosGuardados];
+
+  const usuarioEncontrado = todosLosUsuarios.find(
+    (usuario) => usuario.email === email
+  );
+
+  if (!usuarioEncontrado || usuarioEncontrado.password !== password) {
+    setError("Correo electrónico o contraseña incorrectos");
+    return;
+  }
+
+  setError("");
+
+  sessionStorage.setItem(
+    "usuarioLogueado",
+    JSON.stringify(usuarioEncontrado)
+  );
+
+  setEmail("");
+  setPassword("");
+
+  if (usuarioEncontrado.rol === "admin") {
+    navigate("/admin");
+  } else {
+    navigate("/");
+  }
+};
 
   return (
     <div className="login-wrapper">
