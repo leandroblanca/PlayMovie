@@ -84,17 +84,19 @@ const AboutUs = () => {
 
       {/* Call to Action */}
       <section className="cta">
-        <h2>Únete a nuestra creciente comunidad</h2>
-        <p>
-          Sé el primero en enterarte de nuevos lanzamientos, eventos
-          cinematográficos y contenido exclusivo detrás de escena.
-        </p>
-        <div className="subscribe">
-          <input
-            type="email"
-            placeholder="Introduce tu correo electrónico"
-          />
-          <button className="btn btn-danger">Suscribirse</button>
+        <div>
+            <h2>Únete a nuestra creciente comunidad</h2>
+                <p>
+                Sé el primero en enterarte de nuevos lanzamientos, eventos
+                cinematográficos y contenido exclusivo detrás de escena.
+                </p>
+            <div className="subscribe">
+            <input
+                type="email"
+                placeholder="Introduce tu correo electrónico"
+            />
+            <button className="btn btn">Suscribirse</button>
+            </div>
         </div>
       </section>
     </div>
