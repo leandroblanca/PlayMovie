@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Container, Spinner, Toast } from "react-bootstrap"
+import { Button, Container, Spinner, Toast } from "react-bootstrap"
 import { useNavigate } from "react-router"
 
 function  CategoriaPage() {
@@ -67,12 +67,21 @@ function  CategoriaPage() {
    function handleVolver (){
     navigate('/')
    }
-};
+
 if (loading) {
   return (
    <Container className="text-center my-5 py-5">
     <Spinner animation="border" variant="light"/>
     <p className="text-white mt-3">Cargando peliculaa...</p>
    </Container>
-)   
+);
+}
+if (error) {
+    <Container className="text-center my-4 py-5">
+        <p className="text-danger"> Error: {error} </p>
+        <Button variant="secondary" onClick={handleVolver}>
+            Volver al inicio
+        </Button>
+    </Container>
+}
 }
