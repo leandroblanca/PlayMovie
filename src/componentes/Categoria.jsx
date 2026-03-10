@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Button, Container, Spinner, Toast } from "react-bootstrap"
+import { Button, Card, Col, Container, Row, Spinner, Toast } from "react-bootstrap"
 import { useNavigate } from "react-router"
 
 function  CategoriaPage() {
@@ -103,9 +103,40 @@ return(
                 {pelicula.length} {pelicula.length === 1 ? 'Pelicula encontrada' : 'Pelicula encontradas'}
             </span>
         </div>
-        
-    
+        {pelicula.length === 0 ? (
+           <div className="text-center text-white">
+                <p className="">No hay peliculas encontradas</p>
+                <Button variant="secondary" onClick={handleVolver}>
+                    Ver otras categorias
+                </Button>
+           </div>
 
+        ): (
+           <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-5">
+            {pelicula.map((pelicula) => (
+                <Col key={pelicula.id}>
+                    <Card className="h-100 bg-dark text-center border-secondary">
+                        <Card.Img
+                        variant="top"
+                        src={pelicula.poster}
+                        alt={pelicula.titulo}
+                        className="IMG-categoria"/>
+                        <Card.Body>
+                            <Card.Title className="fs-6">
+                                {pelicula.titulo}
+                            </Card.Title>
+                            <Card.Title className="text-muted">
+                                {pelicula.anio}
+                            </Card.Title>
+                            <span className="badge bg-secondary">
+                                {pelicula.genero}
+                            </span>
+                        </Card.Body>
+                    </Card>
+                </Col> 
+            ))}
+           </Row>
+        )}
     </Container>
 )
 }
