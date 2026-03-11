@@ -1,6 +1,9 @@
 import { Card, Col, Container, Row } from "react-bootstrap"
+import React from 'react'
 
- <Container>
+const CardUsuarios = (usuarios, registrarUsuario, registroSistema) => {
+  return (
+    <Container>
      <Row className="my-5 g-4"> 
     <Col xs={12} lg={8}>
     <Card className="usuarios-card h-100 border-0 shadow-sm rounded-4">
@@ -107,3 +110,10 @@ className="registro-item d-flex justify-content-start align-items-start flex-col
   </Row>
 
  </Container>
+   
+  )
+}
+
+export default CardUsuarios;
+
+ 
