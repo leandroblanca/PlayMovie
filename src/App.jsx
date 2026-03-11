@@ -1,17 +1,9 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css'
 import "./index.css";
-import { Router } from 'react-router'
 import Nav from "./componentes/Nav";
 import Footer from "./componentes/Footer";
-import AdminProtegida from './pages/Admin/AdminProtegida.jsx';
-import Contacto from './pages/Contacto/Contacto.jsx';
-import Registro from './pages/Registro/Registro.jsx';
-import Home from './pages/Home.jsx';
-import Login from './pages/Login/Login.jsx';
-
-
-
+import AboutUs from "./pages/AboutUs"
 
 function App() {
   
@@ -21,12 +13,11 @@ function App() {
     <BrowserRouter>
     <Nav/>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/admin" element={<AdminProtegida/>} />
-        <Route path="/contacto" element={<Contacto/>} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/registro" element={<Registro/>} />
-        
+        <Route path="/inicio" element={<h1>Inicio</h1>} />
+        <Route path="/peliculas" element={<h1>Películas</h1>} />
+        <Route path="/series" element={<h1>Series</h1>} />
+        <Route path="/aboutus" element={<AboutUs />} />
+
     </Routes>
     <Footer />
     </BrowserRouter>

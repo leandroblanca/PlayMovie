@@ -3,59 +3,59 @@ import { Container, Row, Col } from "react-bootstrap";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Footer.css";
-import logo from "../../src/assets/logo.png"; // tu logo
+import logo from "../../src/assets/logo.png";
 
 function Footer() {
   return (
     <footer className="footer-netflix bg-dark text-light pt-5 pb-3">
       <Container>
-        {/* Logo y tagline */}
-        <Row className="mb-4">
-          <Col md={12} className="text-center">
-            <img
-              src={logo}
-              alt="PlayMovie Logo"
-              style={{ height: "50px", marginBottom: "10px" }}
-            />
-            <h5 className="fw-bold">PlayMovie</h5>
-            <p className="text-secondary">
-              El servicio de streaming cinematográfico líder en el mundo. <br />
-              Vive el cine como debe ser visto.
-            </p>
-          </Col>
-        </Row>
+       <Row className="mb-4 align-items-start">
+  {/* Columna 1: logo + tagline */}
+  <Col md={6} className="d-flex flex-column align-items-start">
+    <div className="d-flex align-items-center gap-2">
+      <img src={logo} alt="PlayMovie Logo" style={{ height: "50px" }} />
+      <h5 className="fw-bold mb-0">PlayMovie</h5>
+    </div>
+    <p className="text-secondary mt-2">
+      El servicio de streaming cinematográfico líder en el mundo. <br />
+      Vive el cine como debe ser visto.
+    </p>
+  </Col>
 
-        {/* Columnas de navegación */}
-        <Row className="mb-4 text-center">
-          <Col md={4}>
-            <h6 className="fw-bold">Explorar</h6>
-            <ul className="list-unstyled text-secondary">
-              <li>Nuevos Lanzamientos</li>
-              <li>Popular</li>
-              <li>Mejor Valoradas</li>
-              <li>Próximamente</li>
-            </ul>
-          </Col>
-          <Col md={4}>
-            <h6 className="fw-bold">Explorar</h6>
-            <ul className="list-unstyled text-secondary">
-              <li>Nuevos Lanzamientos</li>
-              <li>Popular</li>
-              <li>Mejor Valoradas</li>
-              <li>Próximamente</li>
-            </ul>
-          </Col>
-          <Col md={4}>
-            <h6 className="fw-bold">Explorar</h6>
-            <ul className="list-unstyled text-secondary">
-              <li>Nuevos Lanzamientos</li>
-              <li>Popular</li>
-              <li>Mejor Valoradas</li>
-              <li>Próximamente</li>
-            </ul>
-          </Col>
-        </Row>
+  {/* Columna 2 */}
+  <Col md={2}>
+    <h6 className="fw-bold">Explorar</h6>
+    <ul className="list-unstyled text-secondary">
+      <li>Nuevos Lanzamientos</li>
+      <li>Popular</li>
+      <li>Mejor Valoradas</li>
+      <li>Próximamente</li>
+    </ul>
+  </Col>
 
+  {/* Columna 3 */}
+  <Col md={2}>
+    <h6 className="fw-bold">Explorar</h6>
+    <ul className="list-unstyled text-secondary">
+      <li>Nuevos Lanzamientos</li>
+      <li>Popular</li>
+      <li>Mejor Valoradas</li>
+      <li>Próximamente</li>
+    </ul>
+  </Col>
+
+  {/* Columna 4 */}
+  <Col md={2}>
+    <h6 className="fw-bold">Explorar</h6>
+    <ul className="list-unstyled text-secondary">
+      <li>Nuevos Lanzamientos</li>
+      <li>Popular</li>
+      <li>Mejor Valoradas</li>
+      <li>Próximamente</li>
+    </ul>
+  </Col>
+  
+</Row>
         {/* Redes sociales */}
         <Row className="justify-content-center mb-3">
           <Col md="auto">
@@ -82,9 +82,11 @@ function Footer() {
             </p>
           </Col>
         </Row>
+
       </Container>
     </footer>
   );
 }
 
 export default Footer;
+
