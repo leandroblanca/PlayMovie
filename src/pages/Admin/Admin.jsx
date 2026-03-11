@@ -9,20 +9,21 @@ import { useNavigate } from "react-router";
 import "./Admin.css";
 
 function Admin() {
+
+  const navigate = useNavigate();
   const [usuarios, setUsuarios] = useState([]);
-   const [show, setShow] = useState(false);
-   const [peliculas, setPeliculas] = useState(() => {
-     const guardadas = localStorage.getItem("peliculas");
-     return guardadas ? JSON.parse(guardadas) : [];
-   });
-   const [titulo, setTitulo] = useState("");
-   const [anio, setAnio] = useState("");
-   const [poster, setPoster] = useState("");
-   const [editarId, setEditarId] = useState(null);
-   const [busqueda, setBusqueda] = useState("");
-    const handleShow = () => setShow(true);
- 
-  
+  const [peliculas, setPeliculas] = useState(() => {
+    const guardadas = localStorage.getItem("peliculas");
+    return guardadas ? JSON.parse(guardadas) : [];
+  });
+
+  const [show, setShow] = useState(false);
+  const [titulo, setTitulo] = useState("");
+  const [anio, setAnio] = useState("");
+  const [poster, setPoster] = useState("");
+  const [editarId, setEditarId] = useState(null);
+  const [busqueda, setBusqueda] = useState("");
+  const handleShow = () => setShow(true);
 
 useEffect(() => {
 
