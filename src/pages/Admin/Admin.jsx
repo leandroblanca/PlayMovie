@@ -25,20 +25,19 @@ function Admin() {
   const [busqueda, setBusqueda] = useState("");
   const handleShow = () => setShow(true);
 
-useEffect(() => {
+  useEffect(() => {
+    const data = localStorage.getItem("usuarios");
 
-  const data = localStorage.getItem("usuarios");
+    if (data) {
+      setUsuarios(JSON.parse(data));
+    } else {
+      setUsuarios(usuariosIniciales);
+    }
+  }, []);
 
-  if(data){
-    setUsuarios(JSON.parse(data));
-  } else {
-    setUsuarios(usuariosIniciales);
-  }
-
-}, []);
-useEffect(()=>{
-  localStorage.setItem("usuarios", JSON.stringify(usuarios));
-},[usuarios])
+  useEffect(() => {
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+  }, [usuarios]);
 
 const registrarUsuario = (nombre) => {
 
