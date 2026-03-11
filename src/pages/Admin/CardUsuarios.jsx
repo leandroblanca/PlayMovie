@@ -2,7 +2,7 @@ import { Card, Col, Container, Row, ListGroup, Badge } from "react-bootstrap"
 import React from 'react'
 
 
-const CardUsuarios = ({usuarios, registroSistema}) => {
+const CardUsuarios = ({usuarios, registroSistema, editarUsuario}) => {
   return (
     <Container>
      <Row className="my-5 g-4"> 
