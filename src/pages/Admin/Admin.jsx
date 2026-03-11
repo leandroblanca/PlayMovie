@@ -67,10 +67,10 @@ function Admin() {
     setUsuarios(usuariosActualizados);
   };
 
-   useEffect(() => {
+  useEffect(() => {
     localStorage.setItem("peliculas", JSON.stringify(peliculas));
   }, [peliculas]);
-  
+
 
 
   const AgregarPelicula = () => {
