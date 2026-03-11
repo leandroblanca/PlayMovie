@@ -40,7 +40,7 @@ function TablaPeliculas({editarPelicula, eliminarPelicula, peliculasFiltradas}) 
         </td>
 
         <td>
-          {pelicula.fecha || pelicula.año}
+          {pelicula.fecha || pelicula.anio}
         </td>
 
         <td>

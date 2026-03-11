@@ -1,15 +1,19 @@
 import { Button, Modal, Table, Form, Container, Row, Card, Col, ListGroup, Badge } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilm, faUsers, faDollarSign, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { dashboardStats, usuariosIniciales, registroSistema } from "./ObjetosAdmin.jsx";
 import { useEffect, useState } from "react";
 import { BsEye, BsPencil, BsTrash } from "react-icons/bs";
 import "./Admin.css";
 import Sidebar from "./Sidebar";
 import TablaPeliculas from "./TablaPeliculas";
 import ModalAdmin from "./ModalAdmin";
+import Buscador from "./Buscador.jsx";
+import CardsAdmin from "./CardsAdmin.jsx";
+import CardsUsuarios from "./CardUsuarios.jsx";
 
 function Admin() {
-  const [usuarios, setUsuarios] = useState(usuarios);
+  const [usuarios, setUsuarios] = useState([]);
    const [show, setShow] = useState(false);
    const [peliculas, setPeliculas] = useState(() => {
      const guardadas = localStorage.getItem("peliculas");
@@ -73,14 +77,14 @@ const registrarUsuario = (nombre) => {
       const nuevaPelicula = {
         id: crypto.randomUUID(),
         titulo,
-        año,
+        anio,
         poster,
       };
       setPeliculas([...peliculas, nuevaPelicula]);
     } else {
        const peliculasActualizadas = peliculas.map((pelicula) =>
       pelicula.id === editarId
-        ? { ...pelicula, titulo, año, poster }
+        ? { ...pelicula, titulo, anio, poster }
         : pelicula
     );
 
@@ -89,7 +93,7 @@ const registrarUsuario = (nombre) => {
   }
 
   setTitulo("");
-  setAnio("");0
+  setAnio("");
   setPoster("");
   setShow(false);
   }
@@ -100,7 +104,7 @@ const registrarUsuario = (nombre) => {
   const editarPelicula = (id) => {
     const pelicula = peliculas.find((pelicula => pelicula.id === id));
     setTitulo(pelicula.titulo);
-    setAño(pelicula.año);
+    setAnio(pelicula.anio);
     setPoster(pelicula.poster);
     setEditarId(id);
     setShow(true);
@@ -114,28 +118,34 @@ const registrarUsuario = (nombre) => {
     setShow(false);
     setEditarId(null);
     setTitulo("");
-    setAño("");
+    setAnio("");
     setPoster("");
   };
+
+  const peliculasFiltradas = peliculas.filter((pelicula) =>
+    pelicula.titulo.toLowerCase().includes(busqueda.toLowerCase())
+  );
 
   return (
     <>
      <Buscador
         busqueda={busqueda}
         setBusqueda={setBusqueda}
-        peliculas={peliculas}
-        setPeliculas={setPeliculas}
       />
     <CardsAdmin
       dashboardStats={dashboardStats}
       />
+      <div className="p-3">
+            <Button variant="danger rounded-5 fw-bold" onClick={handleShow} className="shadow w-100">
+              + Añadir Pelicula
+            </Button>
+          </div>
       <TablaPeliculas
         editarPelicula={editarPelicula}
         eliminarPelicula={eliminarPelicula}
         peliculasFiltradas={peliculasFiltradas}
       />
       <ModalAdmin
-        AgregarPelicula={AgregarPelicula}
         show={show}
         handleClose={handleClose}
         editarId={editarId}
@@ -149,7 +159,7 @@ const registrarUsuario = (nombre) => {
       />
       <Sidebar />
       <CardsUsuarios
-        usuarios={usuariosIniciales}
+        usuarios={usuarios}
         registrarUsuario={registrarUsuario}
         registroSistema={registroSistema}
         />

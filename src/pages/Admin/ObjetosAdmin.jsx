@@ -1,4 +1,6 @@
-const dashboardStats = [
+import { faDollarSign, faFilm, faUserPlus, faUsers } from "@fortawesome/free-solid-svg-icons";
+
+export const dashboardStats = [
   {
     id: 1,
     icon: faFilm,
@@ -33,27 +35,7 @@ const dashboardStats = [
   }
 ];
 
-const usuariosIniciales = [
-  {
-    id: 1,
-    nombre: "Alex Johnson",
-    estado: "ACTIVO",
-    ultimoAcceso: "hace 2h"
-  },
-  {
-    id: 2,
-    nombre: "Sarah Miller",
-    estado: "ACTIVO",
-    ultimoAcceso: "hace 5h"
-  },
-  {
-    id: 3,
-    nombre: "Michael Brown",
-    estado: "INACTIVO",
-    ultimoAcceso: "hace 1 día"
-  }
-];
-const registroSistema = [
+export const registroSistema = [
   {
     id: 1,
     titulo: "Copia de Seguridad Completada",

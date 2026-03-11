@@ -1,5 +1,6 @@
 import { Navigate } from "react-router-dom";
 import Admin from "./Admin";
+import "./Admin.css";
 
 
 const AdminProtegida = () => {

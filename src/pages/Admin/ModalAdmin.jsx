@@ -1,11 +1,10 @@
-import { Button, Modal } from "react-bootstrap";
-import { Form } from "react-router";
+import { Button, Modal, Form } from "react-bootstrap";
+import "./Admin.css";
 import React from 'react'
 
-const ModalAdmin = ({AgregarPelicula, show, handleClose, editarId, titulo, setTitulo, año, setAño, poster, setPoster, onSubmit}) => {
+const ModalAdmin = ({show, handleClose, editarId, titulo, setTitulo, anio, setAnio, poster, setPoster, onSubmit}) => {
   return (
-    <>
- <div className="mt-4">
+    <div className="mt-4">
        
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -25,7 +24,7 @@ const ModalAdmin = ({AgregarPelicula, show, handleClose, editarId, titulo, setTi
             <Form.Control className="mb-3"
               type="text"
               placeholder="Año"
-              value={año}
+              value={anio}
               onChange={(e) => setAnio(e.target.value)}
               required
             />
@@ -47,19 +46,9 @@ const ModalAdmin = ({AgregarPelicula, show, handleClose, editarId, titulo, setTi
      
       </Modal>
 
-      </div>
-<div className="p-3">
-            <Button variant="danger rounded-5 fw-bold" onClick={handleShow} className="shadow w-100">
-              + Añadir Pelicula
-            </Button>
-          </div>
-</>
-   
+    </div>
   )
 }
 
 export default ModalAdmin;
-
-
-
   

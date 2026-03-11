@@ -1,7 +1,8 @@
-import { Card, Col, Container, Row } from "react-bootstrap"
+import { Card, Col, Container, Row, ListGroup, Badge } from "react-bootstrap"
 import React from 'react'
 
-const CardUsuarios = (usuarios, registrarUsuario, registroSistema) => {
+
+const CardUsuarios = ({usuarios, registroSistema}) => {
   return (
     <Container>
      <Row className="my-5 g-4"> 
@@ -64,7 +65,7 @@ className="d-flex justify-content-between align-items-center usuario-item"
 
 <h5 className="fw-bold mb-4">Registro del Sistema</h5>
 
-{registroSistema.map((registro)=> (
+{registroSistema?.map((registro)=> (
 
 <div
 key={registro.id}

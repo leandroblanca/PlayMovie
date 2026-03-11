@@ -1,5 +1,5 @@
 import Nav from 'react-bootstrap/Nav';
-import "../pages/Admin/Admin.css";
+import "./Admin.css";
 function Sidebar() {
   return (
     <div className='d-flex flex-column vh-100 mt-5'>

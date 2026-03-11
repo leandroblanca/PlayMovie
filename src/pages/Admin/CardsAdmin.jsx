@@ -6,7 +6,7 @@ import { faFilm, faUsers, faDollarSign, faUserPlus } from "@fortawesome/free-sol
 
 import React from 'react'
 
-const CardsAdmin = (dashboardStats) => {
+const CardsAdmin = ({ dashboardStats }) => {
   return (
      <Container>
  <Row className="g-4">
@@ -49,4 +49,3 @@ const CardsAdmin = (dashboardStats) => {
   )
 }
 export default CardsAdmin;
-
