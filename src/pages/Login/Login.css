@@ -1,0 +1,83 @@
+
+.login-wrapper {
+  min-height: 100vh; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-wrapper .row {
+  width: 100%;
+  justify-content: center;
+}
+
+.login-wrapper .col {
+  max-width: 400px; 
+  width: 100%;
+}
+
+.login-wrapper form {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  
+  width: 100%;
+}
+
+
+.login-wrapper .form-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+
+.login-wrapper .form-control {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.login-wrapper .form-control:focus {
+  
+  outline: none;
+  
+}
+
+
+.login-wrapper .btn-danger {
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.login-wrapper .btn-danger:hover {
+  
+  transform: translateY(-2px);
+}
+
+.login-wrapper .btn-danger:active {
+  transform: translateY(0);
+}
+
+
+.login-wrapper .text-danger {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  background: #fee;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border-left: 4px solid #dc3545;
+  width: 100%;
+  text-align: center;
+}
+
+
+@media (max-width: 576px) {
+  .login-wrapper form {
+    padding: 1.5rem;
+  }
+}
