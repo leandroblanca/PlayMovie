@@ -1,4 +1,9 @@
-<Container fluid className="min-vh-100">
+import React from 'react'
+import { Col, Container, Form, Row } from 'react-bootstrap';
+
+const Buscador = () => {
+  return (
+    <Container fluid className="min-vh-100">
       <Row>
       
         <Col xs={12} md={9} lg={10} className="p-4">
@@ -19,3 +24,9 @@
 </Col>
       </Row>
     </Container>
+  )
+}
+
+export default Buscador;
+
+
