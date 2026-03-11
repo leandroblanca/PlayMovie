@@ -48,19 +48,24 @@ function Admin() {
       ultimoAcceso: "ahora"
     };
 
-  setUsuarios(prev => [nuevoUsuario, ...prev]);
+    setUsuarios([...usuarios, nuevoUsuario]);
+  };
 
-};
-  useEffect(() => {
-   
-    if (peliculas.length === 0) {
-      const popularPeliculas = () => {
-          setPeliculas(peliculas);
-      };
-      popularPeliculas();
-    }
-  }, []); 
+  const eliminarUsuario = (id) => {
+    const nuevosUsuarios = usuarios.filter(u => u.id !== id);
+    setUsuarios(nuevosUsuarios);
+  };
 
+  const editarUsuario = (id, nuevoNombre) => {
+
+    const usuariosActualizados = usuarios.map(usuario =>
+      usuario.id === id
+        ? { ...usuario, nombre: nuevoNombre }
+        : usuario
+    );
+
+    setUsuarios(usuariosActualizados);
+  };
 
    useEffect(() => {
     localStorage.setItem("peliculas", JSON.stringify(peliculas));
