@@ -105,21 +105,27 @@ function Admin() {
 
 
   const eliminarPelicula = (id) => {
-    const nuevasPeliculas = peliculas.filter((pelicula => pelicula.id !== id));
+    const nuevasPeliculas = peliculas.filter(p => p.id !== id);
     setPeliculas(nuevasPeliculas);
-  }
+  };
+
   const editarPelicula = (id) => {
-    const pelicula = peliculas.find((pelicula => pelicula.id === id));
+
+    const pelicula = peliculas.find(p => p.id === id);
+
     setTitulo(pelicula.titulo);
     setAnio(pelicula.anio);
     setPoster(pelicula.poster);
+
     setEditarId(id);
     setShow(true);
-  }
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
-    AgregarPelicula();
-  }
+    guardarPelicula();
+  };
+
 
   const handleClose = () => {
     setShow(false);
