@@ -146,45 +146,63 @@ function Admin() {
 
   return (
     <>
-     <Button variant="danger" onClick={cerrarSesion}>
+      <Button variant="danger" onClick={cerrarSesion}>
         Cerrar sesión
       </Button>
-    <Container fluid className="min-vh-100">
-      <Row>
-        <Col xs={12} md={3} lg={2} className="p-0 bg-dark">
-           <Sidebar/>
-          <div className="p-3">
-            <Button variant="danger rounded-5 fw-bold" onClick={handleShow} className="shadow w-100">
-              + Añadir Pelicula
-            </Button>
-          </div>
-      <TablaPeliculas
-        editarPelicula={editarPelicula}
-        eliminarPelicula={eliminarPelicula}
-        peliculasFiltradas={peliculasFiltradas}
-      />
-      <ModalAdmin
-        show={show}
-        handleClose={handleClose}
-        editarId={editarId}
-        titulo={titulo}
-        setTitulo={setTitulo}
-        anio={anio}
-        setAnio={setAnio}
-        poster={poster}
-        setPoster={setPoster}
-        onSubmit={onSubmit}
-      />
-      <Sidebar />
-      <CardsUsuarios
-        usuarios={usuarios}
-        registrarUsuario={registrarUsuario}
-        registroSistema={registroSistema}
-        />
-     
-</Col>
-</Row>
-    </Container>
+
+      <Container fluid className="min-vh-100">
+
+        <Row>
+
+          <Col xs={12} md={3} lg={2} className="p-0 bg-dark">
+            <Sidebar />
+
+            <div className="p-3">
+              <Button
+                variant="danger rounded-5 fw-bold"
+                onClick={handleShow}
+                className="shadow w-100"
+              >
+                + Añadir Pelicula
+              </Button>
+            </div>
+          </Col>
+
+
+          <Col md={10} className="p-4">
+
+            <TablaPeliculas
+              editarPelicula={editarPelicula}
+              eliminarPelicula={eliminarPelicula}
+              peliculasFiltradas={peliculasFiltradas}
+            />
+
+            <ModalAdmin
+              show={show}
+              handleClose={handleClose}
+              editarId={editarId}
+              titulo={titulo}
+              setTitulo={setTitulo}
+              anio={anio}
+              setAnio={setAnio}
+              poster={poster}
+              setPoster={setPoster}
+              onSubmit={onSubmit}
+            />
+
+            <CardsUsuarios
+              usuarios={usuarios}
+              registrarUsuario={registrarUsuario}
+              eliminarUsuario={eliminarUsuario}
+              editarUsuario={editarUsuario}
+              registroSistema={registroSistema}
+            />
+
+          </Col>
+
+        </Row>
+
+      </Container>
     </>
   );
 }
