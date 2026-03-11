@@ -134,9 +134,10 @@ function Admin() {
     setAnio("");
     setPoster("");
   };
- 
 
-  const navigate = useNavigate();
+  const peliculasFiltradas = peliculas.filter(p =>
+    p.titulo.toLowerCase().includes(busqueda.toLowerCase())
+  );
 
   const cerrarSesion = () => {
     sessionStorage.removeItem("usuarioLogueado");
