@@ -39,14 +39,14 @@ function Admin() {
     localStorage.setItem("usuarios", JSON.stringify(usuarios));
   }, [usuarios]);
 
-const registrarUsuario = (nombre) => {
+  const registrarUsuario = (nombre) => {
 
-  const nuevoUsuario = {
-    id: Date.now(),
-    nombre,
-    estado: "ACTIVO",
-    ultimoAcceso: "ahora"
-  };
+    const nuevoUsuario = {
+      id: crypto.randomUUID(),
+      nombre,
+      estado: "ACTIVO",
+      ultimoAcceso: "ahora"
+    };
 
   setUsuarios(prev => [nuevoUsuario, ...prev]);
 
