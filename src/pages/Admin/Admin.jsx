@@ -1,99 +1,12 @@
-import { Button, Modal, Table, Form, Container, Row, Card, Col, ListGroup, Badge } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilm, faUsers, faDollarSign, faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import { dashboardStats, usuariosIniciales, registroSistema } from "./ObjetosAdmin.jsx";
+import { Button, Container, Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import { BsEye, BsPencil, BsTrash } from "react-icons/bs";
-import "./Admin.css";
-import Sidebar from "./Sidebar";
+import Sidebar from "../../componentes/Sidebar";
 import TablaPeliculas from "./TablaPeliculas";
 import ModalAdmin from "./ModalAdmin";
-import Buscador from "./Buscador.jsx";
-import CardsAdmin from "./CardsAdmin.jsx";
 import CardsUsuarios from "./CardUsuarios.jsx";
-import Sidebar from "../../componentes/Sidebar";
+import { usuariosIniciales, registroSistema } from "./ObjetosAdmin.jsx";
 import { useNavigate } from "react-router";
-
-
-const dashboardStats = [
-  {
-    id: 1,
-    icon: faFilm,
-    tendencia: "up",
-    porcentaje: "+12%",
-    titulo: "Total de Películas",
-    valor: 1240
-  },
-  {
-    id: 2,
-    icon: faUsers,
-    tendencia: "up",
-    porcentaje: "+5%",
-    titulo: "Usuarios Activos",
-    valor: 85241
-  },
-  {
-    id: 3,
-    icon: faDollarSign,
-    tendencia: "down",
-    porcentaje: "-2%",
-    titulo: "Ingresos Totales",
-    valor: 12450
-  },
-  {
-    id: 4,
-    icon: faUserPlus,
-    tendencia: "up",
-    porcentaje: "+18%",
-    titulo: "Nuevos Registros",
-    valor: 124
-  }
-];
-
-const usuariosIniciales = [
-  {
-    id: 1,
-    nombre: "Alex Johnson",
-    estado: "ACTIVO",
-    ultimoAcceso: "hace 2h"
-  },
-  {
-    id: 2,
-    nombre: "Sarah Miller",
-    estado: "ACTIVO",
-    ultimoAcceso: "hace 5h"
-  },
-  {
-    id: 3,
-    nombre: "Michael Brown",
-    estado: "INACTIVO",
-    ultimoAcceso: "hace 1 día"
-  }
-];
-const registroSistema = [
-  {
-    id: 1,
-    titulo: "Copia de Seguridad Completada",
-    categoria: "Usuarios Activos",
-    hora: "10:45 AM",
-    color: "#198754"
-  },
-  {
-    id: 2,
-    titulo: "Alerta de Seguridad",
-    categoria: "Usuarios Activos",
-    hora: "08:22 AM",
-   color: "#dc3545"
-
-  },
-  {
-    id: 3,
-    titulo: "Película Publicada",
-    categoria: "Usuarios Activos",
-    hora: "Ayer",
-    color: "#0d6efd"
-  }
-];
+import "./Admin.css";
 
 function Admin() {
   const [usuarios, setUsuarios] = useState([]);
