@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./NavBar.css";
-import logo from "../../src/assets/logo.png"; 
+import "../assets/logo.png"
 
 // Navbar.jsx
 import { useState, useEffect } from "react";
@@ -13,7 +13,6 @@ const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const location = useLocation();
-
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -55,11 +54,20 @@ const NavBar = () => {
       ];
     }
     
-    if (path.includes('pelicula/')) {
+    if (path.includes('Contacto/')) {
+      return [
+        { path: '/', icon: 'home', label: 'Inicio', mobileLabel: 'Inicio' },
+        // { path: '/buscar', icon: 'search', label: 'Buscar', mobileLabel: 'Buscar' },
+        { path: '/AboutUs', icon: 'bookmark', label: 'About Us', mobileLabel: 'About Us' },
+        { path: '/Contacto/Contacto', icon: 'person', label: 'Perfil', mobileLabel: 'Perfil' },
+      ];
+    }
+
+    if (path.includes('peliculas/')) {
       return [
         { path: '/', icon: 'home', label: 'Inicio', mobileLabel: 'Inicio' },
         { path: '/buscar', icon: 'search', label: 'Buscar', mobileLabel: 'Buscar' },
-        { path: '/mi-lista', icon: 'bookmark', label: 'Mi Lista', mobileLabel: 'Mi Lista' },
+        { path: '/AboutUs', icon: 'bookmark', label: 'About Us', mobileLabel: 'About Us' },
         { path: '/perfil', icon: 'person', label: 'Perfil', mobileLabel: 'Perfil' },
       ];
     }
@@ -75,8 +83,8 @@ const NavBar = () => {
   const navItems = getNavItems();
   const isAdmin = location.pathname.includes('admin');
   const isAuth = location.pathname.includes('login') || location.pathname.includes('registro');
-  const isDetail = location.pathname.includes('pelicula/');
-  const isProfile = location.pathname.includes('perfil');
+  const isDetail = location.pathname.includes('peliculas/');
+  const isProfile = location.pathname.includes('Contacto/');
 
   // Renderizar navbar móvil
   if (isMobile) {
@@ -167,10 +175,10 @@ const NavBar = () => {
                   Originales
                 </Link>
                 <Link 
-                  to="/mi-lista" 
-                  className={`desktop-nav-link ${location.pathname === '/mi-lista' ? 'active' : ''}`}
+                  to="/AboutUs" 
+                  className={`desktop-nav-link ${location.pathname === '/AboutUs' ? 'active' : ''}`}
                 >
-                  Mi Lista
+                  About Us
                 </Link>
               </div>
             )}
@@ -211,7 +219,10 @@ const NavBar = () => {
               </button>
             ) : (
               <>
-                <button className="subscribe-button">
+              {/* <button className="subscribe-button"> */}
+                <button Link 
+                  to="/Contacto/Contacto" 
+                  className={`subscribe-button ${location.pathname === '/Contacto' ? 'active' : ''}`}>
                   Suscribirse
                 </button>
                 <div style={{ display: 'flex', gap: '8px' }}>

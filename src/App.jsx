@@ -1,48 +1,18 @@
-import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
-import './App.css'
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import './App.css';
 import "./index.css";
 import NavBar from "./componentes/NavBar";
-import Footer from "./componentes/Footer";
-import AdminProtegida from './pages/Admin/Admin';
-import Contacto from './pages/Contacto/Contacto.jsx';
-import Registro from './pages/Registro/Registro.jsx';
-// import Home from './pages/Home.jsx';
-import Login from './pages/Login/Login.jsx';
 
+// Importar las páginas que SÍ existen
+import Home from "./pages/Home";
+import Login from "./pages/Login/Login";
+import AboutUs from "./pages/AboutUs";
+import Contacto from "./pages/Contacto/Contacto";
 
-
-// import AboutUs from "./pages/AboutUs"
-
-// Importar todas las páginas (debes crearlas)
-import Home from "./pages/Home.jsx";
-// import HomeDesktop from "./pages/HomeDesktop";
+// Nota: Estas páginas no existen aún, están comentadas
 import Peliculas from "./pages/Peliculas";
-import PeliculaDetalle from "./pages/PeliculaDetalle";
-import PeliculaDetalleDesktop from "./pages/PeliculaDetalleDesktop";
-// import Series from "./pages/Series";
-// import Contacto from "./pages/Contacto";
-// import ContactoDesktop from "./pages/ContactoDesktop";
-// import Nosotros from "./pages/Nosotros";
-// import NosotrosDesktop from "./pages/NosotrosDesktop";
-// import Perfil from "./pages/Perfil";
-// import PerfilDesktop from "./pages/PerfilDesktop";
-// import Login from "./pages/Login/Login";
-// import LoginDesktop from "./pages/LoginDesktop";
-// import Registro from "./pages/Registro/Registro";
-// import RegistroDesktop from "./pages/RegistroDesktop";
-// import Error404 from "./pages/Error404";
-// import Error404Desktop from "./pages/Error404Desktop";
-// import Explorar from "./pages/Explorar";
-// import MiLista from "./pages/MiLista";
-// import Descargas from "./pages/Descargas";
 
-// Importar páginas de admin
-// import AdminPanel from "./pages/Admin/AdminPanel";
-// import AdminPeliculas from "./pages/Admin/AdminPeliculas";
-// import AdminUsuarios from "./pages/Admin/AdminUsuarios";
-// import AdminAnalisis from "./pages/Admin/AdminAnalisis";
-// import AdminIngresos from "./pages/Admin/AdminIngresos";
-// import AdminAjustes from "./pages/Admin/AdminAjustes";
 
 // Hook personalizado para detectar dispositivo
 const useMobileDetect = () => {
@@ -55,7 +25,6 @@ const useMobileDetect = () => {
     
     window.addEventListener('resize', handleResize);
     
-    // Cleanup
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
@@ -65,6 +34,10 @@ const useMobileDetect = () => {
 // Componente para renderizar versión responsive
 const ResponsivePage = ({ mobile: MobileComponent, desktop: DesktopComponent }) => {
   const isMobile = useMobileDetect();
+  // Si no se proporciona versión desktop, usar la misma que mobile
+  if (!DesktopComponent) {
+    return <MobileComponent />;
+  }
   return isMobile ? <MobileComponent /> : <DesktopComponent />;
 };
 
@@ -78,75 +51,31 @@ function App() {
             {/* Ruta principal - Home */}
             <Route 
               path="/" 
-              element={<ResponsivePage mobile={Home} desktop={HomeDesktop} />} 
+              element={<ResponsivePage mobile={Home} desktop={Home} />} 
             />
-            
-            {/* Películas */}
-            <Route path="/peliculas" element={<Peliculas />} />
-            
-            {/* Detalle de película con ID dinámico */}
+            {/* /peliculas */}
             <Route 
-              path="/pelicula/:id" 
-              element={<ResponsivePage mobile={PeliculaDetalle} desktop={PeliculaDetalleDesktop} />} 
+              path="/peliculas" 
+              element={<ResponsivePage mobile={Peliculas} desktop={Peliculas} />} 
             />
-            
-            {/* Series */}
-            <Route path="/series" element={<Series />} />
-            
-            {/* Explorar */}
-            <Route path="/explorar" element={<Explorar />} />
-            
-            {/* Contacto */}
+
+            {/* /AboutUs */}
             <Route 
-              path="/contacto" 
-              element={<ResponsivePage mobile={Contacto} desktop={ContactoDesktop} />} 
+              path="/AboutUs" 
+              element={<ResponsivePage mobile={AboutUs} desktop={AboutUs} />} 
             />
-            
-            {/* Nosotros */}
+
+            {/* Ruta de login */}
             <Route 
-              path="/nosotros" 
-              element={<ResponsivePage mobile={Nosotros} desktop={NosotrosDesktop} />} 
+              path="/Login" 
+              element={<ResponsivePage mobile={Login} desktop={Login} />} 
             />
             
-            {/* Perfil de usuario */}
+            {/* Ruta de contacto */}
             <Route 
-              path="/perfil" 
-              element={<ResponsivePage mobile={Perfil} desktop={PerfilDesktop} />} 
+              path="/Contacto" 
+              element={<ResponsivePage mobile={Contacto} desktop={Contacto} />} 
             />
-            
-            {/* Mi lista */}
-            <Route path="/mi-lista" element={<MiLista />} />
-            
-            {/* Descargas */}
-            <Route path="/descargas" element={<Descargas />} />
-            
-            {/* Autenticación */}
-            <Route 
-              path="/login" 
-              element={<ResponsivePage mobile={Login} desktop={LoginDesktop} />} 
-            />
-            
-            <Route 
-              path="/registro" 
-              element={<ResponsivePage mobile={Registro} desktop={RegistroDesktop} />} 
-            />
-            
-            {/* Rutas de administración */}
-            <Route path="/admin" element={<AdminPanel />} />
-            <Route path="/admin/peliculas" element={<AdminPeliculas />} />
-            <Route path="/admin/usuarios" element={<AdminUsuarios />} />
-            <Route path="/admin/analisis" element={<AdminAnalisis />} />
-            <Route path="/admin/ingresos" element={<AdminIngresos />} />
-            <Route path="/admin/ajustes" element={<AdminAjustes />} />
-            
-            {/* Página 404 */}
-            <Route 
-              path="/404" 
-              element={<ResponsivePage mobile={Error404} desktop={Error404Desktop} />} 
-            />
-            
-            {/* Redireccionar rutas no encontradas a 404 */}
-            <Route path="*" element={<Navigate to="/404" replace />} />
           </Routes>
         </main>
       </div>
