@@ -4,9 +4,11 @@ import {Card, Col, Container, Row } from "react-bootstrap";
 import "./Admin.css";
 import { faFilm, faUsers, faDollarSign, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
+import React from 'react'
 
-
- <Container>
+const CardsAdmin = (dashboardStats) => {
+  return (
+     <Container>
  <Row className="g-4">
     {dashboardStats.map(stat => (
       <Col xs={12} sm={6} xl={3} key={stat.id}>
@@ -43,3 +45,8 @@ import { faFilm, faUsers, faDollarSign, faUserPlus } from "@fortawesome/free-sol
     ))}
   </Row>
    </Container>
+   
+  )
+}
+export default CardsAdmin;
+
