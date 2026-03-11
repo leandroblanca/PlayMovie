@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Nav.css";
 import logo from "../../src/assets/logo.png"; 
@@ -28,9 +29,10 @@ function NavBar() {
         <Navbar.Collapse id="navbar-nav">
           {/* Links principales alineados a la derecha */}
           <Nav className="ms-auto" style={{ color: "white", fontWeight: "bold" }}>
-            <Nav.Link href="#inicio">Inicio</Nav.Link>
-            <Nav.Link href="#peliculas">Películas</Nav.Link>
-            <Nav.Link href="#series">Series</Nav.Link>
+            <Nav.Link as={Link} to="/">Inicio</Nav.Link>
+            <Nav.Link as={Link} to="/peliculas">Películas</Nav.Link>
+            <Nav.Link as={Link} to="/series">Series</Nav.Link>
+            <Nav.Link as={Link} to="/aboutus">AboutUs</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

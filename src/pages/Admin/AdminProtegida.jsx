@@ -4,11 +4,17 @@ import "./Admin.css";
 
 
 const AdminProtegida = () => {
-  const usuarioLogueado = sessionStorage.getItem("usuarioLogueado");
+
+  const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuarioLogueado"));
 
   if (!usuarioLogueado) {
     return <Navigate to="/login" />;
   }
+  if (usuarioLogueado.rol !== "admin") {
+    return <Navigate to="/" />;
+  }
+
   return <Admin />;
 };
+
 export default AdminProtegida;
