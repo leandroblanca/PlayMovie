@@ -13,6 +13,30 @@
   z-index: 1000;  
 }
 
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navbar-logo img {
+  height: 40px;
+  width: auto;
+  margin-right: 10px;
+}
+
+.logo-text {
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
 .navbar-logo img {
   height: 40px;
   width: auto;
@@ -28,6 +52,9 @@
 
 .navbar-item {
   margin: 0 0.8rem;
+  display: flex;
+  align-items: center;
+
 }
 
 .navbar-item a {
@@ -39,6 +66,47 @@
 
 .navbar-item a:hover {
   color: #ffffff;
+}
+
+.btn-login {
+  background-color: #e50914; 
+  color: #ffffff;          
+  padding: 0.4rem 1rem;
+  border-radius: 20px;      
+  font-weight: bold;
+  text-decoration: none;    
+  transition: background-color 0.3s ease;
+}
+
+.btn-login:hover {
+  background-color: #f6121d; 
+  color: #fff;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: #222;
+  padding: 0.3rem 0.6rem;
+  border-radius: 20px;
+}
+
+.search-icon {
+  color: #e5e5e5;
+  margin-right: 0.5rem;
+}
+
+.search-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 0.9rem;
+  padding-top: 0;
+}
+
+.search-input::placeholder {
+  color: #aaa;
 }
 
 /* Hamburguesa */
