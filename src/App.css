@@ -1,41 +1,21 @@
-/* App.css */
 :root {
   --primary: #ea2a33;
-  --primary-hover: #d41f27;
-  --background-light: #f8f6f6;
   --background-dark: #211111;
-  --surface-dark: #2d1616;
-  --border-dark: #3d2020;
   --text-light: #ffffff;
-  --text-dark: #1f2937;
-  --text-gray: #6b7280;
-  --text-gray-light: #9ca3af;
 }
 
-/* Dark mode por defecto */
-:root {
-  --bg-primary: var(--background-dark);
-  --bg-secondary: var(--surface-dark);
-  --text-primary: var(--text-light);
-  --text-secondary: #d1d5db;
-  --border-color: var(--border-dark);
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-dark);
+  color: var(--text-light);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
 .app-container {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
 }
 
 .main-content {
-  flex: 1;
-  padding-bottom: 80px;
-}
-
-@media (min-width: 768px) {
-  .main-content {
-    padding-bottom: 0;
-  }
+  padding: 20px;
 }

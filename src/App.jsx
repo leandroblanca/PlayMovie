@@ -1,86 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import './App.css';
-import "./index.css";
-import NavBar from "./componentes/NavBar";
+import Navbar from "./componentes/NavBar/NavBar";
 
-// Importar las páginas que SÍ existen
+
+// Páginas de ejemplo (creá tus componentes reales en /pages)
 import Home from "./pages/Home";
-import Login from "./pages/Login/Login";
-import AboutUs from "./pages/AboutUs";
 import Contacto from "./pages/Contacto/Contacto";
+import Error404 from "./pages/Error404";
+import AboutUs from "./pages/AboutUs";
+import Perfil from "./pages/Perfil";
+import Login from "./pages/Login/Login";
 
-// Nota: Estas páginas no existen aún, están comentadas
-import Peliculas from "./pages/Peliculas";
-
-
-// Hook personalizado para detectar dispositivo
-const useMobileDetect = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    window.addEventListener('resize', handleResize);
-    
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  return isMobile;
-};
-
-// Componente para renderizar versión responsive
-const ResponsivePage = ({ mobile: MobileComponent, desktop: DesktopComponent }) => {
-  const isMobile = useMobileDetect();
-  // Si no se proporciona versión desktop, usar la misma que mobile
-  if (!DesktopComponent) {
-    return <MobileComponent />;
-  }
-  return isMobile ? <MobileComponent /> : <DesktopComponent />;
-};
-
-function App() {
+export default function App() {
   return (
     <Router>
-      <div className="app-container">
-        <NavBar />
-        <main className="main-content">
-          <Routes>
-            {/* Ruta principal - Home */}
-            <Route 
-              path="/" 
-              element={<ResponsivePage mobile={Home} desktop={Home} />} 
-            />
-            {/* /peliculas */}
-            <Route 
-              path="/peliculas" 
-              element={<ResponsivePage mobile={Peliculas} desktop={Peliculas} />} 
-            />
-
-            {/* /AboutUs */}
-            <Route 
-              path="/AboutUs" 
-              element={<ResponsivePage mobile={AboutUs} desktop={AboutUs} />} 
-            />
-
-            {/* Ruta de login */}
-            <Route 
-              path="/Login" 
-              element={<ResponsivePage mobile={Login} desktop={Login} />} 
-            />
-            
-            {/* Ruta de contacto */}
-            <Route 
-              path="/Contacto" 
-              element={<ResponsivePage mobile={Contacto} desktop={Contacto} />} 
-            />
-          </Routes>
-        </main>
-      </div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contacto" element={<Contacto />} />
+        <Route path="/404" element={<Error404 />} />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/login" element={<Login />} />
+        {/* Ruta comodín para cualquier otra URL */}
+        <Route path="*" element={<Error404 />} />
+      </Routes>
     </Router>
   );
 }
-
-export default App;

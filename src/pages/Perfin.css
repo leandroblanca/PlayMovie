@@ -1,0 +1,13 @@
+/* pages/Home.css */
+.home-container {
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+  color: var(--text-primary);
+}
+
+.home-container h1 {
+  color: var(--primary);
+  font-size: 24px;
+  margin-bottom: 10px;
+}
