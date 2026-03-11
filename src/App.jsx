@@ -19,7 +19,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/404" element={<Error404 />} />
-        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/nosotros" element={<AboutUs />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/login" element={<Login />} />
         {/* Ruta comodín para cualquier otra URL */}

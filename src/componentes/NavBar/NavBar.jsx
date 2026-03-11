@@ -8,11 +8,11 @@ import { FaSearch } from "react-icons/fa";
 
 
 const navConfig = {
-  "/": ["Peliculas", "Series", "Mi Lista", "Buscar Peliculas", "Notificaciones", "Suscribirse", "Iniciar Sesión"],
-  "/contacto": ["Inicio", "Peliculas", "Series", "Mi Lista", "Buscar Peliculas", "Usuario"],
-  "/404": ["Peliculas", "Series", "Mi Lista", "Buscar Peliculas", "Notificaciones", "Perfil", "Usuario"],
-  "/aboutus": ["Peliculas", "Series", "Mi Lista", "Buscar Peliculas", "Notificaciones", "Suscribirse", "Iniciar Sesión"],
-  "/perfil": ["Peliculas", "Series", "Mi Lista", "Buscar Peliculas", "Notificaciones", "Configuración", "Perfil"],
+  "/": ["Peliculas", "Series", "Nosotros", "Buscar Peliculas", "Notificaciones", "Suscribirse", "Iniciar Sesión"],
+  "/contacto": ["Inicio", "Peliculas", "Series", "Nosotros", "Buscar Peliculas", "Usuario"],
+  "/404": ["Peliculas", "Series", "Nosotros", "Buscar Peliculas", "Notificaciones", "Perfil", "Usuario"],
+  "/nosotros": ["Peliculas", "Series", "Buscar Peliculas", "Notificaciones", "Suscribirse", "Iniciar Sesión"],
+  "/perfil": ["Peliculas", "Series", "Nosotros", "Buscar Peliculas", "Notificaciones", "Configuración", "Perfil"],
   "/login": ["Inicio", "Peliculas", "Series", "Iniciar Sesión"],
 };
 
@@ -43,7 +43,7 @@ export default function Navbar() {
                 <FaSearch className="search-icon" />
                 <input
                   type="text"
-                  placeholder="Buscar películas"
+                  placeholder="Buscar películas, series"
                   className="search-input"
                 />
               </div>
