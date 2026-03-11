@@ -1,7 +1,10 @@
 import { Button, Modal } from "react-bootstrap";
 import { Form } from "react-router";
+import React from 'react'
 
-<>
+const ModalAdmin = ({AgregarPelicula, show, handleClose, editarId, titulo, setTitulo, año, setAño, poster, setPoster, onSubmit}) => {
+  return (
+    <>
  <div className="mt-4">
        
       <Modal show={show} onHide={handleClose}>
@@ -23,7 +26,7 @@ import { Form } from "react-router";
               type="text"
               placeholder="Año"
               value={año}
-              onChange={(e) => setAño(e.target.value)}
+              onChange={(e) => setAnio(e.target.value)}
               required
             />
 
@@ -51,4 +54,12 @@ import { Form } from "react-router";
             </Button>
           </div>
 </>
+   
+  )
+}
+
+export default ModalAdmin;
+
+
+
   
