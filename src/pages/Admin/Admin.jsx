@@ -72,32 +72,38 @@ function Admin() {
   }, [peliculas]);
 
 
+  const guardarPelicula = () => {
 
-  const AgregarPelicula = () => {
-    if(!editarId) {
+    if (!editarId) {
+
       const nuevaPelicula = {
         id: crypto.randomUUID(),
         titulo,
         anio,
-        poster,
+        poster
       };
+
       setPeliculas([...peliculas, nuevaPelicula]);
+
     } else {
-       const peliculasActualizadas = peliculas.map((pelicula) =>
-      pelicula.id === editarId
-        ? { ...pelicula, titulo, anio, poster }
-        : pelicula
-    );
 
-    setPeliculas(peliculasActualizadas);
-    setEditarId(null);
-  }
+      const peliculasActualizadas = peliculas.map(pelicula =>
+        pelicula.id === editarId
+          ? { ...pelicula, titulo, anio, poster }
+          : pelicula
+      );
 
-  setTitulo("");
-  setAnio("");
-  setPoster("");
-  setShow(false);
-  }
+      setPeliculas(peliculasActualizadas);
+      setEditarId(null);
+    }
+
+    setTitulo("");
+    setAnio("");
+    setPoster("");
+    setShow(false);
+  };
+
+
   const eliminarPelicula = (id) => {
     const nuevasPeliculas = peliculas.filter((pelicula => pelicula.id !== id));
     setPeliculas(nuevasPeliculas);
