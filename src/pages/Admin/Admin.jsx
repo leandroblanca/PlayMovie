@@ -6,6 +6,7 @@ import { BsEye, BsPencil, BsTrash } from "react-icons/bs";
 import "./Admin.css";
 import Sidebar from "./Sidebar";
 import TablaPeliculas from "./TablaPeliculas";
+import ModalAdmin from "./ModalAdmin";
 
 function Admin() {
   const [usuarios, setUsuarios] = useState(usuarios);
@@ -15,7 +16,7 @@ function Admin() {
      return guardadas ? JSON.parse(guardadas) : [];
    });
    const [titulo, setTitulo] = useState("");
-   const [año, setAño] = useState("");
+   const [anio, setAnio] = useState("");
    const [poster, setPoster] = useState("");
    const [editarId, setEditarId] = useState(null);
    const [busqueda, setBusqueda] = useState("");
@@ -88,7 +89,7 @@ const registrarUsuario = (nombre) => {
   }
 
   setTitulo("");
-  setAño("");
+  setAnio("");0
   setPoster("");
   setShow(false);
   }
@@ -119,12 +120,40 @@ const registrarUsuario = (nombre) => {
 
   return (
     <>
+     <Buscador
+        busqueda={busqueda}
+        setBusqueda={setBusqueda}
+        peliculas={peliculas}
+        setPeliculas={setPeliculas}
+      />
+    <CardsAdmin
+      dashboardStats={dashboardStats}
+      />
       <TablaPeliculas
         editarPelicula={editarPelicula}
         eliminarPelicula={eliminarPelicula}
         peliculasFiltradas={peliculasFiltradas}
       />
-
+      <ModalAdmin
+        AgregarPelicula={AgregarPelicula}
+        show={show}
+        handleClose={handleClose}
+        editarId={editarId}
+        titulo={titulo}
+        setTitulo={setTitulo}
+        anio={anio}
+        setAnio={setAnio}
+        poster={poster}
+        setPoster={setPoster}
+        onSubmit={onSubmit}
+      />
+      <Sidebar />
+      <CardsUsuarios
+        usuarios={usuariosIniciales}
+        registrarUsuario={registrarUsuario}
+        registroSistema={registroSistema}
+        />
+     
 
     </>
   );
