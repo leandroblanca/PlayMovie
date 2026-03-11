@@ -1,7 +1,6 @@
-import { BrowserRouter, Route, Routes } from 'react-router'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css'
 import "./index.css";
-import { Router } from 'react-router'
 import Nav from "./componentes/Nav";
 import Footer from "./componentes/Footer";
 import Error404 from "./pages/Error404"
