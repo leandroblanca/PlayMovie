@@ -31,18 +31,29 @@ function App() {
     primeraCarga();
   }, [])
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/contacto" element={<Contacto />} />
-        <Route path="/error404" element={<Error404 />} />
-        <Route path="/nosotros" element={<AboutUs />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/registro" element={<Registro />} />
-        <Route path="*" element={<Error404 />} />
-      </Routes>
-      <Footer/>
-    </Router>
-  );
+    <>
+    <BrowserRouter>
+     <div className="app-container">
+        <Nav />
+        <div className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/contacto" element={<Contacto />} />
+            <Route path="/404" element={<Error404 />} />
+            <Route path="/aboutus" element={<AboutUs />} />
+            {/* <Route path="/perfil" element={<Perfil />} /> */}
+            <Route path="/registro" element={<Registro />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/pelicula" element={<DetallePelicula />} />
+            <Route path="*" element={<Error404 />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
+    </BrowserRouter>
+    
+    </>
+  )
 }
+
+export default App
