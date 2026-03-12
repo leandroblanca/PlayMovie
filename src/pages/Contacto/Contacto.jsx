@@ -88,30 +88,6 @@ const Contacto = () => {
           </h5>
         </Col>
       </Row>
-          <form id="form">
-      <div class="field">
-        <label for="title">title</label>
-        <input type="text" name="title" id="title" />
-      </div>
-      <div class="field">
-        <label for="name">name</label>
-        <input type="text" name="name" id="name" />
-      </div>
-      <div class="field">
-        <label for="time">time</label>
-        <input type="text" name="time" id="time" />
-      </div>
-      <div class="field">
-        <label for="message">message</label>
-        <input type="text" name="message" id="message" />
-      </div>
-      <div class="field">
-        <label for="email">email</label>
-        <input type="text" name="email" id="email" />
-      </div>
-
-      <input type="submit" id="button" value="Send Email" />
-    </form>
 
       <Row className="mt-4">
         {/* FORMULARIO */}
@@ -152,7 +128,6 @@ const Contacto = () => {
                   required
                   value={consulta}
                   onChange={(e) => setConsulta(e.target.value)}
-                  defaultValue=""
                 >
                   <option value="" disabled>
                     Selecciona una opción

@@ -1,4 +1,5 @@
 import { Button, Card, Table } from "react-bootstrap";
+import { BsPencil, BsEye, BsTrash } from "react-icons/bs";
 
 function TablaPeliculas({editarPelicula, eliminarPelicula, peliculasFiltradas}) {
     return (

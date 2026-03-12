@@ -1,20 +1,35 @@
 import { Button, Container, Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import Sidebar from "../../componentes/Sidebar";
+import Sidebar from "../Admin/Sidebar.jsx";
 import TablaPeliculas from "./TablaPeliculas";
 import ModalAdmin from "./ModalAdmin";
 import CardsUsuarios from "./CardUsuarios.jsx";
-import { usuariosIniciales, registroSistema } from "./ObjetosAdmin.jsx";
+import { registroSistema } from "./ObjetosAdmin.jsx";
+import peliculasIniciales from "../../data/movies.js";
 import { useNavigate } from "react-router";
 import "./Admin.css";
 
-function Admin() {
+const usuariosIniciales = [
+  {
+    id: "a1",
+    nombre: "Usuario de Prueba 1",
+    estado: "ACTIVO",
+    ultimoAcceso: "hace 1 hora",
+  },
+  {
+    id: "a2",
+    nombre: "Usuario de Prueba 2",
+    estado: "INACTIVO",
+    ultimoAcceso: "hace 2 dias",
+  },
+];
 
+function Admin() {
   const navigate = useNavigate();
   const [usuarios, setUsuarios] = useState([]);
   const [peliculas, setPeliculas] = useState(() => {
     const guardadas = localStorage.getItem("peliculas");
-    return guardadas ? JSON.parse(guardadas) : [];
+    return guardadas ? JSON.parse(guardadas) : peliculasIniciales;
   });
 
   const [show, setShow] = useState(false);
@@ -26,13 +41,8 @@ function Admin() {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    const data = localStorage.getItem("usuarios");
-
-    if (data) {
-      setUsuarios(JSON.parse(data));
-    } else {
-      setUsuarios(usuariosIniciales);
-    }
+    const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
+    setUsuarios(usuariosGuardados);
   }, []);
 
   useEffect(() => {
