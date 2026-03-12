@@ -9,6 +9,7 @@ import Contacto from "./pages/Contacto/Contacto";
 import Error404 from "./pages/Error404";
 import AboutUs from "./pages/AboutUs";
 import Perfil from "./pages/Perfil";
+import Peliculas from "./pages/Peliculas";
 import Login from "./pages/Login/Login";
 
 export default function App() {
@@ -17,8 +18,10 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/inicio" element={<Home />} />
         <Route path="/contacto" element={<Contacto />} />
-        <Route path="/404" element={<Error404 />} />
+        <Route path="/peliculas" element={<Peliculas />} />
+        <Route path="/error404" element={<Error404 />} />
         <Route path="/nosotros" element={<AboutUs />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/login" element={<Login />} />
