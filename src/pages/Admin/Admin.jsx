@@ -1,6 +1,6 @@
 import { Button, Container, Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import Sidebar from "../Admin/Sidebar.jsx";
+import Sidebar from "./Sidebar"
 import TablaPeliculas from "./TablaPeliculas";
 import ModalAdmin from "./ModalAdmin";
 import CardsUsuarios from "./CardUsuarios.jsx";
@@ -26,7 +26,10 @@ const usuariosIniciales = [
 
 function Admin() {
   const navigate = useNavigate();
-  const [usuarios, setUsuarios] = useState([]);
+  const [usuarios, setUsuarios] = useState(() => {
+    const usuariosGuardados = localStorage.getItem("usuarios");
+    return usuariosGuardados ? JSON.parse(usuariosGuardados) : [];
+  });
   const [peliculas, setPeliculas] = useState(() => {
     const guardadas = localStorage.getItem("peliculas");
     return guardadas ? JSON.parse(guardadas) : peliculasIniciales;
@@ -41,8 +44,13 @@ function Admin() {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
-    setUsuarios(usuariosGuardados);
+    const data = localStorage.getItem("usuarios");
+
+    if (data) {
+      setUsuarios(JSON.parse(data));
+    } else {
+      setUsuarios(usuariosIniciales);
+    }
   }, []);
 
   useEffect(() => {
