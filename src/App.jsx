@@ -1,19 +1,20 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./componentes/NavBar/NavBar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import './App.css'
+import "./index.css";
+import Nav from "./componentes/Nav";
+import Footer from "./componentes/Footer";
+import Error404 from "./pages/Error404"
+import DetallePelicula from "./pages/DetallePelicula/DetallePelicula"
 
-
-// Páginas de ejemplo (creá tus componentes reales en /pages)
-import Home from "./pages/home/Home";
+import Home from "./pages/Home";
 import Contacto from "./pages/Contacto/Contacto";
-import Error404 from "./pages/error404/Error404";
+// import Error404 from "./pages/Error404";
 import AboutUs from "./pages/AboutUs/AboutUs";
-import Login from "./pages/Login/Login";
+// import Perfil from "./pages/Perfil/Perfil";
 import Registro from "./pages/Registro/Registro";
-import Contacto from "./pages/Contacto/Contacto";
-import { useEffect } from 'react';
-import { usuariosIniciales } from './helpers/users';
-import peliculasIniciales from './data/movies';
+import Login from "./pages/Login/Login";
+
+
 
 function App() {
   useEffect(() => {

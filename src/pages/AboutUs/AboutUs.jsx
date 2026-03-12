@@ -1,10 +1,19 @@
 import React from "react";
 import "./AboutUs.css";
+<<<<<<< HEAD
 import team1 from "../../../public/assets/team1.jpg";
 import team2 from "../../../public/assets/team2.jpg";
 import team3 from "../../../public/assets/team3.jpg";
 import team4 from "../../../public/assets/team4.jpg";
 import workspace from "../../../public/assets/workspace.jpg";
+=======
+import team1 from "../../assets/team1.jpg";
+import team2 from "../../assets/team2.jpg";
+import team3 from "../../assets/team3.jpg";
+import team4 from "../../assets/team4.jpg";
+import workspace from "../../assets/workspace.jpg";
+import cinema from "../../assets/cinema.jpg";
+>>>>>>> 5f12819 (se hizo estructura basica detalle de pelicula)
 
 const AboutUs = () => {
   return (
