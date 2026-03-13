@@ -45,29 +45,26 @@ const CardUsuarios = ({ usuarios, registroSistema , editarUsuario, eliminarUsuar
 
                     <div className="text-end">
 
-                      <div className="text-muted small">
-                        Último acceso: {usuario.ultimoAcceso}
-                      </div>
-
                       <Badge bg={!usuario.estado ? "danger" : "secondary"}>
                         {usuario.estado ? "Activo" : "Inactivo"}
                       </Badge>
                       <div className="d-flex gap-2">
 
-                       <button className="btn  btn-sm" onClick={() => {
-                         const nuevoNombre = prompt("Ingrese el nuevo nombre:", usuario.nombre);
-                         if (nuevoNombre) editarUsuario(usuario.id, nuevoNombre);
-                       }}>
-                         <FaPen />
-                       </button>
-                       
-                       <button className="btn  btn-sm" onClick={() => eliminarUsuario(usuario.id)}>
-                         <FaTrash />
-                       </button>
-                       
-                       </div>
-                       
-                       
+                      <button 
+                        className="btn btn-sm"
+                        onClick={() => editarUsuario(usuario)}
+                      >
+                        <FaPen />
+                      </button>
+                    
+                      <button 
+                        className="btn btn-sm"
+                        onClick={() => eliminarUsuario(usuario.id)}
+                      >
+                        <FaTrash />
+                      </button>
+                    
+                    </div>
                     </div>
 
                   </ListGroup.Item>
