@@ -1,5 +1,6 @@
 import React from "react";
 import "./DetallePelicula.css";
+import "@fontsource/poppins";
 import { FaPlay, FaPlus, FaHeart, FaShareAlt } from "react-icons/fa";
 import Reviews from "./Reviews"
 

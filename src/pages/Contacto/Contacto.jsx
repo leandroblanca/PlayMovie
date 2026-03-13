@@ -10,6 +10,7 @@ import {
   faMedal,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Contacto.css";
+import "@fontsource/poppins";
 
 const Contacto = () => {
   const soporteData = [

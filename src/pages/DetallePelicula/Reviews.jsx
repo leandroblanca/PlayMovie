@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import "./Reviews.css";
+import "@fontsource/poppins";
 
 export default function Reviews({ movieId }) {
   const [reviews, setReviews] = useState([
