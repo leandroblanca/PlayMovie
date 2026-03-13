@@ -1,11 +1,12 @@
 body {
   font-family: "Poppins", sans-serif;
+  background-color: var(--color-background-main);
+  color: var(--color-text-primary);
 }
 :root {
+  --color-primary: #ea2a33;
 
-  --color-primary: #EA2A33;
-
-  --color-text-primary: #F8F6F6;
+  --color-text-primary: #f8f6f6;
 
   --color-background-main: #181111;
 
@@ -13,6 +14,5 @@ body {
 
   --color-background-tertiary: #382929;
 
-  --color-background-deep: #1A0F0F;
-
+  --color-background-deep: #1a0f0f;
 }

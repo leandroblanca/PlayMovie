@@ -1,22 +1,33 @@
-import { BrowserRouter, Route, Routes } from 'react-router'
-import './App.css'
-import "./index.css";
-import { Router } from 'react-router'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./componentes/NavBar/NavBar";
 
-function App() {
-  
 
+// Páginas de ejemplo (creá tus componentes reales en /pages)
+import Home from "./pages/Home";
+import Contacto from "./pages/Contacto/Contacto";
+import Error404 from "./pages/Error404";
+import AboutUs from "./pages/AboutUs";
+import Perfil from "./pages/Perfil";
+import Peliculas from "./pages/Peliculas";
+import Login from "./pages/Login/Login";
+
+export default function App() {
   return (
-    <>
-    <BrowserRouter>
-    <Routes>
-      <Route>
-        
-      </Route>
-    </Routes>
-    </BrowserRouter>
-    </>
-  )
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/inicio" element={<Home />} />
+        <Route path="/contacto" element={<Contacto />} />
+        <Route path="/peliculas" element={<Peliculas />} />
+        <Route path="/error404" element={<Error404 />} />
+        <Route path="/nosotros" element={<AboutUs />} />
+        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/login" element={<Login />} />
+        {/* Ruta comodín para cualquier otra URL */}
+        <Route path="*" element={<Error404 />} />
+      </Routes>
+    </Router>
+  );
 }
-
-export default App
