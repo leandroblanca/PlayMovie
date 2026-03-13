@@ -8,8 +8,24 @@ import Login from "./pages/Login/Login";
 import AdminProtegida from "./pages/Admin/AdminProtegida";
 import Registro from "./pages/Registro/Registro";
 import Contacto from "./pages/Contacto/Contacto";
+import { useEffect } from 'react';
+import { usuariosIniciales } from './helpers/users';
+import peliculasIniciales from './data/movies';
 
 function App() {
+  useEffect(() => {
+    function primeraCarga () {
+      const peliculas = JSON.parse(localStorage.getItem("peliculas"));
+      const usuarios = JSON.parse(localStorage.getItem("usuarios"));
+      if (!peliculas || peliculas.length === 0) {
+        localStorage.setItem("peliculas", JSON.stringify(peliculasIniciales));
+      }
+      if (!usuarios || usuarios.length === 0) {
+        localStorage.setItem("usuarios", JSON.stringify(usuariosIniciales));
+      }
+    }
+    primeraCarga();
+  }, [])
   return (
     <>
       <BrowserRouter>
