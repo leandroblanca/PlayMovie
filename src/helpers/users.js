@@ -6,7 +6,7 @@ export const usuariosIniciales = [
     password: "Admin1234",
     rol: "admin",
     estado: true,
-    ultimoAcceso: "hace 1h",
+    
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export const usuariosIniciales = [
     password: "Maria1234",
     rol: "user",
     estado: true,
-    ultimoAcceso: "hace 2h",
+    
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ export const usuariosIniciales = [
     password: "Alex1234",
     rol: "user",
     estado: true,
-    ultimoAcceso: "hace 5h",
+    
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ export const usuariosIniciales = [
     password: "Sarah1234",
     rol: "user",
     estado: false,
-    ultimoAcceso: "hace 1 día",
+   
   },
   {
     id: 5,
@@ -42,6 +42,6 @@ export const usuariosIniciales = [
     password: "Michael1234",
     rol: "user",
     estado: true,
-    ultimoAcceso: "hace 3 días",
+   
   },
 ];
