@@ -1,0 +1,51 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { dashboardStats } from "./ObjetosAdmin.jsx";
+import {Card, Col, Container, Row } from "react-bootstrap";
+import "./Admin.css";
+import { faFilm, faUsers, faDollarSign, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+
+import React from 'react'
+
+const CardsAdmin = ({ dashboardStats }) => {
+  return (
+     <Container>
+ <Row className="g-4">
+    {dashboardStats.map(stat => (
+      <Col xs={12} sm={6} xl={3} key={stat.id}>
+
+        <Card className="dashboard-card mb-3 rounded-5 h-100 border-0 shadow-sm">
+
+          <Card.Body>
+
+            <div className="d-flex justify-content-between align-items-center mb-2">
+
+              <FontAwesomeIcon
+                icon={stat.icon}
+                className="dashboard-icon"
+              />
+
+              <span className="dashboard-trend">
+                {stat.tendencia} {stat.porcentaje}
+              </span>
+
+            </div>
+
+            <Card.Title className="dashboard-title">
+              {stat.titulo}
+            </Card.Title>
+
+            <Card.Text className="dashboard-value">
+              {stat.valor}
+            </Card.Text>
+
+          </Card.Body>
+
+        </Card>
+      </Col>
+    ))}
+  </Row>
+   </Container>
+   
+  )
+}
+export default CardsAdmin;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./Registro.css";
 import logo from "../../assets/logo.png";
 import { FcGoogle } from "react-icons/fc";
@@ -53,7 +53,8 @@ const Registro = () => {
       id: Date.now(),
       nombre,
       email,
-      password, 
+      password,
+      rol: "user",
     };
 
     const usuariosActualizados = [...usuariosGuardados, nuevoUsuario];
@@ -158,7 +159,7 @@ const Registro = () => {
                           
                     </Col>
                     <Col className="d-flex justify-content-center align-items-center ">
-                    <h6 className="registroText">¿Ya tienes una cuenta? <a className="iniciar-sesion-registro" href="/login">Inicia sesión aquí</a></h6>
+                    <h6 className="registroText">¿Ya tienes una cuenta? <Link className="iniciar-sesion-registro" to="/login">Inicia sesión aquí</Link></h6>
                     </Col>
                           
                </Row>

@@ -128,7 +128,6 @@ const Contacto = () => {
                   required
                   value={consulta}
                   onChange={(e) => setConsulta(e.target.value)}
-                  defaultValue=""
                 >
                   <option value="" disabled>
                     Selecciona una opción
