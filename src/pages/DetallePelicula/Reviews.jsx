@@ -59,7 +59,7 @@ export default function Reviews({ movieId }) {
         {editingId ? (
           <button onClick={() => handleEdit(editingId)}>Guardar cambios</button>
         ) : (
-          <button onClick={handleCreate}>Publicar reseña</button>
+          <button onClick={handleCreate}>Publicar Reseña</button>
         )}
       </div>
 

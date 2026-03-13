@@ -37,10 +37,10 @@ export default function MovieDetail() {
         <div className="movie-left">
           <h2>Elenco</h2>
           <div className="elenco">
-            <div><img src="/src/assets/actor1.jpg" alt="Matthew McConaughey" /><p>Matthew McConaughey (Cooper)</p></div>
-            <div><img src="/src/assets/actor2.jpg" alt="Anne Hathaway" /><p>Anne Hathaway (Brand)</p></div>
-            <div><img src="/src/assets/actor3.jpg" alt="Jessica Chastain" /><p>Jessica Chastain (Murph)</p></div>
-            <div><img src="/src/assets/actor4.jpg" alt="Michael Caine" /><p>Michael Caine (Profesor Brand)</p></div>
+            <div><img src="/src/assets/actor1.jpg" alt="Matthew McConaughey" /><p className="titulo1">Matthew McConaughey</p><p className="titulo2">Cooper</p></div>
+            <div><img src="/src/assets/actor2.jpg" alt="Anne Hathaway" /><p className="titulo1">Anne Hathaway</p><p className="titulo2">Brand</p></div>
+            <div><img src="/src/assets/actor3.jpg" alt="Jessica Chastain" /><p className="titulo1">Jessica Chastain</p><p className="titulo2">Murph</p></div>
+            <div><img src="/src/assets/actor4.jpg" alt="Michael Caine" /><p className="titulo1">Michael Caine</p><p className="titulo2">Profesor Brand</p></div>
           </div>
           <Reviews movieId="interstellar" />
         </div>

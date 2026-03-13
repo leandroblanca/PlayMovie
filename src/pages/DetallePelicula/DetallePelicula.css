@@ -9,14 +9,14 @@
 
 .movie-background img {
   width: 100%;
-  height: 70vh;
+  height: 100vh;
   object-fit: cover;
   filter: brightness(60%);
 }
 
 .movie-overlay {
   position: absolute;
-  top: 20%;
+  top: 50%;
   left: 5%;
   max-width: 600px;
 }
@@ -90,10 +90,24 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
+  text-align: center;
+  align-content: center;
 }
 
 .elenco img {
-  width: 30%;
-  height: 40%;
-  border-radius: 100%;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+}
+
+.titulo1 {
+  font-weight: bold;
+  
+  margin: 10px 0 0 0;
+}
+
+.titulo2 {
+  font-weight: bold;
+  color: grey;
+  margin: 0
 }
