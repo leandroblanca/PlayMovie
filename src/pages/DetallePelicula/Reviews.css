@@ -18,6 +18,8 @@
 
 .review-form button {
   background-color: #e50914;
+  width: 20%;
+  align-self: flex-end;
   color: #fff;
   border: none;
   padding: 0.6rem;

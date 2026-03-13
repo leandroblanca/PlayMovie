@@ -9,7 +9,7 @@ export default function MovieDetail() {
       {/* Fondo con posición relativa */}
       <div className="movie-background">
         <img
-          src="https://image.tmdb.org/t/p/original/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg"
+          src="/src/assets/interstellar.jpg"
           alt="Interstellar Background"
         />
 
@@ -46,18 +46,22 @@ export default function MovieDetail() {
         </div>
 
         <div className="movie-right">
-          <h2>Información de la Película</h2>
-          <p>Director: Christopher Nolan</p>
-          <p>Clasificación: PG-13</p>
-          <p>Producción: Legendary Pictures</p>
-          <p>Audio: Dolby Atmos</p>
-
-          <h2>Más como esta</h2>
-          <ul>
-            <li>Inception (2010 • CI-FI • ⭐ 8.8)</li>
-            <li>The Martian (2015 • CI-FI • ⭐ 8.0)</li>
-            <li>Arrival (2016 • CI-FI • ⭐ 7.9)</li>
-          </ul>
+          <div>
+            <h2>Información de la Película</h2>
+            <p className="titulo1">Director: </p> <p className="titulo2">Christopher Nolan</p>
+            <p className="titulo1">Clasificación: </p> <p className="titulo2">PG-13</p>
+            <p className="titulo1">Producción: </p> <p className="titulo2">Legendary Pictures</p>
+            <p className="titulo1">Audio: </p> <p className="titulo2">Dolby Atmos</p>
+          </div>
+          
+          <div>
+            <h2>Más como esta</h2>
+            <ul>
+              <li><img src="/src/assets/inception.png" alt="inception" /><p className="titulo1">Inception<p className="titulo2">2010 • CI-FI • ⭐ 8.8</p></p></li>
+              <li><img src="/src/assets/martian.png" alt="martian" /><p className="titulo1">The Martian <p className="titulo2">2015 • CI-FI • ⭐ 8.0</p></p></li>
+              <li><img src="/src/assets/arrival.png" alt="arrival" /><p className="titulo1">Arrival <p className="titulo2">2016 • CI-FI • ⭐ 7.9</p></p></li>
+             </ul>
+          </div>
         </div>
       </div>
     </div>

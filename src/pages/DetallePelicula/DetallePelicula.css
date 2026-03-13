@@ -81,9 +81,37 @@
 
 .movie-right {
   flex: 1;
-  background-color: rgba(255,255,255,0.05);
+  background-color: #181111;
   padding: 1rem;
   border-radius: 10px;
+}
+
+.movie-right div {
+  border: 1px solid #411315;
+  background-color: #2b1213;
+  /* height: 50%; */
+  margin-bottom: 10px;
+  border-radius: 8%;
+  padding: 20px;
+}
+
+.movie-right div ul li img {
+  width: 30%;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.movie-right ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.movie-right li {
+  display: flex;
+  list-style: none;
+    
 }
 
 .elenco {
@@ -110,4 +138,9 @@
   font-weight: bold;
   color: grey;
   margin: 0
+}
+
+h2 {
+  color: #e50914;
+  font-size: medium;
 }
