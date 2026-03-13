@@ -1,30 +1,34 @@
-import './App.css'
-import "./index.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Nav from "./componentes/Nav";
-import Footer from "./componentes/Footer";
-import Error404 from "./pages/Error404";
-import Login from "./pages/Login/Login";
-import AdminProtegida from "./pages/Admin/AdminProtegida";
-import Registro from "./pages/Registro/Registro";
-import Contacto from "./pages/Contacto/Contacto";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./componentes/NavBar/NavBar";
 
-function App() {
+
+// Páginas de ejemplo (creá tus componentes reales en /pages)
+import Home from "./pages/Home";
+import Contacto from "./pages/Contacto/Contacto";
+import Error404 from "./pages/Error404";
+import AboutUs from "./pages/AboutUs";
+import Perfil from "./pages/Perfil";
+import Peliculas from "./pages/Peliculas";
+import Login from "./pages/Login/Login";
+
+export default function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Nav />
-        <Routes>
-          <Route path="/" element={<Contacto />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/registro" element={<Registro />} />
-          <Route path="/admin" element={<AdminProtegida />} />
-          <Route path="*" element={<Error404 />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/inicio" element={<Home />} />
+        <Route path="/contacto" element={<Contacto />} />
+        <Route path="/peliculas" element={<Peliculas />} />
+        <Route path="/error404" element={<Error404 />} />
+        <Route path="/nosotros" element={<AboutUs />} />
+        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/login" element={<Login />} />
+        {/* Ruta comodín para cualquier otra URL */}
+        <Route path="*" element={<Error404 />} />
+      </Routes>
+    </Router>
   );
 }
 
-export default App;

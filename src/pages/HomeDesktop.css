@@ -1,0 +1,13 @@
+/* pages/HomeDesktop.css */
+.home-desktop-container {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: var(--text-primary);
+}
+
+.home-desktop-container h1 {
+  color: var(--primary);
+  font-size: 32px;
+  margin-bottom: 20px;
+}
