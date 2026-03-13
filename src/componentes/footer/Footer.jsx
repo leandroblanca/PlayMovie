@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Footer.css";
-import logo from "../../src/assets/logo.png";
+import logo from "../../../public/assets/logo.png";
 
 function Footer() {
   return (
@@ -89,4 +89,3 @@ function Footer() {
 }
 
 export default Footer;
-

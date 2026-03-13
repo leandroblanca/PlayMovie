@@ -1,11 +1,14 @@
-import './App.css'
-import "./index.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Nav from "./componentes/Nav";
-import Footer from "./componentes/Footer";
-import Error404 from "./pages/Error404";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./componentes/NavBar/NavBar";
+
+
+// Páginas de ejemplo (creá tus componentes reales en /pages)
+import Home from "./pages/home/Home";
+import Contacto from "./pages/Contacto/Contacto";
+import Error404 from "./pages/error404/Error404";
+import AboutUs from "./pages/AboutUs/AboutUs";
 import Login from "./pages/Login/Login";
-import AdminProtegida from "./pages/Admin/AdminProtegida";
 import Registro from "./pages/Registro/Registro";
 import Contacto from "./pages/Contacto/Contacto";
 import { useEffect } from 'react';
@@ -27,20 +30,18 @@ function App() {
     primeraCarga();
   }, [])
   return (
-    <>
-      <BrowserRouter>
-        <Nav />
-        <Routes>
-          <Route path="/" element={<Contacto />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/registro" element={<Registro />} />
-          <Route path="/admin" element={<AdminProtegida />} />
-          <Route path="*" element={<Error404 />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contacto" element={<Contacto />} />
+        <Route path="/error404" element={<Error404 />} />
+        <Route path="/nosotros" element={<AboutUs />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/registro" element={<Registro />} />
+        <Route path="*" element={<Error404 />} />
+      </Routes>
+      <Footer/>
+    </Router>
   );
 }
-
-export default App;

@@ -1,0 +1,151 @@
+/* Navbar.css */
+.navbar {
+  background-color: #141414;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  position: fixed;
+  top: 0;         
+  left: 0;
+  width: 100%;       
+  z-index: 1000;  
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navbar-logo img {
+  height: 40px;
+  width: auto;
+  margin-right: 10px;
+}
+
+.logo-text {
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.navbar-logo img {
+  height: 40px;
+  width: auto;
+}
+
+.navbar-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-item {
+  margin: 0 0.8rem;
+  display: flex;
+  align-items: center;
+
+}
+
+.navbar-item a {
+  color: #e5e5e5;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar-item a:hover {
+  color: #ffffff;
+}
+
+.btn-login {
+  background-color: #e50914; 
+  color: #ffffff;          
+  padding: 0.4rem 1rem;
+  border-radius: 20px;      
+  font-weight: bold;
+  text-decoration: none;    
+  transition: background-color 0.3s ease;
+}
+
+.btn-login:hover {
+  background-color: #f6121d; 
+  color: #fff;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: #222;
+  padding: 0.3rem 0.6rem;
+  border-radius: 20px;
+}
+
+.search-icon {
+  color: #e5e5e5;
+  margin-right: 0.5rem;
+}
+
+.search-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 0.9rem;
+  padding-top: 0;
+}
+
+.search-input::placeholder {
+  color: #aaa;
+}
+
+/* Hamburguesa */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  height: 3px;
+  width: 25px;
+  background: #e5e5e5;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .navbar-list {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #141414;
+    position: absolute;
+    top: 60px;
+    left: 0;
+  }
+
+  .navbar-list.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .navbar-item {
+    margin: 1rem;
+    text-align: center;
+  }
+}

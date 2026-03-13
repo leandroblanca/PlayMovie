@@ -1,6 +1,6 @@
 .error-container {
   text-align: center;
-   background: 
+  background: 
     radial-gradient(circle at top left, rgba(120,20,20,0.5), transparent 40%),
     radial-gradient(circle at bottom right, rgba(120,20,20,0.5), transparent 40%),
     #0b0202;
@@ -78,7 +78,7 @@
 .btn-custom {
   display: flex;
   align-items: center;
-  gap: 10px; /* Espacio entre ícono y texto */
+  gap: 10px;
   font-weight: bold;
   padding: 12px 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);

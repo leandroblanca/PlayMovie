@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 import "./Registro.css";
-import logo from "../../assets/logo.png";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF, FaSpotify } from "react-icons/fa";
 

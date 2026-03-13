@@ -1,5 +1,5 @@
 .aboutus-container {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Helvetica Neue", Arial, sans-serif;
   color: #f5f5f5;
   background-color: #121212;
   line-height: 1.6;
@@ -7,7 +7,7 @@
 
 /* Hero Section */
 .hero {
-  background: url("../assets/cinema.jpg") center/cover no-repeat;
+  background: url("../../assets/cinema.jpg") center/cover no-repeat;
   padding: 120px 20px;
   text-align: center;
   color: #fff;
@@ -22,8 +22,8 @@
 }
 
 .hero h2 {
-    font-size: 70px;
-    font-weight: bold;
+  font-size: 70px;
+  font-weight: bold;
 }
 
 .hero p {
@@ -47,7 +47,11 @@
 /* Mission Section */
 .mission {
   background: #211111;
-  background: linear-gradient(0deg,rgba(33, 17, 17, 1) 50%, rgba(0, 0, 0, 1) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(33, 17, 17, 1) 50%,
+    rgba(0, 0, 0, 1) 100%
+  );
   padding: 80px 20px;
   align-items: center;
 }
@@ -84,20 +88,20 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  align-items:flex-start;
+  align-items: flex-start;
   padding-top: 20px;
   background-color: rgb(255, 46, 46) !important;
 }
 .badge1 {
-    font-size: 11px;
-    font-weight: bolder;
+  font-size: 11px;
+  font-weight: bolder;
 }
 
 /* Team Section */
 .team {
   padding: 80px 20px;
   text-align: center;
-  }
+}
 
 .team h2 {
   color: #e50914;
@@ -123,30 +127,30 @@
 }
 
 .team h6 {
-    padding: 0 15px 0 15px;
-    color: rgba(128, 128, 128, 0.568);
+  padding: 0 15px 0 15px;
+  color: rgba(128, 128, 128, 0.568);
 }
 
 .card {
-    width: 60%;
-    align-items: center;
-    background-color: black;
-    border-radius: 15px;
+  width: 60%;
+  align-items: center;
+  background-color: black;
+  border-radius: 15px;
 }
 .card > img {
-    width: 80%;
-    padding: 20px 5px 5px 5px;
-    }
+  width: 80%;
+  padding: 20px 5px 5px 5px;
+}
 
 .team .row .col-md-3 {
-    padding: 0px;
-    margin: 0;
-    display: flex;
-    justify-content: space-around;
+  padding: 0px;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
 }
 
 .row .col-md-3 .card .SV {
-    width: 83%;
+  width: 83%;
 }
 
 /* Call to Action */
@@ -158,9 +162,9 @@
 }
 
 .cta > div {
-    width: 60%;
-    background-color: rgb(255, 46, 46);
-    border-radius: 15px;
+  width: 60%;
+  background-color: rgb(255, 46, 46);
+  border-radius: 15px;
 }
 .cta h2 {
   text-align: center;
@@ -171,7 +175,7 @@
 }
 
 .cta p {
-  font-size: 16px; 
+  font-size: 16px;
   font-weight: bold;
   max-width: 600px;
   margin: 0 auto 30px;
@@ -191,11 +195,10 @@
   border: none;
   width: 300px;
   background-color: #ed3f48;
-  
 }
 
 input::placeholder {
-    color: silver;
+  color: silver;
 }
 .subscribe button {
   border-radius: 20px;
@@ -220,7 +223,8 @@ input::placeholder {
     text-align: center;
   }
 
-  .mission-text, .mission-img {
+  .mission-text,
+  .mission-img {
     margin-bottom: 30px;
   }
 
