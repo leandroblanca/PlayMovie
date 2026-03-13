@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import users from "../../helpers/users";
+import { usuariosIniciales } from "../../helpers/users";
 import "./Login.css";
 
 
@@ -21,11 +21,11 @@ const Login = () => {
     return;
   }
 
-  const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
+  const usuariosInicialesGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-  const todosLosUsuarios = [...users, ...usuariosGuardados];
+  const todosLosusuariosIniciales = [...usuariosIniciales, ...usuariosInicialesGuardados];
 
-  const usuarioEncontrado = todosLosUsuarios.find(
+  const usuarioEncontrado = todosLosusuariosIniciales.find(
     (usuario) => usuario.email === email
   );
 
