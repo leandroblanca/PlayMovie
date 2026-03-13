@@ -2,33 +2,20 @@ import { Button, Container, Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Sidebar from "./Sidebar"
 import TablaPeliculas from "./TablaPeliculas";
-import ModalAdmin from "./ModalAdmin";
+import ModalPeliculas from "./ModalPeliculas.jsx";
 import CardsUsuarios from "./CardUsuarios.jsx";
 import { registroSistema } from "./ObjetosAdmin.jsx";
 import peliculasIniciales from "../../data/movies.js";
+import ModalUsuarios from "./ModalUsuarios.jsx";
 import { useNavigate } from "react-router";
+import { usuariosIniciales } from "../../helpers/users.js";
 import "./Admin.css";
-
-const usuariosIniciales = [
-  {
-    id: "a1",
-    nombre: "Usuario de Prueba 1",
-    estado: "ACTIVO",
-    ultimoAcceso: "hace 1 hora",
-  },
-  {
-    id: "a2",
-    nombre: "Usuario de Prueba 2",
-    estado: "INACTIVO",
-    ultimoAcceso: "hace 2 dias",
-  },
-];
 
 function Admin() {
   const navigate = useNavigate();
   const [usuarios, setUsuarios] = useState(() => {
     const usuariosGuardados = localStorage.getItem("usuarios");
-    return usuariosGuardados ? JSON.parse(usuariosGuardados) : [];
+    return usuariosGuardados ? JSON.parse(usuariosGuardados) : usuariosIniciales;
   });
   const [peliculas, setPeliculas] = useState(() => {
     const guardadas = localStorage.getItem("peliculas");
@@ -39,23 +26,20 @@ function Admin() {
   const [titulo, setTitulo] = useState("");
   const [anio, setAnio] = useState("");
   const [poster, setPoster] = useState("");
+  const [categorias, setCategorias] = useState("");
+  const [video, setVideo] = useState("");
+  const [descripcion, setDescripcion] = useState("");
   const [editarId, setEditarId] = useState(null);
   const [busqueda, setBusqueda] = useState("");
+
+  const [showUserModal, setShowUserModal] = useState(false);
+  const [nombreUser, setNombreUser] = useState("");
+  const [emailUser, setEmailUser] = useState("");
+  const [rolUser, setRolUser] = useState("");
+  const [estadoUser, setEstadoUser] = useState(true);
+  const [editarUserId, setEditarUserId] = useState(null);
+
   const handleShow = () => setShow(true);
-
-  useEffect(() => {
-    const data = localStorage.getItem("usuarios");
-
-    if (data) {
-      setUsuarios(JSON.parse(data));
-    } else {
-      setUsuarios(usuariosIniciales);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("usuarios", JSON.stringify(usuarios));
-  }, [usuarios]);
 
   const registrarUsuario = (nombre) => {
 
@@ -63,7 +47,7 @@ function Admin() {
       id: crypto.randomUUID(),
       nombre,
       estado: "ACTIVO",
-      ultimoAcceso: "ahora"
+      
     };
 
     setUsuarios([...usuarios, nuevoUsuario]);
@@ -72,17 +56,28 @@ function Admin() {
   const eliminarUsuario = (id) => {
     const nuevosUsuarios = usuarios.filter(u => u.id !== id);
     setUsuarios(nuevosUsuarios);
+    localStorage.setItem("usuarios", JSON.stringify(nuevosUsuarios));
   };
 
-  const editarUsuario = (id, nuevoNombre) => {
+  const editarUsuario = (usuario) => {
+    setNombreUser(usuario.nombre);
+    setEmailUser(usuario.email);
+    setRolUser(usuario.rol);
+  
+    setEstadoUser(usuario.estado === "ACTIVO" || usuario.estado === true);
+    setEditarUserId(usuario.id);
+    setShowUserModal(true);
+  };
 
-    const usuariosActualizados = usuarios.map(usuario =>
-      usuario.id === id
-        ? { ...usuario, nombre: nuevoNombre }
-        : usuario
+  const guardarUsuario = (e) => {
+    e.preventDefault();
+    const usuariosActualizados = usuarios.map((u) =>
+      u.id === editarUserId ? { ...u, nombre: nombreUser, email: emailUser, rol: rolUser, estado: estadoUser } : u
     );
-
     setUsuarios(usuariosActualizados);
+    localStorage.setItem("usuarios", JSON.stringify(usuariosActualizados));
+    setShowUserModal(false);
+    setEditarUserId(null);
   };
 
   useEffect(() => {
@@ -97,9 +92,12 @@ function Admin() {
       const nuevaPelicula = {
         id: crypto.randomUUID(),
         titulo,
+        poster,
+        categorias,
         anio,
-        poster
-      };
+        descripcion,
+        video,
+              };
 
       setPeliculas([...peliculas, nuevaPelicula]);
 
@@ -107,7 +105,7 @@ function Admin() {
 
       const peliculasActualizadas = peliculas.map(pelicula =>
         pelicula.id === editarId
-          ? { ...pelicula, titulo, anio, poster }
+          ? { ...pelicula, titulo, anio, poster, categorias, video, descripcion }
           : pelicula
       );
 
@@ -118,6 +116,9 @@ function Admin() {
     setTitulo("");
     setAnio("");
     setPoster("");
+    setCategorias("");
+    setVideo("");
+    setDescripcion("");
     setShow(false);
   };
 
@@ -127,15 +128,16 @@ function Admin() {
     setPeliculas(nuevasPeliculas);
   };
 
-  const editarPelicula = (id) => {
-
-    const pelicula = peliculas.find(p => p.id === id);
+  const editarPelicula = (pelicula) => {
 
     setTitulo(pelicula.titulo);
     setAnio(pelicula.anio);
     setPoster(pelicula.poster);
+    setCategorias(pelicula.categorias);
+    setVideo(pelicula.video);
+    setDescripcion(pelicula.descripcion);
 
-    setEditarId(id);
+    setEditarId(pelicula.id);
     setShow(true);
   };
 
@@ -151,6 +153,9 @@ function Admin() {
     setTitulo("");
     setAnio("");
     setPoster("");
+    setCategorias("");
+    setVideo("");
+    setDescripcion("");
   };
 
   const peliculasFiltradas = peliculas.filter(p =>
@@ -195,7 +200,7 @@ function Admin() {
               peliculasFiltradas={peliculasFiltradas}
             />
 
-            <ModalAdmin
+            <ModalPeliculas
               show={show}
               handleClose={handleClose}
               editarId={editarId}
@@ -205,6 +210,12 @@ function Admin() {
               setAnio={setAnio}
               poster={poster}
               setPoster={setPoster}
+              categorias={categorias}
+              setCategorias={setCategorias}
+              video={video}
+              setVideo={setVideo}
+              descripcion={descripcion}
+              setDescripcion={setDescripcion}
               onSubmit={onSubmit}
             />
 
@@ -214,6 +225,22 @@ function Admin() {
               eliminarUsuario={eliminarUsuario}
               editarUsuario={editarUsuario}
               registroSistema={registroSistema}
+            />
+
+            
+            <ModalUsuarios
+              show={showUserModal}
+              handleClose={() => setShowUserModal(false)}
+              editarId={editarUserId}
+              nombre={nombreUser}
+              setNombre={setNombreUser}
+              email={emailUser}
+              setEmail={setEmailUser}
+              rol={rolUser}
+              setRol={setRolUser}
+              estado={estadoUser}
+              setEstado={setEstadoUser}
+              onSubmit={guardarUsuario}
             />
 
           </Col>

@@ -1,36 +1,47 @@
-const users = [
+export const usuariosIniciales = [
   {
     id: 1,
     nombre: "Admin",
     email: "admin@gmail.com",
-    password: "1234",
-    rol: "admin"
+    password: "Admin1234",
+    rol: "admin",
+    estado: true,
+    
   },
   {
     id: 2,
-    nombre: "User",
-    email: "user@gmail.com",
-    password: "1234",
-    rol: "user"
+    nombre: "María López",
+    email: "maria@gmail.com",
+    password: "Maria1234",
+    rol: "user",
+    estado: true,
+    
   },
-   {
+  {
     id: 3,
     nombre: "Alex Johnson",
-    estado: "ACTIVO",
-    ultimoAcceso: "hace 2h"
+    email: "alex@gmail.com",
+    password: "Alex1234",
+    rol: "user",
+    estado: true,
+    
   },
   {
     id: 4,
     nombre: "Sarah Miller",
-    estado: "ACTIVO",
-    ultimoAcceso: "hace 5h"
+    email: "sarah@gmail.com",
+    password: "Sarah1234",
+    rol: "user",
+    estado: false,
+   
   },
   {
     id: 5,
     nombre: "Michael Brown",
-    estado: "INACTIVO",
-    ultimoAcceso: "hace 1 día"
-  }
+    email: "michael@gmail.com",
+    password: "Michael1234",
+    rol: "user",
+    estado: true,
+   
+  },
 ];
-
-export default users;
