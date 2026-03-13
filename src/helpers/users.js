@@ -1,12 +1,12 @@
-export const usuarios = [
+export const usuariosIniciales = [
   {
     id: 1,
     nombre: "Admin",
     email: "admin@gmail.com",
     password: "Admin1234",
     rol: "admin",
-    estado: "ACTIVO",
-    ultimoAcceso: "hace 1h"
+    estado: true,
+    ultimoAcceso: "hace 1h",
   },
   {
     id: 2,
@@ -14,8 +14,8 @@ export const usuarios = [
     email: "maria@gmail.com",
     password: "Maria1234",
     rol: "user",
-    estado: "ACTIVO",
-    ultimoAcceso: "hace 2h"
+    estado: true,
+    ultimoAcceso: "hace 2h",
   },
   {
     id: 3,
@@ -23,8 +23,8 @@ export const usuarios = [
     email: "alex@gmail.com",
     password: "Alex1234",
     rol: "user",
-    estado: "ACTIVO",
-    ultimoAcceso: "hace 5h"
+    estado: true,
+    ultimoAcceso: "hace 5h",
   },
   {
     id: 4,
@@ -32,8 +32,8 @@ export const usuarios = [
     email: "sarah@gmail.com",
     password: "Sarah1234",
     rol: "user",
-    estado: "INACTIVO",
-    ultimoAcceso: "hace 1 día"
+    estado: false,
+    ultimoAcceso: "hace 1 día",
   },
   {
     id: 5,
@@ -41,7 +41,7 @@ export const usuarios = [
     email: "michael@gmail.com",
     password: "Michael1234",
     rol: "user",
-    estado: "ACTIVO",
-    ultimoAcceso: "hace 3 días"
-  }
+    estado: true,
+    ultimoAcceso: "hace 3 días",
+  },
 ];
