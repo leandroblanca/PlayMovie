@@ -7,28 +7,14 @@ import CardsUsuarios from "./CardUsuarios.jsx";
 import { registroSistema } from "./ObjetosAdmin.jsx";
 import peliculasIniciales from "../../data/movies.js";
 import { useNavigate } from "react-router";
+import { usuariosIniciales } from "../../helpers/users.js";
 import "./Admin.css";
-
-const usuariosIniciales = [
-  {
-    id: "a1",
-    nombre: "Usuario de Prueba 1",
-    estado: "ACTIVO",
-    ultimoAcceso: "hace 1 hora",
-  },
-  {
-    id: "a2",
-    nombre: "Usuario de Prueba 2",
-    estado: "INACTIVO",
-    ultimoAcceso: "hace 2 dias",
-  },
-];
 
 function Admin() {
   const navigate = useNavigate();
   const [usuarios, setUsuarios] = useState(() => {
     const usuariosGuardados = localStorage.getItem("usuarios");
-    return usuariosGuardados ? JSON.parse(usuariosGuardados) : [];
+    return usuariosGuardados ? JSON.parse(usuariosGuardados) : usuariosIniciales;
   });
   const [peliculas, setPeliculas] = useState(() => {
     const guardadas = localStorage.getItem("peliculas");
@@ -42,20 +28,6 @@ function Admin() {
   const [editarId, setEditarId] = useState(null);
   const [busqueda, setBusqueda] = useState("");
   const handleShow = () => setShow(true);
-
-  useEffect(() => {
-    const data = localStorage.getItem("usuarios");
-
-    if (data) {
-      setUsuarios(JSON.parse(data));
-    } else {
-      setUsuarios(usuariosIniciales);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("usuarios", JSON.stringify(usuarios));
-  }, [usuarios]);
 
   const registrarUsuario = (nombre) => {
 
@@ -72,6 +44,7 @@ function Admin() {
   const eliminarUsuario = (id) => {
     const nuevosUsuarios = usuarios.filter(u => u.id !== id);
     setUsuarios(nuevosUsuarios);
+    localStorage.setItem("usuarios", JSON.stringify(nuevosUsuarios));
   };
 
   const editarUsuario = (id, nuevoNombre) => {
@@ -83,6 +56,7 @@ function Admin() {
     );
 
     setUsuarios(usuariosActualizados);
+    localStorage.setItem("usuarios", JSON.stringify(usuariosActualizados));
   };
 
   useEffect(() => {
