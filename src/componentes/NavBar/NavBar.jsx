@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./NavBar.css";
-import logo from "../../assets/logo.png"; 
-import { FaFilm, FaUser, FaBell } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
-
-
+import logo from "../../../public/assets/logo.png"; 
 
 const navConfig = {
   "/": ["Peliculas", "Series", "Nosotros", "Buscar Peliculas", "Notificaciones", "Suscribirse", "Iniciar Sesión"],
@@ -14,14 +11,15 @@ const navConfig = {
   "/404": ["Peliculas", "Series", "Nosotros", "Buscar Peliculas", "Notificaciones", "Perfil", "Usuario"],
   "/nosotros": ["Peliculas", "Series", "Buscar Peliculas", "Contacto", "Suscribirse", "Iniciar Sesión"],
   "/perfil": ["Peliculas", "Series", "Nosotros", "Buscar Peliculas", "Notificaciones", "Configuración", "Perfil"],
-  "/peliculas": ["Inicio","Series", "Nosotros", "Buscar Peliculas", "Notificaciones", "Configuración", "Perfil"],
+  "/peliculas": ["Inicio", "Series", "Nosotros", "Buscar Peliculas", "Notificaciones", "Configuración", "Perfil"],
   "/login": ["Inicio", "Peliculas", "Series", "Iniciar Sesión"],
 };
 
 export default function Navbar() {
   const location = useLocation();
   const currentPath = location.pathname;
-  const items = navConfig[currentPath] || [];
+  const items = navConfig[currentPath] || navConfig["/"];
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -32,11 +30,13 @@ export default function Navbar() {
           <span className="logo-text">PlayMovie</span>
         </Link>
       </div>
+
       <div className="menu-toggle" onClick={() => setIsOpen(!isOpen)}>
         <span></span>
         <span></span>
         <span></span>
       </div>
+
       <ul className={`navbar-list ${isOpen ? "active" : ""}`}>
         {items.map((item, index) => (
           <li key={index} className="navbar-item">
@@ -60,6 +60,6 @@ export default function Navbar() {
           </li>
         ))}
       </ul>
-     </nav>
+    </nav>
   );
 }

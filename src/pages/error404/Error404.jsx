@@ -1,6 +1,6 @@
 import React from 'react';
 import './Error404.css';
-import errorImage from '../assets/error404-cine.png';
+import errorImage from '../../../public/assets/error404-cine.png';
 import { FaHome, FaSearch } from 'react-icons/fa';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
-import logo from "../../assets/logo.png";
 import users from "../../helpers/users";
+import logo from "../../../public/assets/logo.png";
 import "./Login.css";
 
 
