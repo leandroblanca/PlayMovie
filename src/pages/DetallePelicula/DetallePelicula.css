@@ -1,18 +1,21 @@
 .movie-detail {
-  position: relative;
   color: #fff;
-  font-family: 'Arial', sans-serif;
+  overflow-x: hidden;
+}
+
+.movie-background {
+  position: relative; /* clave para que el overlay se posicione dentro */
 }
 
 .movie-background img {
   width: 100%;
-  height: 100vh;
+  height: 70vh;
   object-fit: cover;
-  filter: brightness(50%);
+  filter: brightness(60%);
 }
 
-.movie-content {
-  /* position: absolute; */
+.movie-overlay {
+  position: absolute;
   top: 20%;
   left: 5%;
   max-width: 600px;
@@ -21,27 +24,23 @@
 .movie-title {
   font-size: 3rem;
   font-weight: bold;
-  margin-bottom: 0.5rem;
 }
 
 .movie-info {
-  font-size: 1rem;
-  color: #aaa;
+  color: #ccc;
   margin-bottom: 1rem;
 }
 
 .movie-description {
-  font-size: 1rem;
-  line-height: 1.4;
   margin-bottom: 1.5rem;
 }
 
 .movie-buttons {
   display: flex;
   gap: 1rem;
-  margin-bottom: 2rem;
 }
 
+/* Botones */
 .btn-play {
   background-color: #e50914;
   color: #fff;
@@ -55,12 +54,8 @@
   gap: 0.5rem;
 }
 
-.btn-play:hover {
-  background-color: #f6121d;
-}
-
 .btn-secondary {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255,255,255,0.2);
   color: #fff;
   border: none;
   padding: 0.6rem 1.2rem;
@@ -71,36 +66,34 @@
   gap: 0.5rem;
 }
 
-.btn-secondary:hover {
-  background-color: rgba(255, 255, 255, 0.4);
+/* Layout debajo */
+.movie-layout {
+  display: flex;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
 }
 
-.movie-section {
-  margin-bottom: 1.5rem;
+.movie-left {
+  flex: 2;
 }
 
-.movie-section h2 {
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
+.movie-right {
+  flex: 1;
+  background-color: rgba(255,255,255,0.05);
+  padding: 1rem;
+  border-radius: 10px;
 }
 
-/* Responsivo */
-@media (max-width: 768px) {
-  .movie-content {
-    position: static;
-    padding: 1rem;
-  }
+.elenco {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
 
-  .movie-title {
-    font-size: 2rem;
-  }
-
-  .movie-description {
-    font-size: 0.9rem;
-  }
-
-  .movie-buttons {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+.elenco img {
+  width: 30%;
+  height: 40%;
+  border-radius: 100%;
 }

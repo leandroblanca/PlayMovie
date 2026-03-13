@@ -1,0 +1,60 @@
+.reviews-section {
+  margin-top: 2rem;
+  color: #fff;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.review-form textarea {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: none;
+}
+
+.review-form button {
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.review-form button:hover {
+  background-color: #f6121d;
+}
+
+.reviews-list {
+  list-style: none;
+  padding: 0;
+}
+
+.reviews-list li {
+  background-color: rgba(255,255,255,0.1);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.review-actions button {
+  margin-right: 0.5rem;
+  background-color: rgba(255,255,255,0.2);
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.review-actions button:hover {
+  background-color: rgba(255,255,255,0.4);
+}
+
+.stars {
+  display: flex;
+  gap: 0.2rem;
+}
