@@ -1,5 +1,7 @@
 import React from 'react'
 import "./Usuario.css"
+import { useState } from 'react';
+import { FaCheckCircle } from "react-icons/fa";
 
 const Usuario = () => {
   const [nombre, setNombre] = useState("Alex Rivers")
