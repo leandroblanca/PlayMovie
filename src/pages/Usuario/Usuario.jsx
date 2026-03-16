@@ -26,6 +26,23 @@ const Usuario = () => {
           <button className='Cerrar-Sesion'>Cerrar Sesión</button>
         </div>
       </div>
+      <div className='Estadisticas'>
+        <div className='stat'>
+          <h2>124</h2>
+          <h5>Peliculas</h5>
+          <p className='Letras'>VISTOS</p>
+        </div>
+        <div className='stat'>
+          <h2>45</h2>
+          <h5>Series</h5>
+          <p className='Letras'>VISTOS</p>
+        </div>
+        <div className='stat'>
+          <h2>12</h2>
+          <h5>Documentales</h5>
+          <p className='Letras'>VISTOS</p>
+        </div>
+      </div>
     </>
   )
 }
