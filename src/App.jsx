@@ -10,6 +10,7 @@ import Error404 from "./pages/error404/Error404";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Login from "./pages/Login/Login";
 import Registro from "./pages/Registro/Registro";
+import Usuario from "./pages/Usuario/Usuario";
 import { useEffect } from 'react';
 import { usuariosIniciales } from './helpers/users';
 import peliculasIniciales from './data/movies';
@@ -38,6 +39,7 @@ function App() {
         <Route path="/nosotros" element={<AboutUs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
+        <Route path="/usuario" element={<Usuario />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer/>

@@ -1,0 +1,26 @@
+* {
+    text-align: start;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --Fondo: #211111;
+    --Fondo-Dentro: #2b1313;
+    --Segundo-Fondo:#3e1416;
+    --Bordes: #411315;
+    --Boton-Rojo:#e92c32;
+    --Avatar:#e22535;
+    --Hover-Botones:#e02f41;
+    --Guardar: rgb(13, 104, 13);
+}
+
+#root {
+    background: #211111;
+}
+
+h1 {
+    font-size: 35px;
+    margin: 0;
+}
