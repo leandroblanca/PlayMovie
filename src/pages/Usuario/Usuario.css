@@ -84,3 +84,27 @@ h1 {
     text-align: left;
     border: solid 1.5px var(--Bordes);
 }
+
+.Item {
+    padding: 12px 20px;
+    background: none;
+    color: white;
+    border: none;
+}
+
+.Extra {
+    padding: 12px 20px;
+    background: none;
+    color: white;
+    border: none;
+}
+
+.Item:hover {
+    color: var(--Hover-Botones);
+    transform: scale(1.02);
+}
+
+.Extra:hover {
+    color: var(--Hover-Botones);
+    transform: scale(1.02);
+}
