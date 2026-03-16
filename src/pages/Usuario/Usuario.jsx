@@ -65,6 +65,12 @@ const Usuario = () => {
             <h3 className='Favoritos'>Mis Favoritos</h3>
             <button className='VerTodo'>Ver Todo</button>
           </div>
+          <div className='Peliculas'>
+            <div className='Pelis'></div>
+            <div className='Pelis'></div>
+            <div className='Pelis'></div>
+            <div className='Pelis'></div>
+          </div>
         </div>
       </div>
     </>
