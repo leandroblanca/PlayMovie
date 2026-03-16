@@ -16,12 +16,12 @@ const Usuario = () => {
   return (
     <>
       <div className='Perfil-Info'>
-        <img src=""
+        <img className='Avatar' src=""
           alt="Foto de Usuario" />
         <div className='User'>
           <h1></h1>
           <p className='Email'></p>
-          <span><strong>MIEMBRO PREMIUM</strong></span>
+          <span><strong className='Premium'>MIEMBRO PREMIUM</strong></span>
         </div>
         <div className='Botones'>
           <button className='Editar'>Editar Perfil</button>

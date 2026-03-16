@@ -47,3 +47,23 @@ h1 {
     background-color: var(--Boton-Rojo);
     border-radius: 20px;
 }
+
+.Premium {
+    color: #ca3a47;
+    background-color: #4f171a;
+    padding: 4px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.User {
+    margin-right: 300px;
+}
+
+.Avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: solid 6px var(--Avatar);
+}
