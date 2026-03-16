@@ -48,6 +48,18 @@ const Usuario = () => {
         <button className='Item'>Subscripción</button>
         <button className='Extra'>Mis favoritos</button>
       </div>
+      <div className='Contenido'>
+        <div className='Panel-Izquierdo'>
+          <h4>Plan de Subscripción</h4>
+          <div className='Plan'>
+            <p className='Hd'><strong className='Hd'>ULTRA HD 4K</strong></p>
+            <span className='Mes'><strong className='Precio'>15.99</strong>/Mes</span>
+          </div>
+          <li><p className='Icono'>4 Pantallas a la vez</p></li>
+          <li><p className='Icono'>Ultra HD dispinible</p></li>
+          <li><p className='Icono'>Descargas ilimitadas</p></li>
+        </div>
+      </div>
     </>
   )
 }
