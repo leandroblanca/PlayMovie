@@ -6,6 +6,11 @@ const Usuario = () => {
   const [email, setEmail] = useState("alex.rivers@gmail.com")
   const [clave, setClave] = useState("")
   const [genero, setGenero] = useState("hombre")
+  const usuario = {
+    nombre: "Alex Rivers",
+    email: "alex.rivers@gamil.com",
+    genero: "hombre"
+  }
   return (
     <>
       <div className='Perfil-Info'>
