@@ -59,6 +59,13 @@ const Usuario = () => {
           <li><p className='Icono'>Ultra HD dispinible</p></li>
           <li><p className='Icono'>Descargas ilimitadas</p></li>
         </div>
+        <div className='Panel-Derecho'>
+          <h3 className='Reciente'>Agregados Recientemente a Favoritos</h3>
+          <div className='Fav'>
+            <h3 className='Favoritos'>Mis Favoritos</h3>
+            <button className='VerTodo'>Ver Todo</button>
+          </div>
+        </div>
       </div>
     </>
   )
