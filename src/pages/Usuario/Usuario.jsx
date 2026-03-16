@@ -43,6 +43,11 @@ const Usuario = () => {
           <p className='Letras'>VISTOS</p>
         </div>
       </div>
+      <div className='tabs'>
+        <button className='Item'>Ajustes de cuenta</button>
+        <button className='Item'>Subscripción</button>
+        <button className='Extra'>Mis favoritos</button>
+      </div>
     </>
   )
 }
