@@ -108,3 +108,20 @@ h1 {
     color: var(--Hover-Botones);
     transform: scale(1.02);
 }
+
+.Letras {
+    font-size: 12px;
+}
+
+.Contenido {
+    display: flex;
+    margin-top: 30px;
+    gap: 30px;
+}
+
+.Panel-Izquierdo {
+    width: 260px;
+    border: solid 1.5px var(--Bordes);
+    border-radius: 15px;
+    padding: 20px;
+}
