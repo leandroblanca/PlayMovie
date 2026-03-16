@@ -21,6 +21,10 @@ const Usuario = () => {
           <p className='Email'></p>
           <span><strong>MIEMBRO PREMIUM</strong></span>
         </div>
+        <div className='Botones'>
+          <button className='Editar'>Editar Perfil</button>
+          <button className='Cerrar-Sesion'>Cerrar Sesión</button>
+        </div>
       </div>
     </>
   )
