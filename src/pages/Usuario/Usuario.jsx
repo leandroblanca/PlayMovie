@@ -59,6 +59,28 @@ const Usuario = () => {
                     maxLength={22}
                     value={nombre}
                     onChange={(e) => setNombre(e.target.value)}/>
+
+                    <label className='Text'>Correo Electronico:</label>
+                    <input className='inputs' type="email" required
+                    maxLength={25}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}/>
+
+                    <label className='Text'>Clave</label>
+                    <input type="password"
+                    placeholder='Nueva Clave'
+                    minLength={8}
+                    maxLength={20}
+                    value={clave}
+                    onChange={(e) => setClave(e.target.value)}/>
+
+                    <label className='Text'>Género</label>
+                    <select className='inputs'
+                    value={genero} required
+                    onChange={(e) => setGenero(e.target.value)}>
+                      <option value="hombre">Hombre</option>
+                      <option value="mujer">Mujer</option>
+                    </select>
                   </div>
                 </form>
               </div>
