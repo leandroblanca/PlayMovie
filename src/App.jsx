@@ -1,20 +1,19 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './App.css'
-import "./index.css";
-import Nav from "./componentes/Nav";
-import Footer from "./componentes/Footer";
-import Error404 from "./pages/Error404"
-import DetallePelicula from "./pages/DetallePelicula/DetallePelicula"
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./componentes/NavBar/NavBar";
 
-import Home from "./pages/Home";
+
+// Páginas de ejemplo (creá tus componentes reales en /pages)
+import Home from "./pages/home/Home";
 import Contacto from "./pages/Contacto/Contacto";
 // import Error404 from "./pages/Error404";
 import AboutUs from "./pages/AboutUs/AboutUs";
 // import Perfil from "./pages/Perfil/Perfil";
 import Registro from "./pages/Registro/Registro";
-import Login from "./pages/Login/Login";
-
-
+import Contacto from "./pages/Contacto/Contacto";
+import { useEffect } from 'react';
+import { usuariosIniciales } from './helpers/users';
+import peliculasIniciales from './data/movies';
 
 function App() {
   useEffect(() => {
@@ -31,29 +30,18 @@ function App() {
     primeraCarga();
   }, [])
   return (
-    <>
-    <BrowserRouter>
-     <div className="app-container">
-        <Nav />
-        <div className="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/contacto" element={<Contacto />} />
-            <Route path="/404" element={<Error404 />} />
-            <Route path="/aboutus" element={<AboutUs />} />
-            {/* <Route path="/perfil" element={<Perfil />} /> */}
-            <Route path="/registro" element={<Registro />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/pelicula" element={<DetallePelicula />} />
-            <Route path="*" element={<Error404 />} />
-          </Routes>
-        </div>
-        <Footer />
-      </div>
-    </BrowserRouter>
-    
-    </>
-  )
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contacto" element={<Contacto />} />
+        <Route path="/error404" element={<Error404 />} />
+        <Route path="/nosotros" element={<AboutUs />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/registro" element={<Registro />} />
+        <Route path="*" element={<Error404 />} />
+      </Routes>
+      <Footer/>
+    </Router>
+  );
 }
-
-export default App
