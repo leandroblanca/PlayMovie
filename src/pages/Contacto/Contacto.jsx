@@ -161,17 +161,16 @@ const Contacto = () => {
                 />
               </Form.Group>
 
-              <div className="d-flex flex-column align-items-center gap-3">
                 <Button 
                   size="lg" 
                   variant="danger" 
                   type="submit" 
-                  className="w-100 py-3 fw-bold"
+                  className=" py-3 fw-bold text-center w-100 d-flex justify-content-center align-items-center"
                   disabled={enviando}
                 >
                   {enviando ? "Enviando..." : "Enviar Mensaje"}
                 </Button>
-              </div>
+             
             </Form>
           </div>
         </Col>
