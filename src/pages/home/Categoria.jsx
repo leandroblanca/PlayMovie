@@ -9,3 +9,7 @@ function CategoriaPage() {
   const { gender } = useParams();
   const navigate = useNavigate();
   const generoDecodificado = decodeURIComponent(gender);
+
+  const peliculasFiltradas = peliculas.filter(
+    (peli) => peli.categorias === generoDecodificado,
+  );
