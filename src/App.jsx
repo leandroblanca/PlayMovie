@@ -6,9 +6,9 @@ import Navbar from "./componentes/NavBar/NavBar";
 // Páginas de ejemplo (creá tus componentes reales en /pages)
 import Home from "./pages/home/Home";
 import Contacto from "./pages/Contacto/Contacto";
-// import Error404 from "./pages/Error404";
+import Error404 from "./pages/error404/Error404";
 import AboutUs from "./pages/AboutUs/AboutUs";
-// import Perfil from "./pages/Perfil/Perfil";
+import Login from "./pages/Login/Login";
 import Registro from "./pages/Registro/Registro";
 import Contacto from "./pages/Contacto/Contacto";
 import { useEffect } from 'react';
