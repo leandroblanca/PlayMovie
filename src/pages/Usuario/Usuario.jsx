@@ -13,7 +13,7 @@ const Usuario = () => {
   const [abrirModal, setAbrirModal] = useState(false)
   const usuario = {
     nombre: "Alex Rivers",
-    email: "alex.rivers@gamil.com",
+    email: "alex.rivers@gmail.com",
     genero: "hombre"
   }
   const cancelarEdicion = () => {
@@ -67,7 +67,7 @@ const Usuario = () => {
                     onChange={(e) => setEmail(e.target.value)}/>
 
                     <label className='Text'>Clave:</label>
-                    <input type="password"
+                    <input className='inputs' type="password"
                     placeholder='Nueva Clave'
                     minLength={8}
                     maxLength={20}
