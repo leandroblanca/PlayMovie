@@ -2,6 +2,8 @@ import React from 'react'
 import "./Usuario.css"
 import { useState } from 'react';
 import { FaCheckCircle } from "react-icons/fa";
+import Hombre from "/public/assets/Hombre.png"
+import Mujer from "/public/assets/Mujer.png"
 
 const Usuario = () => {
   const [nombre, setNombre] = useState("Alex Rivers")
@@ -16,7 +18,7 @@ const Usuario = () => {
   return (
     <div className='Perfil'>
       <div className='Perfil-Info'>
-        <img className='Avatar' src=""
+        <img className='Avatar' src={genero === "hombre" ? Hombre : Mujer}
           alt="Foto de Usuario" />
         <div className='User'>
           <h1></h1>

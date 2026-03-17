@@ -54,10 +54,10 @@ p {
     width: 80%;
     margin: auto;
     padding-bottom: 30px;
+    padding-top: 80px;
 }
 
 .Perfil-Info {
-    margin-top: 80px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
