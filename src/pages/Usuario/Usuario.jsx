@@ -14,7 +14,7 @@ const Usuario = () => {
     genero: "hombre"
   }
   return (
-    <>
+    <div className='Perfil'>
       <div className='Perfil-Info'>
         <img className='Avatar' src=""
           alt="Foto de Usuario" />
@@ -75,7 +75,7 @@ const Usuario = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
