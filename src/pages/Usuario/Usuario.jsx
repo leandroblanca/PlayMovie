@@ -21,8 +21,8 @@ const Usuario = () => {
         <img className='Avatar' src={genero === "hombre" ? Hombre : Mujer}
           alt="Foto de Usuario" />
         <div className='User'>
-          <h1></h1>
-          <p className='Email'></p>
+          <h1>{nombre}</h1>
+          <p className='Email'>{email}</p>
           <span><strong className='Premium'>MIEMBRO PREMIUM</strong></span>
         </div>
         <div className='Botones'>
@@ -59,9 +59,15 @@ const Usuario = () => {
             <p className='Hd'><strong className='Hd'>ULTRA HD 4K</strong></p>
             <span className='Mes'><strong className='Precio'>15.99</strong>/Mes</span>
           </div>
-          <li><p className='Icono'>4 Pantallas a la vez</p></li>
-          <li><p className='Icono'>Ultra HD dispinible</p></li>
-          <li><p className='Icono'>Descargas ilimitadas</p></li>
+          <li>
+            <FaCheckCircle className='Icono' /> 4 Pantallas a la vez
+          </li>
+          <li>
+            <FaCheckCircle className='Icono' /> Ultra HD disponible
+          </li>
+          <li>
+            <FaCheckCircle className='Icono' /> Descargas ilimitadas
+          </li>
         </div>
         <div className='Panel-Derecho'>
           <h3 className='Reciente'>Agregados Recientemente a Favoritos</h3>
