@@ -66,7 +66,7 @@ const Usuario = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}/>
 
-                    <label className='Text'>Clave</label>
+                    <label className='Text'>Clave:</label>
                     <input type="password"
                     placeholder='Nueva Clave'
                     minLength={8}
@@ -74,13 +74,18 @@ const Usuario = () => {
                     value={clave}
                     onChange={(e) => setClave(e.target.value)}/>
 
-                    <label className='Text'>Género</label>
+                    <label className='Text'>Género:</label>
                     <select className='inputs'
                     value={genero} required
                     onChange={(e) => setGenero(e.target.value)}>
+                      <option value="">Seleccionar</option>
                       <option value="hombre">Hombre</option>
                       <option value="mujer">Mujer</option>
                     </select>
+                  </div>
+                  <div className='ModalFooter'>
+                    <button className='Cerrar-Sesion' type='button' onClick={cancelarEdicion}>Cancelar</button>
+                    <button className='Guardar' type='submit'>Guardar Cambios</button>
                   </div>
                 </form>
               </div>
