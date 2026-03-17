@@ -1,11 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./componentes/NavBar/NavBar";
-
-
-// Páginas de ejemplo (creá tus componentes reales en /pages)
 import Home from "./pages/home/Home";
-import Contacto from "./pages/Contacto/Contacto";
 import Error404 from "./pages/error404/Error404";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Login from "./pages/Login/Login";
@@ -14,6 +10,8 @@ import Contacto from "./pages/Contacto/Contacto";
 import { useEffect } from 'react';
 import { usuariosIniciales } from './helpers/users';
 import peliculasIniciales from './data/movies';
+import Footer from "./componentes/Footer/Footer";
+import Admin from "./pages/Admin/Admin";
 
 function App() {
   useEffect(() => {
@@ -29,19 +27,22 @@ function App() {
     }
     primeraCarga();
   }, [])
+  
   return (
     <Router>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contacto" element={<Contacto />} />
-        <Route path="/error404" element={<Error404 />} />
         <Route path="/nosotros" element={<AboutUs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer/>
     </Router>
   );
 }
+
+export default App;

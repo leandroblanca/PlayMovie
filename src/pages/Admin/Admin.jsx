@@ -4,10 +4,11 @@ import Sidebar from "./Sidebar"
 import TablaPeliculas from "./TablaPeliculas";
 import ModalPeliculas from "./ModalPeliculas.jsx";
 import CardsUsuarios from "./CardUsuarios.jsx";
-import { registroSistema } from "./ObjetosAdmin.jsx";
+import { registroSistema, dashboardStats } from "./ObjetosAdmin.jsx";
+import CardsAdmin from "./CardsAdmin.jsx";
 import peliculasIniciales from "../../data/movies.js";
 import ModalUsuarios from "./ModalUsuarios.jsx";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { usuariosIniciales } from "../../helpers/users.js";
 import "./Admin.css";
 
@@ -44,7 +45,7 @@ function Admin() {
   const registrarUsuario = (nombre) => {
 
     const nuevoUsuario = {
-      id: crypto.randomUUID(),
+      id: Date.now(),
       nombre,
       estado: "ACTIVO",
       
@@ -90,7 +91,7 @@ function Admin() {
     if (!editarId) {
 
       const nuevaPelicula = {
-        id: crypto.randomUUID(),
+        id: Date.now(),
         titulo,
         poster,
         categorias,
@@ -169,37 +170,93 @@ function Admin() {
 
   return (
     <>
-      <Button variant="danger" onClick={cerrarSesion}>
-        Cerrar sesión
-      </Button>
-
-      <Container fluid className="min-vh-100">
-
-        <Row>
-
-          <Col xs={12} md={3} lg={2} className="p-0 bg-dark">
-            <Sidebar />
-
-            <div className="p-3">
-              <Button
-                variant="danger rounded-5 fw-bold"
-                onClick={handleShow}
-                className="shadow w-100"
-              >
-                + Añadir Pelicula
-              </Button>
+      <Container fluid className="admin-container min-vh-100 p-0">
+        <Row className="g-0">
+          
+          <Col xs={12} md={3} lg={2} className="sidebar-col d-none d-md-block">
+            <div className="sidebar-wrapper">
+              <Sidebar />
+              
+              <div className="add-button-container">
+                <Button
+                  variant="danger"
+                  onClick={handleShow}
+                  className="add-movie-btn w-100"
+                >
+                  + Añadir Película
+                </Button>
+              </div>
             </div>
           </Col>
 
+          <Col xs={12} className="d-md-none p-3">
+            <Button variant="danger" className="w-100" onClick={handleShow}>
+              + Añadir Película
+            </Button>
+          </Col>
 
-          <Col md={10} className="p-4">
+          <Col xs={12} md={9} lg={10} className="main-content p-3 p-md-4">
+            <div className="content-wrapper">
+              <div className="content-header d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
+                <div className="header-title">
+                  <h2 className="page-title mb-1">Panel de Administración</h2>
+                  <p className="page-subtitle mb-0">Gestiona películas y usuarios</p>
+                </div>
+                
+                <div className="header-actions d-flex flex-column flex-sm-row gap-2 w-100 w-md-auto">
+                  <div className="search-wrapper flex-grow-1">
+                    <input
+                      type="text"
+                      placeholder="Buscar película..."
+                      value={busqueda}
+                      onChange={(e) => setBusqueda(e.target.value)}
+                      className="search-input w-100"
+                    />
+                    <span className="search-icon">🔍</span>
+                  </div>
+                  
+                  <Button variant="outline-danger" onClick={cerrarSesion} className="logout-btn w-100 w-sm-auto">
+                    🚪 Cerrar sesión
+                  </Button>
+                </div>
+              </div>
 
-            <TablaPeliculas
-              editarPelicula={editarPelicula}
-              eliminarPelicula={eliminarPelicula}
-              peliculasFiltradas={peliculasFiltradas}
-            />
+              <div className="stats-section mb-4">
+                <CardsAdmin dashboardStats={dashboardStats} />
+              </div>
 
+              <div className="section-card mb-4">
+                <div className="section-header d-flex justify-content-between align-items-center mb-3">
+                  <h3 className="section-title mb-0">🎬 Películas</h3>
+                  <span className="section-count">{peliculasFiltradas.length} películas</span>
+                </div>
+                
+                <div className="table-responsive">
+                  <TablaPeliculas
+                    editarPelicula={editarPelicula}
+                    eliminarPelicula={eliminarPelicula}
+                    peliculasFiltradas={peliculasFiltradas}
+                  />
+                </div>
+              </div>
+
+              <div className="section-card">
+                <div className="section-header d-flex justify-content-between align-items-center mb-3">
+                  <h3 className="section-title mb-0">👥 Usuarios</h3>
+                  <span className="section-count">{usuarios.length} usuarios</span>
+                </div>
+                
+                <CardsUsuarios
+                  usuarios={usuarios}
+                  registrarUsuario={registrarUsuario}
+                  eliminarUsuario={eliminarUsuario}
+                  editarUsuario={editarUsuario}
+                  registroSistema={registroSistema}
+                />
+              </div>
+            </div>
+
+           
             <ModalPeliculas
               show={show}
               handleClose={handleClose}
@@ -219,15 +276,6 @@ function Admin() {
               onSubmit={onSubmit}
             />
 
-            <CardsUsuarios
-              usuarios={usuarios}
-              registrarUsuario={registrarUsuario}
-              eliminarUsuario={eliminarUsuario}
-              editarUsuario={editarUsuario}
-              registroSistema={registroSistema}
-            />
-
-            
             <ModalUsuarios
               show={showUserModal}
               handleClose={() => setShowUserModal(false)}
@@ -242,11 +290,9 @@ function Admin() {
               setEstado={setEstadoUser}
               onSubmit={guardarUsuario}
             />
-
           </Col>
 
         </Row>
-
       </Container>
     </>
   );
