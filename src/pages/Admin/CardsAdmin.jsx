@@ -1,3 +1,4 @@
+import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { dashboardStats as statsData } from "./ObjetosAdmin.jsx";
 import {Card, Col, Row } from "react-bootstrap";
