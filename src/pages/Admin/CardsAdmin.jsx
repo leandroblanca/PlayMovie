@@ -1,15 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { dashboardStats } from "./ObjetosAdmin.jsx";
-import {Card, Col, Container, Row } from "react-bootstrap";
+import { dashboardStats as statsData } from "./ObjetosAdmin.jsx";
+import {Card, Col, Row } from "react-bootstrap";
 import "./Admin.css";
-import { faFilm, faUsers, faDollarSign, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
-import React from 'react'
-
-const CardsAdmin = ({ dashboardStats }) => {
+const CardsAdmin = ({ dashboardStats = statsData }) => {
   return (
-     <Container>
- <Row className="g-4">
+    <Row className="g-4 mb-4">
     {dashboardStats.map(stat => (
       <Col xs={12} sm={6} xl={3} key={stat.id}>
 
@@ -44,8 +40,6 @@ const CardsAdmin = ({ dashboardStats }) => {
       </Col>
     ))}
   </Row>
-   </Container>
-   
   )
 }
 export default CardsAdmin;
