@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
-import logo from "../../assets/logo.png";
+import logo from "../../../public/assets/logo.png";
 import { usuariosIniciales } from "../../helpers/users";
 import "./Login.css";
 
@@ -47,7 +47,7 @@ const Login = () => {
   if (usuarioEncontrado.rol === "admin") {
     navigate("/admin");
   } else {
-    navigate("/");
+    navigate("/home");
   }
 };
 
