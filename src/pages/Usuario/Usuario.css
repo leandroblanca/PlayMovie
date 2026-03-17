@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 :root {
     --Fondo: #211111;
     --Fondo-Dentro: #2b1313;
@@ -57,27 +61,32 @@ p {
 }
 
 .Perfil {
-    width: 80%;
-    margin: auto;
-    padding-bottom: 30px;
-    padding-top: 80px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 15px 30px;
+    box-sizing: border-box;
 }
 
 .Perfil-Info {
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
-    gap: 40px;
-    padding: 15px;
+    padding: 20px;
+    gap: 20px;
     background-color: var(--Fondo-Dentro);
     border: solid 1.5px var(--Bordes);
     border-radius: 20px;
 }
 
+.Botones {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+}
+
 .Editar {
     background-color: #4f171a;
     border-radius: 20px;
-    margin: 10px;
     padding: 7px;
 }
 
@@ -96,7 +105,7 @@ p {
 }
 
 .User {
-    margin-right: 300px;
+    
 }
 
 .Avatar {
@@ -195,16 +204,17 @@ li {
 }
 
 .Peliculas {
-    display: flex;
-    justify-content: space-evenly;
-    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
 
 .Pelis {
-    width: 180px;
-    height: 275px;
-    border: solid 1.5px var(--Bordes);
+    width: 100%;
+    aspect-ratio: 2 / 3;
     border-radius: 10px;
+    border: solid 1.5px var(--Bordes);
+    overflow: hidden;
 }
 
 .Fav {
@@ -221,6 +231,7 @@ li {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2000;
 }
 
 .Modal {
@@ -277,3 +288,186 @@ li {
     font-weight: bold;
     font-family: sans-serif;
 }
+@media (max-width: 600px) {
+    body {
+        background: #211111;
+    }
+
+    .Perfil-Info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0;
+    }
+
+    .Avatar {
+        width: 150px;
+        height: 150px;
+        border: 5px solid #e22535;
+    }
+
+    h1 {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .Email {
+        font-size: 17px;
+    }
+
+    .Premium {
+        font-size: 13px;
+    }
+
+    .User {
+        text-align: center;
+        margin: 12px;
+    }
+
+    .Botones {
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+    }
+
+    .Editar {
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    .Cerrar-Sesion {
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    .Estadisticas {
+        display: flex;
+        align-items: center;
+        gap: 75px;
+    }
+
+    .stat {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: none;
+    }
+
+    h2 {
+        font-size: 45px;
+    }
+
+    .Letras {
+        font-size: 23px;
+    }
+
+    h5 {
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .Item {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        color: white;
+        background-color: #1c1c24;
+        padding: 18px;
+        border-radius: 40px;
+        font-size: 22px;
+        margin: 10px;
+        align-items: center;
+    }
+
+    .Item::before {
+        content: "";
+        margin-right: 10px;
+    }
+
+    .Item:nth-child(1)::before {
+        content: "👤";
+    }
+    .Item:nth-child(2)::before {
+        content: "💳";
+    }
+
+    .Item::after {
+        content: ">";
+        margin-left: 10px;
+        font-size: 40px;
+    }
+
+    .Extra {
+        display: none;
+    }
+
+    .Panel-Izquierdo {
+        display: none;
+    }
+
+    .Reciente {
+        display: none;
+    }
+
+    .Fav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .Favoritos {
+        font-size: 22px;
+        margin: 0;
+    }
+
+    .VerTodo {
+        font-size: 22px;
+        color: #e02f41;
+        background: none;
+        border: none;
+    }
+
+    .VerTodo:hover {
+        transform: scale(1.1);
+    }
+
+    .Peliculas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .Modal {
+        width: 80%;
+        overflow: auto;
+        padding: 16px;
+    }
+
+    .Titulo {
+        font-size: 17px;
+        color: var(--Hover-Botones);
+    }
+
+    .Cerrar {
+        font-size: 10px;
+    }
+
+    .Text {
+        font-size: 15px;
+    }
+
+    .inputs {
+        padding: 5px;
+        font-size: 14px;
+        margin-bottom: 14px;
+    }
+
+    .Cerrar-Sesion {
+        font-size: 13px;
+    }
+
+    .Guardar {
+        font-size: 13px;
+    }
+    }
