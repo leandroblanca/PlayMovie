@@ -9,7 +9,7 @@ import {
   faVideo,
   faMedal,
 } from "@fortawesome/free-solid-svg-icons";
-import "./Contacto.css";
+import "../Contacto/Contacto.css";
 
 const Contacto = () => {
   const soporteData = [
