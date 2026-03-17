@@ -40,7 +40,30 @@ const Usuario = () => {
           <span><strong className='Premium'>MIEMBRO PREMIUM</strong></span>
         </div>
         <div className='Botones'>
-          <button className='Editar'>Editar Perfil</button>
+          <button onClick={() => setAbrirModal(true)}
+            className='Editar'>Editar Perfil</button>
+          {abrirModal && (
+            <div className='Fondo'>
+              <div className='Modal'>
+                <div className='ModalHeader'>
+                  <h2 className='Titulo'>Editar Perfil</h2>
+                  <button className='Cerrar'
+                    onClick={cancelarEdicion}
+                    type='button'>X</button>
+                </div>
+                <form onSubmit={guardarCambios}>
+                  <div className='ModalBody'>
+                    <label className='Text'>Nombre y Apellido:</label>
+                    <input className='inputs' type="text" required
+                    minLength={3}
+                    maxLength={22}
+                    value={nombre}
+                    onChange={(e) => setNombre(e.target.value)}/>
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
           <button className='Cerrar-Sesion'>Cerrar Sesión</button>
         </div>
       </div>
