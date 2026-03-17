@@ -1,32 +1,48 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./NavBar.css";
 import { FaSearch } from "react-icons/fa";
-import logo from "../../../public/assets/logo.png"; 
 
 const navConfig = {
-  "/": ["Peliculas", "Series", "Nosotros", "Buscar Peliculas", "Notificaciones", "Suscribirse", "Iniciar Sesión"],
-  "/inicio": ["Peliculas", "Series", "Nosotros", "Buscar Peliculas", "Notificaciones", "Suscribirse", "Iniciar Sesión"],
-  "/contacto": ["Inicio", "Peliculas", "Series", "Nosotros", "Buscar Peliculas", "Usuario"],
-  "/404": ["Peliculas", "Series", "Nosotros", "Buscar Peliculas", "Notificaciones", "Perfil", "Usuario"],
-  "/nosotros": ["Peliculas", "Series", "Buscar Peliculas", "Contacto", "Suscribirse", "Iniciar Sesión"],
-  "/perfil": ["Peliculas", "Series", "Nosotros", "Buscar Peliculas", "Notificaciones", "Configuración", "Perfil"],
-  "/peliculas": ["Inicio", "Series", "Nosotros", "Buscar Peliculas", "Notificaciones", "Configuración", "Perfil"],
-  "/login": ["Inicio", "Peliculas", "Series", "Iniciar Sesión"],
+  "/": ["Peliculas", "Nosotros", "Buscar Peliculas", "Notificaciones", "Suscribirse", "Iniciar Sesión"],
+  "/inicio": ["Peliculas", "Nosotros", "Buscar Peliculas", "Notificaciones", "Suscribirse", "Iniciar Sesión"],
+  "/contacto": ["Inicio", "Peliculas", "Nosotros", "Buscar Peliculas", "Usuario"],
+  "/404": ["Peliculas", "Nosotros", "Buscar Peliculas", "Notificaciones", "Perfil", "Usuario"],
+  "/nosotros": ["Peliculas", "Buscar Peliculas", "Contacto", "Suscribirse", "Iniciar Sesión"],
+  "/perfil": ["Peliculas", "Nosotros", "Buscar Peliculas", "Notificaciones", "Configuración", "Perfil"],
+  "/peliculas": ["Inicio", "Nosotros", "Buscar Peliculas", "Notificaciones", "Configuración", "Perfil"],
+  "/login": ["Inicio", "Peliculas", "Iniciar Sesión"],
+};
+
+const getLinkPath = (item) => {
+  if (item === "Peliculas" || item === "Inicio") return "/home";
+  if (item === "Iniciar Sesión") return "/login";
+  return `/${item.toLowerCase().replace(/\s+/g, "")}`;
 };
 
 export default function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
   const currentPath = location.pathname;
-  const items = navConfig[currentPath] || navConfig["/"];
+  let items = navConfig[currentPath] || navConfig["/"];
+  const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuarioLogueado"));
+
+  if (usuarioLogueado) {
+    items = items.filter((item) => item !== "Iniciar Sesión");
+  }
 
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("usuarioLogueado");
+    navigate("/login");
+  };
 
   return (
     <nav className="navbar">
       <div className="navbar-logo">
         <Link to="/" className="logo-link">
-          <img src={logo} alt="Logo" />
+          <img src="/assets/logo.png" alt="Logo" />
           <span className="logo-text">PlayMovie</span>
         </Link>
       </div>
@@ -51,7 +67,7 @@ export default function Navbar() {
               </div>
             ) : (
               <Link
-                to={`/${item.toLowerCase().replace(/\s+/g, "")}`}
+                to={getLinkPath(item)}
                 className={item === "Iniciar Sesión" ? "btn-login" : ""}
               >
                 {item}
@@ -59,6 +75,13 @@ export default function Navbar() {
             )}
           </li>
         ))}
+        {usuarioLogueado && (
+          <li className="navbar-item">
+            <button onClick={handleLogout} className="btn-login">
+              Cerrar Sesión
+            </button>
+          </li>
+        )}
       </ul>
     </nav>
   );
