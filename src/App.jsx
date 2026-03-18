@@ -7,8 +7,6 @@ import Home from "./pages/home/Home";
 import Contacto from "./pages/Contacto/Contacto";
 import Error404 from "./pages/error404/Error404";
 import AboutUs from "./pages/AboutUs/AboutUs";
-import Error404 from "./pages/error404/Error404";
-import AboutUs from "./pages/AboutUs/AboutUs";
 import Login from "./pages/Login/Login";
 import Registro from "./pages/Registro/Registro";
 import { useEffect } from 'react';
@@ -46,8 +44,7 @@ function App() {
         <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer/>
-      <Footer/>
-    </Router>
+      </Router>
   );
 }
 

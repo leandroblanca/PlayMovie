@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
-<<<<<<< HEAD
-import logo from "../../assets/logo.png";
-=======
 import logo from "../../../public/assets/logo.png";
->>>>>>> c3edd55 (feat: estilos CentroAyuda (botones, gradientes, iconos, etc))
 import { usuariosIniciales } from "../../helpers/users";
 import "./Login.css";
 
