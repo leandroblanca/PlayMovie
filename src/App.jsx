@@ -1,8 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Navbar from "./componentes/NavBar/NavBar";
 import Home from "./pages/home/Home";
-import Contacto from "./pages/Contacto/Contacto";
 import Error404 from "./pages/error404/Error404";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Login from "./pages/Login/Login";
