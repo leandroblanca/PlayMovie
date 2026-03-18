@@ -1,27 +1,45 @@
-import React, { useState } from "react"
-import { Container, Row, Col, Card, Button, Carousel} from "react-bootstrap";
-import categorias from "../../data/categories";
-import { useNavigate } from "react-router";
-import './home.css';
-import ModalPelicula from "./ModalHome"
+import { Button, Modal } from "react-bootstrap";
+import "./ModalHome.css";
 
-function Home({ peliculas }) {
-  const navigate = useNavigate();
-  const [selectMovie, setSelectMovie] = useState(null)
-  const [showModal, setShowModal] = useState(false)
+function ModalPelicula({show, handleClose, pelicula}) {
+    if (!pelicula) return null
+    return (
+        <Modal
+         show={show}
+         onHide={handleClose}
+         centered
+         dialogClassName="modal-video"
+         animation={true}>
+            <Modal.Header closeButton closeVariant="white">
+                <Modal.Title>{pelicula.titulo}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <div className="modal-trailer">
+                    <iframe
+                     src={`${pelicula.video}?autoplay=0&mute=0&controls=1&showinfo=0&rel=0`}
+                     title={pelicula.titulo}
+                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                     allowFullScreen
+                     frameborder="0"
+                      ></iframe>
+                </div>
+                <div className="info-pelicula">
+                    <p><strong>Año:</strong>{pelicula.anio}</p>
+                    <p><strong>Descripcion:</strong>{pelicula.descripcion}</p>
+                </div>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                    Cerrar
+                </Button>
+            </Modal.Footer>
+        </Modal>
+    )
+}
 
-  const handleCategoriaClick = (nombre) => {
-    navigate(`/categoria/${encodeURIComponent(nombre)}`);
-  };
-  const handleShowModal = (pelicula) => {
-    setSelectMovie(pelicula)
-    setShowModal(true);
-  }
-  const handleCloseModal = () => {
-    setShowModal(false);
-    setSelectMovie(null);
-  }
-  const peliculasDestacadas = peliculas.slice(0, 5);
+
+export default ModalPelicula;
+
 
 
 
