@@ -9,7 +9,6 @@ import Registro from "./pages/Registro/Registro";
 import { useEffect } from 'react';
 import { usuariosIniciales } from './helpers/users';
 import peliculasIniciales from './data/movies';
-import { useNavigate, Link } from "react-router-dom";
 import "@fontsource/poppins";
 
 import CategoriaPage from "./pages/home/Categoria";
@@ -67,8 +66,7 @@ function App() {
         <Route path="/categoria/:gender" element={<CategoriaPage />} />
       </Routes>
       <Footer/>
-      <Footer/>
-    </Router>
+      </Router>
   );
 }
 export default App;
