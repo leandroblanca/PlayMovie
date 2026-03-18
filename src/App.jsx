@@ -6,38 +6,11 @@ import Error404 from "./pages/error404/Error404";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Login from "./pages/Login/Login";
 import Registro from "./pages/Registro/Registro";
-import Usuario from "./pages/Usuario/Usuario";
 import { useEffect } from 'react';
 import { usuariosIniciales } from './helpers/users';
 import peliculasIniciales from './data/movies';
-import RutaProtegida from "./componentes/RutaProtegida";
-import Footer from "./componentes/Footer/Footer";
-
-function AppContent() {
-  const location = useLocation();
-  const hideNavbar = location.pathname === '/login' || location.pathname === '/registro';
-
-  return (
-    <>
-      {!hideNavbar && <Navbar />}
-      <Routes>
-        <Route path="/home" element={
-          <RutaProtegida>
-            <Home />
-          </RutaProtegida>
-        } />
-        <Route path="/" element={<Navigate to="/home" />} />
-        <Route path="/contacto" element={<Contacto />} />
-        <Route path="/error404" element={<Error404 />} />
-        <Route path="/nosotros" element={<AboutUs />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/registro" element={<Registro />} />
-        <Route path="*" element={<Error404 />} />
-      </Routes>
-      <Footer/>
-    </>
-  );
-}
+import CategoriaPage from "./pages/home/Categoria";
+import Footer from './componentes/footer/Footer'
 
 function App() {
   useEffect(() => {
@@ -55,9 +28,19 @@ function App() {
   }, [])
   return (
     <Router>
-      <AppContent />
+      <Navbar />
+      <Routes>
+        <Route path="/contacto" element={<Contacto />} />
+        <Route path="/error404" element={<Error404 />} />
+        <Route path="/nosotros" element={<AboutUs />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/registro" element={<Registro />} />
+        <Route path="*" element={<Error404 />} />
+        <Route path="/" element={<Home peliculas={peliculasIniciales} />} />
+        <Route path="/categoria/:gender" element={<CategoriaPage />} />
+      </Routes>
+      <Footer/>
     </Router>
   );
 }
-
 export default App;

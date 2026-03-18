@@ -46,7 +46,7 @@ const peliculasIniciales = [
   {
     id: 5,
     titulo: "The Mask",
-    poster: "https://image.tmdb.org/t/p/w500/6aXGxJ0VtZrXhL7sRKqGZo4PMBV.jpg",
+    poster: "https://www.originalfilmart.com/cdn/shop/products/the_Mask1994_original_film_art_5000x.jpg?v=1608250083",
     video: "https://www.youtube.com/embed/LZl69yk5lEY",
     categorias: "comedia",
     anio: 1994,
@@ -79,7 +79,7 @@ const peliculasIniciales = [
   {
     id: 8,
     titulo: "Inception",
-    poster: "https://image.tmdb.org/t/p/w500/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg",
+    poster: "https://m.media-amazon.com/images/I/A1eIBPcRUqL._AC_UF894,1000_QL80_.jpg",
     video: "https://www.youtube.com/embed/YoHD9XEInc0",
     categorias: "ciencia ficcion",
     anio: 2010,
@@ -145,7 +145,7 @@ const peliculasIniciales = [
   {
     id: 14,
     titulo: "Oppenheimer",
-    poster: "https://image.tmdb.org/t/p/w500/8GxvZ4iX6C3hYyB5pG4G6dkprdQ.jpg",
+    poster: "https://m.media-amazon.com/images/M/MV5BNTFlZDI1YWQtMTVjNy00YWU1LTg2YjktMTlhYmRiYzQ3NTVhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     video: "https://www.youtube.com/embed/uYPbbksJxIg",
     categorias: "drama",
     anio: 2023,
@@ -189,7 +189,7 @@ const peliculasIniciales = [
   {
     id: 18,
     titulo: "Insidious",
-    poster: "https://image.tmdb.org/t/p/w500/nrXKZl5F9J6JHn0K5v0zzakDx4V.jpg",
+    poster: "https://www.sonypictures.es/statics/Key_Art_Insidious_e75ea15f09.png",
     video: "https://www.youtube.com/embed/zuZnRUcoWos",
     categorias: "terror",
     anio: 2010,
@@ -255,7 +255,7 @@ const peliculasIniciales = [
   {
     id: 24,
     titulo: "Gone Girl",
-    poster: "https://image.tmdb.org/t/p/w500/7QiFhXz0fK0Gg0u2Z0yp0bFQ7uL.jpg",
+    poster: "https://revistacalibre38.com/wp-content/uploads/2014/10/perdida-cartel-pic33d.jpg",
     video: "https://www.youtube.com/embed/2-_-1nJf8Vg",
     categorias: "thriller",
     anio: 2014,
@@ -299,7 +299,7 @@ const peliculasIniciales = [
   {
     id: 28,
     titulo: "Step Brothers",
-    poster: "https://static1.srcdn.com/wordpress/wp-content/uploads/2023/05/step-brothers.jpg",
+    poster: "https://m.media-amazon.com/images/I/51CPJ4feiZL._AC_UF894,1000_QL80_.jpg",
     video: "https://www.youtube.com/embed/CewglxElBK0",
     categorias: "comedia",
     anio: 2008,
