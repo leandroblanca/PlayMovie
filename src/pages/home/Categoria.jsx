@@ -41,4 +41,13 @@ function CategoriaPage() {
             : "Peliculas encontradas"}
         </span>
       </div>
+      {peliculasFiltradas.length === 0 ? (
+        <div className="text-center text-white">
+          <p className="mb-3"> No hay peliculas en esta categoria </p>
+          <Button variant="secondary" onClick={handleVolver}>
+            Ver otras categorias
+          </Button>
+        </div>
+      ) : (
+
 
