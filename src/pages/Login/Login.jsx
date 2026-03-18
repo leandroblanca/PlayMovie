@@ -47,7 +47,7 @@ const Login = () => {
   if (usuarioEncontrado.rol === "admin") {
     navigate("/admin");
   } else {
-    navigate("/");
+    navigate("/home");
   }
 };
 
