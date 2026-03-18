@@ -11,6 +11,7 @@ import { usuariosIniciales } from './helpers/users';
 import peliculasIniciales from './data/movies';
 import CategoriaPage from "./pages/home/Categoria";
 import Footer from './componentes/footer/Footer'
+import Contacto from '../src/pages/Contacto/Contacto'
 
 function App() {
   useEffect(() => {
