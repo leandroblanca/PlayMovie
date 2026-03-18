@@ -59,3 +59,8 @@ margin: auto;
     border-radius: 30px;
     transition: all 0.3s ease;
 }
+.modal-video .btn-secondary:hover{
+    background-color: #ff4d4d;
+    color: #000;
+    
+}
