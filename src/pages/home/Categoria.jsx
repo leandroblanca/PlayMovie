@@ -21,3 +21,7 @@ function CategoriaPage() {
     setSelectMovie(pelicula);
     setShowModal(true);
   };
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectMovie(null);
+  };
