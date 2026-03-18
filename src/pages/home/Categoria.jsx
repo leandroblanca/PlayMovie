@@ -16,3 +16,8 @@ function CategoriaPage() {
   const handleVolver = () => navigate("/home");
   const [selectMovie, setSelectMovie] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  
+    const handleShowModal = (pelicula) => {
+    setSelectMovie(pelicula);
+    setShowModal(true);
+  };
