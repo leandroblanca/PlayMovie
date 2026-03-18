@@ -21,6 +21,8 @@ function Home({ peliculas }) {
     setShowModal(false);
     setSelectMovie(null);
   }
+  const peliculasDestacadas = peliculas.slice(0, 5);
+
 
 
 
