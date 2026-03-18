@@ -13,4 +13,14 @@ function Home({ peliculas }) {
   const handleCategoriaClick = (nombre) => {
     navigate(`/categoria/${encodeURIComponent(nombre)}`);
   };
+  const handleShowModal = (pelicula) => {
+    setSelectMovie(pelicula)
+    setShowModal(true);
+  }
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectMovie(null);
+  }
+
+
 
