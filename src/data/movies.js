@@ -299,7 +299,7 @@ const peliculasIniciales = [
   {
     id: 28,
     titulo: "Step Brothers",
-    poster: "https://image.tmdb.org/t/p/w500/1Yw4X3x0B7C1F0Hq7qL0U8nyJlc.jpg",
+    poster: "https://static1.srcdn.com/wordpress/wp-content/uploads/2023/05/step-brothers.jpg",
     video: "https://www.youtube.com/embed/CewglxElBK0",
     categorias: "comedia",
     anio: 2008,

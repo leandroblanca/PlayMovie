@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { FaCheckCircle } from "react-icons/fa";
 import Hombre from "/public/assets/Hombre.png"
 import Mujer from "/public/assets/Mujer.png"
+import peliculas from "../../data/movies";
 
 const Usuario = () => {
   const [nombre, setNombre] = useState("Alex Rivers")
@@ -16,6 +17,8 @@ const Usuario = () => {
     email: "alex.rivers@gmail.com",
     genero: "hombre"
   }
+  const ultimasPeliculas = peliculas.slice(-4);
+
   const cancelarEdicion = () => {
     setNombre(usuario.nombre);
     setEmail(usuario.email);
@@ -55,29 +58,29 @@ const Usuario = () => {
                   <div className='ModalBody'>
                     <label className='Text'>Nombre y Apellido:</label>
                     <input className='inputs' type="text" required
-                    minLength={3}
-                    maxLength={22}
-                    value={nombre}
-                    onChange={(e) => setNombre(e.target.value)}/>
+                      minLength={3}
+                      maxLength={22}
+                      value={nombre}
+                      onChange={(e) => setNombre(e.target.value)} />
 
                     <label className='Text'>Correo Electronico:</label>
                     <input className='inputs' type="email" required
-                    maxLength={25}
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}/>
+                      maxLength={25}
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)} />
 
                     <label className='Text'>Clave:</label>
                     <input className='inputs' type="password"
-                    placeholder='Nueva Clave'
-                    minLength={8}
-                    maxLength={20}
-                    value={clave}
-                    onChange={(e) => setClave(e.target.value)}/>
+                      placeholder='Nueva Clave'
+                      minLength={8}
+                      maxLength={20}
+                      value={clave}
+                      onChange={(e) => setClave(e.target.value)} />
 
                     <label className='Text'>Género:</label>
                     <select className='inputs'
-                    value={genero} required
-                    onChange={(e) => setGenero(e.target.value)}>
+                      value={genero} required
+                      onChange={(e) => setGenero(e.target.value)}>
                       <option value="">Seleccionar</option>
                       <option value="hombre">Hombre</option>
                       <option value="mujer">Mujer</option>
@@ -140,10 +143,12 @@ const Usuario = () => {
             <button className='VerTodo'>Ver Todo</button>
           </div>
           <div className='Peliculas'>
-            <div className='Pelis'></div>
-            <div className='Pelis'></div>
-            <div className='Pelis'></div>
-            <div className='Pelis'></div>
+            {ultimasPeliculas.map((peli) => (
+              <div className='Pelis' key={peli.id}>
+                <img src={peli.poster} alt={peli.titulo} />
+                <p>{peli.titulo}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
