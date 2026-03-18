@@ -16,3 +16,15 @@ margin: auto;
     font-weight: bold;
     letter-spacing: 1px;
 }
+.modal-video .modal-body{
+    padding: 1.5rem;
+}
+.modal-trailer{
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow:hidden;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(255, 77, 77, 0.3);
+}
