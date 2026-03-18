@@ -49,5 +49,38 @@ function CategoriaPage() {
           </Button>
         </div>
       ) : (
+        <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4">
+          {peliculasFiltradas.map((pelicula) => (
+            <Col key={pelicula.id}>
+              <Card className="h-100 bg-dark text-white border-secondary">
+                <Card.Img
+                  src={pelicula.poster}
+                  alt={pelicula.titulo}
+                  className="img-Categoria"
+                />
+                <Card.Body>
+                  <Card.Title className="fs-6">{pelicula.titulo}</Card.Title>
+                  <Card.Text className="text-muted">{pelicula.anio}</Card.Text>
+                  <span className="badge bg-secondary">
+                    {pelicula.categorias}
+                  </span>
+                  <Button
+                    className="bg-dark mt-3"
+                    onClick={() => handleShowModal(pelicula)}
+                  >
+                    Ver mas
+                  </Button>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      )}
+      <ModalPelicula show={showModal} handleClose={handleCloseModal} pelicula={selectMovie}/>
+    </Container>
+  );
+}
+export default CategoriaPage;
+
 
 
