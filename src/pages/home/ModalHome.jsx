@@ -9,3 +9,8 @@ function Home({ peliculas }) {
   const navigate = useNavigate();
   const [selectMovie, setSelectMovie] = useState(null)
   const [showModal, setShowModal] = useState(false)
+
+  const handleCategoriaClick = (nombre) => {
+    navigate(`/categoria/${encodeURIComponent(nombre)}`);
+  };
+
