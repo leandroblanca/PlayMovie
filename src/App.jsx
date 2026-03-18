@@ -12,6 +12,7 @@ import peliculasIniciales from './data/movies';
 import CategoriaPage from "./pages/home/Categoria";
 import Footer from './componentes/footer/Footer'
 import Contacto from '../src/pages/Contacto/Contacto'
+import PasarelaDePago from "./pages/PasarelaDePago/Pasarela";
 
 function App() {
   useEffect(() => {
@@ -33,6 +34,7 @@ function App() {
       <Routes>
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/error404" element={<Error404 />} />
+        <Route path="/pago" element={<PasarelaDePago />} />
         <Route path="/nosotros" element={<AboutUs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
