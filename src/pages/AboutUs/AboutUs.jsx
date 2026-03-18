@@ -1,20 +1,11 @@
 import React from "react";
 import "./AboutUs.css";
-<<<<<<< HEAD
 import team1 from "../../../public/assets/team1.jpg";
 import team2 from "../../../public/assets/team2.jpg";
 import team3 from "../../../public/assets/team3.jpg";
 import team4 from "../../../public/assets/team4.jpg";
 import workspace from "../../../public/assets/workspace.jpg";
-=======
-import team1 from "../../assets/team1.jpg";
-import team2 from "../../assets/team2.jpg";
-import team3 from "../../assets/team3.jpg";
-import team4 from "../../assets/team4.jpg";
-import workspace from "../../assets/workspace.jpg";
-import cinema from "../../assets/cinema.jpg";
->>>>>>> 5f12819 (se hizo estructura basica detalle de pelicula)
-
+import cinema from "../../../public/assets/cinema.jpg"
 const AboutUs = () => {
   return (
     <div className="aboutus-container">
@@ -44,7 +35,7 @@ const AboutUs = () => {
           </p>
         </div>
         <div className="col-md-6 mission-img">
-         {/*  <img src={workspace} alt="workspace" /> */}
+          <img src={workspace} alt="workspace" />
           <span className="badge bg-danger">15M+ <span className="badge1 bg-danger">ESPECTADORES ACTIVOS</span> </span>
           
         </div>
@@ -56,7 +47,7 @@ const AboutUs = () => {
         <div className="row">
             <div className="col-md-3">
                 <div className="card">  
-{/*                     <img src={team1} alt="Leandro Blanca" /> */}
+                    <img src={team1} alt="Leandro Blanca" />
                     <h5>Leandro Blanca</h5>
                     <p>Rolling Develloper</p>
                     <h6>Lider visionario con 15 años de producción Cinematográfica e innovación en medios digitales.</h6>
@@ -65,7 +56,7 @@ const AboutUs = () => {
             </div>
             <div className="col-md-3">
                 <div className="card">
-                 {/*    <img src={team2} alt="Marisol Lamas" /> */}
+                    <img src={team2} alt="Marisol Lamas" />
                     <h5>Marisol Lamas</h5>
                     <p>Rolling Develloper</p>
                     <h6>Arquitecta de infraestructura que lideró operaciones de escalado para plataformas globales.</h6>
@@ -81,7 +72,7 @@ const AboutUs = () => {
             </div>
             <div className="col-md-3">
                 <div className="card">
-                {/* <img src={team4} alt="Abel Ruiz" /> */}
+                <img src={team4} alt="Abel Ruiz" />
                 <h5>Abel Ruiz</h5>
                 <p>Rolling Develloper</p>
                 <h6>Critico de cine y curador dedicado a descubrir voces independientes.</h6>
