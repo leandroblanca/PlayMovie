@@ -25,3 +25,10 @@ function CategoriaPage() {
     setShowModal(false);
     setSelectMovie(null);
   };
+  return (
+    <Container className="my-4">
+      <div className="mb-4">
+        <Button variant="outline-secondary" onClick={handleVolver}>
+          Volver al inicio
+        </Button>
+      </div>
