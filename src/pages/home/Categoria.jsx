@@ -32,3 +32,13 @@ function CategoriaPage() {
           Volver al inicio
         </Button>
       </div>
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h2 className="text-white">Peliculas de {generoDecodificado}</h2>
+        <span className="text-muted">
+          {peliculasFiltradas.length} {""}
+          {peliculasFiltradas === 1
+            ? "Peliculas encontrada"
+            : "Peliculas encontradas"}
+        </span>
+      </div>
+
