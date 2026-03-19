@@ -8,10 +8,7 @@ function Sidebar({ onLogout }) {
 
   return (
     <div className='d-flex flex-column h-100 py-4'>
-         <Nav className='Sidebar-admin flex-column'
-      activeKey="/admin"
-      onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
-    >
+         <Nav className='Sidebar-admin flex-column' activeKey="/admin">
       <Nav.Item  >
           <Nav.Link eventKey="peliculas" className="text-light fs-4 fw-bold mb-0" >PlayMovie</Nav.Link>
           <p className='ms-3 consola-admin'>Consola de Administración</p>
@@ -34,7 +31,10 @@ function Sidebar({ onLogout }) {
           </Nav.Link>
           {showConfig && (
             <div className="ms-3 animate__animated animate__fadeIn">
-              <Nav.Link onClick={onLogout} className="text-danger small fw-bold">
+              <Nav.Link onClick={(e) => {
+                e.preventDefault();
+                onLogout();
+              }} className="text-danger small fw-bold">
                 Cerrar Sesión
               </Nav.Link>
             </div>
