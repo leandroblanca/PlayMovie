@@ -18,3 +18,12 @@ useEffect(() => {
     return () => window.removeEventListener('storage', handleStorageChance);
 }, []);
 
+useEffect(() => {
+    if (usuario) {
+        const stored = localStorage.getItem(`favorito_${usuario.id}`);
+        setFavoritos(stored ? JSON.parse(stored) : [])
+    }
+},[usuario])
+
+
+
