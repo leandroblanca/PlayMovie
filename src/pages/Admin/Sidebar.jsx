@@ -2,7 +2,7 @@ import Nav from 'react-bootstrap/Nav';
 import "./Admin.css";
 function Sidebar() {
   return (
-    <div className='d-flex flex-column vh-100 mt-5'>
+    <div className='d-flex flex-column h-100 py-4'>
          <Nav className='Sidebar-admin flex-column'
       activeKey="/admin"
       onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
