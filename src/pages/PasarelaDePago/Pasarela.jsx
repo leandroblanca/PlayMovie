@@ -62,7 +62,7 @@ function PasarelaDePago() {
     toast.success("Pago realizado con éxito 🎉");
 
     setTimeout(() => {
-      navigate("/home"); // 🔥 acá redirige
+      navigate("/home"); 
     }, 1500);
 
     setEnviando(false);
@@ -70,51 +70,50 @@ function PasarelaDePago() {
 };
 
   return (
-    <Container className="mt-4">
+    <Container className="my-5 mx-auto pt-5" data-bs-theme="dark">
       <ToastContainer />
-      
-      {/* TITULO */}
+     
       <Row className="mb-4">
         <Col>
-          <h2>Finalizar pago</h2>
+          <h2 className="fw-bold">Finalizar pago</h2>
           <h6>Complete su suscripción para empezar a disfrutar del mejor cine.</h6>
         </Col>
       </Row>
 
-      {/* RESUMEN */}
+   
       <Row>
         <Col md={6}>
-          <h5 className="mb-3">
+          <h5 className="mb-3 fw-bold">
             <ShoppingCart size={20} /> Resumen del pedido
           </h5>
 
-          {suscripciones.map((item) => (
-            <div key={item.id} className="card-suscripcion p-3 mb-3">
+          {suscripciones.map((suscripcion) => (
+            <div key={suscripcion.id} className="card-suscripcion p-3 mb-3">
               
               <div className="d-flex justify-content-between align-items-center">
                 <div>
                   <p className="text-secondary mb-1" style={{fontSize:"12px"}}>
                     SUSCRIPCIÓN SELECCIONADA
                   </p>
-                  <h6>{item.plan}</h6>
-                  <span className="text-danger fw-bold">{item.precio}</span>
+                  <h6>{suscripcion.plan}</h6>
+                  <span className="text-danger fw-bold">{suscripcion.precio}</span>
                 </div>
 
-                <img src={item.img} alt="plan" width={70} style={{borderRadius:"10px"}} />
+                <img src="/pago.png" alt="plan" width={70} style={{borderRadius:"10px"}} />
               </div>
 
               <hr />
 
               <div className="d-flex justify-content-between fw-bold">
                 <span>Total hoy</span>
-                <span>{item.totalHoy}</span>
+                <span>{suscripcion.totalHoy}</span>
               </div>
 
             </div>
           ))}
         </Col>
 
-        {/* ACÁ DESPUÉS VA EL FORM DE TARJETA */}
+       
         <Col md={6}>
           <h5>Detalles de la tarjeta</h5>
           <Col xs={12} md={6} className="mb-4">
