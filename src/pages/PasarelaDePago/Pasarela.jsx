@@ -3,11 +3,17 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, ShieldCheck } from 'lucide-react';
+import { FaPaypal, FaApple } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import suscripciones from '../../data/pago';
+import './Pasarela.css';
+
+
 
 function PasarelaDePago() {
   const navigate = useNavigate();
@@ -16,16 +22,6 @@ function PasarelaDePago() {
   const [vencimiento, setVencimiento] = useState("");
   const [cvv, setCvv] = useState("");
   const [enviando, setEnviando] = useState(false);
-
-  const suscripciones = [
-    {
-      id: 1,
-      plan: "Plan Premium",
-      precio: "14,99 €",
-      totalHoy: "14,99 €",
-      img: "https://cdn-icons-png.flaticon.com/512/2503/2503504.png"
-    }
-  ];
  
   const handleSubmit = (e) => {
   e.preventDefault();
