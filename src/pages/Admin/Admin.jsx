@@ -8,12 +8,13 @@ import { registroSistema, dashboardStats } from "./ObjetosAdmin.jsx";
 import CardsAdmin from "./CardsAdmin.jsx";
 import peliculasIniciales from "../../data/movies.js";
 import ModalUsuarios from "./ModalUsuarios.jsx";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { usuariosIniciales } from "../../helpers/users.js";
 import "./Admin.css";
 
 function Admin() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [usuarios, setUsuarios] = useState(() => {
     const usuariosGuardados = localStorage.getItem("usuarios");
     return usuariosGuardados ? JSON.parse(usuariosGuardados) : usuariosIniciales;
@@ -168,6 +169,22 @@ function Admin() {
     navigate("/login");
   };
 
+
+  const { pathname } = location;
+  const isDashboard = pathname === '/admin';
+  const isPeliculas = pathname === '/peliculas';
+  const isUsuarios = pathname === '/usuarios';
+  const isIngresos = pathname === '/ingresos';
+
+  const showPeliculasSection = isPeliculas || isDashboard;
+  const showUsuariosSection = isUsuarios || isDashboard;
+  const showIngresosSection = isIngresos || isDashboard;
+
+  let pageTitle = "Panel de Administración";
+  if (isPeliculas) pageTitle = "Gestión de Películas";
+  if (isUsuarios) pageTitle = "Gestión de Usuarios";
+  if (isIngresos) pageTitle = "Resumen de Ingresos";
+
   return (
     <>
       <Container fluid className="admin-container min-vh-100 p-0">
@@ -175,7 +192,7 @@ function Admin() {
           
           <Col md={3} xl={2} className="sidebar-col d-none d-md-block">
             <div className="sidebar-wrapper">
-              <Sidebar />
+              <Sidebar onLogout={cerrarSesion} />
               
               <div className="add-button-container">
                 <Button
@@ -198,9 +215,8 @@ function Admin() {
           <Col xs={12} md={9} xl={10} className="main-content p-3 p-md-4">
             <div className="content-wrapper">
               <div className="content-header d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center gap-3 mb-4">
-               
-                
-                <div className="header-actions d-flex flex-column flex-sm-row gap-2 w-100 mt-5 w-lg-auto">
+                              
+                <div className="header-actions d-flex flex-column flex-sm-row gap-2 w-100 w-lg-auto mt-5">
                   <div className="search-wrapper flex-grow-1">
                     <input
                       type="text"
@@ -216,11 +232,13 @@ function Admin() {
                 </div>
               </div>
 
-              <div className="stats-section mb-4">
+              {showIngresosSection && (
+              <div className="stats-section mb-4 animate__animated animate__fadeIn">
                 <CardsAdmin dashboardStats={dashboardStats} />
               </div>
-
-              <div className="section-card mb-4">
+              )}
+              {showPeliculasSection && (
+              <div className="section-card mb-4 animate__animated animate__fadeIn">
                 <div className="section-header d-flex justify-content-between align-items-center mb-3">
                   <h3 className="section-title mb-0">🎬 Películas</h3>
                   <span className="section-count">{peliculasFiltradas.length} películas</span>
@@ -234,8 +252,9 @@ function Admin() {
                   />
                 </div>
               </div>
-
-              <div className="section-card">
+              )}
+              {showUsuariosSection && (
+              <div className="section-card animate__animated animate__fadeIn">
                 <div className="section-header d-flex justify-content-between align-items-center mb-3">
                   <h3 className="section-title mb-0">👥 Usuarios</h3>
                   <span className="section-count">{usuarios.length} usuarios</span>
@@ -249,6 +268,7 @@ function Admin() {
                   registroSistema={registroSistema}
                 />
               </div>
+              )}
             </div>
 
            
