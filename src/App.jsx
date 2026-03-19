@@ -15,6 +15,7 @@ import Contacto from '../src/pages/Contacto/Contacto'
 import PasarelaDePago from "./pages/PasarelaDePago/Pasarela";
 import Admin from "./pages/Admin/Admin";
 import RutaProtegida from "./componentes/RutaProtegida";
+import Usuario from "./pages/Usuario/Usuario";
 
 function App() {
   useEffect(() => {
@@ -35,6 +36,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/usuario" element={<Usuario />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/error404" element={<Error404 />} />
         <Route path="/pago" element={<PasarelaDePago />} />
