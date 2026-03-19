@@ -110,6 +110,11 @@ li {
     margin-left: 15px;
 }
 
+.Texto {
+    font-size: 15px;
+    margin-left: 15px;
+}
+
 .Icono-Tachado {
     font-size: 19px;
 }
@@ -222,7 +227,7 @@ details[open] summary::after {
         display: flex;
         flex-direction: column;
         gap: 20px;
-        margin: 0 15px;
+        margin: 0 15px 25px;
     }
 
     .Card {
@@ -301,6 +306,23 @@ details[open] summary::after {
         margin-top: 0;
         font-size: 12px;
     }
+
+    .Centrar {
+        max-width: 285px;
+    }
+
+    .Preguntas {
+        font-size: 11px
+    }
+
+    .Interior {
+        font-size: 10px;
+    }
+
+    h4 {
+        font-size: 20px;
+        margin-bottom: 35px;
+    }
 }
 
 @media (max-width: 340px) {
@@ -319,5 +341,61 @@ details[open] summary::after {
     
     .Texto {
         font-size: 8px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    h3 {
+        font-size: 33px;
+    }
+
+    .h4 {
+        font-size: 25px;
+        margin-bottom: 45px;
+    }
+
+    .Parrafo {
+        font-size: 15px;
+    }
+
+    .Text {
+        font-size: 15px;
+        margin-left: 6px;
+    }
+
+    .Texto {
+        font-size: 15px;
+        margin-left: 6px;
+    }
+
+    .Text-Tachado {
+        font-size: 15px;
+        margin-left: 6px;
+    }
+
+    .Plan {
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    .Plan-Rojo {
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    .Centrar {
+        max-width: 430px;
+    }
+
+    .Preguntas {
+        font-size: 13px;
     }
 }
