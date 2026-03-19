@@ -16,7 +16,6 @@ import PasarelaDePago from "./pages/PasarelaDePago/Pasarela";
 import Admin from "./pages/Admin/Admin";
 import RutaProtegida from "./componentes/RutaProtegida";
 import Usuario from "./pages/Usuario/Usuario";
-import Planes from "./pages/Planes/Planes"
 
 function App() {
   useEffect(() => {
@@ -27,19 +26,11 @@ function App() {
         localStorage.setItem("peliculas", JSON.stringify(peliculasIniciales));
       }
       if (!usuarios || usuarios.length === 0) {
-        const usuariosLimpios = usuariosIniciales.map(u => {
+        const usuariosSinClave = usuariosIniciales.map(u => {
           const { password, ...resto } = u;
           return resto;
         });
-        localStorage.setItem("usuarios", JSON.stringify(usuariosLimpios));
-      }
-  
-      else {
-        const usuariosSanitizados = usuarios.map(u => {
-          const { password, ...resto } = u;
-          return resto;
-        });
-        localStorage.setItem("usuarios", JSON.stringify(usuariosSanitizados));
+        localStorage.setItem("usuarios", JSON.stringify(usuariosSinClave));
       }
     }
     primeraCarga();
@@ -54,7 +45,6 @@ function App() {
         <Route path="/error404" element={<Error404 />} />
         <Route path="/pago" element={<PasarelaDePago />} />
         <Route path="/nosotros" element={<AboutUs />} />
-        <Route path="/planes" element={< Planes/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="*" element={<Error404 />} />

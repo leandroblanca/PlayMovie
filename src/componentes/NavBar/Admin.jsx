@@ -18,14 +18,9 @@ function Admin() {
   const [usuarios, setUsuarios] = useState(() => {
     const usuariosGuardados = localStorage.getItem("usuarios");
     if (usuariosGuardados) {
-
-      const parsedUsers = JSON.parse(usuariosGuardados);
-      return parsedUsers.map(u => {
-        const { password, ...resto } = u;
-        return resto;
-      });
+      return JSON.parse(usuariosGuardados);
     }
-   
+
     return usuariosIniciales.map(u => {
       const { password, ...resto } = u;
       return resto;

@@ -3,9 +3,9 @@ import { BsPencil, BsEye, BsTrash } from "react-icons/bs";
 
 function TablaPeliculas({ editarPelicula, eliminarPelicula, peliculasFiltradas }) {
   return (
-    <Card className="tabla-peliculas-card border-0 overflow-hidden">
-      <Card.Body className="p-0">
-        <Table hover responsive className="align-middle tabla-peliculas mb-0">
+    <Card className="tabla-peliculas-card w-100 border-0 overflow-hidden">
+      <Card.Body className="p-0 w-100">
+        <Table hover responsive className="table table-dark table-hover align-middle mb-0">
           <thead className="tabla-header d-none d-md-table-header-group">
             <tr>
               <th>PELÍCULA</th>
@@ -27,6 +27,7 @@ function TablaPeliculas({ editarPelicula, eliminarPelicula, peliculasFiltradas }
                           src={pelicula.poster || "https://via.placeholder.com/50x70?text=No+Image"}
                           alt={pelicula.titulo}
                           className="pelicula-poster"
+                          style={{ width: "40px", height: "60px", objectFit: "cover", borderRadius: "4px" }}
                           onError={(e) => {
                             e.target.onerror = null;
                             e.target.src = "https://via.placeholder.com/50x70?text=No+Image";
@@ -37,7 +38,7 @@ function TablaPeliculas({ editarPelicula, eliminarPelicula, peliculasFiltradas }
                       <div>
                         <div className="pelicula-titulo fw-bold">{pelicula.titulo}</div>
                         <div className="pelicula-categorias-mini text-muted small">
-                          {pelicula.categorias?.split(',').map((cat, i) => (
+                          {(pelicula.categorias ? String(pelicula.categorias).split(',') : []).map((cat, i) => (
                             <span key={i} className="categoria-mini">{cat.trim()}</span>
                           ))}
                         </div>
@@ -52,7 +53,7 @@ function TablaPeliculas({ editarPelicula, eliminarPelicula, peliculasFiltradas }
                   <td className="d-none d-md-table-cell">
                     <div className="categorias-container">
                       {pelicula.categorias ? (
-                        pelicula.categorias.split(',').map((categoria, index) => (
+                        String(pelicula.categorias).split(',').map((categoria, index) => (
                           <span key={index} className="categoria-badge">
                             {categoria.trim()}
                           </span>
@@ -65,13 +66,14 @@ function TablaPeliculas({ editarPelicula, eliminarPelicula, peliculasFiltradas }
 
                 
                   <td colSpan="4" className="d-md-none p-3">
-                    <div className="mobile-pelicula-card">
+                    <div className="mobile-pelicula-card bg-dark bg-opacity-25 p-3 rounded-3">
                       <div className="d-flex gap-3 mb-3">
                         <div className="poster-container-mobile">
                           <img
                             src={pelicula.poster || "https://via.placeholder.com/60x80?text=No+Image"}
                             alt={pelicula.titulo}
-                            className="pelicula-poster-mobile"
+                            className="pelicula-poster-mobile rounded-2"
+                            style={{ width: "50px", height: "75px", objectFit: "cover" }}
                             onError={(e) => {
                               e.target.onerror = null;
                               e.target.src = "https://via.placeholder.com/60x80?text=No+Image";
@@ -86,7 +88,7 @@ function TablaPeliculas({ editarPelicula, eliminarPelicula, peliculasFiltradas }
                           </div>
                           <div className="categorias-mobile">
                             {pelicula.categorias ? (
-                              pelicula.categorias.split(',').map((categoria, index) => (
+                              String(pelicula.categorias).split(',').map((categoria, index) => (
                                 <span key={index} className="categoria-badge-mobile">
                                   {categoria.trim()}
                                 </span>
