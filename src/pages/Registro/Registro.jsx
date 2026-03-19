@@ -51,7 +51,7 @@ const Registro = () => {
     <div className="registro-wrapper">
       <Container className="d-flex justify-content-center align-items-center mx-auto my-5">
         <Form onSubmit={handleSubmit} className="registro-form">
-          <div className="text-center mb-4">
+          <div className="text-center d-flex justify-content-center align-items-center flex-column mb-4">
             <h2 className="fw-bold text-light">Crear Cuenta</h2>
             <p className="registro-subtitulo text-muted">Join PlayMovie to start streaming your favorite content</p>
           </div>
