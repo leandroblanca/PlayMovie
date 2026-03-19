@@ -36,7 +36,7 @@ const Usuario = () => {
     if (clave !== "") { }
   };
   const handleQuitarFavorito = (e, peliculaId) => {
-    e.stropPropagation();
+    e.stopPropagation();
     eliminarFavorito(peliculaId)
   }
   const irATososLosFavoritos = () => {
@@ -182,4 +182,4 @@ const Usuario = () => {
   )
 }
 
-export default Usuario
+export default Usuario;

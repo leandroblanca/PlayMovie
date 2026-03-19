@@ -1,5 +1,6 @@
 import { Button, Modal } from "react-bootstrap";
 import "./ModalHome.css";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 function ModalPelicula({show, handleClose, pelicula, esFavorito, agregarFavorito, eliminarFavorito}) {
     if (!pelicula) return null;

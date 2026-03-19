@@ -31,7 +31,7 @@ function Home({ peliculas }) {
     if (esFavorito(pelicula.id)) {
       eliminarFavorito(pelicula.id)
     } else {
-      agregarFavarito(pelicula)
+      agregarFavorito(pelicula)
     }
   }
   const peliculasDestacadas = peliculas.slice(0, 5);

@@ -42,7 +42,7 @@ function agregarFavorito(pelicula) {
 };
 
 function eliminarFavorito(peliculaId) {
-    setFavoritos(prev => prev.filter(fav => fav.id === peliculaId));
+    setFavoritos(prev => prev.filter(fav => fav.id !== peliculaId));
 };
 
 function esFavorito(peliculaId) {
