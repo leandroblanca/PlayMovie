@@ -22,3 +22,9 @@ h1 {
 .Titulo-Rojo {
     color: #ea2a33;
 }
+
+.Parrafo {
+    font-size: 17px;
+    margin: 0;
+    color: #8c9aad;
+}
