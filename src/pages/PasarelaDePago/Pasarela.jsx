@@ -111,6 +111,34 @@ function PasarelaDePago() {
 
             </div>
           ))}
+
+          <div className="mt-4">
+            <h5 className="mb-3 fw-bold">Otros métodos de pago</h5>
+            <Row className="g-3"> 
+              <Col xs={6}>
+                <div className="payment-span rounded-5 p-3 d-flex align-items-center justify-content-center gap-2" style={{cursor: 'pointer'}}>
+                  <FaPaypal size={24} color="#003087" />
+                  <span className="fw-semibold rounded-5">PayPal</span>
+                </div>
+              </Col>
+              
+              <Col xs={6}>
+                <div className="payment-span rounded-5 p-3 d-flex align-items-center justify-content-center gap-2" style={{cursor: 'pointer'}}>
+                  <FaApple size={24} />
+                  <span className="fw-semibold rounded-5">Apple Pay</span>
+                </div>
+              </Col>
+            </Row>
+          </div>
+
+       
+          <Alert variant="danger rounded-5" className="d-flex align-items-center mt-4">
+            <ShieldCheck size={28} className="text-danger me-3 flex-shrink-0" />
+            <p className="text-light mb-0" style={{ fontSize: '0.85rem' }}>
+              Su pago está protegido por encriptación SSL de 256 bits. No guardamos los datos de su CVV.
+            </p>
+          </Alert>
+
         </Col>
 
        
