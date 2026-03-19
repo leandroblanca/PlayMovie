@@ -206,7 +206,7 @@ details[open] summary::after {
 @media (max-width: 768px) {
 
     h1 {
-        font-size: 23px;
+        font-size: 26px;
     }
 
     .Parrafo {
@@ -216,5 +216,108 @@ details[open] summary::after {
 
     br {
         display: none;
+    }
+
+    .Contenedor {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin: 0 15px;
+    }
+
+    .Card {
+        margin-top: 5px;
+        width: 100%;
+        padding: 20px;
+        height: auto;
+    }
+
+    .Card-Rojo {
+        margin-top: 5px;
+        width: 100%;
+        padding: 20px;
+        height: auto;
+    }
+
+    h2 {
+        font-size: 17px;
+        margin-bottom: 0;
+    }
+
+    h3 {
+        font-size: 30px;
+        margin: 0;
+    }
+
+    .Mes {
+        font-size: 13px;
+    }
+
+    .Letras {
+        font-size: 11px;
+        margin: 0;
+    }
+    
+    .Division {
+        display: flex;
+    }
+
+    .Text {
+        font-size: 10px;
+        margin-left: 0;
+    }
+
+    .Texto {
+        font-size: 9px;
+        margin: 0;
+    }
+
+    .Text-Tachado {
+        font-size: 10px;
+        margin-left: 0;
+    }
+
+    li {
+        width: 50%;
+        margin-bottom: 12px;
+    }
+
+    .Icono {
+        font-size: 16px;
+    }
+    
+    .Icono-Tachado {
+        font-size: 16px;
+    }
+
+    .Plan {
+        padding: 8px;
+        margin-top: 0;
+        font-size: 12px;
+    }
+
+    .Plan-Rojo {
+        padding: 8px;
+        margin-top: 0;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 340px) {
+
+    .Menos {
+        width: 46%;
+    }
+
+    .Mas {
+        width: 54%;
+    }
+
+    .Text {
+        font-size: 8px;
+    }
+    
+    .Texto {
+        font-size: 8px;
     }
 }
