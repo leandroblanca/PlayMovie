@@ -3,13 +3,12 @@ import { useEffect, useState } from "react";
 function getUserLogueado() {
     const usuario = sessionStorage.getItem('usuarioLogueado');
     return usuario ? JSON.parse(usuario) : null;
-}
+};
 
 export function useFavoritos() {
     const [favoritos, setFavoritos] = useState([]);
     const [usuario, setUsuario] = useState(getUserLogueado) 
-}
-
+    
 useEffect(() => {
     const handleStorageChance = () => {
         setUsuario(getUserLogueado())
@@ -40,6 +39,17 @@ function agregaFavorito(pelicula) {
         }
         return prev;
     });
+};
+
+function eliminarFvorito(peliculaId) {
+    setFavoritos(prev => prev.filter(fav => fav.id !== peliculaId));
+};
+
+function esFavorito(peliculaId) {
+    return favoritos.map(fav => fav.id === peliculaId);
+};
+
+  return { favoritos, agregarFavorito, eliminarFavorito, esFavorito, usuario};
 };
 
 
