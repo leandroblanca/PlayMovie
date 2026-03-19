@@ -20,18 +20,19 @@ const Planes = () => {
                     </div><hr />
                     <div className='Card-Body'>
                         <li>
-                            <FaCheckCircle className='Icono' /> <span className='Text'>Calidad SD (480p)</span> 
+                            <FaCheckCircle className='Icono' /> <span className='Text'>Calidad SD (480p)</span>
                         </li>
                         <li>
-                            <FaCheckCircle className='Icono' /> <span className='Text'>1 dispositivo a la vez</span> 
+                            <FaCheckCircle className='Icono' /> <span className='Text'>1 dispositivo a la vez</span>
                         </li>
                         <li>
-                            <FaCheckCircle className='Icono' /> <span className='Text'>Catálogo completo</span> 
+                            <FaCheckCircle className='Icono' /> <span className='Text'>Catálogo completo</span>
                         </li>
                         <li>
-                            <FaTimesCircle className='Icono-Tachado' /> <span className='Text-Tachado'>Descargas offline</span> 
+                            <FaTimesCircle className='Icono-Tachado' /> <span className='Text-Tachado'>Descargas offline</span>
                         </li>
                     </div><hr />
+                    <button className='Plan'>Elegir Plan</button>
                 </div>
                 <div className='Card-Rojo'>
                     <div className='Header'>
@@ -41,18 +42,19 @@ const Planes = () => {
                     </div><hr />
                     <div className='Card-Body'>
                         <li>
-                            <FaCheckCircle className='Icono' /> <span className='Text'>Calidad full HD (1080p)</span> 
+                            <FaCheckCircle className='Icono' /> <span className='Text'>Calidad full HD (1080p)</span>
                         </li>
                         <li>
-                            <FaCheckCircle className='Icono' /> <span className='Text'>2 dispositivo a la vez</span> 
+                            <FaCheckCircle className='Icono' /> <span className='Text'>2 dispositivo a la vez</span>
                         </li>
                         <li>
                             <FaCheckCircle className='Icono' /> <span className='Text'>Descargas disponibles</span>
                         </li>
                         <li>
-                            <FaCheckCircle className='Icono' /> <span className='Text'>Sin anuncios</span> 
+                            <FaCheckCircle className='Icono' /> <span className='Text'>Sin anuncios</span>
                         </li>
                     </div><hr />
+                    <button className='Plan-Rojo'>Elegir Plan</button>
                 </div>
                 <div className='Card'>
                     <div className='Header'>
@@ -65,7 +67,7 @@ const Planes = () => {
                             <FaCheckCircle className='Icono' /> <span className='Text'>Calidad Ultra HD (4K) + HDR</span>
                         </li>
                         <li>
-                            <FaCheckCircle className='Icono' /> <span className='Text'>4 dispositivo a la vez</span> 
+                            <FaCheckCircle className='Icono' /> <span className='Text'>4 dispositivo a la vez</span>
                         </li>
                         <li>
                             <FaCheckCircle className='Icono' /> <span className='Text'>Sonido Dolby Atmos</span>
@@ -74,6 +76,7 @@ const Planes = () => {
                             <FaCheckCircle className='Icono' /> <span className='Text'>Descargas en 10 dispositivos</span>
                         </li>
                     </div><hr />
+                    <button className='Plan'>Elegir Plan</button>
                 </div>
             </div>
         </div>

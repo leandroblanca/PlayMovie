@@ -49,6 +49,12 @@ h1 {
     padding: 25px;
 }
 
+.Card:hover {
+    box-shadow:0 0 10px 1px #370c0c;
+    transform: translateY(-5px);
+    transition: calc(0.3s);
+}
+
 .Card-Rojo {
     width: 354px;
     height: 436px;
@@ -56,6 +62,12 @@ h1 {
     border: 2.5px solid #e92a33;
     background-color: #1c0f0f;
     padding: 25px;
+}
+
+.Card-Rojo:hover {
+    box-shadow: 0 0 12px 0px #e92a33;
+    transform: translateY(-5px);
+    transition: calc(0.3s);   
 }
 
 h2 {
@@ -105,4 +117,36 @@ li {
     font-size: 15px;
     margin-left: 15px;
     text-decoration: line-through;
+}
+
+.Plan {
+    text-align: center;
+    padding: 11px;
+    width: 100%;
+    border-radius: 15px;
+    border: none;
+    background-color: #2a1818;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.Plan:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px #550909;
+}
+
+.Plan-Rojo {
+    text-align: center;
+    padding: 11px;
+    width: 100%;
+    border-radius: 15px;
+    border: none;
+    background-color: #ea2a33;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.Plan-Rojo:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 7px rgba(255, 255, 255, 0.705);
 }
