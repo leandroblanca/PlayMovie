@@ -11,7 +11,7 @@ function Favoritos(params) {
         eliminarFavorito(peliculaId)
     };
     const verDetalle = (pelicula) => {
-        navigate('/home')
+        navigate(`/pelicula/${pelicula.id}`)
     };
     return(
         <Container className="my-5">

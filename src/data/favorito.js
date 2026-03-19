@@ -19,7 +19,7 @@ useEffect(() => {
 
 useEffect(() => {
     if (usuario) {
-        const stored = localStorage.getItem(`favorito_${usuario.id}`);
+        const stored = localStorage.getItem(`favoritos_${usuario.id}`);
         setFavoritos(stored ? JSON.parse(stored) : [])
     } else {
         setFavoritos([])
@@ -28,11 +28,11 @@ useEffect(() => {
 
 useEffect(() => {
     if (usuario) {
-        localStorage.setItem(`favoritos_${usuario.id}`,JSON.stringify(favoritos))
+        localStorage.setItem(`favoritos_${usuario.id}`, JSON.stringify(favoritos))
     }
 }, [favoritos, usuario]);
 
-function agregaFavorito(pelicula) {
+function agregarFavorito(pelicula) {
     setFavoritos(prev => {
         if (!prev.some(fav => fav.id === pelicula.id)) {
             return [...prev, pelicula];
@@ -41,8 +41,8 @@ function agregaFavorito(pelicula) {
     });
 };
 
-function eliminarFvorito(peliculaId) {
-    setFavoritos(prev => prev.filter(fav => fav.id !== peliculaId));
+function eliminarFavorito(peliculaId) {
+    setFavoritos(prev => prev.filter(fav => fav.id === peliculaId));
 };
 
 function esFavorito(peliculaId) {
