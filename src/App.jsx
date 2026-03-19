@@ -39,10 +39,10 @@ function App() {
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/error404" element={<Error404 />} />
         <Route path="/nosotros" element={<AboutUs />} />
-        <Route path="/detallepelicula" element={<DetallePelicula2 />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/ayuda" element={<CentroAyuda />} />
+        <Route path="/detallepelicula/:id" element={<DetallePelicula2 />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer/>
