@@ -81,3 +81,28 @@ h3 {
     color: #8c9aad;
     margin-bottom: 19px;
 }
+
+li {
+    list-style: none;
+    margin-bottom: 17px;
+}
+
+.Icono {
+    color: #e92a33;
+    font-size: 19px;
+}
+
+.Text {
+    font-size: 15px;
+    margin-left: 15px;
+}
+
+.Icono-Tachado {
+    font-size: 19px;
+}
+
+.Text-Tachado {
+    font-size: 15px;
+    margin-left: 15px;
+    text-decoration: line-through;
+}
