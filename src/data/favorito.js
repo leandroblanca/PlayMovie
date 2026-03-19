@@ -8,7 +8,7 @@ function getUserLogueado() {
 export function useFavoritos() {
     const [favoritos, setFavoritos] = useState([]);
     const [usuario, setUsuario] = useState(getUserLogueado) 
-    
+
 useEffect(() => {
     const handleStorageChance = () => {
         setUsuario(getUserLogueado())

@@ -12,7 +12,7 @@ import peliculasIniciales from './data/movies';
 import CategoriaPage from "./pages/home/Categoria";
 import Footer from './componentes/footer/Footer'
 import Contacto from '../src/pages/Contacto/Contacto'
-
+import Favoritos from "./pages/favoritos/Favoritos";
 function App() {
   useEffect(() => {
     function primeraCarga () {
@@ -39,6 +39,7 @@ function App() {
         <Route path="*" element={<Error404 />} />
         <Route path="/" element={<Home peliculas={peliculasIniciales} />} />
         <Route path="/categoria/:gender" element={<CategoriaPage />} />
+        <Route path="/favoritos" element={<Favoritos />} />
       </Routes>
       <Footer/>
     </Router>
