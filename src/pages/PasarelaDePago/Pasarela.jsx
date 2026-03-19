@@ -10,9 +10,8 @@ import { FaPaypal, FaApple } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import suscripciones from '../../data/pago';
+import suscripciones from "../../data/pago.js"
 import './Pasarela.css';
-
 
 
 function PasarelaDePago() {
@@ -62,7 +61,7 @@ function PasarelaDePago() {
     toast.success("Pago realizado con éxito 🎉");
 
     setTimeout(() => {
-      navigate("/home"); 
+      navigate("/"); 
     }, 1500);
 
     setEnviando(false);
@@ -99,7 +98,7 @@ function PasarelaDePago() {
                   <span className="text-danger fw-bold">{suscripcion.precio}</span>
                 </div>
 
-                <img src="/pago.png" alt="plan" width={70} style={{borderRadius:"10px"}} />
+                <img src={suscripcion.img} alt="plan" width={70} style={{borderRadius:"10px"}} />
               </div>
 
               <hr />
