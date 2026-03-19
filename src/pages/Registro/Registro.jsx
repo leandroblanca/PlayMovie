@@ -4,47 +4,79 @@ import { useNavigate, Link } from "react-router-dom";
 import "./Registro.css";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF, FaSpotify } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const Registro = () => {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    let errorMsg = "";
 
     if (!nombre || !email || !password || !confirmPassword) {
-      errorMsg = "Todos los campos son obligatorios";
-    } else if (password.length < 6) {
-      errorMsg = "La contraseña debe tener al menos 6 caracteres";
-    } else if (password !== confirmPassword) {
-      errorMsg = "Las contraseñas no coinciden";
-    } else if (!emailRegex.test(email)) {
-      errorMsg = "Email inválido";
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Todos los campos son obligatorios",
+        confirmButtonColor: "#dc3545",
+      });
+      return;
     }
-
-    if (errorMsg) {
-      setError(errorMsg);
+    if (password.length < 6) {
+      Swal.fire({
+        icon: "error",
+        title: "Contraseña débil",
+        text: "La contraseña debe tener al menos 6 caracteres",
+        confirmButtonColor: "#dc3545",
+      });
+      return;
+    }
+    if (password !== confirmPassword) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Las contraseñas no coinciden",
+        confirmButtonColor: "#dc3545",
+      });
+      return;
+    }
+    if (!emailRegex.test(email)) {
+      Swal.fire({
+        icon: "error",
+        title: "Email inválido",
+        text: "Por favor ingresa un correo válido",
+        confirmButtonColor: "#dc3545",
+      });
       return;
     }
 
     const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
     if (usuariosGuardados.find((u) => u.email === email)) {
-      setError("El correo electrónico ya está registrado");
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "El correo electrónico ya está registrado",
+        confirmButtonColor: "#dc3545",
+      });
       return;
     }
 
     const nuevoUsuario = { id: Date.now(), nombre, email, password, rol: "user" };
     localStorage.setItem("usuarios", JSON.stringify([...usuariosGuardados, nuevoUsuario]));
 
-    setError("");
-    alert("¡Registro exitoso!");
-    navigate("/login");
+    Swal.fire({
+      title: "¡Registro exitoso!",
+      text: "Tu cuenta ha sido creada correctamente.",
+      icon: "success",
+      confirmButtonColor: "#dc3545", 
+      confirmButtonText: "Iniciar Sesión",
+    }).then(() => {
+      navigate("/login");
+    });
   };
 
   return (
@@ -99,8 +131,6 @@ const Registro = () => {
               required
             />
           </Form.Group>
-
-          {error && <div className="error-container">{error}</div>}
 
           <div className="d-grid gap-2 mt-4">
             <Button size="lg" variant="danger" type="submit" className="fw-bold d-flex justify-content-center align-items-center">
