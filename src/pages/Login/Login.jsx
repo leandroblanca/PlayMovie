@@ -1,23 +1,21 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
-import logo from "/public/assets/logo.png";
 import { usuariosIniciales } from "../../helpers/users";
 import "./Login.css";
+import Swal from "sweetalert2";
 
 
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
   e.preventDefault();
 
   if (!email || !password) {
-    setError("Todos los campos son obligatorios");
     return;
   }
 
@@ -30,11 +28,18 @@ const Login = () => {
   );
 
   if (!usuarioEncontrado || usuarioEncontrado.password !== password) {
-    setError("Correo electrónico o contraseña incorrectos");
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      timer: 3000,
+     background: "#1a1a1a",
+     color: "#f9f8f8",
+     confirmButtonColor: "#dc3545",
+      text: "Correo electrónico o contraseña incorrectos",
+      confirmButtonColor: "#dc3545",
+    });
     return;
   }
-
-  setError("");
 
   sessionStorage.setItem(
     "usuarioLogueado",
@@ -44,14 +49,26 @@ const Login = () => {
 
   window.dispatchEvent(new Event("auth-change"));
 
-  setEmail("");
-  setPassword("");
+  Swal.fire({
+    title: "¡Bienvenido!",
+    text: "Has iniciado sesión correctamente",
+    icon: "success",
+    timer: 3000,
+    background: "#1a1a1a",
+    color: "#f9f8f8",
+    confirmButtonColor: "#dc3545",
+    showConfirmButton: true,
+    timerProgressBar: true,
+  }).then(() => {
+    setEmail("");
+    setPassword("");
 
-  if (usuarioEncontrado.rol === "admin") {
-    navigate("/admin");
-  } else {
-    navigate("/");
-  }
+    if (usuarioEncontrado.rol === "admin") {
+      navigate("/admin");
+    } else {
+      navigate("/");
+    }
+  });
 };
 
   return (
@@ -63,7 +80,7 @@ const Login = () => {
             
             <div className="text-center d-flex justify-content-center align-items-center flex-column mb-4">
               <img
-                src={logo}
+                src="/assets/logo.png"
                 alt="logo"
                 className="auth-logo mb-3"
               />
@@ -94,8 +111,6 @@ const Login = () => {
                 required
               />
             </Form.Group>
-
-            {error && <p className="auth-error">{error}</p>}
 
             <div className="d-grid mt-4">
               <Button type="submit" variant="danger" className="auth-btn d-flex justify-content-center align-items-center fw-bold">
