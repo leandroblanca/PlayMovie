@@ -4,7 +4,7 @@ import { BsPencil, BsEye, BsTrash } from "react-icons/bs";
 function TablaPeliculas({ editarPelicula, eliminarPelicula, peliculasFiltradas }) {
   return (
     <Card className="tabla-peliculas-card w-100 border-0 overflow-hidden">
-      <Card.Body className="p-0">
+      <Card.Body className="p-0 w-100">
         <Table hover responsive className="table table-dark table-hover align-middle mb-0">
           <thead className="tabla-header d-none d-md-table-header-group">
             <tr>
