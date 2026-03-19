@@ -2,7 +2,7 @@ import React from "react";
 import "../DetallePelicula2/DetallePelicula2.css";
 import "@fontsource/poppins";
 import { FaPlay, FaPlus, FaHeart, FaShareAlt } from "react-icons/fa";
-// import Reviews from "./Reviews"
+import Reviews from "./Reviews"
 
 export default function MovieDetail() {
   return (
