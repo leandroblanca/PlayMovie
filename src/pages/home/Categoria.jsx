@@ -5,7 +5,7 @@ import "./categoria.css";
 import { useState } from "react";
 import ModalPelicula from "./ModalHome";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { useFavoritos } from '../hooks/useFavoritos';
+import { useFavoritos } from 'hooks/useFavoritos';
 
 function CategoriaPage() {
   const { gender } = useParams();
