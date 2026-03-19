@@ -10,6 +10,17 @@ const Planes = () => {
                 <p className='Parrafo'>Elige el plan que mejor se adapte a ti. 
                     Cancela cuando quieras, sin <br /> compromisos.</p>
             </section>
+            <div className='Contenedor'>
+                <div className='Card'>
+
+                </div>
+                <div className='Card-Rojo'>
+
+                </div>
+                <div className='Card'>
+
+                </div>
+            </div>
         </div>
     )
 }

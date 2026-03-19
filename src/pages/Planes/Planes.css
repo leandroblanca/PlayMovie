@@ -4,9 +4,13 @@
     box-sizing: border-box;
 }
 
+html body {
+    background: #120808;
+}
+
 .Title {
     text-align: center;
-    padding-top: 85px;
+    padding: 85px 0 40px;
 }
 
 h1 {
@@ -27,4 +31,27 @@ h1 {
     font-size: 17px;
     margin: 0;
     color: #8c9aad;
+}
+
+.Contenedor {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+
+.Card {
+    margin-top: 25px;
+    width: 350px;
+    height: 430px;
+    border-radius: 20px;
+    border: 1.5px solid #261515;
+    background-color: #170c0c;
+}
+
+.Card-Rojo {
+    width: 350px;
+    height: 430px;
+    border-radius: 20px;
+    border: 2.5px solid #e92a33;
+    background-color: #1c0f0f;
 }
