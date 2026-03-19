@@ -1,875 +1,140 @@
-/* Admin.css - Versión corregida */
 
 :root {
   --bg-dark: #0a0c0f;
-  --bg-darker: #080a0c;
   --bg-card: #14181c;
-  --bg-sidebar: #0f1215;
   --primary-red: #e50914;
-  --primary-red-hover: #b2070f;
-  --text-primary: #ffffff;
+  --border-color: rgba(255, 255, 255, 0.1);
   --text-secondary: #94a3b8;
-  --border-color: #2d3748;
-  --success-green: #10b981;
-  --danger-red: #ef4444;
-  --hover-bg: #1e293b;
 }
 
-.admin-container {
-  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
-  color: var(--text-primary);
+.admin-wrapper {
+  background-color: var(--bg-dark);
   min-height: 100vh;
 }
 
-/* Sidebar */
 .sidebar-col {
-  background: var(--bg-sidebar);
+  background: #0f1215;
   border-right: 1px solid var(--border-color);
-  min-height: 100vh;
-}
-
-.sidebar-wrapper {
+  height: 100vh;
   position: sticky;
   top: 0;
-  padding: 1.5rem 1rem;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+  overflow-y: auto;
+  z-index: 100;
 }
 
-.add-button-container {
-  margin-top: auto;
-  padding: 1.5rem 0;
-  border-top: 1px solid var(--border-color);
-}
-
-.add-movie-btn {
-  background: var(--primary-red) !important;
-  border: none !important;
-  width: 100%;
-  padding: 0.75rem !important;
-  font-weight: 600 !important;
-  border-radius: 8px !important;
-  transition: all 0.3s ease !important;
-}
-
-.add-movie-btn:hover {
-  background: var(--primary-red-hover) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3) !important;
-}
-
-/* Contenido principal */
 .main-content {
-  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
   padding: 2rem !important;
+  max-width: 100%;
 }
 
-/* Header */
-.page-title {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin: 0;
-  color: var(--text-primary);
+.content-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-/* Buscador */
+/* Header Flexbox */
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
 .search-wrapper {
   position: relative;
-  min-width: 250px;
+  flex-grow: 1;
+  max-width: 400px;
 }
 
 .search-input {
   width: 100%;
-  padding: 0.5rem 1rem 0.5rem 2.2rem;
+  padding: 10px 15px 10px 35px;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 8px;
-  color: var(--text-primary);
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: var(--primary-red);
+  color: white;
 }
 
 .search-icon {
   position: absolute;
-  left: 0.75rem;
+  left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--text-secondary);
+  opacity: 0.5;
 }
 
-/* Botón logout */
-.logout-btn {
-  background: transparent !important;
-  border: 1px solid var(--border-color) !important;
-  color: var(--text-primary) !important;
-  padding: 0.5rem 1.2rem !important;
-  border-radius: 8px !important;
-  transition: all 0.3s ease !important;
-}
-
-.logout-btn:hover {
-  background: rgba(229, 9, 20, 0.1) !important;
-  border-color: var(--primary-red) !important;
-  color: var(--primary-red) !important;
-}
-
-/* Cards de sección */
+/* Cards de Secciones */
 .section-card {
   background: var(--bg-card);
   border-radius: 12px;
   padding: 1.5rem;
   border: 1px solid var(--border-color);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 20px;
 }
 
-.section-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin: 0;
+/* Scroll de Tablas Mejorado */
+.table-responsive-custom {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-red) transparent;
 }
 
-.section-count {
-  background: rgba(229, 9, 20, 0.1);
-  color: var(--primary-red);
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
-}
+/* --- MEDIA QUERIES --- */
 
-/* Tabla de películas */
-.tabla-peliculas {
-  background: transparent;
-  color: var(--text-primary);
-}
-
-.movies-table {
-  color: var(--text-primary);
-}
-
-.movies-table thead th {
-  color: var(--text-secondary);
-  font-weight: 600;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  border-bottom: 1px solid var(--border-color);
-  padding: 1rem 0.5rem;
-}
-
-.movies-table tbody tr {
-  transition: all 0.2s ease;
-}
-
-.movies-table tbody tr:hover {
-  background: var(--hover-bg);
-}
-
-.movies-table td {
-  padding: 1rem 0.5rem;
-  border-bottom: 1px solid var(--border-color);
-  vertical-align: middle;
-}
-
-.poster-mini {
-  width: 45px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-/* Badges de categorías */
-.category-badge {
-  background: rgba(229, 9, 20, 0.1);
-  color: var(--primary-red);
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.7rem;
-  font-weight: 500;
-  border: 1px solid rgba(229, 9, 20, 0.3);
-  white-space: nowrap;
-}
-
-/* Botones de acción */
-.action-btn {
-  background: transparent;
-  border: none;
-  padding: 0.4rem;
-  color: var(--text-secondary);
-  transition: all 0.2s ease;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.action-btn:hover {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.edit-btn:hover {
-  color: #3b82f6;
-}
-
-.delete-btn:hover {
-  color: var(--danger-red);
-}
-
-/* Estado vacío */
-.empty-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 2rem;
-}
-
-.empty-icon {
-  font-size: 3rem;
-  opacity: 0.3;
-}
-
-/* Dashboard cards (mantener compatibilidad) */
-.dashboard-card {
-  background: var(--bg-card) !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: 10px !important;
-  padding: 1.25rem !important;
-}
-
-.dashboard-icon {
-  color: var(--primary-red) !important;
-}
-
-.dashboard-title {
-  color: var(--text-secondary) !important;
-}
-
-.dashboard-value {
-  color: var(--text-primary) !important;
-}
-
-/* Usuarios cards */
-.usuarios-card {
-  background: transparent !important;
-}
-
-.usuario-item {
-  background: rgba(255, 255, 255, 0.02) !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: 8px !important;
-  margin-bottom: 0.5rem !important;
-  padding: 1rem !important;
-}
-
-.usuario-item:hover {
-  background: var(--hover-bg) !important;
-  border-color: var(--primary-red) !important;
-}
-
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--primary-red);
-}
-
-/* Registro cards */
-.registro-card {
-  background: var(--bg-card) !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: 10px !important;
-  padding: 1.25rem !important;
-}
-
-.registro-item {
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.registro-item:last-child {
-  border-bottom: none;
-}
-
-.registro-icon {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--success-green);
-}
-
-.registro-icon.warning {
-  background: #f59e0b;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
+/* Tablet (md) */
+@media (max-width: 991px) {
   .main-content {
-    padding: 1rem !important;
+    padding: 1.5rem !important;
   }
-  
-  .search-wrapper {
-    min-width: 100%;
-  }
-  
-  .category-badge {
-    white-space: normal;
-  }
-}
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-darker);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-red);
-}
-/* ===== ESTILOS PARA TABLA DE PELÍCULAS MEJORADA ===== */
-
-.tabla-peliculas-card {
-  background: var(--bg-card) !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: 16px !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
-  transition: all 0.3s ease;
-}
-
-.tabla-peliculas-card:hover {
-  box-shadow: 0 12px 28px rgba(229, 9, 20, 0.15) !important;
-  border-color: rgba(229, 9, 20, 0.3) !important;
-}
-
-/* Header de la tabla */
-.tabla-header {
-  background: rgba(0, 0, 0, 0.3);
-  border-bottom: 2px solid var(--border-color);
-}
-
-.tabla-header th {
-  color: var(--text-secondary) !important;
-  font-weight: 600;
-  font-size: 0.75rem;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  padding: 1.2rem 1rem !important;
-  border: none !important;
-  background: transparent;
-}
-
-/* Filas de películas */
-.pelicula-row {
-  transition: all 0.2s ease;
-  border-bottom: 1px solid var(--border-color) !important;
-  background: transparent;
-}
-
-.pelicula-row:hover {
-  background: var(--hover-bg) !important;
-  transform: scale(1.002);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-.pelicula-row td {
-  padding: 1rem !important;
-  border: none !important;
-  color: var(--text-primary);
-  vertical-align: middle;
-}
-
-/* Poster de película */
-.poster-container {
-  width: 50px;
-  height: 70px;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  transition: transform 0.2s ease;
-  flex-shrink: 0;
-}
-
-.poster-container:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 16px rgba(229, 9, 20, 0.3);
-}
-
-.pelicula-poster {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Título de película */
-.pelicula-titulo {
-  color: var(--text-primary);
-  font-size: 0.95rem;
-  margin-bottom: 4px;
-  line-height: 1.3;
-}
-
-/* Categorías mini (en la columna de película) */
-.pelicula-categorias-mini {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-
-.categoria-mini {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 0.65rem;
-  color: var(--text-secondary);
-  border: 1px solid var(--border-color);
-}
-
-/* Año */
-.pelicula-anio {
-  display: inline-block;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  border: 1px solid var(--border-color);
-  text-align: center;
-  min-width: 60px;
-}
-
-/* Contenedor de categorías (columna principal) */
-.categorias-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  max-width: 200px;
-}
-
-.categoria-badge {
-  background: rgba(229, 9, 20, 0.12);
-  color: #ff6b6b;
-  padding: 0.25rem 0.6rem;
-  border-radius: 20px;
-  font-size: 0.7rem;
-  font-weight: 500;
-  border: 1px solid rgba(229, 9, 20, 0.3);
-  white-space: nowrap;
-  letter-spacing: 0.3px;
-  transition: all 0.2s ease;
-}
-
-.categoria-badge:hover {
-  background: rgba(229, 9, 20, 0.2);
-  border-color: var(--primary-red);
-  transform: translateY(-1px);
-}
-
-/* Contenedor de acciones */
-.acciones-container {
-  gap: 6px !important;
-}
-
-.accion-btn {
-  width: 36px !important;
-  height: 36px !important;
-  padding: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  border-radius: 8px !important;
-  border-width: 1px !important;
-  transition: all 0.2s ease !important;
-  background: transparent !important;
-}
-
-/* Botones específicos */
-.edit-btn {
-  color: #3b82f6 !important;
-  border-color: #3b82f6 !important;
-}
-
-.edit-btn:hover {
-  background: #3b82f6 !important;
-  color: white !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3) !important;
-}
-
-.view-btn {
-  color: #10b981 !important;
-  border-color: #10b981 !important;
-}
-
-.view-btn:hover {
-  background: #10b981 !important;
-  color: white !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3) !important;
-}
-
-.delete-btn {
-  color: #ef4444 !important;
-  border-color: #ef4444 !important;
-}
-
-.delete-btn:hover {
-  background: #ef4444 !important;
-  color: white !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3) !important;
-}
-
-/* Estado vacío */
-.empty-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 12px;
-  margin: 1rem;
-}
-
-.empty-icon {
-  font-size: 3.5rem;
-  opacity: 0.3;
-  filter: grayscale(1);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .categorias-container {
-    max-width: 150px;
-  }
-  
-  .categoria-badge {
-    font-size: 0.65rem;
-    padding: 0.2rem 0.4rem;
-  }
-  
-  .pelicula-anio {
-    min-width: 50px;
-    font-size: 0.75rem;
-    padding: 0.2rem 0.5rem;
-  }
-  
-  .accion-btn {
-    width: 32px !important;
-    height: 32px !important;
-  }
-  
-  .accion-btn svg {
-    width: 14px;
-    height: 14px;
-  }
-}
-
-@media (max-width: 576px) {
-  .pelicula-titulo {
-    font-size: 0.85rem;
-  }
-  
-  .poster-container {
-    width: 40px;
-    height: 56px;
-  }
-  
-  .acciones-container {
-    flex-direction: column;
-    gap: 4px !important;
-  }
-  
-  .accion-btn {
-    width: 28px !important;
-    height: 28px !important;
-  }
-}
-/* ===== ESTILOS RESPONSIVE Y CENTRADO ===== */
-
-/* Contenedor principal centrado */
-.content-wrapper {
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-/* Header responsive */
-.header-actions {
-  min-width: auto;
-}
-
-@media (min-width: 768px) {
-  .header-actions {
-    min-width: 400px;
-  }
-}
-
-/* Stats cards responsive */
-.stats-section .row {
-  margin: 0 -0.5rem;
-}
-
-.stats-section [class*="col-"] {
-  padding: 0 0.5rem;
-  margin-bottom: 1rem;
-}
-
-/* Vista móvil para películas */
-.mobile-pelicula-card {
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 12px;
-  padding: 1rem;
-  border: 1px solid var(--border-color);
-}
-
-.poster-container-mobile {
-  width: 60px;
-  height: 80px;
-  border-radius: 8px;
-  overflow: hidden;
-  flex-shrink: 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.pelicula-poster-mobile {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.pelicula-titulo-mobile {
-  color: var(--text-primary);
-  font-size: 1rem;
-  line-height: 1.3;
-}
-
-.pelicula-anio-mobile {
-  display: inline-block;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.2rem 0.6rem;
-  border-radius: 16px;
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  border: 1px solid var(--border-color);
-}
-
-.categorias-mobile {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-
-.categoria-badge-mobile {
-  background: rgba(229, 9, 20, 0.1);
-  color: #ff6b6b;
-  padding: 0.15rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.65rem;
-  border: 1px solid rgba(229, 9, 20, 0.3);
-}
-
-.acciones-mobile {
-  border-top: 1px solid var(--border-color);
-  padding-top: 0.75rem;
-  margin-top: 0.5rem;
-}
-
-.accion-btn-mobile {
-  width: 40px !important;
-  height: 40px !important;
-  padding: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  border-radius: 8px !important;
-  border-width: 1px !important;
-  transition: all 0.2s ease !important;
-  background: transparent !important;
-  flex: 1;
-}
-
-.edit-btn-mobile {
-  color: #3b82f6 !important;
-  border-color: #3b82f6 !important;
-}
-
-.view-btn-mobile {
-  color: #10b981 !important;
-  border-color: #10b981 !important;
-}
-
-.delete-btn-mobile {
-  color: #ef4444 !important;
-  border-color: #ef4444 !important;
-}
-
-/* Responsive grid para móvil */
-@media (max-width: 767px) {
-  .content-header {
-    padding: 1rem;
-    background: var(--bg-card);
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-    margin-bottom: 1rem !important;
-  }
-  
   .page-title {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
-  
-  .page-subtitle {
-    font-size: 0.85rem;
+}
+
+/* Móvil (sm) */
+@media (max-width: 767px) {
+  .main-content {
+    padding: 1rem 0.5rem !important;
   }
-  
+
+  .header-controls {
+    flex-direction: column;
+    width: 100%;
+  }
+
   .section-card {
     padding: 1rem;
+    border-radius: 8px;
   }
-  
-  .section-title {
-    font-size: 1.1rem;
-  }
-  
-  .section-count {
-    font-size: 0.75rem;
-    padding: 0.2rem 0.6rem;
-  }
-  
-  /* Ajustes para las stats cards en móvil */
-  .dashboard-card {
-    padding: 1rem !important;
-  }
-  
-  .dashboard-value {
-    font-size: 1.5rem !important;
-  }
-  
-  .dashboard-title {
-    font-size: 0.8rem !important;
-  }
-  
-  /* Usuarios en móvil */
-  .usuario-item {
-    padding: 0.75rem !important;
-  }
-  
-  .avatar {
-    width: 35px;
-    height: 35px;
-    font-size: 0.9rem;
+
+  /* Forzamos que la tabla sea legible o scrolleable */
+  .table-responsive-custom table {
+    min-width: 600px; /* Evita que las columnas se aplasten */
   }
 }
 
-/* Para pantallas muy pequeñas */
+/* Ajustes para pantallas muy pequeñas */
 @media (max-width: 480px) {
-  .header-actions {
-    width: 100%;
+  .page-title {
+    font-size: 1.25rem;
   }
-  
-  .search-wrapper {
-    width: 100%;
-  }
-  
-  .logout-btn {
-    width: 100%;
-  }
-  
-  .pelicula-titulo-mobile {
-    font-size: 0.9rem;
-  }
-  
-  .accion-btn-mobile {
-    width: 35px !important;
-    height: 35px !important;
-  }
-  
-  .accion-btn-mobile svg {
-    width: 14px;
-    height: 14px;
-  }
-}
 
-/* Ajustes para tablets */
-@media (min-width: 768px) and (max-width: 991px) {
-  .content-wrapper {
-    max-width: 100%;
+  .section-title {
+    font-size: 1rem;
   }
-  
-  .categorias-container {
-    max-width: 150px;
-  }
-  
-  .categoria-badge {
-    font-size: 0.65rem;
-    padding: 0.15rem 0.4rem;
-  }
-  
-  .pelicula-anio {
-    min-width: 50px;
-    font-size: 0.75rem;
-    padding: 0.2rem 0.5rem;
-  }
-}
-
-/* Mejoras para la tabla en desktop */
-@media (min-width: 992px) {
-  .tabla-peliculas th {
-    font-size: 0.8rem;
-  }
-  
-  .pelicula-titulo {
-    font-size: 0.95rem;
-  }
-  
-  .categoria-badge {
-    font-size: 0.7rem;
-  }
-}
-
-/* Scroll horizontal suave para tablas en móvil */
-.table-responsive {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: var(--border-color) var(--bg-darker);
-}
-
-.table-responsive::-webkit-scrollbar {
-  height: 6px;
-}
-
-.table-responsive::-webkit-scrollbar-track {
-  background: var(--bg-darker);
-}
-
-.table-responsive::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-  border-radius: 3px;
-}
-
-.table-responsive::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-red);
 }
