@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Usuario.css"
 import { useState } from 'react';
-import { FaCheckCircle } from "react-icons/fa";
+import { FaCheckCircle, FaHeart } from "react-icons/fa";
 import Hombre from "/public/assets/Hombre.png"
 import Mujer from "/public/assets/Mujer.png"
 import peliculas from "../../data/movies";
@@ -21,7 +21,7 @@ const Usuario = () => {
     email: usuario ?.email || "alex.rivers@gmail.com",
     genero: "hombre"
   }
-  const ultimasPeliculas = favoritos.slice(-4);
+  const ultimosFavoritos = favoritos.slice(-4);
 
   const cancelarEdicion = () => {
     setNombre(usuario.nombre);
@@ -109,14 +109,14 @@ const Usuario = () => {
               </div>
             </div>
           )}
-          <button className='Cerrar-Sesion'>Cerrar Sesión</button>
+          <button className='Cerrar-Sesion' onClick={cerrarSeccion}>Cerrar Sesión</button>
         </div>
       </div>
       <div className='Estadisticas'>
         <div className='stat'>
-          <h2>124</h2>
-          <h5>Peliculas</h5>
-          <p className='Letras'>VISTOS</p>
+          <h2>{favoritos.length}</h2>
+          <h5>Favoritos</h5>
+          <p className='Letras'>PELICULAS</p>
         </div>
         <div className='stat'>
           <h2>45</h2>
@@ -132,7 +132,7 @@ const Usuario = () => {
       <div className='tabs'>
         <button className='Item'>Ajustes de cuenta</button>
         <button className='Item'>Subscripción</button>
-        <button className='Extra'>Mis favoritos</button>
+        <button className='Extra' onClick={irATososLosFavoritos}>Mis favoritos</button>
       </div>
       <div className='Contenido'>
         <div className='Panel-Izquierdo'>
@@ -153,17 +153,28 @@ const Usuario = () => {
         </div>
         <div className='Panel-Derecho'>
           <h3 className='Reciente'>Agregados Recientemente a Favoritos</h3>
-          <div className='Fav'>
-            <h3 className='Favoritos'>Mis Favoritos</h3>
-            <button className='VerTodo'>Ver Todo</button>
-          </div>
-          <div className='Peliculas'>
-            {ultimasPeliculas.map((peli) => (
+          {ultimosFavoritos.length === 0 ? (
+            <p className='text-muted'>No hay favorios recientes.</p> 
+          ) : (
+            <div className='Peliculas'>
+            {ultimosFavoritos.map((peli) => (
               <div className='Pelis' key={peli.id}>
                 <img src={peli.poster} alt={peli.titulo} />
                 <p>{peli.titulo}</p>
+                <button
+                 className='btn-quitar-fav'
+                 onClick={(e) => handleQuitarFavorito (e, peli.id)}
+                 title='Quitar de favoritos'
+                 >
+                  <FaHeart color='red'/>
+                 </button>
               </div>
             ))}
+          </div>
+          )}
+          <div className='Fav'>
+            <h3 className='Favoritos'>Mis Favoritos ({favoritos.length})</h3>
+            <button className='VerTodo' onClick={irATososLosFavoritos}>Ver Todo</button>
           </div>
         </div>
       </div>
