@@ -143,92 +143,89 @@ function PasarelaDePago() {
 
        
         <Col md={6}>
-          <h5>Detalles de la tarjeta</h5>
-          <Col xs={12} md={6} className="mb-4">
-  <div className="form-contacto p-4 p-md-5 rounded-5 shadow">
-    
-    <h5 className="mb-4">Detalles de la tarjeta</h5>
+          <h5 className="mb-4 fw-bold">Detalles de la tarjeta</h5>
 
-    <Form onSubmit={handleSubmit} className="d-flex flex-column">
+          <div className="form-card p-4">
+          <Form onSubmit={handleSubmit} className="d-flex w-100 flex-column">
 
-      {/* NOMBRE */}
-      <Form.Group className="mb-4">
-        <Form.Label>Nombre del titular</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Ej: Juan Pérez"
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
-          name="ccname"
-          autoComplete="cc-name"
-        />
-      </Form.Group>
+         
+            <Form.Group className="mb-4">
+              <Form.Label>Nombre del titular</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Ej: Juan Pérez"
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
+                name="ccname"
+                autoComplete="cc-name"
+              />
+            </Form.Group>
 
-      {/* NUMERO TARJETA */}
-      <Form.Group className="mb-4">
-        <Form.Label>Número de tarjeta</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="0000 0000 0000 0000"
-          value={tarjeta}
-          onChange={(e) => setTarjeta(e.target.value)}
-          name="cardnumber"
-          autoComplete="cc-number"
-        />
-      </Form.Group>
+         
+            <Form.Group className="mb-4">
+              <Form.Label>Número de tarjeta</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="0000 0000 0000 0000"
+                value={tarjeta}
+                onChange={(e) => setTarjeta(e.target.value)}
+                name="cardnumber"
+                autoComplete="cc-number"
+              />
+            </Form.Group>
 
-      {/* VENCIMIENTO Y CVV */}
-      <Row>
-        <Col>
-          <Form.Group className="mb-4">
-            <Form.Label>Vencimiento</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="MM/AA"
-              value={vencimiento}
-              onChange={(e) => setVencimiento(e.target.value)}
-              name="cc-exp"
-              autoComplete="cc-exp"
+        
+            <Row>
+              <Col>
+                <Form.Group className="mb-4">
+                  <Form.Label>Vencimiento</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="MM/AA"
+                    value={vencimiento}
+                    onChange={(e) => setVencimiento(e.target.value)}
+                    name="cc-exp"
+                    autoComplete="cc-exp"
+                  />
+                </Form.Group>
+              </Col>
+
+              <Col>
+                <Form.Group className="mb-4">
+                  <Form.Label>CVV</Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder="123"
+                    value={cvv}
+                    onChange={(e) => setCvv(e.target.value)}
+                    name="cvc"
+                    autoComplete="cc-csc"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+
+          
+            <Form.Check
+              type="checkbox"
+              label="Guardar esta tarjeta de forma segura"
+              className="mb-4"
             />
-          </Form.Group>
-        </Col>
 
-        <Col>
-          <Form.Group className="mb-4">
-            <Form.Label>CVV</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="123"
-              value={cvv}
-              onChange={(e) => setCvv(e.target.value)}
-              name="cvc"
-              autoComplete="cc-csc"
-            />
-          </Form.Group>
-        </Col>
-      </Row>
+       
+            <Button
+              size="lg"
+              variant="danger"
+              type="submit"
+              className="py-3 fw-bold w-100 d-flex justify-content-center align-items-center"
+              disabled={enviando}
+            >
+              {enviando ? "Procesando..." : "Pagar 14,99 € de forma segura"}
+            </Button>
 
-      {/* CHECK */}
-      <Form.Check 
-        type="checkbox"
-        label="Guardar esta tarjeta de forma segura"
-        className="mb-4"
-      />
-
-      {/* BOTON */}
-      <Button 
-        size="lg" 
-        variant="danger" 
-        type="submit" 
-        className="py-3 fw-bold w-100"
-        disabled={enviando}
-      >
-        {enviando ? "Procesando..." : "Pagar 14,99 € de forma segura"}
-      </Button>
-
-    </Form>
-  </div>
-</Col>
+          </Form>
+          </div>
+          <p className='text-center text-secondary mt-4'>Al hacer clic en "Pagar", aceptas nuestros Términos de Servicio y  <br /> confirmas que has leído nuestra Política de Privacidad.</p>
         </Col>
       </Row>
 
