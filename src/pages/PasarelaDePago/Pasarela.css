@@ -1,5 +1,35 @@
 .card-suscripcion {
-  background: #1c1c1c;
-  color: white;
+  background: #1a1a1a;
+  color: #ffffff;
   border-radius: 16px;
+  border: 1px solid #333333;
+}
+
+.form-card {
+  border: 1px solid #333333;
+  border-radius: 16px;
+}
+
+.payment-span {
+  background-color: #1a1a1a;
+  border: 1px solid #333333;
+  color: #ffffff;
+}
+
+[data-bs-theme="dark"] .form-control {
+  background-color: transparent;
+  border: 1px solid #333333;
+  color: #ffffff;
+}
+
+[data-bs-theme="dark"] .form-control::placeholder {
+  color: #aaaaaa;
+  opacity: 0.7;
+}
+
+[data-bs-theme="dark"] .form-control:focus {
+  border-color: #e50914;
+  box-shadow: 0 0 0 0.2rem rgba(229, 9, 20, 0.25);
+  background-color: transparent;
+  color: #ffffff;
 }
