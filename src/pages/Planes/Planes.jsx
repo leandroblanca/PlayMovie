@@ -79,6 +79,21 @@ const Planes = () => {
                     <button className='Plan'>Elegir Plan</button>
                 </div>
             </div>
+            <h4>Preguntas Frecuentes</h4>
+            <div className='Centrar'>
+                <details>
+                    <summary className='Preguntas'>¿Puedo cancelar en cualquier momento?</summary>
+                </details>
+                <details>
+                    <summary className='Preguntas'>¿En que dispositivos puedo verlo?</summary>
+                </details>
+                <details>
+                    <summary className='Preguntas'>¿Como cambio de plan?</summary>
+                </details>
+                <details>
+                    <summary className='Preguntas'>¿Que es el audio Dolby Atmos?</summary>
+                </details>
+            </div>
         </div>
     )
 }
