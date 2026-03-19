@@ -61,7 +61,7 @@ const Login = () => {
         <Col xs={12} md={8} lg={5}>
           <Form onSubmit={handleSubmit} className="auth-form">
             
-            <div className="text-center mb-4">
+            <div className="text-center d-flex justify-content-center align-items-center flex-column mb-4">
               <img
                 src={logo}
                 alt="logo"
