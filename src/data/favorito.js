@@ -25,13 +25,24 @@ useEffect(() => {
     } else {
         setFavoritos([])
     }
-},[usuario])
+},[usuario]);
 
 useEffect(() => {
     if (usuario) {
         localStorage.setItem(`favoritos_${usuario.id}`,JSON.stringify(favoritos))
     }
-}, [favoritos, usuario])
+}, [favoritos, usuario]);
+
+function agregaFavorito(pelicula) {
+    setFavoritos(prev => {
+        if (!prev.some(fav => fav.id === pelicula.id)) {
+            return [...prev, pelicula];
+        }
+        return prev;
+    });
+};
+
+
 
 
 
