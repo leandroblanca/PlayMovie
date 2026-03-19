@@ -17,7 +17,19 @@ function Admin() {
   const location = useLocation();
   const [usuarios, setUsuarios] = useState(() => {
     const usuariosGuardados = localStorage.getItem("usuarios");
-    return usuariosGuardados ? JSON.parse(usuariosGuardados) : usuariosIniciales;
+    if (usuariosGuardados) {
+
+      const parsedUsers = JSON.parse(usuariosGuardados);
+      return parsedUsers.map(u => {
+        const { password, ...resto } = u;
+        return resto;
+      });
+    }
+   
+    return usuariosIniciales.map(u => {
+      const { password, ...resto } = u;
+      return resto;
+    });
   });
   const [peliculas, setPeliculas] = useState(() => {
     const guardadas = localStorage.getItem("peliculas");
