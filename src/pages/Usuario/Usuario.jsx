@@ -5,19 +5,23 @@ import { FaCheckCircle } from "react-icons/fa";
 import Hombre from "/public/assets/Hombre.png"
 import Mujer from "/public/assets/Mujer.png"
 import peliculas from "../../data/movies";
+import { useFavoritos } from '../../data/favorito';
+import { useNavigate } from 'react-router';
 
 const Usuario = () => {
-  const [nombre, setNombre] = useState("Alex Rivers")
-  const [email, setEmail] = useState("alex.rivers@gmail.com")
+  const {favoritos, eliminarFavorito, usuario} = useFavoritos()
+  const navigate = useNavigate()
+  const [nombre, setNombre] = useState(usuario?.nombre || "Alex Rivers")
+  const [email, setEmail] = useState(usuario?.email || "alex.rivers@gmail.com")
   const [clave, setClave] = useState("")
   const [genero, setGenero] = useState("hombre")
   const [abrirModal, setAbrirModal] = useState(false)
-  const usuario = {
-    nombre: "Alex Rivers",
-    email: "alex.rivers@gmail.com",
+  const usuarioOriginal = {
+    nombre: usuario ?.nombre ||  "Alex Rivers",
+    email: usuario ?.email || "alex.rivers@gmail.com",
     genero: "hombre"
   }
-  const ultimasPeliculas = peliculas.slice(-4);
+  const ultimasPeliculas = favoritos.slice(-4);
 
   const cancelarEdicion = () => {
     setNombre(usuario.nombre);
@@ -31,6 +35,17 @@ const Usuario = () => {
     setAbrirModal(false)
     if (clave !== "") { }
   };
+  const handleQuitarFavorito = (e, peliculaId) => {
+    e.stropPropagation();
+    eliminarFavorito(peliculaId)
+  }
+  const irATososLosFavoritos = () => {
+    navigate('/favoritos')
+  }
+  const cerrarSeccion = () => {
+    sessionStorage.removeItem('usuarioLogueado')
+    navigate('/login')
+  }
 
   return (
     <div className='Perfil'>
