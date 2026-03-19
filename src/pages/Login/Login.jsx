@@ -41,13 +41,16 @@ const Login = () => {
     JSON.stringify(usuarioEncontrado)
   );
 
+
+  window.dispatchEvent(new Event("auth-change"));
+
   setEmail("");
   setPassword("");
 
   if (usuarioEncontrado.rol === "admin") {
     navigate("/admin");
   } else {
-    navigate("/home");
+    navigate("/");
   }
 };
 
