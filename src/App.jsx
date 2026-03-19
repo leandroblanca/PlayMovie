@@ -12,6 +12,7 @@ import peliculasIniciales from './data/movies';
 import CategoriaPage from "./pages/home/Categoria";
 import Footer from './componentes/footer/Footer'
 import Contacto from '../src/pages/Contacto/Contacto'
+import Planes from "./pages/Planes/Planes"
 
 function App() {
   useEffect(() => {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/error404" element={<Error404 />} />
         <Route path="/nosotros" element={<AboutUs />} />
+        <Route path="/planes" element={< Planes/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="*" element={<Error404 />} />
