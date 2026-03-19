@@ -166,7 +166,8 @@ function Admin() {
 
   const cerrarSesion = () => {
     sessionStorage.removeItem("usuarioLogueado");
-    navigate("/login");
+    window.dispatchEvent(new Event("auth-change"));
+    navigate("/login", { replace: true });
   };
 
 
