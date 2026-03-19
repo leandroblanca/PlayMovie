@@ -22,8 +22,16 @@ useEffect(() => {
     if (usuario) {
         const stored = localStorage.getItem(`favorito_${usuario.id}`);
         setFavoritos(stored ? JSON.parse(stored) : [])
+    } else {
+        setFavoritos([])
     }
 },[usuario])
+
+useEffect(() => {
+    if (usuario) {
+        localStorage.setItem(`favoritos_${usuario.id}`,JSON.stringify(favoritos))
+    }
+}, [favoritos, usuario])
 
 
 
