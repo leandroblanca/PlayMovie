@@ -38,7 +38,7 @@ function TablaPeliculas({ editarPelicula, eliminarPelicula, peliculasFiltradas }
                       <div>
                         <div className="pelicula-titulo fw-bold">{pelicula.titulo}</div>
                         <div className="pelicula-categorias-mini text-muted small">
-                          {pelicula.categorias?.split(',').map((cat, i) => (
+                          {(pelicula.categorias ? String(pelicula.categorias).split(',') : []).map((cat, i) => (
                             <span key={i} className="categoria-mini">{cat.trim()}</span>
                           ))}
                         </div>
@@ -53,7 +53,7 @@ function TablaPeliculas({ editarPelicula, eliminarPelicula, peliculasFiltradas }
                   <td className="d-none d-md-table-cell">
                     <div className="categorias-container">
                       {pelicula.categorias ? (
-                        pelicula.categorias.split(',').map((categoria, index) => (
+                        String(pelicula.categorias).split(',').map((categoria, index) => (
                           <span key={index} className="categoria-badge">
                             {categoria.trim()}
                           </span>
@@ -88,7 +88,7 @@ function TablaPeliculas({ editarPelicula, eliminarPelicula, peliculasFiltradas }
                           </div>
                           <div className="categorias-mobile">
                             {pelicula.categorias ? (
-                              pelicula.categorias.split(',').map((categoria, index) => (
+                              String(pelicula.categorias).split(',').map((categoria, index) => (
                                 <span key={index} className="categoria-badge-mobile">
                                   {categoria.trim()}
                                 </span>
