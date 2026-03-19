@@ -5,7 +5,7 @@ import { FaCheckCircle, FaHeart } from "react-icons/fa";
 import Hombre from "/public/assets/Hombre.png"
 import Mujer from "/public/assets/Mujer.png"
 import peliculas from "../../data/movies";
-import { useFavoritos } from '../../data/favorito';
+import { useFavoritos } from '../hooks/useFavoritos';
 import { useNavigate } from 'react-router';
 
 const Usuario = () => {

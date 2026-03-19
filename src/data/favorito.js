@@ -46,7 +46,7 @@ function eliminarFavorito(peliculaId) {
 };
 
 function esFavorito(peliculaId) {
-    return favoritos.map(fav => fav.id === peliculaId);
+    return favoritos.some(fav => fav.id === peliculaId);
 };
 
   return { favoritos, agregarFavorito, eliminarFavorito, esFavorito, usuario};

@@ -5,12 +5,13 @@ import "./categoria.css";
 import { useState } from "react";
 import ModalPelicula from "./ModalHome";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { useFavoritos } from '../hooks/useFavoritos';
 
 function CategoriaPage() {
   const { gender } = useParams();
   const navigate = useNavigate();
   const generoDecodificado = decodeURIComponent(gender);
-  const {esFavorito, agregarFavorito, eliminarFavorito} = useFavorito();
+  const {esFavorito, agregarFavorito, eliminarFavorito} = useFavoritos();
 
   const peliculasFiltradas = peliculas.filter(
     (peli) => peli.categorias === generoDecodificado,
