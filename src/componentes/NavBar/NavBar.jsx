@@ -27,6 +27,7 @@ export default function Navbar() {
 
   const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("usuarioLogueado")));
   const [busqueda, setBusqueda] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
 
   useEffect(() => {
@@ -62,8 +63,6 @@ export default function Navbar() {
   if (user) {
     items = items.filter((item) => item !== "Iniciar Sesión");
   }
-
-  const [isOpen, setIsOpen] = useState(false);
 
   const handleLogout = () => {
     sessionStorage.removeItem("usuarioLogueado");
