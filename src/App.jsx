@@ -14,6 +14,7 @@ import Footer from './componentes/footer/Footer'
 import Contacto from '../src/pages/Contacto/Contacto'
 import PasarelaDePago from "./pages/PasarelaDePago/Pasarela";
 import Admin from "./pages/Admin/Admin";
+import RutaProtegida from "./componentes/RutaProtegida";
 
 function App() {
   useEffect(() => {
@@ -44,7 +45,7 @@ function App() {
         <Route path="/usuarios" element={<Admin />} />
         <Route path="/ingresos" element={<Admin />} />
         <Route path="/peliculas" element={<Admin />} />
-        <Route path="/" element={<Home peliculas={peliculasIniciales} />} />
+        <Route path="/" element={<RutaProtegida><Home peliculas={peliculasIniciales} /></RutaProtegida>} />
         <Route path="/categoria/:gender" element={<CategoriaPage />} />
       </Routes>
       <Footer/>
