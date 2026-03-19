@@ -41,6 +41,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="*" element={<Error404 />} />
+        <Route path="/usuarios" element={<Admin />} />
+        <Route path="/ingresos" element={<Admin />} />
+        <Route path="/peliculas" element={<Admin />} />
         <Route path="/" element={<Home peliculas={peliculasIniciales} />} />
         <Route path="/categoria/:gender" element={<CategoriaPage />} />
       </Routes>
