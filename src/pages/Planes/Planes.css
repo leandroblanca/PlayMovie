@@ -10,7 +10,7 @@ html body {
 
 .Title {
     text-align: center;
-    padding: 85px 0 40px;
+    padding: 85px 0 50px;
 }
 
 h1 {
@@ -28,7 +28,7 @@ h1 {
 }
 
 .Parrafo {
-    font-size: 17px;
+    font-size: 18px;
     margin: 0;
     color: #8c9aad;
 }
@@ -41,17 +41,43 @@ h1 {
 
 .Card {
     margin-top: 25px;
-    width: 350px;
-    height: 430px;
-    border-radius: 20px;
+    width: 354px;
+    height: 436px;
+    border-radius: 30px;
     border: 1.5px solid #261515;
     background-color: #170c0c;
+    padding: 25px;
 }
 
 .Card-Rojo {
-    width: 350px;
-    height: 430px;
-    border-radius: 20px;
+    width: 354px;
+    height: 436px;
+    border-radius: 30px;
     border: 2.5px solid #e92a33;
     background-color: #1c0f0f;
+    padding: 25px;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 800;
+    font-family: revert;
+}
+
+h3 {
+    font-size: 38px;
+    font-family: fantasy;
+    margin-bottom: 5px;
+}
+
+.Mes {
+    font-size: 16px;
+    color: #8c9aad;
+    font-family: poppins;
+}
+
+.Letras {
+    color: #8c9aad;
+    margin-bottom: 19px;
 }
