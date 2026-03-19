@@ -157,16 +157,48 @@ h4 {
     font-size: 27px;
     font-family: system-ui;
     font-weight: bold;
-    margin-bottom: 55px;
+    margin-bottom: 56px;
 }
 
 .Centrar{
 max-width: 765px;
 margin: auto;
+padding-bottom: 75px;
 }
 
 .Preguntas {
     font-size: 18px;
     text-align: start;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #261515;
+    list-style: none;
+}
+
+.Interior{
+    font-size: 15px;
+    color: #8c9aad;
+    border: 1px solid #261515;
+    margin-top: 12px;
+    padding: 12px 14px;
+    background-color: #191010;
+    border-radius: 8px;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::after {
+  content: "›";
+  color: #f52c35;
+  font-size: 22px;
+  font-family: cursive;
+  float: right;
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+
+details[open] summary::after {
+  transform: rotate(-90deg); 
 }
