@@ -14,6 +14,7 @@ import { usuariosIniciales } from './helpers/users';
 import peliculasIniciales from './data/movies';
 import { useNavigate, Link } from "react-router-dom";
 import "@fontsource/poppins";
+import DetallePelicula2 from "./pages/DetallePelicula2/DetallePelicula2";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/error404" element={<Error404 />} />
         <Route path="/nosotros" element={<AboutUs />} />
+        <Route path="/detallepelicula" element={<DetallePelicula2 />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/ayuda" element={<CentroAyuda />} />
