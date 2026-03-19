@@ -13,6 +13,7 @@ import CategoriaPage from "./pages/home/Categoria";
 import Footer from './componentes/footer/Footer'
 import Contacto from '../src/pages/Contacto/Contacto'
 import PasarelaDePago from "./pages/PasarelaDePago/Pasarela";
+import Admin from "./pages/Admin/Admin";
 
 function App() {
   useEffect(() => {
@@ -33,6 +34,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="/error404" element={<Error404 />} />
         <Route path="/pago" element={<PasarelaDePago />} />
         <Route path="/nosotros" element={<AboutUs />} />
