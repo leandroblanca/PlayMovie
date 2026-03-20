@@ -1,4 +1,4 @@
-export const planes = [
+const planes = [
     {
         id: "basico",
         nombre: "Básico",
@@ -11,8 +11,7 @@ export const planes = [
             { texto: "Catálogo completo" },
             { texto: "Descargas offline" },
         ],
-    }
-    
+    },
     {
         id: "estandar",
         nombre: "Estándar",
@@ -26,4 +25,19 @@ export const planes = [
             { texto: "Sin anuncios" },
         ],
     },
+    {
+        id: "premium",
+        nombre: "Premium",
+        precio: 17.99,
+        moneda: "USD",
+        descripcion: "La experiencia definitiva de cine.",
+        caracteristicas: [
+            { texto: "Calidad Ultra HD (4K) + HDR" },
+            { texto: "4 dispositivos a la vez" },
+            { texto: "Sonido Dolby Atmos" },
+            { texto: "Descargas en 10 dispositivos" },
+        ],
+    },
 ]
+
+export default planes;
