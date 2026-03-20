@@ -246,12 +246,12 @@ function Admin() {
               </div>
 
               {showIngresosSection && (
-              <div className="stats-section mb-4 animate__animated animate__fadeIn">
+              <div className="stats-section mb-4">
                 <CardsAdmin dashboardStats={dashboardStats} />
               </div>
               )}
               {showPeliculasSection && (
-              <div className="section-card mb-4 animate__animated animate__fadeIn">
+              <div className="section-card mb-4 ">
                 <div className="section-header d-flex justify-content-between align-items-center mb-3">
                   <h3 className="section-title mb-0">🎬 Películas</h3>
                   <span className="section-count">{peliculasFiltradas.length} películas</span>
@@ -267,7 +267,7 @@ function Admin() {
               </div>
               )}
               {showUsuariosSection && (
-              <div className="section-card animate__animated animate__fadeIn">
+              <div className="section-card ">
                 <div className="section-header d-flex justify-content-between align-items-center mb-3">
                   <h3 className="section-title mb-0">👥 Usuarios</h3>
                   <span className="section-count">{usuarios.length} usuarios</span>
