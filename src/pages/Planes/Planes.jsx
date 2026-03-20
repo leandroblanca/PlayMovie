@@ -21,9 +21,10 @@ const Planes = () => {
                         <p className='Letras'>Ideal para smartphones y tables.</p>
                     </div><hr />
                     <div className='Card-Body'>
-                        <div className='Division'><li>
-                            <FaCheckCircle className='Icono' /> <span className='Text'>Calidad SD (480p)</span>
-                        </li>
+                        <div className='Division'>
+                            <li>
+                                <FaCheckCircle className='Icono' /> <span className='Text'>Calidad SD (480p)</span>
+                            </li>
                             <li>
                                 <FaCheckCircle className='Icono' /> <span className='Text'>1 dispositivo a la ves</span>
                             </li>
@@ -37,7 +38,7 @@ const Planes = () => {
                             </li>
                         </div>
                     </div><hr />
-                    <button className='Plan' onClick={() => navigate("/error404")}>Elegir Plan</button>
+                    <button className='Plan' onClick={() => navigate("/pago")}>Elegir Plan</button>
                 </div>
                 <div className='Card-Rojo'>
                     <div className='Header'>
@@ -63,7 +64,7 @@ const Planes = () => {
                             </li>
                         </div>
                     </div><hr />
-                    <button className='Plan-Rojo' onClick={() => navigate("/error404")}>Elegir Plan</button>
+                    <button className='Plan-Rojo' onClick={() => navigate("/pago")}>Elegir Plan</button>
                 </div>
                 <div className='Card'>
                     <div className='Header'>
