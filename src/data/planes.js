@@ -12,4 +12,18 @@ export const planes = [
             { texto: "Descargas offline" },
         ],
     }
+    
+    {
+        id: "estandar",
+        nombre: "Estándar",
+        precio: 12.99,
+        moneda: "USD",
+        descripcion: "Para compartir en alta definición.",
+        caracteristicas: [
+            { texto: "Calidad Full HD (1080p)" },
+            { texto: "2 dispositivos a la vez" },
+            { texto: "Descargas disponibles" },
+            { texto: "Sin anuncios" },
+        ],
+    },
 ]
