@@ -94,7 +94,7 @@ const Usuario = () => {
               </div>
             </div>
           )}
-          <button className='Cerrar-Sesion'>Cerrar Sesión</button>
+         
         </div>
       </div>
       <div className='Estadisticas'>

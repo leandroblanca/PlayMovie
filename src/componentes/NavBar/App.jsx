@@ -26,19 +26,11 @@ function App() {
         localStorage.setItem("peliculas", JSON.stringify(peliculasIniciales));
       }
       if (!usuarios || usuarios.length === 0) {
-        const usuariosLimpios = usuariosIniciales.map(u => {
+        const usuariosSinClave = usuariosIniciales.map(u => {
           const { password, ...resto } = u;
           return resto;
         });
-        localStorage.setItem("usuarios", JSON.stringify(usuariosLimpios));
-      }
-  
-      else {
-        const usuariosSanitizados = usuarios.map(u => {
-          const { password, ...resto } = u;
-          return resto;
-        });
-        localStorage.setItem("usuarios", JSON.stringify(usuariosSanitizados));
+        localStorage.setItem("usuarios", JSON.stringify(usuariosSinClave));
       }
     }
     primeraCarga();
