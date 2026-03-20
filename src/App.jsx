@@ -18,6 +18,7 @@ import PasarelaDePago from "./pages/PasarelaDePago/Pasarela";
 import Admin from "./pages/Admin/Admin";
 import RutaProtegida from "./componentes/RutaProtegida";
 import Usuario from "./pages/Usuario/Usuario";
+import CentroAyuda from "./pages/CentroAyuda/CentroAyuda"
 
 function App() {
   useEffect(() => {
