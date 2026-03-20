@@ -1,83 +1,73 @@
-
-.login-wrapper {
-  min-height: 100vh; 
+.auth-wrapper {
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #000;
   padding: 20px;
 }
 
-.login-wrapper .row {
-  width: 100%;
-  justify-content: center;
-}
-
-.login-wrapper .col {
-  max-width: 400px; 
+.auth-container {
   width: 100%;
 }
 
-.login-wrapper form {
-  background: white;
+.auth-form {
+  background: #1a1a1a;
   padding: 2rem;
   border-radius: 12px;
-  
-  width: 100%;
+  color: #fff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
 }
 
+.auth-logo {
+  width: 80px;
+}
 
-.login-wrapper .form-label {
+.auth-form .form-label {
+  color: #ccc;
   font-weight: 500;
-  margin-bottom: 0.5rem;
 }
 
-
-.login-wrapper .form-control {
-  border: 1px solid #ddd;
+.auth-form .form-control {
+  background: #000;
+  border: 1px solid #333;
+  color: #fff;
   border-radius: 8px;
-  padding: 0.75rem 1rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  padding: 0.7rem;
 }
 
-.login-wrapper .form-control:focus {
-  
-  outline: none;
-  
+.auth-form .form-control:focus {
+  border-color: #e50914;
+  box-shadow: 0 0 0 0.2rem rgba(229, 9, 20, 0.25);
 }
 
-
-.login-wrapper .btn-danger {
-  border: none;
-  border-radius: 8px;
-  padding: 0.75rem 2rem;
+.auth-btn {
+  padding: 0.7rem;
   font-weight: 600;
-  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 8px;
 }
 
-.login-wrapper .btn-danger:hover {
-  
-  transform: translateY(-2px);
-}
-
-.login-wrapper .btn-danger:active {
-  transform: translateY(0);
-}
-
-
-.login-wrapper .text-danger {
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
-  background: #fee;
-  padding: 0.5rem 1rem;
+.auth-error {
+  background: #2a0f10;
+  color: #ff6b6b;
+  padding: 0.5rem;
   border-radius: 6px;
-  border-left: 4px solid #dc3545;
-  width: 100%;
   text-align: center;
+  margin-top: 10px;
 }
 
+.auth-link {
+  color: #e50914;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
 
 @media (max-width: 576px) {
-  .login-wrapper form {
+  .auth-form {
     padding: 1.5rem;
   }
 }

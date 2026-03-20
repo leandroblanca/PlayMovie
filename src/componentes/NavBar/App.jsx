@@ -16,7 +16,6 @@ import PasarelaDePago from "./pages/PasarelaDePago/Pasarela";
 import Admin from "./pages/Admin/Admin";
 import RutaProtegida from "./componentes/RutaProtegida";
 import Usuario from "./pages/Usuario/Usuario";
-import Favoritos from "./pages/favoritos/Favoritos";
 
 function App() {
   useEffect(() => {
@@ -27,19 +26,11 @@ function App() {
         localStorage.setItem("peliculas", JSON.stringify(peliculasIniciales));
       }
       if (!usuarios || usuarios.length === 0) {
-        const usuariosLimpios = usuariosIniciales.map(u => {
+        const usuariosSinClave = usuariosIniciales.map(u => {
           const { password, ...resto } = u;
           return resto;
         });
-        localStorage.setItem("usuarios", JSON.stringify(usuariosLimpios));
-      }
-  
-      else {
-        const usuariosSanitizados = usuarios.map(u => {
-          const { password, ...resto } = u;
-          return resto;
-        });
-        localStorage.setItem("usuarios", JSON.stringify(usuariosSanitizados));
+        localStorage.setItem("usuarios", JSON.stringify(usuariosSinClave));
       }
     }
     primeraCarga();
@@ -50,6 +41,7 @@ function App() {
       <Routes>
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/usuario" element={<Usuario />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="/error404" element={<Error404 />} />
         <Route path="/pago" element={<PasarelaDePago />} />
         <Route path="/nosotros" element={<AboutUs />} />
@@ -61,7 +53,6 @@ function App() {
         <Route path="/peliculas" element={<Admin />} />
         <Route path="/" element={<RutaProtegida><Home peliculas={peliculasIniciales} /></RutaProtegida>} />
         <Route path="/categoria/:gender" element={<CategoriaPage />} />
-        <Route path="/favoritos" element={<Favoritos />} />
       </Routes>
       <Footer/>
     </Router>

@@ -94,25 +94,25 @@ const Contacto = () => {
   };
 
   return (
-    <Container className="my-5" data-bs-theme="dark">
+    <Container className="py-4 py-md-5" data-bs-theme="dark">
 
       <ToastContainer theme="dark" position="bottom-right" />
 
-      <Row className="mb-4 text-center text-md-start">
+      <Row className="mt-4 contacto-row">
         <Col>
-          <h2 className="fs-1 fw-bold">
+          <h2 className="display-4 fw-bold">
             Ponte en <span className="text-danger">Contacto.</span>
           </h2>
           <p className="lead text-secondary">Estamos aquí para ayudarte a obtener la mejor experiencia de streaming.</p>
         </Col>
       </Row>
 
-      <Row className="mt-4">
-        <Col xs={12} md={6} className="mb-4">
-          <div className="form-contacto p-4 p-md-5 rounded-5 shadow">
+      <Row className="g-5 mt-2">
+        <Col xs={12} lg={7}>
+          <div className="form-contacto p-3 p-sm-4 p-md-5 rounded-5 shadow h-100">
             <Form onSubmit={handleSubmit} className="d-flex flex-column">
               <Row>
-                <Col xs={12} md={6}>
+                <Col xs={12} sm={6}>
                   <Form.Group className="mb-4">
                     <Form.Label>Nombre Completo</Form.Label>
                     <Form.Control
@@ -123,7 +123,7 @@ const Contacto = () => {
                     />
                   </Form.Group>
                 </Col>
-                <Col xs={12} md={6}>
+                <Col xs={12} sm={6}>
                   <Form.Group className="mb-4">
                     <Form.Label>Correo Electrónico</Form.Label>
                     <Form.Control
@@ -175,10 +175,10 @@ const Contacto = () => {
           </div>
         </Col>
 
-        <Col xs={12} md={6} className="d-flex flex-column align-items-center align-items-md-start">
+        <Col xs={12} lg={5} className="d-flex flex-column">
           <div>
             {soporteData.map((soporte) => (
-              <Card key={soporte.id} className="mb-3 border-0 bg-transparent" style={{ maxWidth: "24rem" }}>
+              <Card key={soporte.id} className="mb-3 border-0 bg-transparent">
                 <Card.Body>
                   <FontAwesomeIcon icon={soporte.icono} className="mb-3 fs-1 text-danger" />
                   <Card.Title>{soporte.titulo}</Card.Title>
@@ -193,9 +193,9 @@ const Contacto = () => {
             ))}
           </div>
 
-          <div className="mt-4 text-center text-md-start w-100">
+          <div className="mt-auto pt-4 w-100">
             <p className="text-secondary small fw-bold text-uppercase">Follow Us</p>
-            <div className="d-flex gap-3 justify-content-center justify-content-md-start">
+            <div className="d-flex gap-3">
               {[faMedal, faShareNodes, faCamera, faVideo].map((icon, idx) => (
                 <div key={idx} className="follow-us d-flex justify-content-center align-items-center rounded-circle text-light shadow-sm">
                   <FontAwesomeIcon icon={icon} />

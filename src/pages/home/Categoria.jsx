@@ -16,7 +16,7 @@ function CategoriaPage() {
   const peliculasFiltradas = peliculas.filter(
     (peli) => peli.categorias === generoDecodificado,
   );
-  const handleVolver = () => navigate("/home");
+  const handleVolver = () => navigate("/");
   const [selectMovie, setSelectMovie] = useState(null);
   const [showModal, setShowModal] = useState(false);
   

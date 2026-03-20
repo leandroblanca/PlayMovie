@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Container, Row, Col, Card, Button, Carousel} from "react-bootstrap";
 import categorias from "../../data/categories";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router-dom";
 import './home.css';
 import ModalPelicula from "./ModalHome"
 import { useFavoritos } from '../../data/favorito';
@@ -9,10 +9,23 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 function Home({ peliculas }) {
   const navigate = useNavigate();
+<<<<<<< HEAD
   const {esFavorito, agregarFavorito, eliminarFavorito} = useFavoritos();
+=======
+  const location = useLocation();
+>>>>>>> 000f17383edce16ae92e9ad939b71d5b9fe47025
   const [selectMovie, setSelectMovie] = useState(null)
   const [showModal, setShowModal] = useState(false)
 
+  
+  const queryParams = new URLSearchParams(location.search);
+  const searchQuery = queryParams.get("search");
+
+  const peliculasFiltradas = searchQuery
+    ? peliculas.filter((p) =>
+        p.titulo.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : peliculas;
 
   const handleCategoriaClick = (nombre) => {
     navigate(`/categoria/${encodeURIComponent(nombre)}`);
@@ -38,7 +51,9 @@ function Home({ peliculas }) {
 
   return (
     <Container fluid className="p-0">
-       <section className="carousel-video">
+      {/* Solo mostrar Carrusel si NO se está buscando */}
+      {!searchQuery && (
+        <section className="carousel-video">
         <Carousel indicators={true} interval={null} controls={true}>
           {peliculasDestacadas.map((pelicula) => (
             <Carousel.Item key={pelicula.id}>
@@ -60,10 +75,13 @@ function Home({ peliculas }) {
            </Carousel.Item>
           ))}
         </Carousel>
-      </section> 
+      </section>
+      )}
+
       <Container fluid className="my-5">
-        <h5 className="mt-5 p-4">Explorar Categoría</h5>
-        <div className="mb-3 d-flex flex-row flex-wrap gap-3 mt-3 ">
+        <h5 className="mt-5 p-4">{searchQuery ? `Resultados para: "${searchQuery}"` : "Explorar Categoría"}</h5>
+        {!searchQuery && (
+          <div className="mb-3 d-flex flex-row flex-wrap gap-3 mt-3 ">
           {categorias.map((categoria) => (
             <Button
               key={categoria.id}
@@ -75,9 +93,10 @@ function Home({ peliculas }) {
             </Button>
           ))}
         </div>
+        )}
         <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-3">
-          {peliculas.length > 0 ? (
-            peliculas.map((pelicula) => (
+          {peliculasFiltradas.length > 0 ? (
+            peliculasFiltradas.map((pelicula) => (
               <Col key={pelicula.id}>
                 <Card className="card-home h-100 bg-dark text-white border-secondary">
                   <Card.Img
@@ -103,9 +122,13 @@ function Home({ peliculas }) {
               </Col>
             ))
           ) : (
-            <p className="text-center text-white col-12">
-              No hay películas disponibles.
-            </p>
+            <div className="text-center text-white col-12 py-5">
+              <h3>No se encontraron películas 😔</h3>
+              <p>Intenta con otro título.</p>
+              {searchQuery && (
+                <Button variant="outline-light" onClick={() => navigate("/")}>Ver todas</Button>
+              )}
+            </div>
           )}
         </Row>
       </Container>

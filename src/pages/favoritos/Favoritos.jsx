@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import { useFavoritos } from "../../data/favorito";
-import { Button, Card, Col } from "react-bootstrap";
+import { Button, Card,Container, Row, Col } from "react-bootstrap";
+import { FaHeart } from "react-icons/fa"
 
 function Favoritos(params) {
     const {favoritos, eliminarFavorito} = useFavoritos();

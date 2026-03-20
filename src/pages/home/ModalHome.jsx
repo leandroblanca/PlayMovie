@@ -31,7 +31,7 @@ function ModalPelicula({show, handleClose, pelicula, esFavorito, agregarFavorito
                      title={pelicula.titulo}
                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                      allowFullScreen
-                     frameborder="0"
+                     frameBorder="0"
                       ></iframe>
                 </div>
                 <div className="info-pelicula">
