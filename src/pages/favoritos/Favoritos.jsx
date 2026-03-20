@@ -17,7 +17,7 @@ function Favoritos(params) {
         <Container className="my-5">
             <h2 className="mb-4"> Mis Favoritos ({favoritos.length})</h2>
             {favoritos.length === 0 ? (
-                <p className="text-center">No tienes oeliculas favoritas</p>
+                <p className="text-center">No tienes peliculas favoritas</p>
             ) : (
                 <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4">
                     {favoritos.map((pelicula) => (

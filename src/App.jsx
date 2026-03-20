@@ -13,6 +13,7 @@ import CategoriaPage from "./pages/home/Categoria";
 import Footer from './componentes/footer/Footer'
 import Contacto from '../src/pages/Contacto/Contacto'
 import Favoritos from "./pages/favoritos/Favoritos";
+import Usuario from "./pages/Usuario/Usuario";
 function App() {
   useEffect(() => {
     function primeraCarga () {
@@ -32,6 +33,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/usuario" element={<Usuario />} />
         <Route path="/error404" element={<Error404 />} />
         <Route path="/nosotros" element={<AboutUs />} />
         <Route path="/login" element={<Login />} />

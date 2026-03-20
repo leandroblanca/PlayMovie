@@ -4,7 +4,7 @@ import categorias from "../../data/categories";
 import { useNavigate } from "react-router";
 import './home.css';
 import ModalPelicula from "./ModalHome"
-import { useFavoritos } from './hooks/useFavoritos';
+import { useFavoritos } from '../../data/favorito';
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 function Home({ peliculas }) {
