@@ -24,13 +24,13 @@ function TablaPeliculas({ editarPelicula, eliminarPelicula, peliculasFiltradas }
                     <div className="d-flex align-items-center gap-3">
                       <div className="poster-container">
                         <img
-                          src={pelicula.poster || "https://via.placeholder.com/50x70?text=No+Image"}
+                          src={pelicula.poster || "/assets/no-image.png"}
                           alt={pelicula.titulo}
                           className="pelicula-poster"
                           style={{ width: "40px", height: "60px", objectFit: "cover", borderRadius: "4px" }}
                           onError={(e) => {
                             e.target.onerror = null;
-                            e.target.src = "https://via.placeholder.com/50x70?text=No+Image";
+                            e.target.src = "/assets/no-image.png";
                           }}
                         />
                       </div>
@@ -70,13 +70,13 @@ function TablaPeliculas({ editarPelicula, eliminarPelicula, peliculasFiltradas }
                       <div className="d-flex gap-3 mb-3">
                         <div className="poster-container-mobile">
                           <img
-                            src={pelicula.poster || "https://via.placeholder.com/60x80?text=No+Image"}
+                            src={pelicula.poster || "/assets/no-image.png"}
                             alt={pelicula.titulo}
                             className="pelicula-poster-mobile rounded-2"
                             style={{ width: "50px", height: "75px", objectFit: "cover" }}
                             onError={(e) => {
                               e.target.onerror = null;
-                              e.target.src = "https://via.placeholder.com/60x80?text=No+Image";
+                              e.target.src = "/assets/no-image.png";
                             }}
                           />
                         </div>
