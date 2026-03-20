@@ -1,8 +1,10 @@
 import React from 'react'
 import "./Planes.css"
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Planes = () => {
+    const navigate = useNavigate();
     return (
         <div>
             <section className='Title'>
@@ -35,7 +37,7 @@ const Planes = () => {
                             </li>
                         </div>
                     </div><hr />
-                    <button className='Plan'>Elegir Plan</button>
+                    <button className='Plan' onClick={() => navigate("/error404")}>Elegir Plan</button>
                 </div>
                 <div className='Card-Rojo'>
                     <div className='Header'>
@@ -61,7 +63,7 @@ const Planes = () => {
                             </li>
                         </div>
                     </div><hr />
-                    <button className='Plan-Rojo'>Elegir Plan</button>
+                    <button className='Plan-Rojo' onClick={() => navigate("/error404")}>Elegir Plan</button>
                 </div>
                 <div className='Card'>
                     <div className='Header'>
@@ -87,7 +89,7 @@ const Planes = () => {
                             </li>
                         </div>
                     </div><hr />
-                    <button className='Plan'>Elegir Plan</button>
+                    <button className='Plan' onClick={() => navigate("/pago")}>Elegir Plan</button>
                 </div>
             </div>
             <h4>Preguntas Frecuentes</h4>
