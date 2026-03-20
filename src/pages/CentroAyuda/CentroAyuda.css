@@ -1,5 +1,6 @@
 .help-center h1 {
   font-weight: bolder;
+  text-align: center;
 }
 
 .help-center {
@@ -19,6 +20,7 @@
   color: rgb(148, 163, 184);
   font-size: medium;
   margin-bottom: 35px;
+  text-align: center;
 }
 
 .help-header .bi-search {
@@ -73,6 +75,7 @@ margin-bottom: 30px;
   transition: transform 0.2s;
   width: 25%;
   border: rgba(56,41,41) 1px solid;
+  cursor: pointer;
 }
 
 .category-card:hover {
@@ -106,12 +109,11 @@ summary {
   font-weight: bold;
 }
 
-/* Ocultamos el marcador nativo */
 .custom-details summary {
   list-style: none;
   cursor: pointer;
-  display: flex;              /* usamos flexbox */
-  justify-content: space-between; /* texto a la izquierda, icono a la derecha */
+  display: flex;              
+  justify-content: space-between; 
   align-items: center;
 }
 
@@ -119,14 +121,13 @@ summary {
   display: none;
 }
 
-/* Ícono personalizado */
 .custom-details summary .icon::before {
-  content: "^";   /* símbolo cerrado */
+  content: "v"; 
   font-weight: bold;
 }
 
 .custom-details[open] summary .icon::before {
-  content: "v";   /* símbolo abierto */
+  content: "^";  
   font-weight: bold;
 }
 .custom-details p {
@@ -146,15 +147,18 @@ summary {
   border: rgba(56,41,41) 1px solid;
   border-radius: 18px;
   padding: 40px 0 40px 0;
+  text-align: center;
 }
 
 .supportbox p {
   color: rgb(148, 163, 184);
   font-size: medium;
+  text-align: center;
 }
 
 .supportbox h3 {
   font-weight: bold;
+  text-align: center;
 }
 
 .btn-red {
@@ -177,7 +181,6 @@ summary {
 }
 
 .btn-outline {
-  /* background-color: rgba(234, 42, 51, 0.1); */
   background-color: #292929;
   border: rgb(56, 41, 41) 1px solid;
   color: white;
