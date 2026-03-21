@@ -179,9 +179,8 @@ body {
 }
 
 .movie-right li {
-  display: flex;
   list-style: none;
-    
+  
 }
 
 .elenco img {
@@ -192,17 +191,20 @@ body {
 
 .titulo1 {
   font-weight: bold;
-  
-  margin: 10px 0 0 0;
+  /* margin: 10px; */
 }
 
 .titulo2 {
   font-weight: bold;
   color: grey;
-  margin: 0
+  margin: 10px;
+  
 }
 
 h2 {
   color: #e50914;
   font-size: medium;
+}
+.movie-link {
+  text-decoration: none;
 }

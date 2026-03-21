@@ -135,22 +135,28 @@ export default function MovieDetail() {
             <h2>Más como esta</h2>
             <ul>
               <li>
-                <img src="/src/assets/inception.png" alt="inception" />
-                <p className="titulo1">Inception
-                  <span className="titulo2">2010 • CI-FI • ⭐ 8.8</span>
-                </p>
+                  <Link to="/detallepelicula/8" className="movie-link">
+                    <img src="https://pics.filmaffinity.com/inception-652954101-large.jpg" alt="inception" />
+                    <p className="titulo1">Inception
+                      <span className="titulo2">2010 • CI-FI • ⭐ 8.8</span>
+                    </p>
+                </Link>
               </li>
               <li>
-                <img src="/src/assets/martian.png" alt="martian" />
-                <p className="titulo1">The Martian 
-                  <span className="titulo2">2015 • CI-FI • ⭐ 8.0</span>
+                <Link to="/detallepelicula/7" className="movie-link">
+                <img src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" alt="Interstellar" />
+                <p className="titulo1">Interstellar
+                  <span className="titulo2">2014 • CI-FI • ⭐ 8.0</span>
                 </p>
+                </Link>
               </li>
               <li>
-                <img src="/src/assets/arrival.png" alt="arrival" />
-                <p className="titulo1">Arrival 
-                  <span className="titulo2">2016 • CI-FI • ⭐ 7.9</span>
+                <Link to="/detallepelicula/9" className="movie-link">
+                <img src="https://image.tmdb.org/t/p/w500/aOIuZAjPaRIE6CMzbazvcHuHXDc.jpg" alt="matrix" />
+                <p className="titulo1">The Matrix
+                  <span className="titulo2">1999 • CI-FI • ⭐ 7.9</span>
                 </p>
+                </Link>
               </li>
               
              </ul>

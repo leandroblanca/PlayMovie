@@ -7,6 +7,7 @@ export default function Reviews({ movieId }) {
   const [reviews, setReviews] = useState([
     { id: 1, user: "Juan", rating: 5, text: "Una obra maestra absoluta." },
     { id: 2, user: "María", rating: 4, text: "Visualmente increíble." },
+    { id: 3, user: "Esteban", rating: 5, text: "Lo mejor que vi en años." },
   ]);
   const [newReview, setNewReview] = useState({ rating: 0, text: "" });
   const [editingId, setEditingId] = useState(null);
