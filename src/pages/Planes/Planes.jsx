@@ -77,10 +77,10 @@ const Planes = () => {
                     </div><hr />
                     <div className='Card-Body'>
                         <div className='Division'>
-                            <li>
+                            <li className='Mas'>
                                 <FaCheckCircle className='Icono' /> <span className='Text'>Calidad Ultra HD (4K) + HDR</span>
                             </li>
-                            <li>
+                            <li className='Menos'>
                                 <FaCheckCircle className='Icono' /> <span className='Text'>4 dispositivo a la ves</span>
                             </li>
                         </div>

@@ -4,8 +4,9 @@
     box-sizing: border-box;
 }
 
-html body {
-    background: #120808;
+html, body, #root {
+    background-color: #120808;
+    min-height: 100%;
 }
 
 .Title {
@@ -16,21 +17,25 @@ html body {
 h1 {
     font-family: fantasy;
     font-weight: 300;
-    font-size: 58px;
+    text-align: center;
 }
 
 .Titulo {
     color: white;
+    font-size: 58px;
 }
 
 .Titulo-Rojo {
     color: #ea2a33;
+    font-size: 58px;
 }
 
 .Parrafo {
     font-size: 18px;
+    font-weight: 500;
     margin: 0;
     color: #8c9aad;
+    text-align: center;
 }
 
 .Contenedor {
@@ -73,15 +78,16 @@ h1 {
 
 h2 {
     font-size: 20px;
-    margin-bottom: 15px;
+    margin: 8px 0 10px;
+    color: white;
     font-weight: 800;
     font-family: revert;
 }
 
 h3 {
-    font-size: 38px;
+    font-size: 35px;
     font-family: fantasy;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 
 .Mes {
@@ -92,36 +98,40 @@ h3 {
 
 .Letras {
     color: #8c9aad;
-    margin-bottom: 19px;
+    margin-bottom: 23px;
+    font-size: 12px;
 }
 
 li {
     list-style: none;
-    margin-bottom: 17px;
+    margin-bottom: 0;
 }
 
 .Icono {
     color: #e92a33;
-    font-size: 19px;
+    font-size: 20px;
+    margin: 9px;
+}
+
+hr {
+    margin: 11px;
 }
 
 .Text {
     font-size: 15px;
-    margin-left: 15px;
 }
 
 .Texto {
     font-size: 15px;
-    margin-left: 15px;
 }
 
 .Icono-Tachado {
-    font-size: 19px;
+    font-size: 20px;
+    margin: 9px;
 }
 
 .Text-Tachado {
     font-size: 15px;
-    margin-left: 15px;
     text-decoration: line-through;
 }
 
@@ -132,8 +142,9 @@ li {
     border-radius: 15px;
     border: none;
     background-color: #2a1818;
-    margin-top: 10px;
     font-size: 16px;
+    margin: auto;
+    margin-top: 15px;
 }
 
 .Plan:hover {
@@ -148,8 +159,9 @@ li {
     border-radius: 15px;
     border: none;
     background-color: #ea2a33;
-    margin-top: 10px;
     font-size: 16px;
+    margin: auto;
+    margin-top: 12px;
 }
 
 .Plan-Rojo:hover {
@@ -159,20 +171,21 @@ li {
 
 h4 {
     text-align: center;
-    font-size: 27px;
+    font-size: 29px;
     font-family: system-ui;
     font-weight: bold;
     margin-bottom: 56px;
 }
 
 .Centrar {
-    max-width: 765px;
+    max-width: 755px;
     margin: auto;
     padding-bottom: 75px;
 }
 
 .Preguntas {
-    font-size: 18px;
+    font-size: 17px;
+    font-weight: 600;
     text-align: start;
     margin-bottom: 20px;
     padding-bottom: 20px;
@@ -184,7 +197,7 @@ h4 {
     font-size: 15px;
     color: #8c9aad;
     border: 1px solid #261515;
-    margin-top: 12px;
+    margin: 12px 0 12px;
     padding: 12px 14px;
     background-color: #191010;
     border-radius: 8px;
@@ -208,15 +221,124 @@ details[open] summary::after {
     transform: rotate(-90deg);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1020px) {
 
-    h1 {
-        font-size: 26px;
+    .Titulo {
+        font-size: 45px;
+    }
+
+    .Titulo-Rojo {
+        font-size: 45px;
     }
 
     .Parrafo {
+        font-size: 16px;
+    }
+
+    h2 {
+        font-size: 18px;
+        margin-bottom: 2px;
+    }
+
+    h3 {
+        font-size: 32px;
+    }
+
+    .Letras {
         font-size: 10px;
-        margin: 0 35px;
+        margin: 0;
+    }
+
+    .Contenedor {
+        gap: 15px;
+        margin: 0 12px 85px 12px;
+    }
+
+    .Card {
+        height: 345px;
+    }
+
+    .Card-Rojo {
+        height: 345px;
+    }
+
+    .Icono {
+        margin: 0 0 5px;
+    }
+
+    .Icono-Tachado {
+        margin: 0 0 5px;
+    }
+
+    .Text {
+        font-size: 11px;
+        margin-left: 2px;
+    }
+
+    .Texto {
+        font-size: 11px;
+        margin-left: 2px;
+    }
+
+    .Text-Tachado {
+        font-size: 11px;
+        margin-left: 2px;
+    }
+
+    li {
+        margin-bottom: 9px;
+    }
+
+    .h4 {
+        font-size: 27px;
+        margin-bottom: 45px;
+    }
+
+    .Plan {
+        font-size: 12px;
+        padding: 10px;
+        margin: auto;
+    }
+
+    .Plan-Rojo {
+        font-size: 12px;
+        padding: 10px;
+        margin: auto;
+    }
+
+    .Centrar {
+        max-width: 520px;
+    }
+
+    .Preguntas {
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+
+    .Interior {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .Titulo {
+        font-size: 30px;
+    }
+
+    .Titulo-Rojo {
+        font-size: 30px;
+    }
+
+    .Parrafo {
+        font-size: 12px;
+        margin: 0 32px;
+    }
+
+    h2 {
+        text-align: start;
+        font-size: 19px;
+        margin-bottom: 1px;
     }
 
     br {
@@ -244,13 +366,8 @@ details[open] summary::after {
         height: auto;
     }
 
-    h2 {
-        font-size: 17px;
-        margin-bottom: 0;
-    }
-
     h3 {
-        font-size: 30px;
+        font-size: 32px;
         margin: 0;
     }
 
@@ -259,17 +376,17 @@ details[open] summary::after {
     }
 
     .Letras {
-        font-size: 11px;
+        font-size: 12px;
         margin: 0;
     }
-    
+
     .Division {
         display: flex;
     }
 
     .Text {
-        font-size: 10px;
-        margin-left: 0;
+        font-size: 9px;
+        margin: 0;
     }
 
     .Texto {
@@ -278,8 +395,8 @@ details[open] summary::after {
     }
 
     .Text-Tachado {
-        font-size: 10px;
-        margin-left: 0;
+        font-size: 9px;
+        margin: 0;
     }
 
     li {
@@ -289,21 +406,23 @@ details[open] summary::after {
 
     .Icono {
         font-size: 16px;
+        margin: 1px;
     }
-    
+
     .Icono-Tachado {
         font-size: 16px;
+        margin: 1px;
     }
 
     .Plan {
         padding: 8px;
-        margin-top: 0;
+        margin: auto;
         font-size: 12px;
     }
 
     .Plan-Rojo {
         padding: 8px;
-        margin-top: 0;
+        margin: auto;
         font-size: 12px;
     }
 
@@ -312,6 +431,7 @@ details[open] summary::after {
     }
 
     .Preguntas {
+        margin-bottom: 10px;
         font-size: 11px
     }
 
@@ -321,11 +441,50 @@ details[open] summary::after {
 
     h4 {
         font-size: 20px;
-        margin-bottom: 35px;
+        margin-bottom: 40px;
     }
 }
 
 @media (max-width: 340px) {
+
+    .Titulo {
+        font-size: 26px;
+    }
+
+    .Titulo-Rojo {
+        font-size: 26px;
+    }
+
+    .Parrafo {
+        font-size: 10px;
+    }
+
+    h2 {
+        text-align: start;
+        margin-bottom: 2px;
+    }
+
+    h3 {
+        font-size: 28px;
+    }
+
+    .Icono {
+        margin: 0;
+        font-size: 15px;
+    }
+
+    .Icono-Tachado {
+        margin: 0;
+        font-size: 15px;
+    }
+
+    .Plan {
+        margin: auto;
+    }
+
+    .Plan-Rojo {
+        margin: auto;
+    }
 
     .Menos {
         width: 46%;
@@ -338,64 +497,12 @@ details[open] summary::after {
     .Text {
         font-size: 8px;
     }
-    
+
     .Texto {
         font-size: 8px;
     }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-    h1 {
-        font-size: 40px;
-    }
-
-    h2 {
-        font-size: 18px;
-    }
-
-    h3 {
-        font-size: 33px;
-    }
-
-    .h4 {
-        font-size: 25px;
-        margin-bottom: 45px;
-    }
-
-    .Parrafo {
-        font-size: 15px;
-    }
-
-    .Text {
-        font-size: 15px;
-        margin-left: 6px;
-    }
-
-    .Texto {
-        font-size: 15px;
-        margin-left: 6px;
-    }
 
     .Text-Tachado {
-        font-size: 15px;
-        margin-left: 6px;
-    }
-
-    .Plan {
-        font-size: 15px;
-        padding: 10px;
-    }
-
-    .Plan-Rojo {
-        font-size: 15px;
-        padding: 10px;
-    }
-
-    .Centrar {
-        max-width: 430px;
-    }
-
-    .Preguntas {
-        font-size: 13px;
+        font-size: 8px;
     }
 }
