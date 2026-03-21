@@ -9,6 +9,8 @@ import Registro from "./pages/Registro/Registro";
 import { useEffect } from 'react';
 import { usuariosIniciales } from './helpers/users';
 import peliculasIniciales from './data/movies';
+import "@fontsource/poppins";
+
 import CategoriaPage from "./pages/home/Categoria";
 import Footer from './componentes/footer/Footer'
 import Contacto from '../src/pages/Contacto/Contacto'
@@ -16,6 +18,7 @@ import PasarelaDePago from "./pages/PasarelaDePago/Pasarela";
 import Admin from "./pages/Admin/Admin";
 import RutaProtegida from "./componentes/RutaProtegida";
 import Usuario from "./pages/Usuario/Usuario";
+import CentroAyuda from "./pages/CentroAyuda/CentroAyuda"
 
 function App() {
   useEffect(() => {
@@ -55,6 +58,7 @@ function App() {
         <Route path="/nosotros" element={<AboutUs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
+        <Route path="/ayuda" element={<CentroAyuda />} />
         <Route path="*" element={<Error404 />} />
         <Route path="/usuarios" element={<Admin />} />
         <Route path="/ingresos" element={<Admin />} />
@@ -63,7 +67,7 @@ function App() {
         <Route path="/categoria/:gender" element={<CategoriaPage />} />
       </Routes>
       <Footer/>
-    </Router>
+      </Router>
   );
 }
 export default App;
