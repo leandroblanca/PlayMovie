@@ -10,12 +10,11 @@ const CardUsuarios = ({ usuarios, registroSistema , editarUsuario, eliminarUsuar
 
        
         <Col xs={12} lg={8}>
-          <Card className="usuarios-card h-100 border-0 shadow-sm rounded-4">
-            <Card.Body>
+          <Card className="usuarios-card h-100 w-100 border-0 shadow-sm rounded-4">
+            <Card.Body className="w-100">
 
               <div className="d-flex justify-content-between align-items-center mb-3">
                 <h5 className="fw-bold">Gestión de Usuarios</h5>
-                <span className="text-danger">Ver todos los usuarios</span>
               </div>
 
               <ListGroup variant="flush">
@@ -27,7 +26,7 @@ const CardUsuarios = ({ usuarios, registroSistema , editarUsuario, eliminarUsuar
                   >
                     <div className="d-flex align-items-center gap-3">
 
-                      {/* Avatar */}
+                
                       <div
                         className="avatar rounded-circle bg-danger text-white d-flex justify-content-center align-items-center"
                         style={{ width: "40px", height: "40px", fontWeight: "bold" }}
@@ -79,9 +78,9 @@ const CardUsuarios = ({ usuarios, registroSistema , editarUsuario, eliminarUsuar
           </Card>
         </Col>
 
-        {/* CARD REGISTRO DEL SISTEMA */}
+   
         <Col xs={12} lg={4}>
-          <Card className="registro-card h-100 border-0 shadow-sm rounded-4">
+          <Card className="registro-card w-100 h-100 border-0 shadow-sm rounded-4">
             <Card.Body>
 
               <h5 className="fw-bold mb-4">Registro del Sistema</h5>

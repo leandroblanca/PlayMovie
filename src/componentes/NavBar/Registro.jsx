@@ -65,8 +65,8 @@ const Registro = () => {
       return;
     }
 
-    const nuevoUsuarioSinPass = { id: Date.now(), nombre, email, rol: "user" };
-    localStorage.setItem("usuarios", JSON.stringify([...usuariosGuardados, nuevoUsuarioSinPass]));
+    const usuarioParaGuardar = { id: Date.now(), nombre, email, rol: "user" };
+    localStorage.setItem("usuarios", JSON.stringify([...usuariosGuardados, usuarioParaGuardar]));
 
     Swal.fire({
       title: "¡Registro exitoso!",

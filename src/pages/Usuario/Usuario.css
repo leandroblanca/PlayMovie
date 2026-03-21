@@ -1,0 +1,478 @@
+* {
+    text-align: start;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+:root {
+    --Fondo: #211111;
+    --Fondo-Dentro: #2b1313;
+    --Segundo-Fondo:#3e1416;
+    --Bordes: #411315;
+    --Boton-Rojo:#e92c32;
+    --Avatar:#e22535;
+    --Hover-Botones:#e02f41;
+    --Guardar: rgb(13, 104, 13);
+}
+
+#root {
+    background: #211111;
+}
+
+h1 {
+    font-size: 35px;
+    font-weight: 600;
+    margin: 0;
+}
+
+h2 {
+    color: var(--Hover-Botones);
+    margin-bottom:-2px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: 15px;
+}
+
+.Reciente {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.Email {
+    font-size: 15px;
+    margin: 1px;
+}
+
+h5 {
+    font-size: 18px;
+    margin: 0;
+}
+
+p {
+    margin: 0px;
+}
+
+.Perfil {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 15px 30px;
+    box-sizing: border-box;
+}
+
+.Perfil-Info {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+    background-color: var(--Fondo-Dentro);
+    border: solid 1.5px var(--Bordes);
+    border-radius: 20px;
+}
+
+.Botones {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.Editar {
+    background-color: #4f171a;
+    border-radius: 20px;
+    padding: 7px;
+}
+
+.Cerrar-Sesion {
+    background-color: var(--Boton-Rojo);
+    border-radius: 20px;
+    padding: 7px;
+}
+
+.Premium {
+    color: #ca3a47;
+    background-color: #4f171a;
+    padding: 4px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.Avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: solid 6px var(--Avatar);
+}
+
+.Estadisticas {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    gap: 20px;
+    border-radius: 20px;
+}
+
+.stat {
+    flex: 1;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: left;
+    border: solid 1.5px var(--Bordes);
+}
+
+.Item {
+    padding: 12px 20px;
+    background: none;
+    color: white;
+    border: none;
+}
+
+.Extra {
+    padding: 12px 20px;
+    background: none;
+    color: white;
+    border: none;
+}
+
+.Item:hover {
+    color: var(--Hover-Botones);
+    transform: scale(1.02);
+}
+
+.Extra:hover {
+    color: var(--Hover-Botones);
+    transform: scale(1.02);
+}
+
+.Letras {
+    font-size: 11px;
+}
+
+.Contenido {
+    display: flex;
+    margin-top: 30px;
+    gap: 30px;
+}
+
+.Panel-Izquierdo {
+    width: 260px;
+    border: solid 1.5px var(--Bordes);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.Icono {
+    color: var(--Hover-Botones);
+    margin: 15px;
+}
+
+.Panel-Derecho {
+    flex: 1;
+}
+
+.Plan {
+    background-color: var(--Segundo-Fondo);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+}
+
+.Hd {
+    font-size: 18px;
+    color: #e02f41;
+}
+
+.Precio {
+    font-size: 28px;
+}
+
+li {
+    list-style: none;
+}
+
+.Peliculas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.Pelis {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    border-radius: 10px;
+    border: solid 1.5px var(--Bordes);
+    overflow: hidden;
+}
+
+.Fav {
+    display: none;
+}
+
+.Fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.Modal {
+    background-color: #2b1313;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    border: 5px solid #2f1717;
+}
+
+.ModalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3e1416;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.ModalFooter {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Titulo {
+    font-size: 25px;
+    padding-left: 8px ;
+    color: white;
+}
+
+.Cerrar {
+    background-color: #e92c32;
+    padding: 6px 14px;
+    border-radius: 10px;
+}
+
+.Guardar {
+    background-color: rgb(13, 104, 13);
+    border-radius: 20px;
+    padding: 4px;
+}
+
+.inputs {
+    width: 100%;
+    border-radius: 10px;
+    padding: 8px;
+    background-color: #3e1416;
+    margin-bottom: 20px;
+    
+}
+
+.Text {
+    font-size: 18px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.Pelis img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 600px) {
+    body {
+        background: #211111;
+    }
+
+    .Perfil-Info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0;
+    }
+
+    .Avatar {
+        width: 140px;
+        height: 140px;
+        border: 5px solid #e22535;
+    }
+
+    h1 {
+        font-size: 26px;
+        text-align: center;
+    }
+
+    .Email {
+        font-size: 17px;
+    }
+
+    .Premium {
+        font-size: 13px;
+    }
+
+    .User {
+        text-align: center;
+        margin: 12px;
+    }
+
+    .Botones {
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+    }
+
+    .Editar {
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    .Cerrar-Sesion {
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    .Estadisticas {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 0;
+        padding: 0;
+    }
+
+    .stat {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: none;
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-bottom: 0.5px;
+    }
+
+    .Letras {
+        font-size: 10px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+    .Item {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        color: white;
+        background-color: #1c1c24;
+        padding: 14px;
+        border-radius: 20px;
+        font-size: 16px;
+        margin: 10px 0 10px;
+        align-items: center;
+    }
+
+    .Item::before {
+        content: "";
+        margin-right: 10px;
+    }
+
+    .Item:nth-child(1)::before {
+        content: "👤";
+    }
+    .Item:nth-child(2)::before {
+        content: "💳";
+    }
+
+    .Item::after {
+        content: ">";
+        margin-left: 10px;
+        font-size: 30px;
+    }
+
+    .Extra {
+        display: none;
+    }
+
+    .Panel-Izquierdo {
+        display: none;
+    }
+
+    .Reciente {
+        display: none;
+    }
+
+    .Fav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .Favoritos {
+        font-size: 20px;
+        margin: 0;
+    }
+
+    .VerTodo {
+        font-size: 15px;
+        color: #e02f41;
+        background: none;
+        border: none;
+    }
+
+    .VerTodo:hover {
+        transform: scale(1.1);
+    }
+
+    .Peliculas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .Modal {
+        width: 80%;
+        overflow: auto;
+        padding: 16px;
+    }
+
+    .Titulo {
+        font-size: 17px;
+        color: var(--Hover-Botones);
+    }
+
+    .Cerrar {
+        font-size: 10px;
+    }
+
+    .Text {
+        font-size: 15px;
+    }
+
+    .inputs {
+        padding: 5px;
+        font-size: 14px;
+        margin-bottom: 14px;
+    }
+
+    .Cerrar-Sesion {
+        font-size: 13px;
+    }
+
+    .Guardar {
+        font-size: 13px;
+    }
+    }

@@ -1,37 +1,118 @@
-import './Home.css';
-import React from 'react';
-import { Link } from "react-router-dom";
+import React, { useState } from "react"
+import { Container, Row, Col, Card, Button, Carousel} from "react-bootstrap";
+import categorias from "../../data/categories";
+import { useNavigate, useLocation } from "react-router-dom";
+import './home.css';
+import ModalPelicula from "./ModalHome"
 
-const Home = () => {
-  // Traemos las pelis que guardaste en el localStorage en App.jsx
-  const peliculas = JSON.parse(localStorage.getItem("peliculas")) || [];
+function Home({ peliculas }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [selectMovie, setSelectMovie] = useState(null)
+  const [showModal, setShowModal] = useState(false)
+
+  
+  const queryParams = new URLSearchParams(location.search);
+  const searchQuery = queryParams.get("search");
+
+  const peliculasFiltradas = searchQuery
+    ? peliculas.filter((p) =>
+        p.titulo.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : peliculas;
+
+  const handleCategoriaClick = (nombre) => {
+    navigate(`/categoria/${encodeURIComponent(nombre)}`);
+  };
+  const handleShowModal = (pelicula) => {
+    setSelectMovie(pelicula)
+    setShowModal(true);
+  }
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectMovie(null);
+  }
+  const peliculasDestacadas = peliculas.slice(0, 5);
 
   return (
-    <div className="container mt-4">
-      <div className="row">
-        {/* El .map empieza aquí. 'peli' nace aquí adentro */}
-        {peliculas.map((peli) => {
-          return (
-            <div className="col-md-4 mb-4" key={peli.id}>
-              <div className="card h-100">
-                <img src={peli.poster} className="card-img-top" alt={peli.titulo} />
-                <div className="card-body">
-                  <h5 className="card-title">{peli.titulo}</h5>
-                  <p className="card-text text-truncate">{peli.descripcion}</p>
-                  
-                  {/* El Link DEBE estar dentro del map para reconocer a 'peli' */}
-                  <Link to={`/detallepelicula/${peli.id}`} className="btn btn-primary">
-                    Ver Detalle
-                  </Link>
-                </div>
+    <Container fluid className="p-0">
+      {/* Solo mostrar Carrusel si NO se está buscando */}
+      {!searchQuery && (
+        <section className="carousel-video">
+        <Carousel indicators={true} interval={null} controls={true}>
+          {peliculasDestacadas.map((pelicula) => (
+            <Carousel.Item key={pelicula.id}>
+              <div className="video-container">
+                <iframe
+                src={`${pelicula.video}?autoplay=0&mute=0&controls=1&showinfo=0&rel=0`}
+                title={pelicula.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                ></iframe>
               </div>
+              <Carousel.Caption className="carousel-caption-custom">
+                <h3>{pelicula.titulo}</h3>
+                <p>{pelicula.descripcion}</p>
+                <Button variant="danger" size="sm" onClick={() => handleShowModal(pelicula)}>
+                  Ver mas
+                </Button> 
+              </Carousel.Caption>
+           </Carousel.Item>
+          ))}
+        </Carousel>
+      </section>
+      )}
+
+      <Container fluid className="my-5">
+        <h5 className="mt-5 p-4">{searchQuery ? `Resultados para: "${searchQuery}"` : "Explorar Categoría"}</h5>
+        {!searchQuery && (
+          <div className="mb-3 d-flex flex-row flex-wrap gap-3 mt-3 ">
+          {categorias.map((categoria) => (
+            <Button
+              key={categoria.id}
+              variant="outline-danger"
+              className="me-2 mb-2"
+              onClick={() => handleCategoriaClick(categoria.categorias)}
+            >
+              {categoria.categorias}
+            </Button>
+          ))}
+        </div>
+        )}
+        <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-3">
+          {peliculasFiltradas.length > 0 ? (
+            peliculasFiltradas.map((pelicula) => (
+              <Col key={pelicula.id}>
+                <Card className="card-home h-100 bg-dark text-white border-secondary">
+                  <Card.Img
+                    variant="top"
+                    src={pelicula.poster}
+                    alt={pelicula.titulo}
+                  />
+                  <Card.Body>
+                    <Card.Title className="fs-6">{pelicula.titulo}</Card.Title>
+                    <Card.Text className="text-muted">{pelicula.anio}</Card.Text>
+                    <Button className="bg-dark" onClick={() =>handleShowModal(pelicula)}>
+                      Ver mas
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))
+          ) : (
+            <div className="text-center text-white col-12 py-5">
+              <h3>No se encontraron películas 😔</h3>
+              <p>Intenta con otro título.</p>
+              {searchQuery && (
+                <Button variant="outline-light" onClick={() => navigate("/")}>Ver todas</Button>
+              )}
             </div>
-          );
-        })} 
-        {/* El .map termina aquí. Fuera de aquí, 'peli' ya no existe */}
-      </div>
-    </div>
+          )}
+        </Row>
+      </Container>
+      <ModalPelicula show={showModal} handleClose={handleCloseModal} pelicula={selectMovie}/>
+    </Container>
   );
-};
+}
 
 export default Home;

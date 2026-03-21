@@ -50,7 +50,7 @@ const peliculasIniciales = [
   {
     id: 5,
     titulo: "The Mask",
-    poster: "https://pics.filmaffinity.com/the_mask-746858956-large.jpg",
+    poster: "https://www.originalfilmart.com/cdn/shop/products/the_Mask1994_original_film_art_5000x.jpg?v=1608250083",
     video: "https://www.youtube.com/embed/LZl69yk5lEY",
     categorias: "comedia",
     anio: 1994,
