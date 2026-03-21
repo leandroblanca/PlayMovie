@@ -9,7 +9,7 @@ const Planes = () => {
     navigate("/pago", { state: { planId } });
 };
     return (
-        <div>
+        <div className='Planes-section'>
             <section className='Title'>
                 <h1 className='Titulo'><strong>Todo el cine,</strong>
                     <strong className='Titulo-Rojo'> a tu alcance.</strong></h1>

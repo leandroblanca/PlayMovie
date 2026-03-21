@@ -4,9 +4,9 @@
     box-sizing: border-box;
 }
 
-html, body, #root {
+.Planes-section {
     background-color: #120808;
-    min-height: 100%;
+    min-height: 100vh;
 }
 
 .Title {
