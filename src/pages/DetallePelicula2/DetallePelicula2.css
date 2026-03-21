@@ -7,22 +7,21 @@ body {
   overflow-x: hidden;
 }
 
-.movie-background {
-  position: relative; /* clave para que el overlay se posicione dentro */
-}
-
-.movie-background img {
+.poster-img {
   width: 100%;
   height: 100vh;
-  object-fit: cover;
+  object-fit: contain;
+  /* object-fit: contain; */
+  object-position: center;
   filter: brightness(60%);
 }
 
 .movie-overlay {
-  position: absolute;
   top: 50%;
   left: 5%;
   max-width: 600px;
+  text-align: left;
+  margin-left: 50px;
 }
 
 .movie-title {
@@ -42,6 +41,7 @@ body {
 .movie-buttons {
   display: flex;
   gap: 1rem;
+  padding-top: 20px;
 }
 
 /* Botones */
@@ -65,7 +65,7 @@ body {
 
 .btn-secondary {
   background-color: rgba(255,255,255,0.2);
-  color: #fff;
+  color: white;
   border: none;
   padding: 0.6rem 1.2rem;
   border-radius: 20px;
@@ -73,11 +73,69 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  
+}
+
+.btn-secondary.liked {
+  color: #f6121d;
+}
+
+.btn-secondary-link {
+  text-decoration: none;
+  color: white;
 }
 
 .movie-buttons button:hover {
   background-color: rgba(255,255,255,0.4);
 }
+.share-container {
+  position: relative;
+  display: inline-block;
+}
+
+.share-options {
+  position: absolute;       /* lo hace flotar */
+  bottom: 45px;                /* distancia desde el botón */
+  left: 0;
+  background: #222;         /* fondo oscuro */
+  border: 1px solid #444;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;            /* asegura que quede encima */
+}
+
+.share-icon {
+  color: white;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.share-icon:hover {
+  transform: scale(1.1);
+}
+
+.share-icon.whatsapp:hover {
+  color: #25D366;
+}
+
+.share-icon.facebook:hover {
+  color: blue;
+}
+
+.share-icon.twitter:hover {
+  color: #1DA1F2;
+}
+.share-options a {
+  color: white;
+  text-decoration: none;
+  margin: 5px 0;
+}
+
+.share-options a:hover {
+  color: crimson;
+}
+
 
 /* Layout debajo */
 .movie-layout {
@@ -102,7 +160,6 @@ body {
 .movie-right div {
   border: 1px solid #411315;
   background-color: #2b1213;
-  /* height: 50%; */
   margin-bottom: 10px;
   border-radius: 8%;
   padding: 20px;
@@ -125,14 +182,6 @@ body {
   display: flex;
   list-style: none;
     
-}
-
-.elenco {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  text-align: center;
-  align-content: center;
 }
 
 .elenco img {
