@@ -9,11 +9,7 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 function Home({ peliculas }) {
   const navigate = useNavigate();
-<<<<<<< HEAD
   const {esFavorito, agregarFavorito, eliminarFavorito} = useFavoritos();
-=======
-  const location = useLocation();
->>>>>>> 000f17383edce16ae92e9ad939b71d5b9fe47025
   const [selectMovie, setSelectMovie] = useState(null)
   const [showModal, setShowModal] = useState(false)
 
@@ -51,7 +47,6 @@ function Home({ peliculas }) {
 
   return (
     <Container fluid className="p-0">
-      {/* Solo mostrar Carrusel si NO se está buscando */}
       {!searchQuery && (
         <section className="carousel-video">
         <Carousel indicators={true} interval={null} controls={true}>

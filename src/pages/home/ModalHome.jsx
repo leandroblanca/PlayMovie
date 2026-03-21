@@ -43,8 +43,8 @@ function ModalPelicula({show, handleClose, pelicula, esFavorito, agregarFavorito
                 <Button variant={favorito ? "danger" : "outline-danger"} onClick={toggleFavorito}>
                    {favorito ? <FaHeart /> : <FaRegHeart />} {favorito ? " Quitar de favoritos" : " Añadir a favoritos"}
                 </Button>
-                <Button variant="secondary" onClick={handleClose}>
-                    Cerrar
+                <Button variant="secondary">
+                    Ver mas
                 </Button>
             </Modal.Footer>
         </Modal>
