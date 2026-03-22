@@ -160,8 +160,8 @@ PlayMovie/
 └── README.md
 ```
 
-🎮 Uso
-👥 Para Usuarios
+## 🎮 Uso
+### 👥 Para Usuarios
 Registrarse o iniciar sesión.
 
 Explorar el catálogo.
@@ -176,28 +176,28 @@ Gestionar perfil.
 
 Enviar consultas desde contacto.
 
-🛡 Para Administradores
+### 🛡 Para Administradores
 Acceder al panel en /admin.
 
 Gestionar usuarios.
 
 Gestionar películas.
 
-📱 Diseño Responsive
+## 📱 Diseño Responsive
 Mobile-first
 
 Menú hamburguesa
 
 Cards adaptables
 
-🧠 Gestión de Estado
+## 🧠 Gestión de Estado
 Hooks de React
 
 Lógica modular en helpers
 
 Manejo de autenticación y roles
 
-👥 Equipo de Proyecto: PlayMovie
+## 👥 Equipo de Proyecto: PlayMovie
 Marisol Lamas — Scrum Master
 
 Leandro Blanca — Líder Técnico
@@ -206,7 +206,7 @@ Abel Ruiz — Desarrollador
 
 Sebastian Varela — Desarrollador
 
-🔮 Próximas Mejoras
+##  Próximas Mejoras
 Integración con API de películas (ej: TMDB).
 
 Sistema de recomendaciones personalizadas.
@@ -219,5 +219,5 @@ PWA (instalable como app).
 
 Login con Google/redes sociales.
 
-📄 Licencia
+## 📄 Licencia
 Proyecto desarrollado con fines educativos y práctica profesional.
