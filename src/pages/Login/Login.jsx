@@ -41,7 +41,7 @@ const Login = () => {
     });
     return;
   }
-
+  console.log('Usuario encontrado:', usuarioEncontrado);
   sessionStorage.setItem(
     "usuarioLogueado",
     JSON.stringify(usuarioEncontrado)
