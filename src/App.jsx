@@ -17,9 +17,7 @@ import PasarelaDePago from "./pages/PasarelaDePago/Pasarela";
 import Admin from "./pages/Admin/Admin";
 import RutaProtegida from "./componentes/RutaProtegida";
 import Usuario from "./pages/Usuario/Usuario";
-import Favoritos from "./pages/favoritos/Favoritos";
-
-
+import Planes from "./pages/Planes/Planes"
 
 function App() {
   useEffect(() => {
@@ -56,6 +54,7 @@ function App() {
         <Route path="/error404" element={<Error404 />} />
         <Route path="/pago" element={<PasarelaDePago />} />
         <Route path="/nosotros" element={<AboutUs />} />
+        <Route path="/planes" element={< Planes/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/ayuda" element={<CentroAyuda />} />
