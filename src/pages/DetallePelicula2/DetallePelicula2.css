@@ -1,0 +1,212 @@
+body {
+  font-family: "Poppins", sans-serif !important;
+}
+
+.movie-detail {
+  color: #fff;
+  overflow-x: hidden;
+  margin-top: 50px;
+}
+
+.poster-img {
+  width: 100%;
+  height: 100vh;
+  object-fit: contain;
+  object-position: center;
+  filter: brightness(60%);
+  }
+
+.movie-overlay {
+  top: 50%;
+  left: 5%;
+  max-width: 600px;
+  text-align: left;
+  margin-left: 50px;
+  margin-top: 30px;
+}
+
+.movie-title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.movie-info {
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.movie-description {
+  margin-bottom: 1.5rem;
+}
+
+.movie-buttons {
+  display: flex;
+  gap: 1rem;
+  padding-top: 20px;
+}
+
+/* Botones */
+.btn-play {
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  
+}
+
+.btn-play:hover {
+  background-color: #f6121d !important;
+}
+
+.btn-secondary {
+  background-color: rgba(255,255,255,0.2);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  
+}
+
+.btn-secondary.liked {
+  color: #f6121d;
+}
+
+.btn-secondary-link {
+  text-decoration: none;
+  color: white;
+}
+
+.movie-buttons button:hover {
+  background-color: rgba(255,255,255,0.4);
+}
+.share-container {
+  position: relative;
+  display: inline-block;
+}
+
+.share-options {
+  position: absolute;       
+  bottom: 45px;             
+  left: 20px;
+  background: #444;         
+  border: 1px solid #444;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;     
+}
+
+.share-icon {
+  font-size: small;
+  color: white;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.share-icon:hover {
+  transform: scale(1.1);
+}
+
+.share-icon.whatsapp:hover {
+  color: #25D366;
+}
+
+.share-icon.facebook:hover {
+  color: blue;
+}
+
+.share-icon.twitter:hover {
+  color: #1DA1F2;
+}
+.share-options a {
+  color: white;
+  text-decoration: none;
+  margin: 5px 0;
+}
+
+.share-options a:hover {
+  color: crimson;
+}
+
+
+/* Layout debajo */
+.movie-layout {
+  display: flex;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.movie-left {
+  flex: 2;
+}
+
+.movie-right {
+  flex: 1;
+  background-color: #181111;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.movie-right div {
+  border: 1px solid #411315;
+  background-color: #2b1213;
+  margin-bottom: 10px;
+  border-radius: 8%;
+  padding: 20px;
+}
+
+.movie-right div ul li img {
+  width: 30%;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.movie-right ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.movie-right li {
+  list-style: none;
+  
+}
+
+.elenco img {
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+}
+
+.titulo1 {
+  font-weight: bold;
+  /* margin: 10px; */
+}
+
+.titulo2 {
+  font-weight: bold;
+  color: grey;
+  margin: 10px;
+  
+}
+
+h2 {
+  color: #e50914;
+  font-size: medium;
+}
+.movie-link {
+  text-decoration: none;
+}

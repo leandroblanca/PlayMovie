@@ -1,142 +1,132 @@
-🎬 PlayMovie
+# 🎬 PlayMovie
 
 PlayMovie es una aplicación web de streaming de películas estilo Netflix, desarrollada con React y Vite. Permite a los usuarios explorar, guardar y gestionar contenido audiovisual, junto con un sistema completo de autenticación y administración.
 
-📌 Descripción General
+---
+
+## 📌 Descripción General
 
 PlayMovie ofrece una experiencia moderna, intuitiva y responsive para disfrutar de películas. Incluye funcionalidades tanto para usuarios como para administradores, con control de acceso basado en roles y gestión completa del contenido.
 
-🚀 Funcionalidades Principales
+---
 
-🎥 Experiencia de Usuario
+## 🚀 Funcionalidades Principales
 
-Catálogo de películas precargadas.
+### 🎥 Experiencia de Usuario
 
-Visualización de detalles de cada película.
+- Catálogo de películas precargadas.
+- Visualización de detalles de cada película.
+- Sistema de favoritos.
+- Sistema de reseñas de películas.
+- Navegación fluida con React Router.
+- Interfaz estilo plataformas de streaming.
 
-Sistema de favoritos.
+### 👤 Gestión de Usuarios
 
-Sistema de reseñas de películas.
+- Registro e inicio de sesión.
+- Perfil de usuario editable (CRUD completo).
+- Gestión de favoritos por usuario.
 
-Navegación fluida con React Router.
+### ⭐ Sistema de Reseñas
 
-Interfaz estilo plataformas de streaming.
+- Crear reseñas de películas.
+- Editar y eliminar reseñas.
+- Visualización de opiniones de otros usuarios.
 
-👤 Gestión de Usuarios
+### 💳 Suscripciones y Pagos
 
-Registro e inicio de sesión.
+- Visualización de planes de suscripción.
+- Simulación de pasarela de pago.
+- Gestión de acceso según tipo de plan.
 
-Perfil de usuario editable (CRUD completo).
+### 📩 Contacto
 
-Gestión de favoritos por usuario.
+- Formulario de contacto funcional.
+- Envío de mensajes mediante EmailJS.
 
-⭐ Sistema de Reseñas
+### 🛠 Panel de Administración
 
-Crear reseñas de películas.
+- Rutas protegidas.
+- Acceso exclusivo para administradores.
+- CRUD completo de:
+  - Películas
+  - Usuarios
+- Gestión general del contenido de la plataforma.
 
-Editar y eliminar reseñas.
+### 🎨 Interfaz y UX
 
-Visualización de opiniones de otros usuarios.
+- Diseño responsive.
+- Estética moderna estilo Netflix.
+- Notificaciones con React Toastify.
 
-💳 Suscripciones y Pagos
+---
 
-Visualización de planes de suscripción.
+## 🧑‍💻 Tecnologías Utilizadas
 
-Simulación de pasarela de pago.
+### Frontend
 
-Gestión de acceso según tipo de plan.
+- React 19
+- Vite
+- React Router DOM
+- Bootstrap 5
+- React Bootstrap
 
-📩 Contacto
+### Librerías UI/UX
 
-Formulario de contacto funcional.
+- React Toastify
+- SweetAlert
+- Font Awesome
+- React Hook Form
 
-Envío de mensajes mediante EmailJS.
+### Servicios
 
-🛠 Panel de Administración
+- EmailJS (formulario de contacto)
 
-Rutas protegidas.
+---
 
-Acceso exclusivo para administradores.
+## 📦 Instalación
 
-CRUD completo de:
+### Prerrequisitos
 
-Películas
+- Node.js (v16 o superior)
+- npm o yarn
 
-Usuarios
+### 🔧 Pasos
 
-Gestión general del contenido de la plataforma.
+1. **Clonar el repositorio**
 
-🎨 Interfaz y UX
+   ```bash
+   git clone https://github.com/leandroblanca/PlayMovie.git
+   cd PlayMovie
+   ```
 
-Diseño responsive.
+2. **Instalar dependencias**
 
-Estética moderna estilo Netflix.
+   ```bash
+   npm install
+   ```
 
-Notificaciones con React Toastify.
+3. **Configurar variables de entorno**
 
-🧑‍💻 Tecnologías Utilizadas
+   Crear un archivo `.env` en la raíz con las siguientes variables:
 
-Frontend
+   ```env
+   VITE_EMAILJS_SERVICE_ID=tu_service_id
+   VITE_EMAILJS_TEMPLATE_ID=tu_template_id
+   VITE_EMAILJS_PUBLIC_KEY=tu_public_key
+   ```
 
-React 19
+4. **Ejecutar el proyecto**
 
-Vite
+   ```bash
+   npm run dev
+   ```
 
-React Router DOM
+   👉 La aplicación estará disponible en: http://localhost:5173
 
-Bootstrap 5
+## � Estructura del Proyecto
 
-React Bootstrap
-
-Librerías UI/UX
-
-React Toastify
-
-SweetAlert
-
-Font Awesome
-
-React Hook Form
-
-Servicios
-
-EmailJS (formulario de contacto)
-
-📦 Instalación
-
-Prerrequisitos
-
-Node.js (v16 o superior)
-
-npm o yarn
-
-🔧 Pasos
-
-Clonar el repositorio
-
-git clone https://github.com/leandroblanca/PlayMovie.git
-cd PlayMovie
-
-Instalar dependencias
-
-npm install
-
-Configurar variables de entorno
-
-Crear un archivo .env en la raíz:
-
-VITE_EMAILJS_SERVICE_ID=tu_service_id
-VITE_EMAILJS_TEMPLATE_ID=tu_template_id
-VITE_EMAILJS_PUBLIC_KEY=tu_public_key
-
-Ejecutar el proyecto
-
-npm run dev
-
-👉 La aplicación estará disponible en: http://localhost:5173
-
-📁 Estructura del Proyecto
-
+```text
 PlayMovie/
 ├── public/
 │   └── assets/
@@ -168,11 +158,10 @@ PlayMovie/
 │   └── main.jsx
 ├── package.json
 └── README.md
+```
 
-🎮 Uso
-
-👥 Para Usuarios
-
+## 🎮 Uso
+### 👥 Para Usuarios
 Registrarse o iniciar sesión.
 
 Explorar el catálogo.
@@ -187,32 +176,28 @@ Gestionar perfil.
 
 Enviar consultas desde contacto.
 
-🛡 Para Administradores
-
+### 🛡 Para Administradores
 Acceder al panel en /admin.
 
 Gestionar usuarios.
 
 Gestionar películas.
 
-📱 Diseño Responsive
-
+## 📱 Diseño Responsive
 Mobile-first
 
 Menú hamburguesa
 
 Cards adaptables
 
-🧠 Gestión de Estado
-
+## 🧠 Gestión de Estado
 Hooks de React
 
 Lógica modular en helpers
 
 Manejo de autenticación y roles
 
-👥 Equipo de Proyecto: PlayMovie
-
+## 👥 Equipo de Proyecto: PlayMovie
 Marisol Lamas — Scrum Master
 
 Leandro Blanca — Líder Técnico
@@ -221,8 +206,7 @@ Abel Ruiz — Desarrollador
 
 Sebastian Varela — Desarrollador
 
-🔮 Próximas Mejoras
-
+##  Próximas Mejoras
 Integración con API de películas (ej: TMDB).
 
 Sistema de recomendaciones personalizadas.
@@ -235,6 +219,5 @@ PWA (instalable como app).
 
 Login con Google/redes sociales.
 
-📄 Licencia
-
+## 📄 Licencia
 Proyecto desarrollado con fines educativos y práctica profesional.

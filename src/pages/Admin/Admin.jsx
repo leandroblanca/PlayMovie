@@ -1,568 +1,327 @@
-import { Button, Modal, Table, Form, Container, Row, Card, Col, ListGroup, Badge } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilm, faUsers, faDollarSign, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { Button, Container, Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import { BsEye, BsPencil, BsTrash } from "react-icons/bs";
+import Sidebar from "./Sidebar"
+import TablaPeliculas from "./TablaPeliculas";
+import ModalPeliculas from "./ModalPeliculas.jsx";
+import CardsUsuarios from "./CardUsuarios.jsx";
+import { registroSistema, dashboardStats } from "./ObjetosAdmin.jsx";
+import CardsAdmin from "./CardsAdmin.jsx";
+import peliculasIniciales from "../../data/movies.js";
+import ModalUsuarios from "./ModalUsuarios.jsx";
+import { useNavigate, useLocation } from "react-router-dom";
+import { usuariosIniciales } from "../../helpers/users.js";
 import "./Admin.css";
-import Sidebar from "../../componentes/Sidebar";
-
-
-const dashboardStats = [
-  {
-    id: 1,
-    icon: faFilm,
-    tendencia: "up",
-    porcentaje: "+12%",
-    titulo: "Total de Películas",
-    valor: 1240
-  },
-  {
-    id: 2,
-    icon: faUsers,
-    tendencia: "up",
-    porcentaje: "+5%",
-    titulo: "Usuarios Activos",
-    valor: 85241
-  },
-  {
-    id: 3,
-    icon: faDollarSign,
-    tendencia: "down",
-    porcentaje: "-2%",
-    titulo: "Ingresos Totales",
-    valor: 12450
-  },
-  {
-    id: 4,
-    icon: faUserPlus,
-    tendencia: "up",
-    porcentaje: "+18%",
-    titulo: "Nuevos Registros",
-    valor: 124
-  }
-];
-
-const usuariosIniciales = [
-  {
-    id: 1,
-    nombre: "Alex Johnson",
-    estado: "ACTIVO",
-    ultimoAcceso: "hace 2h"
-  },
-  {
-    id: 2,
-    nombre: "Sarah Miller",
-    estado: "ACTIVO",
-    ultimoAcceso: "hace 5h"
-  },
-  {
-    id: 3,
-    nombre: "Michael Brown",
-    estado: "INACTIVO",
-    ultimoAcceso: "hace 1 día"
-  }
-];
-const registroSistema = [
-  {
-    id: 1,
-    titulo: "Copia de Seguridad Completada",
-    categoria: "Usuarios Activos",
-    hora: "10:45 AM",
-    color: "#198754"
-  },
-  {
-    id: 2,
-    titulo: "Alerta de Seguridad",
-    categoria: "Usuarios Activos",
-    hora: "08:22 AM",
-   color: "#dc3545"
-
-  },
-  {
-    id: 3,
-    titulo: "Película Publicada",
-    categoria: "Usuarios Activos",
-    hora: "Ayer",
-    color: "#0d6efd"
-  }
-];
 
 function Admin() {
-  const [usuarios, setUsuarios] = useState(usuariosIniciales);
-   const [show, setShow] = useState(false);
-   const [peliculas, setPeliculas] = useState(() => {
-     const guardadas = localStorage.getItem("peliculas");
-     return guardadas ? JSON.parse(guardadas) : [];
-   });
-   const [titulo, setTitulo] = useState("");
-   const [año, setAño] = useState("");
-   const [poster, setPoster] = useState("");
-   const [editarId, setEditarId] = useState(null);
-   const [busqueda, setBusqueda] = useState("");
-   const [busquedaApi, setBusquedaApi] = useState("");
-   const [resultadosApi, setResultadosApi] = useState([]);
-   const API_URL = "https://api.themoviedb.org/3/movie/popular?api_key=9678a642782cbed22b8137edf52e9d91&language=es-ES&page=1";
-  const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [usuarios, setUsuarios] = useState(() => {
+    const usuariosGuardados = localStorage.getItem("usuarios");
+    if (usuariosGuardados) {
 
-  
+      const parsedUsers = JSON.parse(usuariosGuardados);
+      return parsedUsers.map(u => {
+        const { password, ...resto } = u;
+        return resto;
+      });
+    }
+   
+    return usuariosIniciales.map(u => {
+      const { password, ...resto } = u;
+      return resto;
+    });
+  });
+  const [peliculas, setPeliculas] = useState(() => {
+    const guardadas = localStorage.getItem("peliculas");
+    return guardadas ? JSON.parse(guardadas) : peliculasIniciales;
+  });
 
-useEffect(() => {
+  const [show, setShow] = useState(false);
+  const [titulo, setTitulo] = useState("");
+  const [anio, setAnio] = useState("");
+  const [poster, setPoster] = useState("");
+  const [categorias, setCategorias] = useState("");
+  const [video, setVideo] = useState("");
+  const [descripcion, setDescripcion] = useState("");
+  const [editarId, setEditarId] = useState(null);
+  const [busqueda, setBusqueda] = useState("");
 
-  const data = localStorage.getItem("usuarios");
+  const [showUserModal, setShowUserModal] = useState(false);
+  const [nombreUser, setNombreUser] = useState("");
+  const [emailUser, setEmailUser] = useState("");
+  const [rolUser, setRolUser] = useState("");
+  const [estadoUser, setEstadoUser] = useState(true);
+  const [editarUserId, setEditarUserId] = useState(null);
 
-  if(data){
-    setUsuarios(JSON.parse(data));
-  } else {
-    setUsuarios(usuariosIniciales);
-  }
+  const handleShow = () => setShow(true);
 
-}, []);
-useEffect(()=>{
-  localStorage.setItem("usuarios", JSON.stringify(usuarios));
-},[usuarios])
+  const registrarUsuario = (nombre) => {
 
-const registrarUsuario = (nombre) => {
+    const nuevoUsuario = {
+      id: Date.now(),
+      nombre,
+      estado: "ACTIVO",
+      
+    };
 
-  const nuevoUsuario = {
-    id: Date.now(),
-    nombre,
-    estado: "ACTIVO",
-    ultimoAcceso: "ahora"
+    setUsuarios([...usuarios, nuevoUsuario]);
   };
 
-  setUsuarios(prev => [nuevoUsuario, ...prev]);
+  const eliminarUsuario = (id) => {
+    const nuevosUsuarios = usuarios.filter(u => u.id !== id);
+    setUsuarios(nuevosUsuarios);
+    localStorage.setItem("usuarios", JSON.stringify(nuevosUsuarios));
+  };
 
-};
+  const editarUsuario = (usuario) => {
+    setNombreUser(usuario.nombre);
+    setEmailUser(usuario.email);
+    setRolUser(usuario.rol);
+  
+    setEstadoUser(usuario.estado === "ACTIVO" || usuario.estado === true);
+    setEditarUserId(usuario.id);
+    setShowUserModal(true);
+  };
+
+  const guardarUsuario = (e) => {
+    e.preventDefault();
+    const usuariosActualizados = usuarios.map((u) =>
+      u.id === editarUserId ? { ...u, nombre: nombreUser, email: emailUser, rol: rolUser, estado: estadoUser } : u
+    );
+    setUsuarios(usuariosActualizados);
+    localStorage.setItem("usuarios", JSON.stringify(usuariosActualizados));
+    setShowUserModal(false);
+    setEditarUserId(null);
+  };
+
   useEffect(() => {
-   
-    if (peliculas.length === 0) {
-      const consultarAPI = async () => {
-        try {
-          const respuesta = await fetch(API_URL);
-          const { results } = await respuesta.json();
-          
-          const peliculasPopulares = results.map(pelicula => ({
-            id: crypto.randomUUID(),
-            titulo: pelicula.title,
-            año: pelicula.release_date ? pelicula.release_date.split("-")[0] : "2024",
-            poster: `${IMAGE_BASE_URL}${pelicula.poster_path}`
-          }));
-          
-          setPeliculas(peliculasPopulares);
-        } catch (error) {
-          console.error("Error en la API", error);
-        }
-      };
-      consultarAPI();
-    }
-  }, []); 
-
-
-   useEffect(() => {
     localStorage.setItem("peliculas", JSON.stringify(peliculas));
   }, [peliculas]);
-  
-  const peliculasFiltradas = peliculas.filter((pelicula) =>
-    (pelicula.titulo || "").toLowerCase().includes(busqueda.toLowerCase())
-  );
 
-  const AgregarPelicula = () => {
-    if(!editarId) {
+
+  const guardarPelicula = () => {
+
+    if (!editarId) {
+
       const nuevaPelicula = {
-        id: crypto.randomUUID(),
+        id: Date.now(),
         titulo,
-        año,
         poster,
-      };
+        categorias,
+        anio,
+        descripcion,
+        video,
+              };
+
       setPeliculas([...peliculas, nuevaPelicula]);
+
     } else {
-       const peliculasActualizadas = peliculas.map((pelicula) =>
-      pelicula.id === editarId
-        ? { ...pelicula, titulo, año, poster }
-        : pelicula
-    );
 
-    setPeliculas(peliculasActualizadas);
-    setEditarId(null);
-  }
+      const peliculasActualizadas = peliculas.map(pelicula =>
+        pelicula.id === editarId
+          ? { ...pelicula, titulo, anio, poster, categorias, video, descripcion }
+          : pelicula
+      );
 
-  setTitulo("");
-  setAño("");
-  setPoster("");
-  setShow(false);
-  }
+      setPeliculas(peliculasActualizadas);
+      setEditarId(null);
+    }
+
+    setTitulo("");
+    setAnio("");
+    setPoster("");
+    setCategorias("");
+    setVideo("");
+    setDescripcion("");
+    setShow(false);
+  };
+
+
   const eliminarPelicula = (id) => {
-    const nuevasPeliculas = peliculas.filter((pelicula => pelicula.id !== id));
+    const nuevasPeliculas = peliculas.filter(p => p.id !== id);
     setPeliculas(nuevasPeliculas);
-  }
-  const editarPelicula = (id) => {
-    const pelicula = peliculas.find((pelicula => pelicula.id === id));
+  };
+
+  const editarPelicula = (pelicula) => {
+
     setTitulo(pelicula.titulo);
-    setAño(pelicula.año);
+    setAnio(pelicula.anio);
     setPoster(pelicula.poster);
-    setEditarId(id);
+    setCategorias(pelicula.categorias);
+    setVideo(pelicula.video);
+    setDescripcion(pelicula.descripcion);
+
+    setEditarId(pelicula.id);
     setShow(true);
-  }
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
-    AgregarPelicula();
-  }
+    guardarPelicula();
+  };
+
 
   const handleClose = () => {
     setShow(false);
     setEditarId(null);
     setTitulo("");
-    setAño("");
+    setAnio("");
     setPoster("");
+    setCategorias("");
+    setVideo("");
+    setDescripcion("");
   };
 
-  const buscarPeliculaApi = async (e) => {
-    e.preventDefault();
-    try {
-      const url = `https://api.themoviedb.org/3/search/movie?api_key=9678a642782cbed22b8137edf52e9d91&query=${busquedaApi}&language=es-ES`;
-      const response = await fetch(url);
-      const data = await response.json();
-      setResultadosApi(data.results || []);
-    } catch (error) {
-      console.log(error);
-    }
+  const peliculasFiltradas = peliculas.filter(p =>
+    p.titulo.toLowerCase().includes(busqueda.toLowerCase())
+  );
+
+  const cerrarSesion = () => {
+    sessionStorage.removeItem("usuarioLogueado");
+    window.dispatchEvent(new Event("auth-change"));
+    navigate("/login", { replace: true });
   };
 
-  const agregarDesdeApi = (pelicula) => {
-    const nuevaPelicula = {
-      id: crypto.randomUUID(),
-      titulo: pelicula.title,
-      año: pelicula.release_date ? pelicula.release_date.split("-")[0] : "N/A",
-      poster: pelicula.poster_path ? `${IMAGE_BASE_URL}${pelicula.poster_path}` : "https://via.placeholder.com/150",
-    };
-    setPeliculas([...peliculas, nuevaPelicula]);
-  };
 
-  const handleShow = () => setShow(true);
+  const { pathname } = location;
+  const isDashboard = pathname === '/admin';
+  const isPeliculas = pathname === '/peliculas';
+  const isUsuarios = pathname === '/usuarios';
+  const isIngresos = pathname === '/ingresos';
 
+  const showPeliculasSection = isPeliculas || isDashboard;
+  const showUsuariosSection = isUsuarios || isDashboard;
+  const showIngresosSection = isIngresos || isDashboard;
+
+  let pageTitle = "Panel de Administración";
+  if (isPeliculas) pageTitle = "Gestión de Películas";
+  if (isUsuarios) pageTitle = "Gestión de Usuarios";
+  if (isIngresos) pageTitle = "Resumen de Ingresos";
 
   return (
     <>
-    <Container fluid className="min-vh-100">
-      <Row>
-        <Col xs={12} md={3} lg={2} className="p-0 bg-dark">
-           <Sidebar/>
-          <div className="p-3">
-            <Button variant="danger rounded-5 fw-bold" onClick={handleShow} className="shadow w-100">
-              + Añadir Pelicula
-            </Button>
-          </div>
-        </Col>
-        <Col xs={12} md={9} lg={10} className="p-4">
-        
-           <div className="mb-4">
-        <Form onSubmit={buscarPeliculaApi} className="d-flex gap-2 col-12 col-md-6">
-          <Form.Control
-            type="text"
-            placeholder="Ej: Batman, Avatar..."
-            value={busquedaApi}
-            onChange={(e) => setBusquedaApi(e.target.value)}
-          />
-          <Button variant="danger" className="rounded-5" type="submit">Buscar</Button>
-        </Form>
-        
-        <div className="d-flex gap-3 mt-3 overflow-auto">
-          {resultadosApi.map((p) => (
-            <div key={p.id} style={{ minWidth: "120px", textAlign: "center" }}>
-              <img
-                src={p.poster_path ? `${IMAGE_BASE_URL}${p.poster_path}` : "https://via.placeholder.com/150"}
-                alt={p.title}
-                style={{ width: "100%", borderRadius: "5px" }}
-              />
-              <h6 style={{ fontSize: "12px", marginTop: "5px" }}>{p.title}</h6>
-              <Button size="sm" variant="success" onClick={() => agregarDesdeApi(p)}>
-                Agregar
-              </Button>
-            </div>
-          ))}
-        </div>
-      </div>
-
-  <Row className="g-4">
-    {dashboardStats.map(stat => (
-      <Col xs={12} sm={6} xl={3} key={stat.id}>
-
-        <Card className="dashboard-card mb-3 rounded-5 h-100 border-0 shadow-sm">
-
-          <Card.Body>
-
-            <div className="d-flex justify-content-between align-items-center mb-2">
-
-              <FontAwesomeIcon
-                icon={stat.icon}
-                className="dashboard-icon"
-              />
-
-              <span className="dashboard-trend">
-                {stat.tendencia} {stat.porcentaje}
-              </span>
-
-            </div>
-
-            <Card.Title className="dashboard-title">
-              {stat.titulo}
-            </Card.Title>
-
-            <Card.Text className="dashboard-value">
-              {stat.valor}
-            </Card.Text>
-
-          </Card.Body>
-
-        </Card>
-
-      </Col>
-    ))}
-  </Row>
-
-      <div className="mt-4">
-       
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>{editarId ? "Editar Película" : "Agregar Película"}</Modal.Title>
-        </Modal.Header>
-
-        <Modal.Body >
-          <Form onSubmit={onSubmit}>
-            <Form.Control className="mb-3"
-              type="text"
-              placeholder="Título"
-              value={titulo}
-              onChange={(e) => setTitulo(e.target.value)}
-              required
-            />
-
-            <Form.Control className="mb-3"
-              type="text"
-              placeholder="Año"
-              value={año}
-              onChange={(e) => setAño(e.target.value)}
-              required
-            />
-
-            <Form.Control className="mb-3"
-              type="text"
-              placeholder="URL del poster"
-              value={poster}
-              onChange={(e) => setPoster(e.target.value)}
-              required
-            />
-
-            <Button variant="danger" type="submit">
-              {editarId ? "Guardar Cambios" : "Agregar"}
-            </Button>
-          </Form>
-        </Modal.Body>
-
-     
-      </Modal>
-
-      <Card className="border-0 shadow-sm rounded-4 overflow-hidden">
-        <Card.Body className="p-0">
-      <Table hover responsive className="align-middle tabla-peliculas">
-  <thead>
-    <tr>
-      <th>Película</th>
-      <th>Fecha de estreno</th>
-      <th>Estado</th>
-      <th>Calificación</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-
-  <tbody>
-
-    {peliculasFiltradas.map((pelicula) => (
-      <tr key={pelicula.id}>
-
-        <td>
-          <div className="d-flex align-items-center gap-3">
-
-            <img
-              src={pelicula.poster}
-              alt={pelicula.titulo}
-              className="poster-mini"
-            />
-
-            <div>
-              <div className="fw-bold">{pelicula.titulo}</div>
-              <div className="text-muted small">
-                {pelicula.genero || "Ciencia ficción"}
+      <Container fluid className="admin-container min-vh-100 p-0">
+        <Row className="g-0">
+          
+          <Col md={3} xl={2} className="sidebar-col d-none d-md-block">
+            <div className="sidebar-wrapper">
+              <Sidebar onLogout={cerrarSesion} />
+              
+              <div className="add-button-container">
+                <Button
+                  variant="danger"
+                  onClick={handleShow}
+                  className="add-movie-btn w-100"
+                >
+                  + Añadir Película
+                </Button>
               </div>
             </div>
+          </Col>
 
-          </div>
-        </td>
+          <Col xs={12} className="d-md-none p-3">
+            <Button variant="danger" className="w-100" onClick={handleShow}>
+              + Añadir Película
+            </Button>
+          </Col>
 
-        <td>
-          {pelicula.fecha || pelicula.año}
-        </td>
+          <Col xs={12} md={9} xl={10} className="main-content p-3 p-md-4">
+            <div className="content-wrapper">
+              <div className="content-header d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center gap-3 mb-4">
+                              
+                <div className="header-actions d-flex flex-column flex-sm-row gap-2 w-100 w-lg-auto mt-5">
+                  <div className="search-wrapper flex-grow-1">
+                    <input
+                      type="text"
+                      placeholder="Buscar película..."
+                      value={busqueda}
+                      onChange={(e) => setBusqueda(e.target.value)}
+                      className="search-input w-100"
+                    />
+                    <span className="search-icon">🔍</span>
+                  </div>
+                  
+                  
+                </div>
+              </div>
 
-        <td>
-          <span
-            className={`badge ${
-              pelicula.estado === "Publicado"
-                ? "bg-success"
-                : "bg-warning text-dark"
-            }`}
-          >
-            {pelicula.estado || "Publicado"}
-          </span>
-        </td>
+              {showIngresosSection && (
+              <div className="stats-section mb-4">
+                <CardsAdmin dashboardStats={dashboardStats} />
+              </div>
+              )}
+              {showPeliculasSection && (
+              <div className="section-card mb-4 ">
+                <div className="section-header d-flex justify-content-between align-items-center mb-3">
+                  <h3 className="section-title mb-0">🎬 Películas</h3>
+                  <span className="section-count">{peliculasFiltradas.length} películas</span>
+                </div>
+                
+                <div className="table-responsive">
+                  <TablaPeliculas
+                    editarPelicula={editarPelicula}
+                    eliminarPelicula={eliminarPelicula}
+                    peliculasFiltradas={peliculasFiltradas}
+                  />
+                </div>
+              </div>
+              )}
+              {showUsuariosSection && (
+              <div className="section-card ">
+                <div className="section-header d-flex justify-content-between align-items-center mb-3">
+                  <h3 className="section-title mb-0">👥 Usuarios</h3>
+                  <span className="section-count">{usuarios.length} usuarios</span>
+                </div>
+                
+                <CardsUsuarios
+                  usuarios={usuarios}
+                  registrarUsuario={registrarUsuario}
+                  eliminarUsuario={eliminarUsuario}
+                  editarUsuario={editarUsuario}
+                  registroSistema={registroSistema}
+                />
+              </div>
+              )}
+            </div>
 
-        <td>
-          ⭐ {pelicula.rating || "N/A"}
-        </td>
-
-         <td className="d-flex gap-2">
-
-          <Button
            
-            onClick={() => editarPelicula(pelicula.id)}
-          >
-            <BsPencil size={18}/>
-          </Button>
+            <ModalPeliculas
+              show={show}
+              handleClose={handleClose}
+              editarId={editarId}
+              titulo={titulo}
+              setTitulo={setTitulo}
+              anio={anio}
+              setAnio={setAnio}
+              poster={poster}
+              setPoster={setPoster}
+              categorias={categorias}
+              setCategorias={setCategorias}
+              video={video}
+              setVideo={setVideo}
+              descripcion={descripcion}
+              setDescripcion={setDescripcion}
+              onSubmit={onSubmit}
+            />
 
-          <Button
-            
-          >
-            <BsEye size={18}/>
-          </Button>
+            <ModalUsuarios
+              show={showUserModal}
+              handleClose={() => setShowUserModal(false)}
+              editarId={editarUserId}
+              nombre={nombreUser}
+              setNombre={setNombreUser}
+              email={emailUser}
+              setEmail={setEmailUser}
+              rol={rolUser}
+              setRol={setRolUser}
+              estado={estadoUser}
+              setEstado={setEstadoUser}
+              onSubmit={guardarUsuario}
+            />
+          </Col>
 
-          <Button
-           
-            onClick={() => eliminarPelicula(pelicula.id)}
-          >
-            <BsTrash size={18}/>
-          </Button>
-
-        </td>
-
-
-      </tr>
-    ))}
-
-  </tbody>
-</Table>
-        </Card.Body>
-      </Card>
-      </div>
-
-  <Row className="my-5 g-4"> 
-    <Col xs={12} lg={8}>
-    <Card className="usuarios-card h-100 border-0 shadow-sm rounded-4">
-
-<Card.Body>
-
-<div className="d-flex justify-content-between align-items-center mb-3">
-<h5 className="fw-bold">Gestión de Usuarios</h5>
-<span className="text-danger">Ver Todos los Usuarios</span>
-</div>
-
-<ListGroup variant="flush">
-
-{usuarios.map((usuario) => (
-
-<ListGroup.Item
-key={usuario.id}
-className="d-flex justify-content-between align-items-center usuario-item"
->
-
-<div className="d-flex align-items-center gap-3">
-
-<div className="avatar"></div>
-
-<div>
-<div className="fw-bold">{usuario.nombre}</div>
-<div className="text-muted small">Usuarios Activos</div>
-</div>
-
-</div>
-
-<div className="text-end">
-
-<div className="text-muted small">
-Último acceso: {usuario.ultimoAcceso}
-</div>
-
-<Badge bg={usuario.estado === "ACTIVO" ? "danger" : "secondary"}>
-{usuario.estado}
-</Badge>
-
-</div>
-
-</ListGroup.Item>
-
-))}
-
-</ListGroup>
-
-</Card.Body>
-
-</Card>
-    </Col>
-    <Col xs={12} lg={4}>
-   <Card className="registro-card h-100 border-0 shadow-sm rounded-4">
-
-<Card.Body>
-
-<h5 className="fw-bold mb-4">Registro del Sistema</h5>
-
-{registroSistema.map((registro)=> (
-
-<div
-key={registro.id}
-className="registro-item d-flex justify-content-start align-items-start flex-column"
->
-
-<div className="d-flex align-items-center gap-2">
-  
-
-  <div
-  className="registro-icon"
-  style={{ background: registro.color }}
-></div>
-
-
-<div>
-
-<div className="fw-bold">
-{registro.titulo}
-</div>
-
-<div className="text-muted small">
-{registro.categoria}
-</div>
-
-</div>
-
-</div>
-
-<div className="text-muted small ms-3">
-{registro.hora}
-</div>
-
-
-</div>
-
-))}
-
-</Card.Body>
-
-</Card> 
-    </Col>
-  </Row>
-
-</Col>
-      </Row>
-    </Container>
-
-
+        </Row>
+      </Container>
     </>
   );
 }

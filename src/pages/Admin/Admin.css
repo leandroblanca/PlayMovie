@@ -1,115 +1,140 @@
-.dashboard-card {
-  background: #1f1f1f;
-  color: white;
-  border: none;
-  padding: 10px;
-  transition: 0.2s;
+
+:root {
+  --bg-dark: #0a0c0f;
+  --bg-card: #14181c;
+  --primary-red: #e50914;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --text-secondary: #94a3b8;
 }
 
-.dashboard-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+.admin-wrapper {
+  background-color: var(--bg-dark);
+  min-height: 100vh;
 }
 
-.dashboard-icon {
-  font-size: 24px;
-  color: #ff4d4d;
+.sidebar-col {
+  background: #0f1215;
+  border-right: 1px solid var(--border-color);
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+  z-index: 100;
 }
 
-.dashboard-title {
-  font-size: 14px;
-  color: #9ca3af;
-  margin-bottom: 4px;
+.main-content {
+  padding: 2rem !important;
+  max-width: 100%;
 }
 
-.dashboard-value {
-  font-size: 28px;
-  font-weight: 700;
-  margin: 0;
+.content-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-.dashboard-trend {
-  font-size: 13px;
-  color: #22c55e;
+/* Header Flexbox */
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
-.tabla-peliculas {
-  color: white;
+.header-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.search-wrapper {
+  position: relative;
+  flex-grow: 1;
+  max-width: 400px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 15px 10px 35px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  overflow: hidden;
-}
-tr,
-td {
-  border: none;
-}
-.poster-mini {
-  width: 45px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-.tabla-peliculas button {
-  border: 0;
-  background: none;
-  padding: 4px;
-  text-decoration: none;
   color: white;
 }
 
-.tabla-peliculas svg {
-  cursor: pointer;
-  transition: 0.2s;
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
 }
 
-.tabla-peliculas svg:hover {
-  transform: scale(1.15);
-}
-.usuarios-card {
-  background: #1f1f1f;
-  color: white;
+/* Cards de Secciones */
+.section-card {
+  background: var(--bg-card);
   border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
 }
 
-.usuario-item {
-  background: transparent;
-  border: none;
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #d9e8ee;
+/* Scroll de Tablas Mejorado */
+.table-responsive-custom {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-red) transparent;
 }
 
-.registro-card {
-  background: #1f1f1f;
-  color: white;
-  border-radius: 12px;
-  padding: 10px;
+/* --- MEDIA QUERIES --- */
+
+/* Tablet (md) */
+@media (max-width: 991px) {
+  .main-content {
+    padding: 1.5rem !important;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+  }
 }
 
-.registro-item {
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+/* Móvil (sm) */
+@media (max-width: 767px) {
+  .main-content {
+    padding: 1rem 0.5rem !important;
+  }
+
+  .header-controls {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .section-card {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  /* Forzamos que la tabla sea legible o scrolleable */
+  .table-responsive-custom table {
+    min-width: 600px; /* Evita que las columnas se aplasten */
+  }
 }
 
-.registro-item:last-child {
-  border-bottom: none;
-}
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.25rem;
+  }
 
-.registro-icon {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-.sidebar-hover:hover .nav-link {
-  background-color: #750f0f !important;
-  border-radius: 2rem;
-  box-shadow: 0px 10px 20px rgba(255, 254, 254, 0.1);
-  
-}
-.consola-admin {
-  font-size: 12px;
+  .section-title {
+    font-size: 1rem;
+  }
 }

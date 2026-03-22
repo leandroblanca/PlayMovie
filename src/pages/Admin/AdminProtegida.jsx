@@ -1,17 +1,20 @@
 import { Navigate } from "react-router-dom";
 import Admin from "./Admin";
+import "./Admin.css";
 
 
 const AdminProtegida = () => {
-  // Verificar si hay un usuario logueado en sessionStorage
-  const usuarioLogueado = sessionStorage.getItem("usuarioLogueado");
 
-  // Si no hay usuario, redirigir a la página de login
+  const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuarioLogueado"));
+
   if (!usuarioLogueado) {
     return <Navigate to="/login" />;
   }
+  if (usuarioLogueado.rol !== "admin") {
+    return <Navigate to="/" />;
+  }
 
-  // Si hay un usuario, mostrar el panel de administración
   return <Admin />;
 };
+
 export default AdminProtegida;
