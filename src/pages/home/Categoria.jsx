@@ -4,11 +4,14 @@ import { Button, Card, Container, Row, Col } from "react-bootstrap";
 import "./categoria.css";
 import { useState } from "react";
 import ModalPelicula from "./ModalHome";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { useFavoritos } from '../../data/favorito';
 
 function CategoriaPage() {
   const { gender } = useParams();
   const navigate = useNavigate();
   const generoDecodificado = decodeURIComponent(gender);
+  const {esFavorito, agregarFavorito, eliminarFavorito} = useFavoritos();
 
   const peliculasFiltradas = peliculas.filter(
     (peli) => peli.categorias === generoDecodificado,
@@ -24,6 +27,15 @@ function CategoriaPage() {
   const handleCloseModal = () => {
     setShowModal(false);
     setSelectMovie(null);
+  };
+  const toggleFavorito = (e, pelicula) => {
+    e.stopPropagation();
+    e.preventDefault();
+    if (esFavorito(pelicula.id)) {
+      eliminarFavorito(pelicula.id);
+    } else {
+      agregarFavorito(pelicula);
+    }
   };
   return (
     <Container className="my-4">
@@ -60,6 +72,13 @@ function CategoriaPage() {
                 />
                 <Card.Body>
                   <Card.Title className="fs-6">{pelicula.titulo}</Card.Title>
+                  <Button
+                  variant="link"
+                  className="p-0 text-danger btn-fav-home"
+                  onClick={(e) => toggleFavorito(e, pelicula)}
+                  >
+                    {esFavorito(pelicula.id) ? <FaHeart /> : <FaRegHeart />}
+                  </Button>
                   <Card.Text className="text-muted">{pelicula.anio}</Card.Text>
                   <span className="badge bg-secondary">
                     {pelicula.categorias}
@@ -76,7 +95,13 @@ function CategoriaPage() {
           ))}
         </Row>
       )}
-      <ModalPelicula show={showModal} handleClose={handleCloseModal} pelicula={selectMovie}/>
+      <ModalPelicula
+       show={showModal}
+       handleClose={handleCloseModal}
+       pelicula={selectMovie}
+       esFavorito={esFavorito}
+       agregarFavorito={agregarFavorito}
+       eliminarFavorito={eliminarFavorito}/>
     </Container>
   );
 }

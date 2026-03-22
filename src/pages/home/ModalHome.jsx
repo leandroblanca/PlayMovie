@@ -1,8 +1,19 @@
 import { Button, Modal } from "react-bootstrap";
 import "./ModalHome.css";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
-function ModalPelicula({show, handleClose, pelicula}) {
-    if (!pelicula) return null
+function ModalPelicula({show, handleClose, pelicula, esFavorito, agregarFavorito, eliminarFavorito}) {
+    if (!pelicula) return null;
+
+    const favorito = esFavorito(pelicula.id);
+
+    const toggleFavorito = () => {
+    if (favorito) {
+      eliminarFavorito(pelicula.id);
+    } else {
+      agregarFavorito(pelicula);
+    }
+    };
     return (
         <Modal
          show={show}
@@ -29,8 +40,11 @@ function ModalPelicula({show, handleClose, pelicula}) {
                 </div>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                    Cerrar
+                <Button variant={favorito ? "danger" : "outline-danger"} onClick={toggleFavorito}>
+                   {favorito ? <FaHeart /> : <FaRegHeart />} {favorito ? " Quitar de favoritos" : " Añadir a favoritos"}
+                </Button>
+                <Button variant="secondary">
+                    Ver mas
                 </Button>
             </Modal.Footer>
         </Modal>
