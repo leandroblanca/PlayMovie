@@ -13,6 +13,7 @@ PlayMovie ofrece una experiencia moderna, intuitiva y responsive para disfrutar 
 ## 🚀 Funcionalidades Principales
 
 ### 🎥 Experiencia de Usuario
+
 - Catálogo de películas precargadas.
 - Visualización de detalles de cada película.
 - Sistema de favoritos.
@@ -21,25 +22,30 @@ PlayMovie ofrece una experiencia moderna, intuitiva y responsive para disfrutar 
 - Interfaz estilo plataformas de streaming.
 
 ### 👤 Gestión de Usuarios
+
 - Registro e inicio de sesión.
 - Perfil de usuario editable (CRUD completo).
 - Gestión de favoritos por usuario.
 
 ### ⭐ Sistema de Reseñas
+
 - Crear reseñas de películas.
 - Editar y eliminar reseñas.
 - Visualización de opiniones de otros usuarios.
 
 ### 💳 Suscripciones y Pagos
+
 - Visualización de planes de suscripción.
 - Simulación de pasarela de pago.
 - Gestión de acceso según tipo de plan.
 
 ### 📩 Contacto
+
 - Formulario de contacto funcional.
 - Envío de mensajes mediante EmailJS.
 
 ### 🛠 Panel de Administración
+
 - Rutas protegidas.
 - Acceso exclusivo para administradores.
 - CRUD completo de:
@@ -48,6 +54,7 @@ PlayMovie ofrece una experiencia moderna, intuitiva y responsive para disfrutar 
 - Gestión general del contenido de la plataforma.
 
 ### 🎨 Interfaz y UX
+
 - Diseño responsive.
 - Estética moderna estilo Netflix.
 - Notificaciones con React Toastify.
@@ -57,6 +64,7 @@ PlayMovie ofrece una experiencia moderna, intuitiva y responsive para disfrutar 
 ## 🧑‍💻 Tecnologías Utilizadas
 
 ### Frontend
+
 - React 19
 - Vite
 - React Router DOM
@@ -64,12 +72,14 @@ PlayMovie ofrece una experiencia moderna, intuitiva y responsive para disfrutar 
 - React Bootstrap
 
 ### Librerías UI/UX
+
 - React Toastify
 - SweetAlert
 - Font Awesome
 - React Hook Form
 
 ### Servicios
+
 - EmailJS (formulario de contacto)
 
 ---
@@ -77,35 +87,46 @@ PlayMovie ofrece una experiencia moderna, intuitiva y responsive para disfrutar 
 ## 📦 Instalación
 
 ### Prerrequisitos
+
 - Node.js (v16 o superior)
 - npm o yarn
 
 ### 🔧 Pasos
 
 1. **Clonar el repositorio**
+
    ```bash
    git clone https://github.com/leandroblanca/PlayMovie.git
    cd PlayMovie
-Instalar dependencias
+   ```
 
-bash
-npm install
-Configurar variables de entorno
+2. **Instalar dependencias**
 
-Crear un archivo .env en la raíz con las siguientes variables:
+   ```bash
+   npm install
+   ```
 
-env
-VITE_EMAILJS_SERVICE_ID=tu_service_id
-VITE_EMAILJS_TEMPLATE_ID=tu_template_id
-VITE_EMAILJS_PUBLIC_KEY=tu_public_key
-Ejecutar el proyecto
+3. **Configurar variables de entorno**
 
-bash
-npm run dev
-👉 La aplicación estará disponible en: http://localhost:5173
+   Crear un archivo `.env` en la raíz con las siguientes variables:
 
-📁 Estructura del Proyecto
-text
+   ```env
+   VITE_EMAILJS_SERVICE_ID=tu_service_id
+   VITE_EMAILJS_TEMPLATE_ID=tu_template_id
+   VITE_EMAILJS_PUBLIC_KEY=tu_public_key
+   ```
+
+4. **Ejecutar el proyecto**
+
+   ```bash
+   npm run dev
+   ```
+
+   👉 La aplicación estará disponible en: http://localhost:5173
+
+## � Estructura del Proyecto
+
+```text
 PlayMovie/
 ├── public/
 │   └── assets/
@@ -137,6 +158,8 @@ PlayMovie/
 │   └── main.jsx
 ├── package.json
 └── README.md
+```
+
 🎮 Uso
 👥 Para Usuarios
 Registrarse o iniciar sesión.
