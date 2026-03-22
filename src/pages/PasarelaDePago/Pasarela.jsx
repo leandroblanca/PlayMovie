@@ -7,20 +7,34 @@ import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import { ShoppingCart, ShieldCheck } from 'lucide-react';
 import { FaPaypal, FaApple } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import suscripciones from "../../data/pago.js"
+import planes from "../../data/planes.js";
 import './Pasarela.css';
 
 
 function PasarelaDePago() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [nombre, setNombre] = useState("");
   const [tarjeta, setTarjeta] = useState("");
   const [vencimiento, setVencimiento] = useState("");
   const [cvv, setCvv] = useState("");
   const [enviando, setEnviando] = useState(false);
+
+  const planId = location.state?.planId;
+  const planSeleccionado = planes.find((p) => p.id === planId);
+  const planActual = planSeleccionado || planes[0];
+
+  const datosSuscripcion = [{
+      id: planActual.id,
+      plan: planActual.nombre,
+      precio: `${planActual.precio} ${planActual.moneda} / mes`,
+      totalHoy: `${planActual.precio} ${planActual.moneda}`,
+      img: "/assets/pago.png",
+      descripcion: planActual.descripcion,
+  }];
  
   const handleSubmit = (e) => {
   e.preventDefault();
@@ -86,7 +100,7 @@ function PasarelaDePago() {
             <ShoppingCart size={20} /> Resumen del pedido
           </h5>
 
-          {suscripciones.map((suscripcion) => (
+          {datosSuscripcion.map((suscripcion) => (
             <div key={suscripcion.id} className="card-suscripcion p-3 mb-3">
               
               <div className="d-flex justify-content-between align-items-center">
@@ -95,6 +109,7 @@ function PasarelaDePago() {
                     SUSCRIPCIÓN SELECCIONADA
                   </p>
                   <h6>{suscripcion.plan}</h6>
+                  <p className="text-muted small mb-1">{suscripcion.descripcion}</p>
                   <span className="text-danger fw-bold">{suscripcion.precio}</span>
                 </div>
 
@@ -219,7 +234,7 @@ function PasarelaDePago() {
               className="py-3 fw-bold w-100 d-flex justify-content-center align-items-center"
               disabled={enviando}
             >
-              {enviando ? "Procesando..." : "Pagar 14,99 € de forma segura"}
+              {enviando ? "Procesando..." : `Pagar ${datosSuscripcion[0].totalHoy} de forma segura`}
             </Button>
 
           </Form>
