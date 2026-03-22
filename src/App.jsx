@@ -58,6 +58,8 @@ function App() {
         <Route path="/nosotros" element={<AboutUs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
+        <Route path="/ayuda" element={<CentroAyuda />} />
+        <Route path="/detallepelicula/:id" element={<DetallePelicula2 />} />
         <Route path="*" element={<Error404 />} />
         <Route path="/usuarios" element={<Admin />} />
         <Route path="/ingresos" element={<Admin />} />
@@ -71,3 +73,4 @@ function App() {
   );
 }
 export default App;
+
