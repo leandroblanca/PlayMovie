@@ -12,12 +12,18 @@ import peliculasIniciales from './data/movies';
 import "@fontsource/poppins";
 import CategoriaPage from "./pages/home/Categoria";
 import Footer from './componentes/footer/Footer'
-import Contacto from '../src/pages/Contacto/Contacto'
+import Contacto from './pages/Contacto/Contacto'
 import PasarelaDePago from "./pages/PasarelaDePago/Pasarela";
 import Admin from "./pages/Admin/Admin";
 import RutaProtegida from "./componentes/RutaProtegida";
 import Usuario from "./pages/Usuario/Usuario";
-import Planes from "./pages/Planes/Planes"
+import Planes from "./pages/Planes/Planes";
+import CentroAyuda from "./pages/CentroAyuda/CentroAyuda";
+import DetallePelicula2 from "./pages/DetallePelicula2/DetallePelicula2";
+import Favoritos from "./pages/Favoritos/Favoritos";
+
+
+
 
 function App() {
   useEffect(() => {
@@ -54,7 +60,7 @@ function App() {
         <Route path="/error404" element={<Error404 />} />
         <Route path="/pago" element={<PasarelaDePago />} />
         <Route path="/nosotros" element={<AboutUs />} />
-        <Route path="/planes" element={< Planes/>} />
+        <Route path="/planes" element={<Planes />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/ayuda" element={<CentroAyuda />} />
@@ -72,4 +78,3 @@ function App() {
   );
 }
 export default App;
-
