@@ -61,7 +61,7 @@ function App() {
         <Route path="/planes" element={< Planes/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
-        <Route path="/ayuda" element={<CentroAyuda />} />
+        <Route path="/centrodeayuda" element={<CentroAyuda />} />
         <Route path="/detallepelicula/:id" element={<DetallePelicula2 />} />
         <Route path="*" element={<Error404 />} />
         <Route path="/usuarios" element={<Admin />} />
