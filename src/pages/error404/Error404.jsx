@@ -1,6 +1,6 @@
 import React from 'react';
 import './Error404.css';
-import { FaHome, FaSearch } from 'react-icons/fa';
+import { FaHome, FaEnvelope } from 'react-icons/fa';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
@@ -31,9 +31,9 @@ const Error404 = () => {
           variant="dark"
           className="btn-custom black"
           // La ruta '/buscar' no está definida en App.jsx, redirigimos al inicio para evitar errores
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/contacto')}
         >
-          <FaSearch /> Buscar Películas
+          <FaEnvelope /> Contacto
         </Button>
       </div>
     </div>
