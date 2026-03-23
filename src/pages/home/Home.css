@@ -80,6 +80,10 @@
 .carousel-caption-custom .btn{
   margin-top: 1rem;
 }
+.btn-fav-home{
+  font-size: 1.5rem;
+  text-decoration: none;
+}
 
 @media (max-width: 768px){
   .carousel-video .carousel,

@@ -4,10 +4,12 @@ import categorias from "../../data/categories";
 import { useNavigate, useLocation } from "react-router-dom";
 import './home.css';
 import ModalPelicula from "./ModalHome"
+import { useFavoritos } from '../../data/favorito';
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 function Home({ peliculas }) {
   const navigate = useNavigate();
-  const location = useLocation();
+  const {esFavorito, agregarFavorito, eliminarFavorito} = useFavoritos();
   const [selectMovie, setSelectMovie] = useState(null)
   const [showModal, setShowModal] = useState(false)
 
@@ -32,11 +34,19 @@ function Home({ peliculas }) {
     setShowModal(false);
     setSelectMovie(null);
   }
+  const toggleFavoritos = (e, pelicula) => {
+    e.stopPropagation();
+    e.preventDefault();
+    if (esFavorito(pelicula.id)) {
+      eliminarFavorito(pelicula.id)
+    } else {
+      agregarFavorito(pelicula)
+    }
+  }
   const peliculasDestacadas = peliculas.slice(0, 5);
 
   return (
     <Container fluid className="p-0">
-      {/* Solo mostrar Carrusel si NO se está buscando */}
       {!searchQuery && (
         <section className="carousel-video">
         <Carousel indicators={true} interval={null} controls={true}>
@@ -91,6 +101,13 @@ function Home({ peliculas }) {
                   />
                   <Card.Body>
                     <Card.Title className="fs-6">{pelicula.titulo}</Card.Title>
+                    <Button
+                    variant="link"
+                    className="p-0 text-danger btn-fav-home"
+                    onClick={(e) => toggleFavoritos(e, pelicula)}
+                    >
+                      {esFavorito(pelicula.id) ? <FaHeart /> : <FaRegHeart />}
+                    </Button>
                     <Card.Text className="text-muted">{pelicula.anio}</Card.Text>
                     <Button className="bg-dark" onClick={() =>handleShowModal(pelicula)}>
                       Ver mas
@@ -110,7 +127,13 @@ function Home({ peliculas }) {
           )}
         </Row>
       </Container>
-      <ModalPelicula show={showModal} handleClose={handleCloseModal} pelicula={selectMovie}/>
+      <ModalPelicula
+       show={showModal}
+       handleClose={handleCloseModal}
+       pelicula={selectMovie}
+       esFavorito={esFavorito}
+       agregarFavorito={agregarFavorito}
+       eliminarFavorito={eliminarFavorito}/>
     </Container>
   );
 }

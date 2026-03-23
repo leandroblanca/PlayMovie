@@ -10,7 +10,6 @@ import { useEffect } from 'react';
 import { usuariosIniciales } from './helpers/users';
 import peliculasIniciales from './data/movies';
 import "@fontsource/poppins";
-
 import CategoriaPage from "./pages/home/Categoria";
 import Footer from './componentes/footer/Footer'
 import Contacto from '../src/pages/Contacto/Contacto'
@@ -21,6 +20,7 @@ import Usuario from "./pages/Usuario/Usuario";
 import CentroAyuda from "./pages/CentroAyuda/CentroAyuda"
 import DetallePelicula2 from "./pages/DetallePelicula2";
 
+import Planes from "./pages/Planes/Planes"
 
 function App() {
   useEffect(() => {
@@ -54,10 +54,10 @@ function App() {
       <Routes>
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/usuario" element={<Usuario />} />
-        <Route path="/admin" element={<Admin />} />
         <Route path="/error404" element={<Error404 />} />
         <Route path="/pago" element={<PasarelaDePago />} />
         <Route path="/nosotros" element={<AboutUs />} />
+        <Route path="/planes" element={< Planes/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/ayuda" element={<CentroAyuda />} />
@@ -68,6 +68,7 @@ function App() {
         <Route path="/peliculas" element={<Admin />} />
         <Route path="/" element={<RutaProtegida><Home peliculas={peliculasIniciales} /></RutaProtegida>} />
         <Route path="/categoria/:gender" element={<CategoriaPage />} />
+        <Route path="/favoritos" element={<Favoritos />} />
       </Routes>
       <Footer/>
       </Router>
