@@ -93,7 +93,7 @@ export default function Navbar() {
                 <FaSearch className="search-icon" style={{ position: "absolute", left: "15px", color: "gray", zIndex: 1 }} />
                 <input
                   type="text"
-                  placeholder="Buscar películas"
+                  placeholder="Buscar películas, series, etc."
                   className="search-input"
                   value={busqueda}
                   onChange={(e) => setBusqueda(e.target.value)}
