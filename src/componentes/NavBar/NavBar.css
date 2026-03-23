@@ -99,7 +99,7 @@
 
 .search-input {
   background: transparent;
-  border: none;
+  border: none !important;
   outline: none;
   color: #fff;
   font-size: 0.9rem;
