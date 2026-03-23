@@ -4,11 +4,11 @@ import "./NavBar.css";
 import { FaSearch } from "react-icons/fa";
 
 const navConfig = {
-  "/": ["Buscar Peliculas", "Peliculas", "Nosotros", "Suscribirse", "Iniciar Sesión", "Centro de Ayuda"],
+  "/": ["Buscar Peliculas", "Peliculas", "Nosotros", "Suscribirse", "Iniciar Sesión", "Ayuda"],
   "/inicio": ["Buscar Peliculas","Peliculas", "Nosotros", "Suscribirse", "Iniciar Sesión"],
   "/contacto": ["Buscar Peliculas","Inicio", "Peliculas", "Nosotros",  "Usuario"],
   "/404": ["Buscar Peliculas", "Peliculas", "Nosotros",  "Perfil", "Usuario"],
-  "/nosotros": ["Buscar Peliculas","Inicio", "Peliculas", "Sobre Nosotros",  "Contacto", "Iniciar Sesión"],
+  "/nosotros": ["Buscar Peliculas","Inicio", "Peliculas", "Contacto", "Ayuda", "Iniciar Sesión"],
   "/usuario": ["Buscar Peliculas","Peliculas", "Nosotros"],
   "/peliculas": ["Buscar Peliculas","Inicio", "Nosotros", "Perfil"],
   "/login": ["Buscar Peliculas","Inicio", "Peliculas", "Iniciar Sesión"],
