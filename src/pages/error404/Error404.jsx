@@ -1,6 +1,5 @@
 import React from 'react';
 import './Error404.css';
-import errorImage from '../../../public/assets/error404-cine.png';
 import { FaHome, FaSearch } from 'react-icons/fa';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +9,7 @@ const Error404 = () => {
 
   return (
     <div className="error-container">
-      <img src={errorImage} alt="Error 404" className="error-image" />
+      <img src="/assets/error404-cine.png" alt="Error 404" className="error-image" />
 
       <h1 className="error-title">¡El cine está vacío!</h1>
 
@@ -31,7 +30,8 @@ const Error404 = () => {
         <Button
           variant="dark"
           className="btn-custom black"
-          onClick={() => navigate('/buscar')}
+          // La ruta '/buscar' no está definida en App.jsx, redirigimos al inicio para evitar errores
+          onClick={() => navigate('/')}
         >
           <FaSearch /> Buscar Películas
         </Button>
