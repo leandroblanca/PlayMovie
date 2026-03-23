@@ -5,16 +5,18 @@ import { FaPlay, FaPlus, FaHeart, FaShareAlt, FaWhatsapp, FaFacebook, FaTwitter 
 import Reviews from "./Reviews";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import peliculasIniciales from "../../data/movies";
 
 
 
 export default function MovieDetail() {
+  console.log("Componente DetallePelicula montado.");
   const { id } = useParams();
 
   const datosStorage = localStorage.getItem("peliculas");
-  const todasLasPelis = JSON.parse(datosStorage);
+  const todasLasPelis = datosStorage ? JSON.parse(datosStorage) : peliculasIniciales;
 
-  const peli = todasLasPelis.find(item => item.id === Number(id));
+  const peli = todasLasPelis?.find(item => item.id === Number(id));
 
   const [mostrarVideo, setMostrarVideo] = useState(false);
 
@@ -24,6 +26,8 @@ export default function MovieDetail() {
 
 
   if (!peli) {
+    console.error("Película no encontrada. ID de la URL:", id);
+    console.log("Intentando buscar en esta lista de películas:", todasLasPelis);
     return <h2>Ups! No encontramos esa película.</h2>;
   }
 
