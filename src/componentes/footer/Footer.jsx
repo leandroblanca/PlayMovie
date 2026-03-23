@@ -13,7 +13,7 @@ function Footer() {
   {/* Columna 1: logo + tagline */}
   <Col md={6} className="d-flex flex-column align-items-start">
     <div className="d-flex align-items-center gap-2">
-      <img src={logo} alt="PlayMovie Logo" style={{ height: "50px" }} />
+      <img className="logoplaymovie" src={logo} alt="PlayMovie Logo" style={{ height: "50px" }} />
       <h5 className="fw-bold mb-0">PlayMovie</h5>
     </div>
     <p className="text-secondary mt-2">
@@ -23,8 +23,8 @@ function Footer() {
   </Col>
 
   {/* Columna 2 */}
-  <Col md={2}>
-    <h6 className="fw-bold">Explorar</h6>
+  <Col md={2} className="col2">
+    <h6 className="text-white fw-bold">Explorar</h6>
     <ul className="list-unstyled text-secondary">
       <li>Nuevos Lanzamientos</li>
       <li>Popular</li>
@@ -34,24 +34,24 @@ function Footer() {
   </Col>
 
   {/* Columna 3 */}
-  <Col md={2}>
-    <h6 className="fw-bold">Explorar</h6>
+  <Col md={2} className="col3">
+    <h6 className="text-white fw-bold">Plataforma</h6>
     <ul className="list-unstyled text-secondary">
-      <li>Nuevos Lanzamientos</li>
-      <li>Popular</li>
-      <li>Mejor Valoradas</li>
-      <li>Próximamente</li>
+      <li>Peliculas</li>
+      <li>Series</li>
+      <li>Documentales</li>
+      <li>Originales</li>
     </ul>
   </Col>
 
   {/* Columna 4 */}
-  <Col md={2}>
-    <h6 className="fw-bold">Explorar</h6>
+  <Col md={2} className="d-none d-md-block">
+    <h6 className="text-white fw-bold">Soporte</h6>
     <ul className="list-unstyled text-secondary">
-      <li>Nuevos Lanzamientos</li>
-      <li>Popular</li>
-      <li>Mejor Valoradas</li>
-      <li>Próximamente</li>
+      <li>Centro de Ayuda</li>
+      <li>Cuenta</li>
+      <li>Privacidad</li>
+      <li>Contacto</li>
     </ul>
   </Col>
   
@@ -59,16 +59,16 @@ function Footer() {
         {/* Redes sociales */}
         <Row className="justify-content-center mb-3">
           <Col md="auto">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="mx-2">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="mx-2 social-icon">
               <FaFacebook size={28} color="gray" />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="mx-2">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="mx-2 social-icon">
               <FaInstagram size={28} color="gray" />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="mx-2">
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="mx-2 social-icon">
               <FaTwitter size={28} color="gray" />
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="mx-2">
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="mx-2 social-icon">
               <FaYoutube size={28} color="gray" />
             </a>
           </Col>
