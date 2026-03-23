@@ -18,7 +18,8 @@ import Admin from "./pages/Admin/Admin";
 import RutaProtegida from "./componentes/RutaProtegida";
 import Usuario from "./pages/Usuario/Usuario";
 import CentroAyuda from "./pages/CentroAyuda/CentroAyuda"
-import DetallePelicula2 from "./pages/DetallePelicula2";
+import DetallePelicula2 from "./pages/DetallePelicula2/DetallePelicula2";
+import Favoritos from "./pages/favoritos/Favoritos"
 
 import Planes from "./pages/Planes/Planes"
 
