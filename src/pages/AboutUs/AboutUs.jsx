@@ -59,7 +59,7 @@ const AboutUs = () => {
             </div>
             <div className="col-md-3">
                 <div className="card">
-                    <img className="SV" src="/assets/team3.jpg" alt="Sebastián Varela" />
+                    <img src="/assets/team3.jpg" alt="Sebastián Varela" />
                     <h5>Sebastián Varela</h5>
                     <p>Rolling Develloper</p>
                     <h6>Diseñador galardonado centrado en la creación de interfaces de usuarios</h6>
