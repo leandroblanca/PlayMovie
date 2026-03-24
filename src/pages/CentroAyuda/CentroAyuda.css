@@ -121,13 +121,16 @@ summary {
 }
 
 .custom-details summary .icon::before {
-  content: "v"; 
+  content: "›";
+  font-size: 1.4rem;
   font-weight: bold;
+  transition: transform 0.3s ease;
+  display: inline-block;
+  transform: rotate(90deg);
 }
 
 .custom-details[open] summary .icon::before {
-  content: "^";  
-  font-weight: bold;
+  transform: rotate(-90deg);
 }
 .custom-details p {
   padding-left: 15px;
@@ -216,17 +219,22 @@ border: rgba(56,41,41) 1px solid;
   color: rgb(148, 163, 184);
 }
 
+@media (max-width: 1024px) {
+  .help-center { padding: 50px 30px; }
+  .help-categories { flex-wrap: wrap; }
+  .category-card { width: calc(50% - 0.5rem); }
+  details { width: 90vw; }
+}
+
 @media (max-width: 600px) {
-  .help-search {
-    width: 100%;
-  }
-  .search-container input {
-    width: 150px;
-  }
-  .btn-red {
-    position: initial;
-  }
-  .search-container {
-    padding-left: 50px;
-  }
+  .help-center { padding: 30px 16px; }
+  .help-header { margin-bottom: 40px; }
+  .help-categories { flex-direction: column; }
+  .category-card { width: 100%; }
+  .search-container { width: 100%; flex-direction: column; padding: 10px; }
+  .search-container input { width: 100%; margin: 0 0 8px 0; }
+  .help-search { width: 100%; }
+  details { width: 100%; }
+  .supportbox { padding: 20px 10px; }
+  .btn-red2, .btn-outline { padding: 10px 16px; font-size: 0.85rem; }
 }
