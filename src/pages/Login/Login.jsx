@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
-import logo from "../../../public/assets/logo.png";
 import { usuariosIniciales } from "../../helpers/users";
 import "./Login.css";
 import Swal from "sweetalert2";
@@ -41,7 +40,6 @@ const Login = () => {
     });
     return;
   }
-  console.log('Usuario encontrado:', usuarioEncontrado);
   sessionStorage.setItem(
     "usuarioLogueado",
     JSON.stringify(usuarioEncontrado)
