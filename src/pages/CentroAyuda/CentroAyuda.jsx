@@ -1,6 +1,6 @@
 import React from "react";
 import "../CentroAyuda/CentroAyuda.css";
-import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 
 const HelpCenter = () => {

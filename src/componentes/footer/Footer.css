@@ -1,3 +1,7 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+
 .footer-netflix {
   background-color: #211111 !important;
   border-top: #411315 1px solid;
@@ -12,11 +16,47 @@
   margin: 4px 0;
 }
 
-.container {
-  margin-left: 15px;
-  
-  }
-
 li, p {
   font-size: small;
+}
+
+.social-icon {
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.social-icon:hover {
+  transform: scale(1.3);
+}
+
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.logoplaymovie {
+  margin-left: -6px;
+}
+
+@media (max-width: 768px) {
+  .footer-netflix .row {
+    text-align: center;
+  }
+  
+  .footer-netflix .col-md-6,
+  .footer-netflix .col-md-2 {
+    margin-bottom: 30px;
+  }
+  
+  .footer-netflix .d-flex.align-items-start {
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .col3 {
+    display: none;
+  } 
 }

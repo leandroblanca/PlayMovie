@@ -86,7 +86,7 @@ const peliculasIniciales = [
   {
     id: 8,
     titulo: "Inception",
-    poster: "https://pics.filmaffinity.com/inception-652954101-large.jpg",
+    poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvLuLWLoqODf4sJ0YWxs7TKCDFJUHWmq50sQ&s",
     video: "https://www.youtube.com/embed/YoHD9XEInc0",
     categorias: "ciencia ficcion",
     anio: 2010,
@@ -158,7 +158,7 @@ const peliculasIniciales = [
   {
     id: 14,
     titulo: "Oppenheimer",
-    poster: "https://pics.filmaffinity.com/oppenheimer-828933592-large.jpg",
+    poster: "https://m.media-amazon.com/images/M/MV5BNTFlZDI1YWQtMTVjNy00YWU1LTg2YjktMTlhYmRiYzQ3NTVhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     video: "https://www.youtube.com/embed/uYPbbksJxIg",
     categorias: "drama",
     anio: 2023,
@@ -204,7 +204,7 @@ const peliculasIniciales = [
   {
     id: 18,
     titulo: "Insidious",
-    poster: "https://pics.filmaffinity.com/insidious-733811348-large.jpg",
+    poster: "https://m.media-amazon.com/images/M/MV5BZGNhZjRhNjgtNmQ3Ni00OGQzLTkwNmMtNzMzMjc4MTg5ODliXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     video: "https://www.youtube.com/embed/zuZnRUcoWos",
     categorias: "terror",
     anio: 2010,
@@ -270,7 +270,7 @@ const peliculasIniciales = [
   {
     id: 24,
     titulo: "Gone Girl",
-    poster: "https://pics.filmaffinity.com/gone_girl-544341973-large.jpg",
+    poster: "https://revistacalibre38.com/wp-content/uploads/2014/10/perdida-cartel-pic33d.jpg",
     video: "https://www.youtube.com/embed/2-_-1nJf8Vg",
     categorias: "thriller",
     anio: 2014,
@@ -314,7 +314,7 @@ const peliculasIniciales = [
   {
     id: 28,
     titulo: "Step Brothers",
-    poster: "https://pics.filmaffinity.com/step_brothers-811273775-large.jpg",
+    poster: "https://es.web.img2.acsta.net/medias/nmedia/18/67/38/88/20326835.jpg",
     video: "https://www.youtube.com/embed/CewglxElBK0",
     categorias: "comedia",
     anio: 2008,

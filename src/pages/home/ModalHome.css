@@ -63,3 +63,12 @@ margin: auto;
     background-color: #ff4d4d;
     color: #000;
 }
+@media (max-width: 576px){
+    .modal-video .modal-dialog{
+        margin: 0.5rem;
+    }
+    .modal-video .modal-content{
+        max-width: calc(100% - 1rem);
+        margin: 0 auto;
+    }
+}

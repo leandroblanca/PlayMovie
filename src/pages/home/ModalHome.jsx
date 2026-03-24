@@ -1,6 +1,7 @@
 import { Button, Modal } from "react-bootstrap";
 import "./ModalHome.css";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function ModalPelicula({show, handleClose, pelicula, esFavorito, agregarFavorito, eliminarFavorito}) {
     if (!pelicula) return null;
@@ -43,7 +44,11 @@ function ModalPelicula({show, handleClose, pelicula, esFavorito, agregarFavorito
                 <Button variant={favorito ? "danger" : "outline-danger"} onClick={toggleFavorito}>
                    {favorito ? <FaHeart /> : <FaRegHeart />} {favorito ? " Quitar de favoritos" : " Añadir a favoritos"}
                 </Button>
-                <Button variant="secondary">
+                <Button
+                    as={Link}
+                    to={`/detallepelicula/${pelicula.id}`}
+                    variant="secondary"
+                    onClick={handleClose}>
                     Ver mas
                 </Button>
             </Modal.Footer>
@@ -53,8 +58,3 @@ function ModalPelicula({show, handleClose, pelicula, esFavorito, agregarFavorito
 
 
 export default ModalPelicula;
-
-
-
-
-

@@ -89,7 +89,7 @@ function Home({ peliculas }) {
           ))}
         </div>
         )}
-        <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-3">
+        <Row xs={1} sm={2} md={3} lg={4} xl={5} className="ml-0 mr-0 g-3">
           {peliculasFiltradas.length > 0 ? (
             peliculasFiltradas.map((pelicula) => (
               <Col key={pelicula.id}>
