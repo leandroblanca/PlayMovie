@@ -6,7 +6,7 @@ import "./Admin.css";
 
 const CardsAdmin = ({ dashboardStats = statsData }) => {
   return (
-    <Row className="g-4 mb-4">
+    <Row className="g-4 mb-4 justify-content-center">
     {dashboardStats.map(stat => (
       <Col xs={12} sm={6} xl={3} key={stat.id}>
 
