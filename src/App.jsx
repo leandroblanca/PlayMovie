@@ -17,6 +17,10 @@ import PasarelaDePago from "./pages/PasarelaDePago/Pasarela";
 import Admin from "./pages/Admin/Admin";
 import RutaProtegida from "./componentes/RutaProtegida";
 import Usuario from "./pages/Usuario/Usuario";
+import Ayuda from "./pages/CentroAyuda/CentroAyuda"
+import DetallePelicula2 from "./pages/DetallePelicula2/DetallePelicula2";
+import Favoritos from "./pages/favoritos/Favoritos"
+
 import Planes from "./pages/Planes/Planes"
 import Favoritos from "./pages/favoritos/Favoritos"
 import DetallePelicula2 from "./pages/DetallePelicula2/DetallePelicula2"
@@ -60,8 +64,8 @@ function App() {
         <Route path="/planes" element={< Planes/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
-        <Route path="/ayuda" element={<CentroAyuda />} />
-        <Route path="/detallepelicula/:id" element={<DetallePelicula2/>} />
+        <Route path="/ayuda" element={<Ayuda />} />
+        <Route path="/detallepelicula/:id" element={<DetallePelicula2 />} />
         <Route path="*" element={<Error404 />} />
         <Route path="/usuarios" element={<Admin />} />
         <Route path="/ingresos" element={<Admin />} />

@@ -1,24 +1,29 @@
-<<<<<<< HEAD
-=======
 body {
   font-family: "Poppins", sans-serif;
 }
 
->>>>>>> c3edd55 (feat: estilos CentroAyuda (botones, gradientes, iconos, etc))
-.error-container {
+body .error-container {
   text-align: center;
   background: 
     radial-gradient(circle at top left, rgba(120,20,20,0.5), transparent 40%),
     radial-gradient(circle at bottom right, rgba(120,20,20,0.5), transparent 40%),
     #0b0202;
-  background-color: #121212;
+  /* background: radial-gradient(
+    circle at top left, 
+    #4a1111 0%, 
+    #211111 50%, 
+    #000000 100%
+  ); */
+  /* background-attachment: fixed; */
   color: white;
   padding: 40px 20px;
+  margin-top: 50px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-left: none ;
 }
 
 .error-image {
@@ -48,7 +53,7 @@ body {
   justify-content: center;
 }
 
-.btn {
+/* .btn {
   padding: 12px 20px;
   font-size: 1rem;
   font-weight: bold;
@@ -60,11 +65,16 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-}
+} */
 
 .btn.red {
-  background-color: #e50914;
+  background: #d6272f;
   color: white;
+  font-weight: bolder;
+  border: none;
+  padding: 15px 23px;
+  border-radius: 25px;
+  cursor: pointer;
 }
 
 .btn.red:hover {
@@ -73,8 +83,14 @@ body {
 }
 
 .btn.black {
-  background-color: #000;
+  background-color: #292929;
+  border: rgb(56, 41, 41) 1px solid;
   color: white;
+  font-weight: bolder;
+  padding: 15px 23px;
+  /* margin: 0.5rem; */
+  border-radius: 25px;
+  cursor: pointer;
 }
 
 .btn.black:hover {
@@ -82,7 +98,7 @@ body {
   transform: scale(1.05);
 }
 
-.btn-custom {
+/* .btn-custom {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -91,4 +107,4 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   cursor: pointer;
-}
+} */
