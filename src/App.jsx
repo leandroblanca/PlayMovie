@@ -12,11 +12,20 @@ import peliculasIniciales from './data/movies';
 import "@fontsource/poppins";
 import CategoriaPage from "./pages/home/Categoria";
 import Footer from './componentes/footer/Footer'
-import Contacto from '../src/pages/Contacto/Contacto'
+import Contacto from './pages/Contacto/Contacto'
 import PasarelaDePago from "./pages/PasarelaDePago/Pasarela";
 import Admin from "./pages/Admin/Admin";
 import RutaProtegida from "./componentes/RutaProtegida";
 import Usuario from "./pages/Usuario/Usuario";
+<<<<<<< HEAD
+import Planes from "./pages/Planes/Planes";
+import CentroAyuda from "./pages/CentroAyuda/CentroAyuda";
+import DetallePelicula2 from "./pages/DetallePelicula2/DetallePelicula2";
+import Favoritos from "./pages/Favoritos/Favoritos";
+
+
+
+=======
 import Ayuda from "./pages/CentroAyuda/CentroAyuda"
 import DetallePelicula2 from "./pages/DetallePelicula2/DetallePelicula2";
 import Favoritos from "./pages/favoritos/Favoritos"
@@ -25,6 +34,7 @@ import Planes from "./pages/Planes/Planes"
 import Favoritos from "./pages/favoritos/Favoritos"
 import DetallePelicula2 from "./pages/DetallePelicula2/DetallePelicula2"
 import CentroAyuda from "./pages/CentroAyuda/CentroAyuda"
+>>>>>>> d4ef2d8e5652f47875b1e02660bb06013615adcc
 
 function App() {
   useEffect(() => {
@@ -61,7 +71,7 @@ function App() {
         <Route path="/error404" element={<Error404 />} />
         <Route path="/pago" element={<PasarelaDePago />} />
         <Route path="/nosotros" element={<AboutUs />} />
-        <Route path="/planes" element={< Planes/>} />
+        <Route path="/planes" element={<Planes />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/ayuda" element={<Ayuda />} />
@@ -79,4 +89,3 @@ function App() {
   );
 }
 export default App;
-

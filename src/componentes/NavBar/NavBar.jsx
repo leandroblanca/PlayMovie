@@ -17,6 +17,8 @@ const navConfig = {
 const getLinkPath = (item) => {
   if (item === "Peliculas" || item === "Inicio") return "/";
   if (item === "Iniciar Sesión") return "/login";
+  if (item === "Centro de ayuda") return "/ayuda";
+  if (item === "Suscribirse") return "/planes";
   return `/${item.toLowerCase().replace(/\s+/g, "")}`;
 };
 
