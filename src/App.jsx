@@ -18,6 +18,9 @@ import Admin from "./pages/Admin/Admin";
 import RutaProtegida from "./componentes/RutaProtegida";
 import Usuario from "./pages/Usuario/Usuario";
 import Planes from "./pages/Planes/Planes"
+import Favoritos from "./pages/favoritos/Favoritos"
+import DetallePelicula2 from "./pages/DetallePelicula2/DetallePelicula2"
+import CentroAyuda from "./pages/CentroAyuda/CentroAyuda"
 
 function App() {
   useEffect(() => {
@@ -58,7 +61,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/ayuda" element={<CentroAyuda />} />
-        <Route path="/detallepelicula/:id" element={<DetallePelicula2 />} />
+        <Route path="/detallepelicula/:id" element={<DetallePelicula2/>} />
         <Route path="*" element={<Error404 />} />
         <Route path="/usuarios" element={<Admin />} />
         <Route path="/ingresos" element={<Admin />} />
