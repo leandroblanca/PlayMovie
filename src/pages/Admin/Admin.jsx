@@ -1,5 +1,5 @@
 import { Button, Container, Row, Col } from "react-bootstrap";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import Sidebar from "./Sidebar"
 import TablaPeliculas from "./TablaPeliculas";
 import ModalPeliculas from "./ModalPeliculas.jsx";
@@ -94,10 +94,20 @@ function Admin() {
     setEditarUserId(null);
   };
 
+  const isFirstRender = useRef(true);
+
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     localStorage.setItem("peliculas", JSON.stringify(peliculas));
   }, [peliculas]);
 
+  const peliculasFiltradas = useMemo(
+    () => peliculas.filter(p => p.titulo.toLowerCase().includes(busqueda.toLowerCase())),
+    [peliculas, busqueda]
+  );
 
   const guardarPelicula = () => {
 
@@ -171,10 +181,6 @@ function Admin() {
     setVideo("");
     setDescripcion("");
   };
-
-  const peliculasFiltradas = peliculas.filter(p =>
-    p.titulo.toLowerCase().includes(busqueda.toLowerCase())
-  );
 
   const cerrarSesion = () => {
     sessionStorage.removeItem("usuarioLogueado");
