@@ -5,7 +5,6 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
-import { ShoppingCart, ShieldCheck } from 'lucide-react';
 import { FaPaypal, FaApple } from 'react-icons/fa';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
