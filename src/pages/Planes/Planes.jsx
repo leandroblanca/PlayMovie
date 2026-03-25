@@ -96,31 +96,6 @@ const Planes = () => {
                     <button className='Plan' onClick={() => elegirPlan("premium")}>Elegir Plan</button>
                 </div>
             </div>
-            <h4>Preguntas Frecuentes</h4>
-            <div className='Centrar'>
-                <details>
-                    <summary className='Preguntas'>¿Puedo cancelar en cualquier momento?</summary>
-                    <p className='Interior'>Puedes cancelar tu suscripción desde la seccion 'Cuenta'. Una ves allí, selecciona 'Membresía y facturación'
-                        y sigue los pasos para la cancelación. Seguiras teniendo acceso al servicio hasta el final del periodo de facturacion actual
-                    </p>
-                </details>
-                <details>
-                    <summary className='Preguntas'>¿En que dispositivos puedo verlo?</summary>
-                    <p className='Interior'> Puedes ver el contenido en una amplia variedad de dispositivos como Smart TVs, computadoras, teléfonos móviles,
-                        tablets y consolas de videojuegos. Solo necesitas iniciar sesión en tu cuenta desde el dispositivo que prefieras.</p>
-                </details>
-                <details>
-                    <summary className='Preguntas'>¿Como cambio de plan?</summary>
-                    <p className='Interior'>Puedes cambiar de plan en cualquier momento desde la sección 'Cuenta'. Dirígete a 'Membresía y facturación',
-                        selecciona 'Cambiar plan' y elige la opción que mejor se adapte a tus necesidades. El cambio se aplicará según
-                        el ciclo de facturación.</p>
-                </details>
-                <details>
-                    <summary className='Preguntas'>¿Que es el audio Dolby Atmos?</summary>
-                    <p className='Interior'>Dolby Atmos es una tecnología de sonido envolvente que mejora la experiencia de audio, permitiéndote escuchar
-                        efectos con mayor claridad y realismo. Para disfrutarlo, necesitas un dispositivo y sistema de audio compatible.</p>
-                </details>
-            </div>
         </div>
     )
 }

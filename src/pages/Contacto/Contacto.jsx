@@ -100,7 +100,7 @@ const Contacto = () => {
 
       <Row className="mt-4 contacto-row">
         <Col>
-          <h2 className="display-4 fw-bold">
+          <h2 className="display-4 fw-bold text-light">
             Ponte en <span className="text-danger">Contacto.</span>
           </h2>
           <p className="lead text-secondary">Estamos aquí para ayudarte a obtener la mejor experiencia de streaming.</p>

@@ -10,8 +10,7 @@ function Sidebar({ onLogout }) {
     <div className='d-flex flex-column h-100 py-4'>
          <Nav className='Sidebar-admin flex-column' activeKey="/admin">
       <Nav.Item  >
-          <Nav.Link eventKey="peliculas" className="text-light fs-4 fw-bold mb-0" >PlayMovie</Nav.Link>
-          <p className='ms-3 consola-admin'>Consola de Administración</p>
+          <Nav.Link eventKey="peliculas" className="text-light fs-4 fw-bold mb-0 mt-5" >PlayMovie</Nav.Link>
         </Nav.Item>
          <Nav.Item className='sidebar-hover'>
           <Nav.Link as={NavLink} to="/admin" eventKey="panel" className="text-light">Panel</Nav.Link>

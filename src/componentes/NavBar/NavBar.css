@@ -76,11 +76,50 @@
   font-weight: bold;
   text-decoration: none;    
   transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
 }
 
 .btn-login:hover {
   background-color: #f6121d; 
   color: #fff;
+}
+
+.user-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #e5e5e5;
+  transition: color 0.3s ease;
+}
+
+.user-nav-btn:hover {
+  color: #fff;
+}
+
+.user-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: #e50914;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 2px solid #ff4d4d;
+}
+
+.user-nav-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .search-container {
@@ -111,7 +150,7 @@
   color: #aaa;
 }
 
-/* Hamburguesa */
+
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -126,7 +165,7 @@
   transition: 0.4s;
 }
 
-/* Responsivo */
+
 @media (max-width: 768px) {
   .navbar-list {
     display: none;

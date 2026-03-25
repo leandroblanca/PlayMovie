@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Footer.css";
 import logo from "../../../public/assets/logo.png";
@@ -10,7 +11,7 @@ function Footer() {
     <footer className="footer-netflix bg-dark text-light pt-5 pb-3">
       <Container>
        <Row className="mb-4 align-items-start">
-  {/* Columna 1: logo + tagline */}
+ 
   <Col md={6} className="d-flex flex-column align-items-start">
     <div className="d-flex align-items-center gap-2">
       <img className="logoplaymovie" src={logo} alt="PlayMovie Logo" style={{ height: "50px" }} />
@@ -22,41 +23,41 @@ function Footer() {
     </p>
   </Col>
 
-  {/* Columna 2 */}
+  
   <Col md={2} className="col2">
     <h6 className="text-white fw-bold">Explorar</h6>
     <ul className="list-unstyled text-secondary">
-      <li>Nuevos Lanzamientos</li>
-      <li>Popular</li>
-      <li>Mejor Valoradas</li>
-      <li>Próximamente</li>
+      <li><Link to="/error404" className="footer-link">Nuevos Lanzamientos</Link></li>
+      <li><Link to="/error404" className="footer-link">Popular</Link></li>
+      <li><Link to="/error404" className="footer-link">Mejor Valoradas</Link></li>
+      <li><Link to="/error404" className="footer-link">Próximamente</Link></li>
     </ul>
   </Col>
 
-  {/* Columna 3 */}
+
   <Col md={2} className="col3">
     <h6 className="text-white fw-bold">Plataforma</h6>
     <ul className="list-unstyled text-secondary">
-      <li>Peliculas</li>
-      <li>Series</li>
-      <li>Documentales</li>
-      <li>Originales</li>
+      <li><Link to="/" className="footer-link">Peliculas</Link></li>
+      <li><Link to="/error404" className="footer-link">Series</Link></li>
+      <li><Link to="/error404" className="footer-link">Documentales</Link></li>
+      <li><Link to="/error404" className="footer-link">Originales</Link></li>
     </ul>
   </Col>
 
-  {/* Columna 4 */}
+
   <Col md={2} className="d-none d-md-block">
     <h6 className="text-white fw-bold">Soporte</h6>
     <ul className="list-unstyled text-secondary">
-      <li>Centro de Ayuda</li>
-      <li>Cuenta</li>
-      <li>Privacidad</li>
-      <li>Contacto</li>
+      <li><Link to="/ayuda" className="footer-link">Centro de Ayuda</Link></li>
+      <li><Link to="/usuario" className="footer-link">Cuenta</Link></li>
+      <li><Link to="/error404" className="footer-link">Privacidad</Link></li>
+      <li><Link to="/contacto" className="footer-link">Contacto</Link></li>
     </ul>
   </Col>
   
 </Row>
-        {/* Redes sociales */}
+    
         <Row className="justify-content-center mb-3">
           <Col md="auto">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="mx-2 social-icon">
@@ -74,7 +75,7 @@ function Footer() {
           </Col>
         </Row>
 
-        {/* Copyright */}
+     
         <Row>
           <Col md={12} className="text-center">
             <p className="text-secondary mb-0">

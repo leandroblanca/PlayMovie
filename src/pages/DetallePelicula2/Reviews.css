@@ -22,22 +22,27 @@ body {
 
 .review-form button {
   background-color: #e50914;
-  width: 20%;
+  width: fit-content;
+  min-width: 140px;
   align-self: flex-end;
   color: #fff;
   border: none;
-  padding: 0.6rem;
+  padding: 0.6rem 1rem;
   border-radius: 20px;
   cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
 }
 
-.review-form button:hover {
-  background-color: #f6121d;
-}
+.review-form button:hover { background-color: #f6121d; }
+
+.review-form button.btn-guardar { background-color: #198754; }
+.review-form button.btn-guardar:hover { background-color: #157347; }
 
 .reviews-list {
   list-style: none;
   padding: 0;
+  
 }
 
 .reviews-list li {
@@ -54,13 +59,42 @@ body {
   padding: 0.4rem 0.8rem;
   border-radius: 10px;
   cursor: pointer;
+  color: #fff;
 }
 
-.review-actions button:hover {
-  background-color: rgba(255,255,255,0.4);
-}
+.review-actions button:hover { background-color: rgba(255,255,255,0.4); }
 
 .stars {
   display: flex;
   gap: 0.2rem;
+  margin: 0.3rem 0;
+}
+
+@media (max-width: 768px) {
+  .reviews-section {
+    text-align: center;
+  }
+
+  .review-form {
+    align-items: center;
+  }
+
+  .review-form button {
+    width: 100%;
+    align-self: stretch;
+  }
+
+  .stars {
+    justify-content: center;
+  }
+
+  .reviews-list li {
+    text-align: left;
+    width: 100%;
+  }
+
+  .review-actions {
+    display: flex;
+    justify-content: center;
+  }
 }
