@@ -2,11 +2,11 @@ import React, { useState } from "react"
 import { Container, Row, Col, Card, Button, Carousel } from "react-bootstrap";
 import categorias from "../../data/categories";
 import { useNavigate, useLocation } from "react-router-dom";
-import './home.css';
 import ModalPelicula from "./ModalHome";
 import { useFavoritos } from '../../data/favorito';
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import peliculasIniciales from "../../data/movies";
+import './Home.css';
 
 function Home() {
   const navigate = useNavigate();

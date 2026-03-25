@@ -1,11 +1,12 @@
 import { useNavigate, useParams } from "react-router";
 import peliculas from "../../data/movies";
 import { Button, Card, Container, Row, Col } from "react-bootstrap";
-import "./categoria.css";
 import { useState } from "react";
 import ModalPelicula from "./ModalHome";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useFavoritos } from '../../data/favorito';
+import "./Categoria.css";
+
 
 function CategoriaPage() {
   const { gender } = useParams();
