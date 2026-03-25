@@ -87,30 +87,39 @@ const Registro = () => {
       return;
     }
 
-    const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
-    if (usuariosGuardados.find((u) => u.email === email)) {
+    try {
+      const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
+      if (usuariosGuardados.find((u) => u.email === email)) {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "El correo electrónico ya está registrado",
+          confirmButtonColor: "#dc3545",
+        });
+        return;
+      }
+
+      const nombreCompleto = `${nombre.trim()} ${apellido.trim()}`;
+      const nuevoUsuario = { id: Date.now(), nombre: nombreCompleto, email, password: btoa(password), rol: "user" };
+      localStorage.setItem("usuarios", JSON.stringify([...usuariosGuardados, nuevoUsuario]));
+
+      Swal.fire({
+        title: "¡Registro exitoso!",
+        text: "Tu cuenta ha sido creada correctamente.",
+        icon: "success",
+        confirmButtonColor: "#dc3545",
+        confirmButtonText: "Iniciar Sesión",
+      }).then(() => {
+        navigate("/login");
+      });
+    } catch (error) {
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: "El correo electrónico ya está registrado",
+        text: "Hubo un problema al intentar registrar el usuario. Por favor, inténtalo más tarde.",
         confirmButtonColor: "#dc3545",
       });
-      return;
     }
-
-    const nombreCompleto = `${nombre.trim()} ${apellido.trim()}`;
-    const nuevoUsuario = { id: Date.now(), nombre: nombreCompleto, email, password, rol: "user" };
-    localStorage.setItem("usuarios", JSON.stringify([...usuariosGuardados, nuevoUsuario]));
-
-    Swal.fire({
-      title: "¡Registro exitoso!",
-      text: "Tu cuenta ha sido creada correctamente.",
-      icon: "success",
-      confirmButtonColor: "#dc3545", 
-      confirmButtonText: "Iniciar Sesión",
-    }).then(() => {
-      navigate("/login");
-    });
   };
 
   return (

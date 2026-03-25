@@ -55,15 +55,13 @@ const Login = () => {
     return;
   }
 
-  const usuariosInicialesGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
+  const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-  const todosLosusuariosIniciales = [...usuariosIniciales, ...usuariosInicialesGuardados];
-
-  const usuarioEncontrado = todosLosusuariosIniciales.find(
+  const usuarioEncontrado = usuariosGuardados.find(
     (usuario) => usuario.email === email
   );
 
-  if (!usuarioEncontrado || usuarioEncontrado.password !== password) {
+  if (!usuarioEncontrado || atob(usuarioEncontrado.password) !== password) {
     Swal.fire({
       icon: "error",
       title: "Error",
@@ -76,6 +74,7 @@ const Login = () => {
     });
     return;
   }
+
   sessionStorage.setItem(
     "usuarioLogueado",
     JSON.stringify(usuarioEncontrado)

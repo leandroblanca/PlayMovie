@@ -35,8 +35,33 @@ const Usuario = () => {
     e.preventDefault();
     const perfil = { nombre, email, genero };
     localStorage.setItem(`perfil_${usuario?.id}`, JSON.stringify(perfil));
-    const sesionActual = JSON.parse(sessionStorage.getItem("usuarioLogueado")) || {};
-    sessionStorage.setItem("usuarioLogueado", JSON.stringify({ ...sesionActual, nombre, email }));
+
+    const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
+    const usuariosActualizados = usuariosGuardados.map((u) => {
+      if (u.id === usuario.id) {
+        return {
+          ...u,
+          nombre, 
+          email,
+          password: clave ? btoa(clave) : u.password
+        };
+      }
+      return u;
+    });
+    localStorage.setItem("usuarios", JSON.stringify(usuariosActualizados));
+
+    const sesionActual =
+      JSON.parse(sessionStorage.getItem("usuarioLogueado")) || {};
+    sessionStorage.setItem(
+      "usuarioLogueado",
+      JSON.stringify({
+        ...sesionActual,
+        nombre,
+        email,
+        password: clave ? btoa(clave) : sesionActual.password
+      })
+    );
+
     window.dispatchEvent(new Event("auth-change"));
     setAbrirModal(false);
     setClave("");

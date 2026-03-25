@@ -41,8 +41,15 @@ function App() {
           : usuariosIniciales;
     }
 
-    const sanitizados = usuarios.map(({ password, ...u }) => u);
-    localStorage.setItem("usuarios", JSON.stringify(sanitizados));
+    const usuariosFinales = usuarios.map(u => {
+      try {
+        atob(u.password);
+        return u;
+      } catch (e) {
+        return { ...u, password: btoa(u.password) }; 
+      }
+    });
+    localStorage.setItem("usuarios", JSON.stringify(usuariosFinales));
   }, []);
 
   return (
