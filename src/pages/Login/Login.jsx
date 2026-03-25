@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
-import logo from "../../../public/assets/logo.png";
 import { usuariosIniciales } from "../../helpers/users";
 import "./Login.css";
 import Swal from "sweetalert2";
@@ -17,18 +16,52 @@ const Login = () => {
   e.preventDefault();
 
   if (!email || !password) {
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "Todos los campos son obligatorios",
+      timer: 3000,
+      background: "#1a1a1a",
+      color: "#f9f8f8",
+      confirmButtonColor: "#dc3545",
+    });
     return;
   }
 
-  const usuariosInicialesGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "Por favor ingresa un correo válido",
+      timer: 3000,
+      background: "#1a1a1a",
+      color: "#f9f8f8",
+      confirmButtonColor: "#dc3545",
+    });
+    return;
+  }
 
-  const todosLosusuariosIniciales = [...usuariosIniciales, ...usuariosInicialesGuardados];
+  if (password.length < 6 || password.length > 20) {
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "La contraseña debe tener entre 6 y 20 caracteres",
+      timer: 3000,
+      background: "#1a1a1a",
+      color: "#f9f8f8",
+      confirmButtonColor: "#dc3545",
+    });
+    return;
+  }
 
-  const usuarioEncontrado = todosLosusuariosIniciales.find(
+  const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+  const usuarioEncontrado = usuariosGuardados.find(
     (usuario) => usuario.email === email
   );
 
-  if (!usuarioEncontrado || usuarioEncontrado.password !== password) {
+  if (!usuarioEncontrado || atob(usuarioEncontrado.password) !== password) {
     Swal.fire({
       icon: "error",
       title: "Error",
@@ -41,7 +74,7 @@ const Login = () => {
     });
     return;
   }
-  console.log('Usuario encontrado:', usuarioEncontrado);
+
   sessionStorage.setItem(
     "usuarioLogueado",
     JSON.stringify(usuarioEncontrado)
@@ -99,6 +132,7 @@ const Login = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                maxLength={25}
               />
             </Form.Group>
 
@@ -110,6 +144,8 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                minLength={6}
+                maxLength={20}
               />
             </Form.Group>
 

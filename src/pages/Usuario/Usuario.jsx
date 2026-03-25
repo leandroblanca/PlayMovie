@@ -11,29 +11,60 @@ import { useNavigate } from 'react-router';
 const Usuario = () => {
   const {favoritos, eliminarFavorito, usuario} = useFavoritos()
   const navigate = useNavigate()
-  const [nombre, setNombre] = useState(usuario?.nombre || "Alex Rivers")
-  const [email, setEmail] = useState(usuario?.email || "alex.rivers@gmail.com")
+
+  const perfilGuardado = JSON.parse(localStorage.getItem(`perfil_${usuario?.id}`)) || {};
+
+  const [nombre, setNombre] = useState(perfilGuardado.nombre || usuario?.nombre || "")
+  const [email, setEmail] = useState(perfilGuardado.email || usuario?.email || "")
   const [clave, setClave] = useState("")
-  const [genero, setGenero] = useState("hombre")
+  const [genero, setGenero] = useState(perfilGuardado.genero || "hombre")
   const [abrirModal, setAbrirModal] = useState(false)
-  const usuarioOriginal = {
-    nombre: usuario ?.nombre ||  "Alex Rivers",
-    email: usuario ?.email || "alex.rivers@gmail.com",
-    genero: "hombre"
-  }
+
   const ultimosFavoritos = favoritos.slice(-4);
 
   const cancelarEdicion = () => {
-    setNombre(usuario.nombre);
-    setEmail(usuario.email);
+    const guardado = JSON.parse(localStorage.getItem(`perfil_${usuario?.id}`)) || {};
+    setNombre(guardado.nombre || usuario?.nombre || "");
+    setEmail(guardado.email || usuario?.email || "");
     setClave("");
-    setGenero(usuario.genero);
+    setGenero(guardado.genero || "hombre");
     setAbrirModal(false);
   };
+
   const guardarCambios = (e) => {
     e.preventDefault();
-    setAbrirModal(false)
-    if (clave !== "") { }
+    const perfil = { nombre, email, genero };
+    localStorage.setItem(`perfil_${usuario?.id}`, JSON.stringify(perfil));
+
+    const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
+    const usuariosActualizados = usuariosGuardados.map((u) => {
+      if (u.id === usuario.id) {
+        return {
+          ...u,
+          nombre, 
+          email,
+          password: clave ? btoa(clave) : u.password
+        };
+      }
+      return u;
+    });
+    localStorage.setItem("usuarios", JSON.stringify(usuariosActualizados));
+
+    const sesionActual =
+      JSON.parse(sessionStorage.getItem("usuarioLogueado")) || {};
+    sessionStorage.setItem(
+      "usuarioLogueado",
+      JSON.stringify({
+        ...sesionActual,
+        nombre,
+        email,
+        password: clave ? btoa(clave) : sesionActual.password
+      })
+    );
+
+    window.dispatchEvent(new Event("auth-change"));
+    setAbrirModal(false);
+    setClave("");
   };
   const handleQuitarFavorito = (e, peliculaId) => {
     e.stopPropagation();

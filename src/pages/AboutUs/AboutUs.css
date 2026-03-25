@@ -1,5 +1,4 @@
 .aboutus-container {
-  font-family: "Helvetica Neue", Arial, sans-serif;
   color: #f5f5f5;
   background-color: #121212;
   line-height: 1.6;
@@ -24,6 +23,7 @@
 .hero h2 {
   font-size: 70px;
   font-weight: bold;
+  text-align: center;
 }
 
 .hero p {
@@ -44,7 +44,6 @@
   border-radius: 15px;
 }
 
-/* Mission Section */
 .mission {
   background: #211111;
   background: linear-gradient(
@@ -97,7 +96,6 @@
   font-weight: bolder;
 }
 
-/* Team Section */
 .team {
   padding: 80px 20px;
   text-align: center;
@@ -149,22 +147,24 @@
   justify-content: space-around;
 }
 
-.row .col-md-3 .card .SV {
+.row .col-md-3 .card {
   width: 83%;
 }
 
-/* Call to Action */
+
 .cta {
   background-color: #171111;
-  padding: 60px 0 60px 0;
+  padding: 60px 20px;
   display: flex;
   justify-content: center;
 }
 
 .cta > div {
   width: 60%;
-  background-color: rgb(255, 46, 46);
+  background-color: #1a0a0a;
+  border: 1px solid #e50914;
   border-radius: 15px;
+  padding: 0 0 30px;
 }
 .cta h2 {
   text-align: center;
@@ -172,46 +172,57 @@
   font-size: 40px;
   font-weight: bold;
   margin-bottom: 20px;
+  color: #fff;
 }
 
 .cta p {
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 400;
   max-width: 600px;
   margin: 0 auto 30px;
-  color: silver;
+  color: #ccc;
+  text-align: center;
 }
 
 .subscribe {
   display: flex;
   justify-content: center;
   gap: 10px;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
 }
 
 .subscribe input {
-  padding: 10px;
+  padding: 10px 16px;
   border-radius: 20px;
-  border: none;
+  border: 1px solid #555;
   width: 300px;
-  background-color: #ed3f48;
+  background-color: #2a1010;
+  color: #fff;
 }
 
 input::placeholder {
-  color: silver;
+  color: #aaa;
 }
 .subscribe button {
   border-radius: 20px;
-  padding: 10px 20px;
-  background-color: white;
-  color: rgb(255, 46, 46);
+  padding: 10px 24px;
+  background-color: #e50914;
+  color: #fff;
   font-weight: bold;
+  border: none;
 }
 
-/* Tablets */
+.subscribe button:hover {
+  background-color: #c0070f;
+}
+
 @media (max-width: 992px) {
   .hero h1 {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
+  }
+
+  .hero h2 {
+    font-size: 2.5rem;
   }
 
   .hero p {
@@ -225,17 +236,18 @@ input::placeholder {
 
   .mission-text,
   .mission-img {
+    width: 100%;
     margin-bottom: 30px;
-  }
-
-  .team .row {
-    flex-wrap: wrap;
   }
 
   .team .col-md-3 {
     flex: 0 0 50%;
     max-width: 50%;
     margin-bottom: 30px;
+  }
+
+  .cta > div {
+    width: 85%;
   }
 
   .subscribe {
@@ -245,42 +257,84 @@ input::placeholder {
 
   .subscribe input {
     width: 80%;
-    margin-bottom: 15px;
   }
 }
 
-/* Móviles */
 @media (max-width: 576px) {
   .hero {
-    padding: 80px 15px;
+    padding: 60px 15px;
   }
 
   .hero h1 {
     font-size: 1.8rem;
   }
 
+  .hero h2 {
+    font-size: 1.8rem;
+  }
+
   .hero p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   .mission {
-    padding: 50px 15px;
+    padding: 40px 15px;
+  }
+
+  .mission-img .badge {
+    right: 10px;
+    width: 140px;
+    height: 80px;
+    font-size: 28px;
+  }
+
+  .team {
+    padding: 50px 10px;
   }
 
   .team h2 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .team .col-md-3 {
     flex: 0 0 100%;
     max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .card {
+    width: 80%;
   }
 
   .cta {
     padding: 40px 15px;
   }
 
-  .subscribe input {
+  .cta > div {
     width: 100%;
+  }
+
+  .cta h2 {
+    font-size: 1.5rem;
+    padding-top: 20px;
+  }
+
+  .cta p {
+    font-size: 0.9rem;
+    padding: 0 15px;
+  }
+
+  .subscribe {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .subscribe input {
+    width: 90%;
+  }
+
+  .subscribe button {
+    width: 90%;
   }
 }

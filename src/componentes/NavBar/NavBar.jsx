@@ -4,21 +4,42 @@ import "./NavBar.css";
 import { FaSearch } from "react-icons/fa";
 
 const navConfig = {
-  "/": ["Buscar Peliculas", "Peliculas", "Nosotros", "Suscribirse", "Iniciar Sesión", "Centro de ayuda"],
+  "/": ["Buscar Peliculas", "Peliculas", "Nosotros", "Suscribirse", "Iniciar Sesión", "Ayuda"],
   "/inicio": ["Buscar Peliculas","Peliculas", "Nosotros", "Suscribirse", "Iniciar Sesión"],
-  "/contacto": ["Buscar Peliculas","Inicio", "Peliculas", "Nosotros",  "Usuario"],
-  "/404": ["Buscar Peliculas", "Peliculas", "Nosotros",  "Perfil", "Usuario"],
-  "/nosotros": ["Buscar Peliculas","Inicio", "Peliculas", "Sobre Nosotros",  "Contacto", "Iniciar Sesión"],
+  "/contacto": ["Buscar Peliculas","Inicio", "Peliculas", "Nosotros"],
+  "/404": ["Buscar Peliculas", "Peliculas", "Nosotros"],
+  "/nosotros": ["Buscar Peliculas","Inicio", "Peliculas", "Contacto", "Ayuda", "Iniciar Sesión"],
   "/usuario": ["Buscar Peliculas","Peliculas", "Nosotros"],
-  "/peliculas": ["Buscar Peliculas","Inicio", "Nosotros", "Perfil"],
+  "/peliculas": ["Buscar Peliculas","Inicio", "Nosotros"],
   "/login": ["Buscar Peliculas","Inicio", "Peliculas", "Iniciar Sesión"],
 };
 
 const getLinkPath = (item) => {
   if (item === "Peliculas" || item === "Inicio") return "/";
   if (item === "Iniciar Sesión") return "/login";
+  if (item === "Centro de ayuda") return "/ayuda";
+  if (item === "Suscribirse") return "/planes";
   return `/${item.toLowerCase().replace(/\s+/g, "")}`;
 };
+
+function UserAvatar({ userId, nombre, rol }) {
+  if (rol === "admin") {
+    const iniciales = nombre
+      ? nombre.split(" ").map(n => n[0]).slice(0, 2).join("").toUpperCase()
+      : "A";
+    return <div className="user-avatar">{iniciales}</div>;
+  }
+
+  const perfil = JSON.parse(localStorage.getItem(`perfil_${userId}`)) || {};
+  const genero = perfil.genero || "hombre";
+  const foto = genero === "mujer" ? "/assets/Mujer.png" : "/assets/Hombre.png";
+
+  return (
+    <div className="user-avatar">
+      <img src={foto} alt="avatar" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "50%" }} />
+    </div>
+  );
+}
 
 export default function Navbar() {
   const location = useLocation();
@@ -28,7 +49,6 @@ export default function Navbar() {
   const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("usuarioLogueado")));
   const [busqueda, setBusqueda] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -49,7 +69,6 @@ export default function Navbar() {
     const checkAuth = () => {
       setUser(JSON.parse(sessionStorage.getItem("usuarioLogueado")));
     };
-
     window.addEventListener("auth-change", checkAuth);
     return () => window.removeEventListener("auth-change", checkAuth);
   }, []);
@@ -93,7 +112,7 @@ export default function Navbar() {
                 <FaSearch className="search-icon" style={{ position: "absolute", left: "15px", color: "gray", zIndex: 1 }} />
                 <input
                   type="text"
-                  placeholder="Buscar películas"
+                  placeholder="Buscar películas, series, etc."
                   className="search-input"
                   value={busqueda}
                   onChange={(e) => setBusqueda(e.target.value)}
@@ -110,6 +129,25 @@ export default function Navbar() {
             )}
           </li>
         ))}
+
+        {user && user.rol === "admin" && (
+          <li className="navbar-item">
+            <Link to="/admin" className="user-nav-btn">
+              <UserAvatar userId={user.id} nombre={user.nombre} rol={user.rol} />
+              <span className="user-nav-name">Admin</span>
+            </Link>
+          </li>
+        )}
+
+        {user && user.rol !== "admin" && (
+          <li className="navbar-item">
+            <Link to="/usuario" className="user-nav-btn">
+              <UserAvatar userId={user.id} nombre={user.nombre} rol={user.rol} />
+              <span className="user-nav-name">{user.nombre}</span>
+            </Link>
+          </li>
+        )}
+
         {user && (
           <li className="navbar-item">
             <button onClick={handleLogout} className="btn-login">

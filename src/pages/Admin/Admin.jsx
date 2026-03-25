@@ -1,5 +1,5 @@
 import { Button, Container, Row, Col } from "react-bootstrap";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import Sidebar from "./Sidebar"
 import TablaPeliculas from "./TablaPeliculas";
 import ModalPeliculas from "./ModalPeliculas.jsx";
@@ -18,18 +18,9 @@ function Admin() {
   const [usuarios, setUsuarios] = useState(() => {
     const usuariosGuardados = localStorage.getItem("usuarios");
     if (usuariosGuardados) {
-
-      const parsedUsers = JSON.parse(usuariosGuardados);
-      return parsedUsers.map(u => {
-        const { password, ...resto } = u;
-        return resto;
-      });
+      return JSON.parse(usuariosGuardados);
     }
-   
-    return usuariosIniciales.map(u => {
-      const { password, ...resto } = u;
-      return resto;
-    });
+    return usuariosIniciales;
   });
   const [peliculas, setPeliculas] = useState(() => {
     const guardadas = localStorage.getItem("peliculas");
@@ -68,12 +59,20 @@ function Admin() {
   };
 
   const eliminarUsuario = (id) => {
+    const usuario = usuarios.find((u) => u.id === id);
+    if (usuario && usuario.rol === "admin") {
+      return; 
+    }
+
     const nuevosUsuarios = usuarios.filter(u => u.id !== id);
     setUsuarios(nuevosUsuarios);
     localStorage.setItem("usuarios", JSON.stringify(nuevosUsuarios));
   };
 
   const editarUsuario = (usuario) => {
+    if (usuario.rol === "admin") {
+      return; 
+    }
     setNombreUser(usuario.nombre);
     setEmailUser(usuario.email);
     setRolUser(usuario.rol);
@@ -94,10 +93,20 @@ function Admin() {
     setEditarUserId(null);
   };
 
+  const isFirstRender = useRef(true);
+
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     localStorage.setItem("peliculas", JSON.stringify(peliculas));
   }, [peliculas]);
 
+  const peliculasFiltradas = useMemo(
+    () => peliculas.filter(p => p.titulo.toLowerCase().includes(busqueda.toLowerCase())),
+    [peliculas, busqueda]
+  );
 
   const guardarPelicula = () => {
 
@@ -171,10 +180,6 @@ function Admin() {
     setVideo("");
     setDescripcion("");
   };
-
-  const peliculasFiltradas = peliculas.filter(p =>
-    p.titulo.toLowerCase().includes(busqueda.toLowerCase())
-  );
 
   const cerrarSesion = () => {
     sessionStorage.removeItem("usuarioLogueado");

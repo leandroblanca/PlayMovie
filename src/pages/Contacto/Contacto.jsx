@@ -42,24 +42,27 @@ const Contacto = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const nombreRegex = /^[A-Za-z\s]{3,}$/;
+    const nombreRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-
-    if (!nombre || !email || !consulta || !mensaje) {
+    if (!nombre.trim() || !email.trim() || !consulta || !mensaje.trim()) {
       toast.warning("Todos los campos son obligatorios");
       return;
-    } 
+    }
+    if (nombre.length < 3 || nombre.length > 40) {
+      toast.error("El nombre debe tener entre 3 y 40 caracteres");
+      return;
+    }
     if (!nombreRegex.test(nombre)) {
       toast.error("El nombre solo puede contener letras");
       return;
-    } 
+    }
     if (!emailRegex.test(email)) {
       toast.error("Email inválido");
       return;
-    } 
-    if (mensaje.length < 10) {
-      toast.error("El mensaje debe tener al menos 10 caracteres");
+    }
+    if (mensaje.length < 10 || mensaje.length > 300) {
+      toast.error("El mensaje debe tener entre 10 y 300 caracteres");
       return;
     }
 
@@ -100,7 +103,7 @@ const Contacto = () => {
 
       <Row className="mt-4 contacto-row">
         <Col>
-          <h2 className="display-4 fw-bold">
+          <h2 className="display-4 fw-bold text-light">
             Ponte en <span className="text-danger">Contacto.</span>
           </h2>
           <p className="lead text-secondary">Estamos aquí para ayudarte a obtener la mejor experiencia de streaming.</p>
@@ -119,7 +122,14 @@ const Contacto = () => {
                       type="text"
                       placeholder="Ej: Juan Pérez"
                       value={nombre}
-                      onChange={(e) => setNombre(e.target.value)}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        if (/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$/.test(val)) {
+                          setNombre(val);
+                        }
+                      }}
+                      minLength={3}
+                      maxLength={25}
                     />
                   </Form.Group>
                 </Col>
@@ -131,6 +141,7 @@ const Contacto = () => {
                       placeholder="nombre@email.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      maxLength={25}
                     />
                   </Form.Group>
                 </Col>
@@ -158,6 +169,8 @@ const Contacto = () => {
                   placeholder="¿En qué podemos ayudarte?"
                   value={mensaje}
                   onChange={(e) => setMensaje(e.target.value)}
+                  minLength={10}
+                  maxLength={80}
                 />
               </Form.Group>
 

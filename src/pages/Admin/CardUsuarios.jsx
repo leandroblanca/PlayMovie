@@ -5,8 +5,8 @@ import { FaPen, FaTrash } from "react-icons/fa";
 
 const CardUsuarios = ({ usuarios, registroSistema , editarUsuario, eliminarUsuario, guardarUsuario }) => {
   return (
-    <Container>
-      <Row className="my-5 g-4">
+    <Container fluid className="px-0">
+      <Row className="my-3 g-4">
 
        
         <Col xs={12} lg={8}>
@@ -52,6 +52,8 @@ const CardUsuarios = ({ usuarios, registroSistema , editarUsuario, eliminarUsuar
                       <button 
                         className="btn btn-sm"
                         onClick={() => editarUsuario(usuario)}
+                        disabled={usuario.rol === "admin"}
+                        style={{ opacity: usuario.rol === "admin" ? 0.5 : 1, cursor: usuario.rol === "admin" ? 'not-allowed' : 'pointer' }}
                       >
                         <FaPen />
                       </button>
@@ -59,6 +61,8 @@ const CardUsuarios = ({ usuarios, registroSistema , editarUsuario, eliminarUsuar
                       <button 
                         className="btn btn-sm"
                         onClick={() => eliminarUsuario(usuario.id)}
+                        disabled={usuario.rol === "admin"}
+                        style={{ opacity: usuario.rol === "admin" ? 0.5 : 1, cursor: usuario.rol === "admin" ? 'not-allowed' : 'pointer' }}
                       >
                         <FaTrash />
                       </button>

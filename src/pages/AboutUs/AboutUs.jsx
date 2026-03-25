@@ -1,10 +1,5 @@
 import React from "react";
 import "./AboutUs.css";
-import team1 from "../../../public/assets/team1.jpg";
-import team2 from "../../../public/assets/team2.jpg";
-import team3 from "../../../public/assets/team3.jpg";
-import team4 from "../../../public/assets/team4.jpg";
-import workspace from "../../../public/assets/workspace.jpg";
 
 const AboutUs = () => {
   return (
@@ -35,7 +30,7 @@ const AboutUs = () => {
           </p>
         </div>
         <div className="col-md-6 mission-img">
-         {/*  <img src={workspace} alt="workspace" /> */}
+          <img src="/assets/workspace.jpg" alt="workspace" />
           <span className="badge bg-danger">15M+ <span className="badge1 bg-danger">ESPECTADORES ACTIVOS</span> </span>
           
         </div>
@@ -47,7 +42,7 @@ const AboutUs = () => {
         <div className="row">
             <div className="col-md-3">
                 <div className="card">  
-{/*                     <img src={team1} alt="Leandro Blanca" /> */}
+                    <img src="/assets/team1.jpg" alt="Leandro Blanca" />
                     <h5>Leandro Blanca</h5>
                     <p>Rolling Develloper</p>
                     <h6>Lider visionario con 15 años de producción Cinematográfica e innovación en medios digitales.</h6>
@@ -56,7 +51,7 @@ const AboutUs = () => {
             </div>
             <div className="col-md-3">
                 <div className="card">
-                 {/*    <img src={team2} alt="Marisol Lamas" /> */}
+                    <img src="/assets/team2.jpg" alt="Marisol Lamas" />
                     <h5>Marisol Lamas</h5>
                     <p>Rolling Develloper</p>
                     <h6>Arquitecta de infraestructura que lideró operaciones de escalado para plataformas globales.</h6>
@@ -64,7 +59,7 @@ const AboutUs = () => {
             </div>
             <div className="col-md-3">
                 <div className="card">
-                    <img className="SV" src={team3} alt="Sebastián Varela" />
+                    <img src="/assets/team3.jpg" alt="Sebastián Varela" />
                     <h5>Sebastián Varela</h5>
                     <p>Rolling Develloper</p>
                     <h6>Diseñador galardonado centrado en la creación de interfaces de usuarios</h6>
@@ -72,7 +67,7 @@ const AboutUs = () => {
             </div>
             <div className="col-md-3">
                 <div className="card">
-                {/* <img src={team4} alt="Abel Ruiz" /> */}
+                <img src="/assets/team4.jpg" alt="Abel Ruiz" />
                 <h5>Abel Ruiz</h5>
                 <p>Rolling Develloper</p>
                 <h6>Critico de cine y curador dedicado a descubrir voces independientes.</h6>

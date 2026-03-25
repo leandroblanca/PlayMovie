@@ -3,7 +3,7 @@ const peliculasIniciales = [
     id: 1,
     titulo: "John Wick",
     poster: "https://image.tmdb.org/t/p/w500/b9uYMMbm87IBFOq59pppvkkkgNg.jpg",
-    video: "https://www.youtube.com/embed/2AUmvWm5ZDQ",
+    video: "https://www.youtube.com/embed/C0BMx-qxsP4",
     categorias: "accion",
     anio: 2014,
     descripcion:
@@ -15,7 +15,7 @@ const peliculasIniciales = [
     id: 2,
     titulo: "Mad Max Fury Road",
     poster: "https://image.tmdb.org/t/p/w500/hA2ple9q4qnwxp3hKVNhroipsir.jpg",
-    video: "https://www.youtube.com/embed/hEJnMQG9ev8",
+    video: "https://www.youtube.com/embed/P5ieIbInFpg",
     categorias: "accion",
     anio: 2015,
     descripcion:
@@ -27,7 +27,7 @@ const peliculasIniciales = [
     id: 3,
     titulo: "The Dark Knight",
     poster: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-    video: "https://www.youtube.com/embed/EXeTwQWrcwY",
+    video: "https://www.youtube.com/embed/kmJLuwP3MbY",
     categorias: "accion",
     anio: 2008,
     descripcion:
@@ -39,7 +39,7 @@ const peliculasIniciales = [
     id: 4,
     titulo: "Deadpool",
     poster: "https://image.tmdb.org/t/p/w500/3E53WEZJqP6aM84D8CckXx4pIHw.jpg",
-    video: "https://www.youtube.com/embed/Xithigfg7dA",
+    video: "https://www.youtube.com/embed/ONHBaC-pfsk",
     categorias: "comedia",
     anio: 2016,
     descripcion:
@@ -51,7 +51,7 @@ const peliculasIniciales = [
     id: 5,
     titulo: "The Mask",
     poster: "https://www.originalfilmart.com/cdn/shop/products/the_Mask1994_original_film_art_5000x.jpg?v=1608250083",
-    video: "https://www.youtube.com/embed/LZl69yk5lEY",
+    video: "https://www.youtube.com/embed/v-PjgYDrg70",
     categorias: "comedia",
     anio: 1994,
     descripcion:
@@ -86,7 +86,7 @@ const peliculasIniciales = [
   {
     id: 8,
     titulo: "Inception",
-    poster: "https://pics.filmaffinity.com/inception-652954101-large.jpg",
+    poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvLuLWLoqODf4sJ0YWxs7TKCDFJUHWmq50sQ&s",
     video: "https://www.youtube.com/embed/YoHD9XEInc0",
     categorias: "ciencia ficcion",
     anio: 2010,
@@ -158,7 +158,7 @@ const peliculasIniciales = [
   {
     id: 14,
     titulo: "Oppenheimer",
-    poster: "https://pics.filmaffinity.com/oppenheimer-828933592-large.jpg",
+    poster: "https://m.media-amazon.com/images/M/MV5BNTFlZDI1YWQtMTVjNy00YWU1LTg2YjktMTlhYmRiYzQ3NTVhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     video: "https://www.youtube.com/embed/uYPbbksJxIg",
     categorias: "drama",
     anio: 2023,
@@ -204,7 +204,7 @@ const peliculasIniciales = [
   {
     id: 18,
     titulo: "Insidious",
-    poster: "https://pics.filmaffinity.com/insidious-733811348-large.jpg",
+    poster: "https://m.media-amazon.com/images/M/MV5BZGNhZjRhNjgtNmQ3Ni00OGQzLTkwNmMtNzMzMjc4MTg5ODliXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     video: "https://www.youtube.com/embed/zuZnRUcoWos",
     categorias: "terror",
     anio: 2010,
@@ -270,7 +270,7 @@ const peliculasIniciales = [
   {
     id: 24,
     titulo: "Gone Girl",
-    poster: "https://pics.filmaffinity.com/gone_girl-544341973-large.jpg",
+    poster: "https://revistacalibre38.com/wp-content/uploads/2014/10/perdida-cartel-pic33d.jpg",
     video: "https://www.youtube.com/embed/2-_-1nJf8Vg",
     categorias: "thriller",
     anio: 2014,
@@ -314,7 +314,7 @@ const peliculasIniciales = [
   {
     id: 28,
     titulo: "Step Brothers",
-    poster: "https://pics.filmaffinity.com/step_brothers-811273775-large.jpg",
+    poster: "https://es.web.img2.acsta.net/medias/nmedia/18/67/38/88/20326835.jpg",
     video: "https://www.youtube.com/embed/CewglxElBK0",
     categorias: "comedia",
     anio: 2008,

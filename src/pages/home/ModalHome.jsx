@@ -1,6 +1,7 @@
 import { Button, Modal } from "react-bootstrap";
 import "./ModalHome.css";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function ModalPelicula({show, handleClose, pelicula, esFavorito, agregarFavorito, eliminarFavorito}) {
     if (!pelicula) return null;
@@ -19,6 +20,7 @@ function ModalPelicula({show, handleClose, pelicula, esFavorito, agregarFavorito
          show={show}
          onHide={handleClose}
          centered
+         scrollable={true}
          dialogClassName="modal-video"
          animation={true}>
             <Modal.Header closeButton closeVariant="white">
@@ -36,14 +38,18 @@ function ModalPelicula({show, handleClose, pelicula, esFavorito, agregarFavorito
                 </div>
                 <div className="info-pelicula">
                     <p><strong>Año:</strong>{pelicula.anio}</p>
-                    <p><strong>Descripcion:</strong>{pelicula.descripcion}</p>
+                    <p className="text-break"><strong>Descripcion:</strong> {pelicula.descripcion}</p>
                 </div>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant={favorito ? "danger" : "outline-danger"} onClick={toggleFavorito}>
                    {favorito ? <FaHeart /> : <FaRegHeart />} {favorito ? " Quitar de favoritos" : " Añadir a favoritos"}
                 </Button>
-                <Button variant="secondary">
+                <Button
+                    as={Link}
+                    to={`/detallepelicula/${pelicula.id}`}
+                    variant="secondary"
+                    onClick={handleClose}>
                     Ver mas
                 </Button>
             </Modal.Footer>
@@ -53,8 +59,3 @@ function ModalPelicula({show, handleClose, pelicula, esFavorito, agregarFavorito
 
 
 export default ModalPelicula;
-
-
-
-
-

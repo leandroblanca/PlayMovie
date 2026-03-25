@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Modal, Form } from "react-bootstrap";
+import Swal from "sweetalert2";
 import "./Admin.css";
 
 const ModalPeliculas = ({
@@ -23,6 +24,53 @@ const ModalPeliculas = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+   
+    if (!titulo.trim() || !anio.trim() || !poster.trim() || !categorias.trim() || !video.trim() || !descripcion.trim()) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Todos los campos son obligatorios",
+        confirmButtonColor: "#dc3545",
+      });
+      return;
+    }
+
+  
+    const urlRegex = /^(https?:\/\/)[^\s$.?#].[^\s]*$/;
+
+    if (!urlRegex.test(poster)) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "El poster debe ser una URL válida (ej: https://...)",
+        confirmButtonColor: "#dc3545",
+      });
+      return;
+    }
+
+    if (!urlRegex.test(video)) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "El video debe ser una URL válida (ej: https://...)",
+        confirmButtonColor: "#dc3545",
+      });
+      return;
+    }
+
+    const anioNum = parseInt(anio);
+    const currentYear = new Date().getFullYear();
+    if (isNaN(anioNum) || anioNum < 1895 || anioNum > currentYear + 5) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: `El año debe ser un número válido entre 1895 y ${currentYear + 5}`,
+        confirmButtonColor: "#dc3545",
+      });
+      return;
+    }
+
     onSubmit(e);
   };
 
@@ -46,24 +94,27 @@ const ModalPeliculas = ({
               value={titulo}
               onChange={(e) => setTitulo(e.target.value)}
               required
+              maxLength={100}
             />
           </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Label>Año</Form.Label>
             <Form.Control
-              type="text"
+              type="number"
               placeholder="Año"
               value={anio}
               onChange={(e) => setAnio(e.target.value)}
               required
+              min="1895"
+              max={new Date().getFullYear() + 5}
             />
           </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Label>Poster</Form.Label>
             <Form.Control
-              type="text"
+              type="url"
               placeholder="URL del poster"
               value={poster}
               onChange={(e) => setPoster(e.target.value)}
@@ -79,13 +130,14 @@ const ModalPeliculas = ({
               value={categorias}
               onChange={(e) => setCategorias(e.target.value)}
               required
+              maxLength={50}
             />
           </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Label>Video</Form.Label>
             <Form.Control
-              type="text"
+              type="url"
               placeholder="URL del video"
               value={video}
               onChange={(e) => setVideo(e.target.value)}
@@ -102,6 +154,8 @@ const ModalPeliculas = ({
               value={descripcion}
               onChange={(e) => setDescripcion(e.target.value)}
               required
+              minLength={10}
+              maxLength={500}
             />
           </Form.Group>
 

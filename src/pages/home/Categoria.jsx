@@ -38,7 +38,7 @@ function CategoriaPage() {
     }
   };
   return (
-    <Container className="my-4">
+    <Container className="my-4" style={{ paddingTop: "60px" }}>
       <div className="mb-4">
         <Button variant="outline-secondary" onClick={handleVolver}>
           Volver al inicio
