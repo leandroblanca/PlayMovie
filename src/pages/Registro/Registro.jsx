@@ -14,6 +14,15 @@ const Registro = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
 
+  const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,20}$/;
+
+  const requisitos = [
+    { texto: "Mínimo 8 caracteres", ok: password.length >= 8 },
+    { texto: "Al menos una mayúscula", ok: /[A-Z]/.test(password) },
+    { texto: "Al menos un número", ok: /\d/.test(password) },
+    { texto: "Al menos un carácter especial (!@#$...)", ok: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password) },
+  ];
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -59,11 +68,11 @@ const Registro = () => {
       return;
     }
 
-    if (password.length < 6 || password.length > 20) {
+    if (!passwordRegex.test(password)) {
       Swal.fire({
         icon: "error",
-        title: "Error",
-        text: "La contraseña debe tener entre 6 y 20 caracteres",
+        title: "Contraseña débil",
+        text: "La contraseña debe tener entre 8 y 20 caracteres, al menos una mayúscula, un número y un carácter especial",
         confirmButtonColor: "#dc3545",
       });
       return;
@@ -100,7 +109,7 @@ const Registro = () => {
       }
 
       const nombreCompleto = `${nombre.trim()} ${apellido.trim()}`;
-      const nuevoUsuario = { id: Date.now(), nombre: nombreCompleto, email, password: btoa(password), rol: "user" };
+      const nuevoUsuario = { id: Date.now(), nombre: nombreCompleto, email, password, rol: "user" };
       localStorage.setItem("usuarios", JSON.stringify([...usuariosGuardados, nuevoUsuario]));
 
       Swal.fire({
@@ -192,9 +201,18 @@ const Registro = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              minLength={6}
+              minLength={8}
               maxLength={20}
             />
+            {password.length > 0 && (
+              <ul className="mt-2 mb-0 ps-3" style={{ listStyle: "none", padding: 0 }}>
+                {requisitos.map((r, i) => (
+                  <li key={i} style={{ fontSize: "0.8rem", color: r.ok ? "#198754" : "#dc3545" }}>
+                    {r.ok ? "✔" : "✖"} {r.texto}
+                  </li>
+                ))}
+              </ul>
+            )}
           </Form.Group>
 
           <Form.Group className="mb-3">

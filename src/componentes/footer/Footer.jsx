@@ -1,12 +1,18 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Footer.css";
 import logo from "../../../public/assets/logo.png";
 
 function Footer() {
+  const location = useLocation();
+  const excludesPaths = ["/login", "/registro"];
+  if (excludesPaths.includes(location.pathname)) {
+    return null;
+  }
+
   return (
     <footer className="footer-netflix bg-dark text-light pt-5 pb-3">
       <Container>
