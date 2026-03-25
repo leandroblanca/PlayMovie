@@ -19,7 +19,7 @@ import Usuario from "./pages/Usuario/Usuario";
 import Planes from "./pages/Planes/Planes";
 import Ayuda from "./pages/CentroAyuda/CentroAyuda";
 import DetallePelicula2 from "./pages/DetallePelicula2/DetallePelicula2";
-import Favoritos from "./pages/Favoritos/Favoritos";
+import Favoritos from "./pages/favoritos/Favoritos";
 
 function App() {
   useEffect(() => {
