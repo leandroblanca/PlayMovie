@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, Row, Col } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
-import "./Registro.css";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF, FaSpotify } from "react-icons/fa";
 import Swal from "sweetalert2";
+import "./Registro.css";
 
 const Registro = () => {
   const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -16,21 +17,53 @@ const Registro = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const nameRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
 
-    if (!nombre || !email || !password || !confirmPassword) {
+    if (!nombre.trim() || !apellido.trim() || !email.trim() || !password || !confirmPassword) {
       Swal.fire({
         icon: "error",
-        title: "Oops...",
+        title: "Error",
         text: "Todos los campos son obligatorios",
         confirmButtonColor: "#dc3545",
       });
       return;
     }
-    if (password.length < 6) {
+
+    if (nombre.length < 3 || nombre.length > 20) {
       Swal.fire({
         icon: "error",
-        title: "Contraseña débil",
-        text: "La contraseña debe tener al menos 6 caracteres",
+        title: "Error",
+        text: "El nombre debe tener entre 3 y 20 caracteres",
+        confirmButtonColor: "#dc3545",
+      });
+      return;
+    }
+
+    if (apellido.length < 3 || apellido.length > 20) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "El apellido debe tener entre 3 y 20 caracteres",
+        confirmButtonColor: "#dc3545",
+      });
+      return;
+    }
+
+    if (!nameRegex.test(nombre) || !nameRegex.test(apellido)) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "El nombre y apellido solo pueden contener letras",
+        confirmButtonColor: "#dc3545",
+      });
+      return;
+    }
+
+    if (password.length < 6 || password.length > 20) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "La contraseña debe tener entre 6 y 20 caracteres",
         confirmButtonColor: "#dc3545",
       });
       return;
@@ -65,7 +98,8 @@ const Registro = () => {
       return;
     }
 
-    const nuevoUsuario = { id: Date.now(), nombre, email, password, rol: "user" };
+    const nombreCompleto = `${nombre.trim()} ${apellido.trim()}`;
+    const nuevoUsuario = { id: Date.now(), nombre: nombreCompleto, email, password, rol: "user" };
     localStorage.setItem("usuarios", JSON.stringify([...usuariosGuardados, nuevoUsuario]));
 
     Swal.fire({
@@ -88,16 +122,46 @@ const Registro = () => {
             <p className="registro-subtitulo text-muted">Join PlayMovie to start streaming your favorite content</p>
           </div>
 
-          <Form.Group className="mb-3">
-            <Form.Label>Nombre Completo</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Tu nombre"
-              value={nombre}
-              onChange={(e) => setNombre(e.target.value)}
-              required
-            />
-          </Form.Group>
+          <Row>
+            <Col xs={12} sm={6}>
+              <Form.Group className="mb-3">
+                <Form.Label>Nombre</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Tu nombre"
+                  value={nombre}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    if (/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$/.test(val)) {
+                      setNombre(val);
+                    }
+                  }}
+                  required
+                  minLength={3}
+                  maxLength={20}
+                />
+              </Form.Group>
+            </Col>
+            <Col xs={12} sm={6}>
+              <Form.Group className="mb-3">
+                <Form.Label>Apellido</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Tu apellido"
+                  value={apellido}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    if (/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$/.test(val)) {
+                      setApellido(val);
+                    }
+                  }}
+                  required
+                  minLength={3}
+                  maxLength={20}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
 
           <Form.Group className="mb-3">
             <Form.Label>Correo Electrónico</Form.Label>
@@ -107,6 +171,7 @@ const Registro = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              maxLength={25}
             />
           </Form.Group>
 
@@ -118,6 +183,8 @@ const Registro = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              minLength={6}
+              maxLength={20}
             />
           </Form.Group>
 
@@ -129,6 +196,8 @@ const Registro = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
+              minLength={6}
+              maxLength={20}
             />
           </Form.Group>
 
