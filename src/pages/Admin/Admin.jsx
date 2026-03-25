@@ -224,12 +224,6 @@ function Admin() {
             </div>
           </Col>
 
-          <Col xs={12} className="d-md-none p-3">
-            <Button variant="danger" className="w-100" onClick={handleShow}>
-              + Añadir Película
-            </Button>
-          </Col>
-
           <Col xs={12} md={9} xl={10} className="main-content p-3 p-md-4">
             <div className="content-wrapper">
               <div className="content-header d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center gap-3 mb-4">
@@ -245,8 +239,9 @@ function Admin() {
                     />
                     <span className="search-icon">🔍</span>
                   </div>
-                  
-                  
+                  <Button variant="danger" className="d-md-none w-100" onClick={handleShow}>
+                    + Añadir Película
+                  </Button>
                 </div>
               </div>
 
