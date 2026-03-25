@@ -70,7 +70,6 @@ const Login = () => {
      color: "#f9f8f8",
      confirmButtonColor: "#dc3545",
       text: "Correo electrónico o contraseña incorrectos",
-      confirmButtonColor: "#dc3545",
     });
     return;
   }
