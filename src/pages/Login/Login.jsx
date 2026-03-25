@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 import { usuariosIniciales } from "../../helpers/users";
+import { hashPassword } from "../../helpers/hash";
 import "./Login.css";
 import Swal from "sweetalert2";
 
@@ -12,7 +13,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
   e.preventDefault();
 
   if (!email || !password) {
@@ -61,8 +62,9 @@ const Login = () => {
     ...usuariosGuardados.filter(u => !usuariosIniciales.find(ui => ui.email === u.email))
   ];
 
+  const passwordHash = await hashPassword(password);
   const usuarioEncontrado = todosLosUsuarios.find(
-    (usuario) => usuario.email === email && usuario.password === password
+    (usuario) => usuario.email === email && usuario.password === passwordHash
   );
 
   if (!usuarioEncontrado) {
@@ -78,9 +80,10 @@ const Login = () => {
     return;
   }
 
+  const { password: _pw, ...usuarioSinPassword } = usuarioEncontrado;
   sessionStorage.setItem(
     "usuarioLogueado",
-    JSON.stringify(usuarioEncontrado)
+    JSON.stringify(usuarioSinPassword)
   );
 
 
