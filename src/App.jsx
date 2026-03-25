@@ -13,7 +13,7 @@ import CategoriaPage from "./pages/home/Categoria";
 import Footer from './componentes/footer/Footer';
 import Contacto from './pages/Contacto/Contacto';
 import PasarelaDePago from "./pages/PasarelaDePago/Pasarela";
-import Admin from "./pages/Admin/Admin";
+import AdminProtegida from "./pages/Admin/AdminProtegida";
 import RutaProtegida from "./componentes/RutaProtegida";
 import Usuario from "./pages/Usuario/Usuario";
 import Planes from "./pages/Planes/Planes";
@@ -30,10 +30,18 @@ function App() {
       localStorage.setItem("peliculas_version", VERSION);
     }
 
-    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-    const sanitizados = usuarios.length
-      ? usuarios.map(({ password, ...u }) => u)
-      : usuariosIniciales.map(({ password, ...u }) => u);
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    
+
+    if (usuarios.length === 0 || !usuarios.some(u => u.rol === "admin")) {
+        const adminOriginal = usuariosIniciales.find(u => u.rol === "admin");
+    
+        usuarios = usuarios.length > 0 && adminOriginal 
+          ? [adminOriginal, ...usuarios] 
+          : usuariosIniciales;
+    }
+
+    const sanitizados = usuarios.map(({ password, ...u }) => u);
     localStorage.setItem("usuarios", JSON.stringify(sanitizados));
   }, []);
 
@@ -53,10 +61,10 @@ function App() {
         <Route path="/favoritos" element={<Favoritos />} />
         <Route path="/detallepelicula/:id" element={<DetallePelicula2 />} />
         <Route path="/categoria/:gender" element={<CategoriaPage />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/usuarios" element={<Admin />} />
-        <Route path="/ingresos" element={<Admin />} />
-        <Route path="/peliculas" element={<Admin />} />
+        <Route path="/admin" element={<AdminProtegida />} />
+        <Route path="/usuarios" element={<AdminProtegida />} />
+        <Route path="/ingresos" element={<AdminProtegida />} />
+        <Route path="/peliculas" element={<AdminProtegida />} />
         <Route path="/error404" element={<Error404 />} />
         <Route path="*" element={<Error404 />} />
       </Routes>

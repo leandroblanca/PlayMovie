@@ -16,6 +16,42 @@ const Login = () => {
   e.preventDefault();
 
   if (!email || !password) {
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "Todos los campos son obligatorios",
+      timer: 3000,
+      background: "#1a1a1a",
+      color: "#f9f8f8",
+      confirmButtonColor: "#dc3545",
+    });
+    return;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "Por favor ingresa un correo válido",
+      timer: 3000,
+      background: "#1a1a1a",
+      color: "#f9f8f8",
+      confirmButtonColor: "#dc3545",
+    });
+    return;
+  }
+
+  if (password.length < 6 || password.length > 20) {
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "La contraseña debe tener entre 6 y 20 caracteres",
+      timer: 3000,
+      background: "#1a1a1a",
+      color: "#f9f8f8",
+      confirmButtonColor: "#dc3545",
+    });
     return;
   }
 
@@ -97,6 +133,7 @@ const Login = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                maxLength={25}
               />
             </Form.Group>
 
@@ -108,6 +145,8 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                minLength={6}
+                maxLength={20}
               />
             </Form.Group>
 

@@ -39,33 +39,45 @@ function PasarelaDePago() {
   const handleSubmit = (e) => {
   e.preventDefault();
 
-  const nombreRegex = /^[A-Za-z\s]{3,}$/;
-  const tarjetaRegex = /^[0-9]{16}$/;
-  const cvvRegex = /^[0-9]{3,4}$/;
+  const nombreRegex = /^[A-Za-z\sáéíóúÁÉÍÓÚñÑ]+$/;
+  const tarjetaRegex = /^\d{16}$/;
+  const cvvRegex = /^\d{3,4}$/;
   const vencimientoRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
 
-  if (!nombre || !tarjeta || !vencimiento || !cvv) {
+  if (!nombre.trim() || !tarjeta.trim() || !vencimiento.trim() || !cvv.trim()) {
     toast.warning("Todos los campos son obligatorios");
     return;
   }
 
+  if (nombre.trim().length < 3 || nombre.trim().length > 50) {
+    toast.error("El nombre debe tener entre 3 y 50 caracteres.");
+    return;
+  }
   if (!nombreRegex.test(nombre)) {
-    toast.error("El nombre solo puede contener letras");
+    toast.error("El nombre solo puede contener letras y espacios.");
     return;
   }
 
-  if (!tarjetaRegex.test(tarjeta.replace(/\s/g, ""))) {
-    toast.error("Número de tarjeta inválido");
+  const cleanTarjeta = tarjeta.replace(/\s/g, "");
+  if (!tarjetaRegex.test(cleanTarjeta)) {
+    toast.error("Número de tarjeta inválido. Deben ser 16 dígitos.");
     return;
   }
 
   if (!vencimientoRegex.test(vencimiento)) {
-    toast.error("Formato de vencimiento inválido (MM/AA)");
+    toast.error("Formato de vencimiento inválido (MM/AA).");
     return;
+  } else {
+    const [mes, anio] = vencimiento.split('/');
+    const fechaVencimiento = new Date(parseInt(`20${anio}`), parseInt(mes), 0);
+    if (fechaVencimiento < new Date()) {
+      toast.error("La tarjeta ha expirado.");
+      return;
+    }
   }
 
   if (!cvvRegex.test(cvv)) {
-    toast.error("CVV inválido");
+    toast.error("CVV inválido. Deben ser 3 o 4 dígitos.");
     return;
   }
 
@@ -169,9 +181,16 @@ function PasarelaDePago() {
                 type="text"
                 placeholder="Ej: Juan Pérez"
                 value={nombre}
-                onChange={(e) => setNombre(e.target.value)}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$/.test(val)) {
+                    setNombre(val);
+                  }
+                }}
                 name="ccname"
                 autoComplete="cc-name"
+                required
+                maxLength={25}
               />
             </Form.Group>
 
@@ -182,9 +201,16 @@ function PasarelaDePago() {
                 type="text"
                 placeholder="0000 0000 0000 0000"
                 value={tarjeta}
-                onChange={(e) => setTarjeta(e.target.value)}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (/^[\d\s]*$/.test(val)) {
+                    setTarjeta(val);
+                  }
+                }}
                 name="cardnumber"
                 autoComplete="cc-number"
+                required
+                maxLength={19}
               />
             </Form.Group>
 
@@ -200,6 +226,8 @@ function PasarelaDePago() {
                     onChange={(e) => setVencimiento(e.target.value)}
                     name="cc-exp"
                     autoComplete="cc-exp"
+                    required
+                    maxLength={5}
                   />
                 </Form.Group>
               </Col>
@@ -214,6 +242,8 @@ function PasarelaDePago() {
                     onChange={(e) => setCvv(e.target.value)}
                     name="cvc"
                     autoComplete="cc-csc"
+                    required
+                    maxLength={4}
                   />
                 </Form.Group>
               </Col>

@@ -52,6 +52,8 @@ const CardUsuarios = ({ usuarios, registroSistema , editarUsuario, eliminarUsuar
                       <button 
                         className="btn btn-sm"
                         onClick={() => editarUsuario(usuario)}
+                        disabled={usuario.rol === "admin"}
+                        style={{ opacity: usuario.rol === "admin" ? 0.5 : 1, cursor: usuario.rol === "admin" ? 'not-allowed' : 'pointer' }}
                       >
                         <FaPen />
                       </button>
@@ -59,6 +61,8 @@ const CardUsuarios = ({ usuarios, registroSistema , editarUsuario, eliminarUsuar
                       <button 
                         className="btn btn-sm"
                         onClick={() => eliminarUsuario(usuario.id)}
+                        disabled={usuario.rol === "admin"}
+                        style={{ opacity: usuario.rol === "admin" ? 0.5 : 1, cursor: usuario.rol === "admin" ? 'not-allowed' : 'pointer' }}
                       >
                         <FaTrash />
                       </button>

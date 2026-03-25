@@ -68,12 +68,20 @@ function Admin() {
   };
 
   const eliminarUsuario = (id) => {
+    const usuario = usuarios.find((u) => u.id === id);
+    if (usuario && usuario.rol === "admin") {
+      return; 
+    }
+
     const nuevosUsuarios = usuarios.filter(u => u.id !== id);
     setUsuarios(nuevosUsuarios);
     localStorage.setItem("usuarios", JSON.stringify(nuevosUsuarios));
   };
 
   const editarUsuario = (usuario) => {
+    if (usuario.rol === "admin") {
+      return; 
+    }
     setNombreUser(usuario.nombre);
     setEmailUser(usuario.email);
     setRolUser(usuario.rol);

@@ -20,6 +20,7 @@ function ModalPelicula({show, handleClose, pelicula, esFavorito, agregarFavorito
          show={show}
          onHide={handleClose}
          centered
+         scrollable={true}
          dialogClassName="modal-video"
          animation={true}>
             <Modal.Header closeButton closeVariant="white">
@@ -37,7 +38,7 @@ function ModalPelicula({show, handleClose, pelicula, esFavorito, agregarFavorito
                 </div>
                 <div className="info-pelicula">
                     <p><strong>Año:</strong>{pelicula.anio}</p>
-                    <p><strong>Descripcion:</strong>{pelicula.descripcion}</p>
+                    <p className="text-break"><strong>Descripcion:</strong> {pelicula.descripcion}</p>
                 </div>
             </Modal.Body>
             <Modal.Footer>
