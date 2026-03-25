@@ -5,12 +5,13 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
-import { FaPaypal, FaApple } from 'react-icons/fa';
+import { FaPaypal, FaApple, FaShoppingCart } from 'react-icons/fa';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import planes from "../../data/planes.js";
 import './Pasarela.css';
+import { BsShieldCheck } from 'react-icons/bs';
 
 
 function PasarelaDePago() {
@@ -108,7 +109,7 @@ function PasarelaDePago() {
       <Row>
         <Col md={6}>
           <h5 className="mb-3 fw-bold">
-            <ShoppingCart size={20} /> Resumen del pedido
+            <FaShoppingCart size={20} /> Resumen del pedido
           </h5>
 
           {datosSuscripcion.map((suscripcion) => (
@@ -158,7 +159,7 @@ function PasarelaDePago() {
 
        
           <Alert variant="danger rounded-5" className="d-flex align-items-center mt-4">
-            <ShieldCheck size={28} className="text-danger me-3 flex-shrink-0" />
+            <BsShieldCheck size={28} className="text-danger me-3 flex-shrink-0" />
             <p className="text-light mb-0" style={{ fontSize: '0.85rem' }}>
               Su pago está protegido por encriptación SSL de 256 bits. No guardamos los datos de su CVV.
             </p>
