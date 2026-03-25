@@ -4,7 +4,6 @@ import { useNavigate, Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF, FaSpotify } from "react-icons/fa";
 import Swal from "sweetalert2";
-import { hashPassword } from "../../helpers/hash";
 import "./Registro.css";
 
 const Registro = () => {
@@ -24,7 +23,7 @@ const Registro = () => {
     { texto: "Al menos un carácter especial (!@#$...)", ok: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password) },
   ];
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const nameRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
@@ -110,8 +109,7 @@ const Registro = () => {
       }
 
       const nombreCompleto = `${nombre.trim()} ${apellido.trim()}`;
-      const passwordHash = await hashPassword(password);
-      const nuevoUsuario = { id: Date.now(), nombre: nombreCompleto, email, password: passwordHash, rol: "user" };
+      const nuevoUsuario = { id: Date.now(), nombre: nombreCompleto, email, password, rol: "user" };
       localStorage.setItem("usuarios", JSON.stringify([...usuariosGuardados, nuevoUsuario]));
 
       Swal.fire({

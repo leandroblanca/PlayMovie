@@ -24,7 +24,7 @@ import Favoritos from "./pages/Favoritos/Favoritos";
 function App() {
   useEffect(() => {
     const VERSION = "v3";
-    const USUARIOS_VERSION = "v2";
+    const USUARIOS_VERSION = "v4";
     const peliculas = JSON.parse(localStorage.getItem("peliculas"));
     if (!peliculas || peliculas.length === 0 || localStorage.getItem("peliculas_version") !== VERSION) {
       localStorage.setItem("peliculas", JSON.stringify(peliculasIniciales));
@@ -36,11 +36,9 @@ function App() {
       localStorage.setItem("usuarios_version", USUARIOS_VERSION);
     }
 
-    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-    const sanitizados = usuarios.length
-      ? usuarios.map(({ password, ...u }) => u)
-      : usuariosIniciales.map(({ password, ...u }) => u);
-    localStorage.setItem("usuarios", JSON.stringify(sanitizados));
+    if (!localStorage.getItem("usuarios")) {
+      localStorage.setItem("usuarios", JSON.stringify(usuariosIniciales.map(({ password, ...u }) => u)));
+    }
   }, []);
 
   return (
