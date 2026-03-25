@@ -20,6 +20,14 @@ const Usuario = () => {
   const [genero, setGenero] = useState(perfilGuardado.genero || "hombre")
   const [abrirModal, setAbrirModal] = useState(false)
 
+  const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,20}$/;
+  const requisitos = [
+    { texto: "Mínimo 8 caracteres", ok: clave.length >= 8 },
+    { texto: "Al menos una mayúscula", ok: /[A-Z]/.test(clave) },
+    { texto: "Al menos un número", ok: /\d/.test(clave) },
+    { texto: "Al menos un carácter especial", ok: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(clave) },
+  ];
+
   const ultimosFavoritos = favoritos.slice(-4);
 
   const cancelarEdicion = () => {
@@ -33,34 +41,33 @@ const Usuario = () => {
 
   const guardarCambios = (e) => {
     e.preventDefault();
+    if (clave && !passwordRegex.test(clave)) {
+      alert("La contraseña debe tener mínimo 8 caracteres, una mayúscula, un número y un carácter especial.");
+      return;
+    }
     const perfil = { nombre, email, genero };
     localStorage.setItem(`perfil_${usuario?.id}`, JSON.stringify(perfil));
 
     const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
-    const usuariosActualizados = usuariosGuardados.map((u) => {
-      if (u.id === usuario.id) {
-        return {
-          ...u,
-          nombre, 
-          email,
-          password: clave ? btoa(clave) : u.password
-        };
-      }
-      return u;
-    });
+    const existe = usuariosGuardados.find(u => u.id === usuario.id);
+    const usuarioActualizado = {
+      ...(existe || usuario),
+      nombre,
+      email,
+      ...(clave ? { password: clave } : {})
+    };
+    const usuariosActualizados = existe
+      ? usuariosGuardados.map(u => u.id === usuario.id ? usuarioActualizado : u)
+      : [...usuariosGuardados, usuarioActualizado];
     localStorage.setItem("usuarios", JSON.stringify(usuariosActualizados));
 
-    const sesionActual =
-      JSON.parse(sessionStorage.getItem("usuarioLogueado")) || {};
-    sessionStorage.setItem(
-      "usuarioLogueado",
-      JSON.stringify({
-        ...sesionActual,
-        nombre,
-        email,
-        password: clave ? btoa(clave) : sesionActual.password
-      })
-    );
+    const sesionActual = JSON.parse(sessionStorage.getItem("usuarioLogueado")) || {};
+    sessionStorage.setItem("usuarioLogueado", JSON.stringify({
+      ...sesionActual,
+      nombre,
+      email,
+      ...(clave ? { password: clave } : {})
+    }));
 
     window.dispatchEvent(new Event("auth-change"));
     setAbrirModal(false);
@@ -122,6 +129,15 @@ const Usuario = () => {
                       maxLength={20}
                       value={clave}
                       onChange={(e) => setClave(e.target.value)} />
+                    {clave.length > 0 && (
+                      <ul style={{ listStyle: "none", padding: 0, margin: "6px 0 10px" }}>
+                        {requisitos.map((r, i) => (
+                          <li key={i} style={{ fontSize: "0.75rem", color: r.ok ? "#198754" : "#dc3545" }}>
+                            {r.ok ? "✔" : "✖"} {r.texto}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
 
                     <label className='Text'>Género:</label>
                     <select className='inputs'

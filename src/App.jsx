@@ -23,33 +23,24 @@ import Favoritos from "./pages/Favoritos/Favoritos";
 
 function App() {
   useEffect(() => {
-    const VERSION = "v2";
+    const VERSION = "v3";
+    const USUARIOS_VERSION = "v2";
     const peliculas = JSON.parse(localStorage.getItem("peliculas"));
     if (!peliculas || peliculas.length === 0 || localStorage.getItem("peliculas_version") !== VERSION) {
       localStorage.setItem("peliculas", JSON.stringify(peliculasIniciales));
       localStorage.setItem("peliculas_version", VERSION);
     }
 
-    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-    
-
-    if (usuarios.length === 0 || !usuarios.some(u => u.rol === "admin")) {
-        const adminOriginal = usuariosIniciales.find(u => u.rol === "admin");
-    
-        usuarios = usuarios.length > 0 && adminOriginal 
-          ? [adminOriginal, ...usuarios] 
-          : usuariosIniciales;
+    if (localStorage.getItem("usuarios_version") !== USUARIOS_VERSION) {
+      localStorage.removeItem("usuarios");
+      localStorage.setItem("usuarios_version", USUARIOS_VERSION);
     }
 
-    const usuariosFinales = usuarios.map(u => {
-      try {
-        atob(u.password);
-        return u;
-      } catch (e) {
-        return { ...u, password: btoa(u.password) }; 
-      }
-    });
-    localStorage.setItem("usuarios", JSON.stringify(usuariosFinales));
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    const sanitizados = usuarios.length
+      ? usuarios.map(({ password, ...u }) => u)
+      : usuariosIniciales.map(({ password, ...u }) => u);
+    localStorage.setItem("usuarios", JSON.stringify(sanitizados));
   }, []);
 
   return (

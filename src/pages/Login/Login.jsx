@@ -42,11 +42,11 @@ const Login = () => {
     return;
   }
 
-  if (password.length < 6 || password.length > 20) {
+  if (password.length < 8) {
     Swal.fire({
       icon: "error",
       title: "Error",
-      text: "La contraseña debe tener entre 6 y 20 caracteres",
+      text: "La contraseña debe tener al menos 8 caracteres",
       timer: 3000,
       background: "#1a1a1a",
       color: "#f9f8f8",
@@ -56,12 +56,16 @@ const Login = () => {
   }
 
   const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
+  const todosLosUsuarios = [
+    ...usuariosIniciales,
+    ...usuariosGuardados.filter(u => !usuariosIniciales.find(ui => ui.email === u.email))
+  ];
 
-  const usuarioEncontrado = usuariosGuardados.find(
-    (usuario) => usuario.email === email
+  const usuarioEncontrado = todosLosUsuarios.find(
+    (usuario) => usuario.email === email && usuario.password === password
   );
 
-  if (!usuarioEncontrado || atob(usuarioEncontrado.password) !== password) {
+  if (!usuarioEncontrado) {
     Swal.fire({
       icon: "error",
       title: "Error",
