@@ -30,10 +30,18 @@ function App() {
       localStorage.setItem("peliculas_version", VERSION);
     }
 
-    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-    const sanitizados = usuarios.length
-      ? usuarios.map(({ password, ...u }) => u)
-      : usuariosIniciales.map(({ password, ...u }) => u);
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    
+
+    if (usuarios.length === 0 || !usuarios.some(u => u.rol === "admin")) {
+        const adminOriginal = usuariosIniciales.find(u => u.rol === "admin");
+    
+        usuarios = usuarios.length > 0 && adminOriginal 
+          ? [adminOriginal, ...usuarios] 
+          : usuariosIniciales;
+    }
+
+    const sanitizados = usuarios.map(({ password, ...u }) => u);
     localStorage.setItem("usuarios", JSON.stringify(sanitizados));
   }, []);
 
