@@ -8,6 +8,7 @@ import { registroSistema, dashboardStats } from "./ObjetosAdmin.jsx";
 import CardsAdmin from "./CardsAdmin.jsx";
 import peliculasIniciales from "../../data/movies.js";
 import ModalUsuarios from "./ModalUsuarios.jsx";
+import Swal from "sweetalert2";
 import { useNavigate, useLocation } from "react-router-dom";
 import { usuariosIniciales } from "../../helpers/users.js";
 import "./Admin.css";
@@ -60,13 +61,25 @@ function Admin() {
 
   const eliminarUsuario = (id) => {
     const usuario = usuarios.find((u) => u.id === id);
-    if (usuario && usuario.rol === "admin") {
-      return; 
-    }
-
-    const nuevosUsuarios = usuarios.filter(u => u.id !== id);
-    setUsuarios(nuevosUsuarios);
-    localStorage.setItem("usuarios", JSON.stringify(nuevosUsuarios));
+    if (usuario && usuario.rol === "admin") return;
+    Swal.fire({
+      title: "¿Eliminar usuario?",
+      text: `¿Seguro que querés eliminar a ${usuario?.nombre}?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#dc3545",
+      cancelButtonColor: "#6c757d",
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+      background: "#1a1a1a",
+      color: "#fff",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const nuevosUsuarios = usuarios.filter(u => u.id !== id);
+        setUsuarios(nuevosUsuarios);
+        localStorage.setItem("usuarios", JSON.stringify(nuevosUsuarios));
+      }
+    });
   };
 
   const editarUsuario = (usuario) => {
@@ -147,8 +160,25 @@ function Admin() {
 
 
   const eliminarPelicula = (id) => {
-    const nuevasPeliculas = peliculas.filter(p => p.id !== id);
-    setPeliculas(nuevasPeliculas);
+    const pelicula = peliculas.find(p => p.id === id);
+    Swal.fire({
+      title: "¿Eliminar película?",
+      text: `¿Seguro que querés eliminar "${pelicula?.titulo}"?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#dc3545",
+      cancelButtonColor: "#6c757d",
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+      background: "#1a1a1a",
+      color: "#fff",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const nuevasPeliculas = peliculas.filter(p => p.id !== id);
+        localStorage.setItem("peliculas", JSON.stringify(nuevasPeliculas));
+        setPeliculas(nuevasPeliculas);
+      }
+    });
   };
 
   const editarPelicula = (pelicula) => {

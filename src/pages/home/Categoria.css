@@ -1,16 +1,21 @@
-.img-Categoria{
-    object-fit: cover;
-}
-.Card-home{
+.img-Categoria {
   width: 100%;
-  max-width: 350px;
+  height: 280px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.Card-home {
+  width: 100%;
   margin: 0 auto;
-  text-align: center;
-  border-radius: 10px;       
+  text-align: left;
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   color: white;
   background-color: #211111;
   border: #211111;
   overflow: hidden;
   font-size: 16px;
+  display: flex;
+  flex-direction: column;
 }

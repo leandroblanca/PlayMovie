@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
+import Swal from "sweetalert2";
 import "./Reviews.css";
 
 const STORAGE_KEY = (id) => `reviews_${id}`;
@@ -52,7 +53,22 @@ export default function Reviews({ movieId }) {
     setNewReview({ rating: 0, text: "" });
   };
 
-  const handleDelete = (id) => guardar(reviews.filter(r => r.id !== id));
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "¿Eliminar reseña?",
+      text: "¿Seguro que querés eliminar tu reseña?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#dc3545",
+      cancelButtonColor: "#6c757d",
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+      background: "#1a1a1a",
+      color: "#fff",
+    }).then((result) => {
+      if (result.isConfirmed) guardar(reviews.filter(r => r.id !== id));
+    });
+  };
 
   return (
     <div className="reviews-section">
