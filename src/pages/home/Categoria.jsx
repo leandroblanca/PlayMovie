@@ -65,32 +65,30 @@ function CategoriaPage() {
         <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4">
           {peliculasFiltradas.map((pelicula) => (
             <Col key={pelicula.id}>
-              <Card className="h-100 bg-dark text-white border-secondary">
+              <Card className="bg-dark text-white border-secondary text-center d-flex flex-column" style={{ width: "100%" }}>
                 <Card.Img
                   src={pelicula.poster}
                   alt={pelicula.titulo}
-                  className="img-Categoria"
+                  style={{ height: "220px", objectFit: "cover", objectPosition: "center top", flexShrink: 0 }}
                 />
-                <Card.Body>
-                  <Card.Title className="fs-6">{pelicula.titulo}</Card.Title>
-                  <Button
-                  variant="link"
-                  className="p-0 text-danger btn-fav-home"
-                  onClick={(e) => toggleFavorito(e, pelicula)}
-                  >
-                    {esFavorito(pelicula.id) ? <FaHeart /> : <FaRegHeart />}
-                  </Button>
-                  <Card.Text className="text-muted">{pelicula.anio}</Card.Text>
-                  <span className="badge bg-secondary">
-                    {pelicula.categorias}
-                  </span>
-                  <Button
-                    className="bg-dark mt-3"
-                    onClick={() => handleShowModal(pelicula)}
-                  >
-                    Ver mas
-                  </Button>
-                </Card.Body>
+                <div style={{ padding: "0.75rem", display: "flex", flexDirection: "column", boxSizing: "border-box" }}>
+                  <div style={{ height: "60px", overflow: "hidden", marginBottom: "0.75rem" }}>
+                    <p style={{ fontWeight: "bold", fontSize: "0.95rem", margin: "0 0 4px 0", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{pelicula.titulo}</p>
+                    <Button
+                      variant="link"
+                      className="p-0 text-danger btn-fav-home"
+                      onClick={(e) => toggleFavorito(e, pelicula)}
+                    >
+                      {esFavorito(pelicula.id) ? <FaHeart /> : <FaRegHeart />}
+                    </Button>
+                    <p style={{ fontSize: "0.85rem", color: "#aaa", margin: 0 }}>{pelicula.anio}</p>
+                  </div>
+                  <div>
+                    <Button variant="danger" className="w-100" onClick={() => handleShowModal(pelicula)}>
+                      Ver mas
+                    </Button>
+                  </div>
+                </div>
               </Card>
             </Col>
           ))}
